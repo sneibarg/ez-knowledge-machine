@@ -1,0 +1,7 @@
+(NPCVendor has
+  (superclasses (Agent) (NPC))
+  (cash (a Number))
+  (cashThreshold (a Number))
+  (hagglingMemory :set (a HagglingAttempt))
+  (patronKnowledge :set (a Conversation))
+  (currentConversations :set (a Conversation)))

@@ -1,0 +1,9 @@
+(HagglingAttempt has
+  (superclasses (Event))
+  (involvesPlayer (a Player)
+  (patronAttitude (a Attitude)
+  (concernsItem (a Item))
+  (initialPrice (a Number))
+  (offeredPrice (a Number))
+  (outcome (a Symbol))
+  (finalPrice (a Number)))))
