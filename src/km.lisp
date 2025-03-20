@@ -19240,9 +19240,11 @@ NOTE: There is a special case if N = 1, namely all the elements of all the expr-
 (format t "Checking *load-default-components*: ~A~%" *load-default-components*)
 (when *load-default-components*
   (format t "Loading default components!~%")
-  (let ((full-path (merge-pathnames *default-components-path*
-                                    (make-pathname :directory (pathname-directory *km-load-pathname*)))))
-    (load-lib full-path)))
+  (let ((full-path (merge-pathnames *default-components-path* (make-pathname :directory (pathname-directory *km-load-pathname*)))))
+	(format t "Loading components in directory: ~A~%" full-path)
+    (load-lib full-path)
+	)
+	(format t "Loaded default components."))
 ;;;
 
 (eval-when (:execute :load-toplevel :compile-toplevel)
