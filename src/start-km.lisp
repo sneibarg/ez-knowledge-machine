@@ -38,7 +38,9 @@
     (*use-prototypes* . (:default "t" :type boolean))
     (*developer-mode* . (:default "nil" :type boolean))
     (*unclonable-slots* . (:default "#$(prototype-participant-of prototype-participants prototype-of prototypes prototype-scope locked-instance-of has-clones has-built-clones)" :type list))
-    (*called-forces-unification* . (:default "t" :type boolean))))
+    (*called-forces-unification* . (:default "t" :type boolean))
+    (*port* . (:default "8080" :type integer))) ; Added port parameter
+  "List of KM parameters with their default values and types.")
 
 ;;; List of parameter symbols for easy access
 (defparameter *km-behavior-parameter-symbols*
@@ -62,12 +64,12 @@
          (separator-pos (position "--" argv :test #'string=)))
     (if separator-pos
         (subseq argv (1+ separator-pos))
-        (error "No '--' separator found in arguments"))))
+        nil))) ; Return nil if no separator, handled in main
 
 ;;; Display usage information
 (defun usage ()
-  (format t "~&=== KM Interpreter Usage ===~%")
-  (format t "Run the KM interpreter with customizable behavior parameters:~%")
+  (format t "~&=== KM REST Service Usage ===~%")
+  (format t "Run the KM REST service with customizable behavior parameters:~%")
   (format t "  sbcl --load start-km.lisp -- [options]~%~%")
   (format t "Available Options:~%")
   (format t "  --help                Display this help message and exit~%")
@@ -78,8 +80,8 @@
            (name (string-downcase (subseq (symbol-name sym) 1 (1- (length (symbol-name sym)))))))
       (format t "  --~A~30T Set ~A (default: ~A, type: ~A)~%" name (symbol-name sym) default-value type)))
   (format t "~%Examples:~%")
-  (format t "  sbcl --load start-km.lisp -- --recursive-classification nil~%")
-  (format t "  sbcl --load start-km.lisp -- --max-padding-instances 10 --logging t~%")
+  (format t "  sbcl --load start-km.lisp -- --port 9090 --logging t~%")
+  (format t "  sbcl --load start-km.lisp -- --max-padding-instances 10 --recursive-classification nil~%")
   (format t "~%Notes:~%")
   (format t "  - Values must match the expected type (e.g., t/nil for boolean, integers, floats).~%")
   (format t "  - Use Lisp syntax for lists and symbols.~%")
@@ -96,27 +98,44 @@
           (format t "Set ~A to ~A~%" sym value))
         (error "Invalid value '~A' for parameter ~A (expected type: ~A)" value-str sym type))))
 
-;;; Main function to process arguments and start KM
+;;; Load dependencies and start the REST server
+(defun start ()
+  "Start the KM REST server with configured parameters."
+  (load "E:/Quicklisp/quicklisp.lisp")
+  (load "km-threads.lisp")
+  (load "km-rest.lisp")
+  (load "km.lisp") ; Assuming this provides km:km and km:km-unique
+  (km-rest:start-server *port*))
+
+;;; Stop the REST server
+(defun stop ()
+  "Stop the KM REST server."
+  (km-rest:stop-server))
+
+;;; Main function to process arguments and start the server
 (defun main ()
-  (let* ((args sb-ext:*posix-argv*)
-         (separator-pos (position "--" args :test #'string=)))
-    (if separator-pos
-        (let ((program-args (subseq args (1+ separator-pos))))
-          ;; Process the arguments after the separator
-          (loop for i from 0 below (length program-args) by 2
-                do (let* ((param (nth i program-args))
-                          (value (nth (1+ i) program-args))
-                          (param-name (subseq param 2)) ; Strip the "--" prefix
-                          (sym (find (intern (concatenate 'string "*" (string-upcase param-name) "*"))
-                                     *km-behavior-parameter-symbols*
-                                     :key #'symbol-name
-                                     :test #'string=)))
-                     (if sym
-                         (set-parameter sym value) ; Assuming set-parameter exists
-                         (error "Unknown parameter: ~A" param-name)))))
-        (error "No separator found in arguments")))
-  ;; Load km.lisp and call KM (assuming km.lisp defines KM)
-  (load "km.lisp")
-  (km))
+  (let ((program-args (get-script-arguments)))
+    (cond
+      ((null program-args)
+       (format t "No arguments provided, starting server with defaults on port ~A~%" *port*)
+       (start))
+      ((member "--help" program-args :test #'string=)
+       (usage))
+      (t
+       (loop for i from 0 below (length program-args) by 2
+             do (let* ((param (nth i program-args))
+                       (value (nth (1+ i) program-args))
+                       (param-name (subseq param 2)) ; Strip the "--" prefix
+                       (sym (find (intern (concatenate 'string "*" (string-upcase param-name) "*"))
+                                  *km-behavior-parameter-symbols*
+                                  :key #'symbol-name
+                                  :test #'string=)))
+                  (if sym
+                      (set-parameter sym value)
+                      (error "Unknown parameter: ~A" param-name))))
+       (start))))
+  ;; Keep the process running (for SBCL REPL or server)
+  #+sbcl (sb-impl::toplevel-repl nil))
+
 ;;; Execute the main function
 (main)
