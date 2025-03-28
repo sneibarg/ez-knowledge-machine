@@ -1,7 +1,14 @@
-;;; Display the raw command-line arguments for debugging
+;;; start-km.lisp
+(let ((quicklisp-setup "E:/Quicklisp/setup.lisp"))
+  (unless (find-package :ql)
+    (if (probe-file quicklisp-setup)
+        (load quicklisp-setup)
+        (error "Quicklisp setup file not found at ~A. Please install Quicklisp first." quicklisp-setup))))
+
+;;; Display command-line arguments for debugging
 (format t "ARGV: ~S~%" sb-ext:*posix-argv*)
 
-;;; Define parameters with their defaults and expected types
+;;; Define parameters with defaults and types
 (defparameter *km-parameter-info*
   '((*load-default-components* . (:default "t" :type boolean))
     (*recursive-classification* . (:default "t" :type boolean))
@@ -25,11 +32,11 @@
     (*add-comments-to-names* . (:default "t" :type boolean))
     (*check-kb* . (:default "nil" :type boolean))
     (*classify-slotless-instances* . (:default "t" :type boolean))
-    (*built-in-remove-subsumers-slots* . (:default "#$(instance-of classes superclasses member-type)" :type list))
-    (*built-in-remove-subsumees-slots* . (:default "#$(subclasses prototype-of domain range)" :type list))
-    (*default-fluent-status* . (:default "#$*Fluent" :type symbol))
+    (*built-in-remove-subsumers-slots* . (:default "#$(instance-of classes superclasses member-type)" :type string))
+    (*built-in-remove-subsumees-slots* . (:default "#$(subclasses prototype-of domain range)" :type string))
+    ;;; (*default-fluent-status* . (:default "#$*Fluent" :type symbol))
     (*active-obj-stack* . (:default "nil" :type list))
-    (*on-error* . (:default "debug" :type symbol))
+    ;;; (*on-error* . (:default "debug" :type symbol))
     (*justify-leaves* . (:default "nil" :type boolean))
     (*start-justifications-with-because* . (:default "t" :type boolean))
     (*classification-enabled* . (:default "t" :type boolean))
@@ -37,18 +44,23 @@
     (*use-inheritance* . (:default "t" :type boolean))
     (*use-prototypes* . (:default "t" :type boolean))
     (*developer-mode* . (:default "nil" :type boolean))
-    (*unclonable-slots* . (:default "#$(prototype-participant-of prototype-participants prototype-of prototypes prototype-scope locked-instance-of has-clones has-built-clones)" :type list))
+    (*unclonable-slots* . (:default "#$(prototype-participant-of prototype-participants prototype-of prototypes prototype-scope locked-instance-of has-clones has-built-clones)" :type string))
     (*called-forces-unification* . (:default "t" :type boolean))
-    (*port* . (:default "8080" :type integer))) ; Added port parameter
+    (*port* . (:default "8080" :type integer)))
   "List of KM parameters with their default values and types.")
 
-;;; List of parameter symbols for easy access
+;;; Load dependencies using Quicklisp
+(dolist (dep '(:hunchentoot :jsown :bordeaux-threads :km :km-threads :km-rest))
+  (ql:quickload dep))
+
+;;; List of parameter symbols
 (defparameter *km-behavior-parameter-symbols*
   (mapcar #'car *km-parameter-info*))
 
-;;; Convert a string to a Lisp value based on the expected type
+;;; Convert string to Lisp value based on type
 (defun string-to-value (str type)
   (cond
+    ((eq type 'string) str)
     ((eq type 'boolean) (if (string= str "t") t nil))
     ((eq type 'integer) (parse-integer str))
     ((eq type 'float) (read-from-string str))
@@ -58,13 +70,21 @@
      (if (string= str "nil") nil (parse-integer str)))
     (t (error "Unsupported type: ~A" type))))
 
-;;; Extract arguments following the "--" separator
+;;; Define all parameters with their default values
+(dolist (param-info *km-parameter-info*)
+  (let* ((sym (car param-info))
+         (default-str (getf (cdr param-info) :default))
+         (type (getf (cdr param-info) :type))
+         (default-value (string-to-value default-str type)))
+    (eval `(defparameter ,sym ,default-value))))
+
+;;; Extract arguments after "--"
 (defun get-script-arguments ()
   (let* ((argv sb-ext:*posix-argv*)
          (separator-pos (position "--" argv :test #'string=)))
     (if separator-pos
         (subseq argv (1+ separator-pos))
-        nil))) ; Return nil if no separator, handled in main
+        nil)))
 
 ;;; Display usage information
 (defun usage ()
@@ -87,7 +107,7 @@
   (format t "  - Use Lisp syntax for lists and symbols.~%")
   (sb-ext:exit))
 
-;;; Set a parameter with type enforcement
+;;; Set parameter with type checking
 (defun set-parameter (sym value-str)
   (let* ((info (assoc sym *km-parameter-info*))
          (type (getf info :type))
@@ -98,13 +118,10 @@
           (format t "Set ~A to ~A~%" sym value))
         (error "Invalid value '~A' for parameter ~A (expected type: ~A)" value-str sym type))))
 
-;;; Load dependencies and start the REST server
+;;; Start the REST server
 (defun start ()
   "Start the KM REST server with configured parameters."
-  (load "E:/Quicklisp/quicklisp.lisp")
-  (load "km-threads.lisp")
-  (load "km-rest.lisp")
-  (load "km.lisp") ; Assuming this provides km:km and km:km-unique
+  (format t "Calling km-rest:start-server *port*~%")
   (km-rest:start-server *port*))
 
 ;;; Stop the REST server
@@ -112,7 +129,7 @@
   "Stop the KM REST server."
   (km-rest:stop-server))
 
-;;; Main function to process arguments and start the server
+;;; Main function to process arguments and start server
 (defun main ()
   (let ((program-args (get-script-arguments)))
     (cond
@@ -125,7 +142,7 @@
        (loop for i from 0 below (length program-args) by 2
              do (let* ((param (nth i program-args))
                        (value (nth (1+ i) program-args))
-                       (param-name (subseq param 2)) ; Strip the "--" prefix
+                       (param-name (subseq param 2)) ; Strip "--"
                        (sym (find (intern (concatenate 'string "*" (string-upcase param-name) "*"))
                                   *km-behavior-parameter-symbols*
                                   :key #'symbol-name
@@ -134,8 +151,8 @@
                       (set-parameter sym value)
                       (error "Unknown parameter: ~A" param-name))))
        (start))))
-  ;; Keep the process running (for SBCL REPL or server)
+  ;; Keep process running
   #+sbcl (sb-impl::toplevel-repl nil))
 
-;;; Execute the main function
+;;; Run the main function
 (main)

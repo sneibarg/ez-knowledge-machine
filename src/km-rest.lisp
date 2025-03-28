@@ -1,5 +1,5 @@
 (defpackage :km-rest
-  (:use :cl :hunchentoot :jsown :km-threads :bordeaux-threads))
+  (:use :cl :hunchentoot :jsown :km :km-threads :bordeaux-threads))
 
 (in-package :km-rest)
 
@@ -61,27 +61,36 @@
         (second result)
         (error (second result)))))
 
+(defvar *call-depth* 0)
 (defun start-server (&optional (port *default-port*))
-  "Start the REST server on the specified port and initialize the thread pool."
+  (format t "Entering start-server with port ~a~%" port)
+  (incf *call-depth*)
+  (when (> *call-depth* 100)
+    (error "Possible infinite recursion detected at depth ~a" *call-depth*))
   (when *server*
+    (format t "Stopping existing server~%")
     (stop-server))
-  (unless (and (integerp port) (<= 1 port 65535))
-    (error "Port must be an integer between 1 and 65535"))
-  (setf *thread-pool* (make-thread-pool))  ; Initialize thread pool
+  (format t "Initializing thread pool~%")
+  (setf *thread-pool* (make-thread-pool))
   (setf *server* (make-instance 'easy-acceptor :port port))
   (define-handlers)
   (start *server*)
-  (format t "KM REST server started on port ~a~%" port))
+  (format t "KM REST server started on port ~a~%" port)
+  (decf *call-depth*))
 
 (defun stop-server ()
-  "Stop the REST server and shut down the thread pool."
+  (format t "Entering stop-server~%")
   (when *server*
+    (format t "Stopping server: ~a~%" *server*)
     (stop *server*)
     (setf *server* nil)
-    (format t "KM REST server stopped~%"))
+    (format t "Server stopped~%"))
   (when *thread-pool*
+    (format t "Shutting down thread pool~%")
     (shutdown-thread-pool *thread-pool*)
-    (setf *thread-pool* nil)))
+    (setf *thread-pool* nil)
+    (format t "Thread pool shut down~%"))
+  (format t "Exiting stop-server~%"))
 
 ;; Define REST endpoint handlers
 (defun define-handlers ()
@@ -129,8 +138,8 @@
             (let ((fail-mode (if (string-equal fail-mode-str "error") 'error 'fail))
                   (expr (read-from-string expr-str)))
               (let ((result (run-in-thread-pool *thread-pool*
-                                                (lambda () (km:km-unique expr :fail-mode fail-mode)))))
+                                                (lambda () (km:km-unique0 expr :fail-mode fail-mode)))))
                 (encode-json-to-string (list :value (prin1-to-string result)))))))
       (error (e)
         (setf (return-code*) +http-bad-request+)
-        (encode-json-to-string (list :error (format nil "~a" e))))))))
+        (encode-json-to-string (list :error (format nil "~a" e)))))))

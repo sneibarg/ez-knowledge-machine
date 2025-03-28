@@ -276,9 +276,9 @@ The variable *km-package* is set to the KM package name that KM is in.
 #+SBCL (DECLAIM (SB-EXT:MUFFLE-CONDITIONS CL:STYLE-WARNING))
 
 ;;; COMMENT THIS OUT FOR THE PACKAGED VERSION OF KM
-(defvar *using-km-package* nil)
+;;; (defvar *using-km-package* nil)
 
-#| ;;; [1] UNCOMMENT THIS FOR PACKAGED VERSION OF KM
+;;; [1] UNCOMMENT THIS FOR PACKAGED VERSION OF KM
 (eval-when
  (:compile-toplevel :load-toplevel :execute)
  (unless (find-package :km) (make-package :km :use '(:common-lisp))))
@@ -293,7 +293,7 @@ The variable *km-package* is set to the KM package name that KM is in.
 #+MCL
 (eval-when (:compile-toplevel :load-toplevel :execute)
    (import 'ccl:neq))
-|#
+
 
 ;;; KM package is now the current package
 (eval-when
