@@ -62,35 +62,6 @@
         (error (second result)))))
 
 (defvar *call-depth* 0)
-(defun start-server (&optional (port *default-port*))
-  (format t "Entering start-server with port ~a~%" port)
-  (incf *call-depth*)
-  (when (> *call-depth* 100)
-    (error "Possible infinite recursion detected at depth ~a" *call-depth*))
-  (when *server*
-    (format t "Stopping existing server~%")
-    (stop-server))
-  (format t "Initializing thread pool~%")
-  (setf *thread-pool* (make-thread-pool))
-  (setf *server* (make-instance 'easy-acceptor :port port))
-  (define-handlers)
-  (start *server*)
-  (format t "KM REST server started on port ~a~%" port)
-  (decf *call-depth*))
-
-(defun stop-server ()
-  (format t "Entering stop-server~%")
-  (when *server*
-    (format t "Stopping server: ~a~%" *server*)
-    (stop *server*)
-    (setf *server* nil)
-    (format t "Server stopped~%"))
-  (when *thread-pool*
-    (format t "Shutting down thread pool~%")
-    (shutdown-thread-pool *thread-pool*)
-    (setf *thread-pool* nil)
-    (format t "Thread pool shut down~%"))
-  (format t "Exiting stop-server~%"))
 
 ;; Define REST endpoint handlers
 (defun define-handlers ()
@@ -143,3 +114,33 @@
       (error (e)
         (setf (return-code*) +http-bad-request+)
         (encode-json-to-string (list :error (format nil "~a" e)))))))
+
+(defun start-server (&optional (port *default-port*))
+  (format t "Entering start-server with port ~a~%" port)
+  (incf *call-depth*)
+  (when (> *call-depth* 100)
+    (error "Possible infinite recursion detected at depth ~a" *call-depth*))
+  (when *server*
+    (format t "Stopping existing server~%")
+    (stop-server))
+  (format t "Initializing thread pool~%")
+  (setf *thread-pool* (make-thread-pool))
+  (setf *server* (make-instance 'hunchentoot:easy-acceptor :port port))
+  (define-handlers)
+  (hunchentoot:start *server*)
+  (format t "KM REST server started on port ~a~%" port)
+  (decf *call-depth*))
+
+(defun stop-server ()
+  (format t "Entering stop-server~%")
+  (when *server*
+    (format t "Stopping server: ~a~%" *server*)
+    (stop *server*)
+    (setf *server* nil)
+    (format t "Server stopped~%"))
+  (when *thread-pool*
+    (format t "Shutting down thread pool~%")
+    (shutdown-thread-pool *thread-pool*)
+    (setf *thread-pool* nil)
+    (format t "Thread pool shut down~%"))
+  (format t "Exiting stop-server~%"))

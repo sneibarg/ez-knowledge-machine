@@ -122,11 +122,16 @@
 (defun start ()
   "Start the KM REST server with configured parameters."
   (format t "Calling km-rest:start-server *port*~%")
-  (km-rest:start-server *port*))
+  (km-rest:define-handlers)
+  (setf *server* (make-instance 'hunchentoot:easy-acceptor :port 8080))
+  (hunchentoot:start *server*)
+  ;;;(km-rest:start-server *port*)
+  (format t "Exiting start.~%"))
 
 ;;; Stop the REST server
 (defun stop ()
   "Stop the KM REST server."
+  (format t "Exiting the km-rest service.~%")
   (km-rest:stop-server))
 
 ;;; Main function to process arguments and start server
@@ -154,5 +159,4 @@
   ;; Keep process running
   #+sbcl (sb-impl::toplevel-repl nil))
 
-;;; Run the main function
 (main)
