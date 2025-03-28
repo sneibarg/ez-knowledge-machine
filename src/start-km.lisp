@@ -119,9 +119,7 @@
 
 (defun start ()
   "Start the KM REST server with configured parameters."
-  (format t "Calling km-rest:start-server *port*~%")
-  (km-rest:start-server)
-  (format t "Exiting start.~%"))
+  (km-rest:start-server))
 
 (defun stop ()
   "Stop the KM REST server."
