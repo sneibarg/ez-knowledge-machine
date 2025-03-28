@@ -123,8 +123,8 @@
   (when *server*
     (format t "Stopping existing server~%")
     (stop-server))
-  (format t "Initializing thread pool~%")
-  (setf *thread-pool* (make-thread-pool))
+  ;;;(format t "Initializing thread pool~%")
+  ;;;(setf *thread-pool* (make-thread-pool))
   (setf *server* (make-instance 'hunchentoot:easy-acceptor :port port))
   (define-handlers)
   (hunchentoot:start *server*)

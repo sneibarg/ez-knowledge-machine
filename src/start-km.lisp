@@ -107,7 +107,6 @@
   (format t "  - Use Lisp syntax for lists and symbols.~%")
   (sb-ext:exit))
 
-;;; Set parameter with type checking
 (defun set-parameter (sym value-str)
   (let* ((info (assoc sym *km-parameter-info*))
          (type (getf info :type))
@@ -118,30 +117,21 @@
           (format t "Set ~A to ~A~%" sym value))
         (error "Invalid value '~A' for parameter ~A (expected type: ~A)" value-str sym type))))
 
-;;; Start the REST server
 (defun start ()
   "Start the KM REST server with configured parameters."
   (format t "Calling km-rest:start-server *port*~%")
-  ;;; this is our stack overflow culprit: 
-  ;;; (setf *thread-pool* (km-threads:make-thread-pool))
-  (km-rest:define-handlers)
-  (setf *server* (make-instance 'hunchentoot:easy-acceptor :port 8080))
-  (hunchentoot:start *server*)
-  ;;;(km-rest:start-server *port*)
+  (km-rest:start-server)
   (format t "Exiting start.~%"))
 
-;;; Stop the REST server
 (defun stop ()
   "Stop the KM REST server."
   (format t "Exiting the km-rest service.~%")
   (km-rest:stop-server))
 
-;;; Main function to process arguments and start server
 (defun main ()
   (let ((program-args (get-script-arguments)))
     (cond
       ((null program-args)
-       (format t "No arguments provided, starting server with defaults on port ~A~%" *port*)
        (start))
       ((member "--help" program-args :test #'string=)
        (usage))
