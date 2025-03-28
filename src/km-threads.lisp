@@ -4,13 +4,23 @@
 
 (in-package :km-threads)
 
-;; Thread pool structure
-(defstruct thread-pool
-  (task-queue nil :type list)          ; List of tasks (functions)
-  (queue-lock (make-lock) :type lock)  ; Mutex for task queue access
-  (queue-cond (make-condition-variable) :type condition-variable) ; Signal new tasks
-  (threads nil :type list)             ; List of worker threads
-  (shutdown-p nil :type boolean))      ; Flag to indicate shutdown
+;; Thread pool structure with a custom constructor name
+(defstruct (thread-pool (:constructor %make-thread-pool))
+  (task-queue nil :type list)
+  (queue-lock (make-lock) :type lock)
+  (queue-cond (make-condition-variable) :type condition-variable)
+  (threads nil :type list)
+  (shutdown-p nil :type boolean))
+
+(defun make-thread-pool (&optional (num-threads (get-number-of-cores)))
+  "Create a thread pool with NUM-THREADS worker threads."
+  (let ((pool (%make-thread-pool)))
+    (setf (thread-pool-threads pool)
+          (loop :repeat num-threads
+                :collect (make-thread :name "km-worker"
+                                      :function #'worker-function
+                                      :arguments (list pool))))
+    pool))
 
 (defun worker-function (pool)
   "Worker function that processes tasks from the thread pool's queue."
@@ -28,16 +38,6 @@
             (funcall task)
           (error (e)
             (format t "Error in task: ~A~%" e)))))))
-
-(defun make-thread-pool (&optional (num-threads (get-number-of-cores)))
-  "Create a thread pool with NUM-THREADS worker threads."
-  (let ((pool (make-thread-pool)))
-    (setf (thread-pool-threads pool)
-          (loop :repeat num-threads
-                :collect (make-thread :name "km-worker"
-                                      :function #'worker-function
-                                      :arguments (list pool))))
-    pool))
 
 (defun submit-task (pool task)
   "Add a TASK (a function) to the thread pool's queue."

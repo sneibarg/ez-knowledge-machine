@@ -122,7 +122,8 @@
 (defun start ()
   "Start the KM REST server with configured parameters."
   (format t "Calling km-rest:start-server *port*~%")
-  ;;; this is our stack overflow culprit: (setf *thread-pool* (km-threads:make-thread-pool))
+  ;;; this is our stack overflow culprit: 
+  ;;; (setf *thread-pool* (km-threads:make-thread-pool))
   (km-rest:define-handlers)
   (setf *server* (make-instance 'hunchentoot:easy-acceptor :port 8080))
   (hunchentoot:start *server*)
