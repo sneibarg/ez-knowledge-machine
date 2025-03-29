@@ -3,7 +3,7 @@
   (unless (find-package :km-rest)
     (defpackage :km-rest
       (:use :common-lisp)
-      (:export :start-server :stop-server :define-handlers))))  
+      (:export :start-server :stop-server :run-in-thread-pool))))  
 
 (in-package :km-rest)
 (defvar *using-km-package* nil)

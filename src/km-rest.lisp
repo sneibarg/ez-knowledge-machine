@@ -1,5 +1,6 @@
 (defpackage :km-rest
-  (:use :cl :hunchentoot :jsown :km :km-threads :bordeaux-threads))
+  (:use :cl :hunchentoot :jsown :km :km-threads)
+  (:export :start-server :stop-server :run-in-thread-pool))
 
 (in-package :km-rest)
 
@@ -38,35 +39,12 @@
     (error (e)
       (error "Invalid expression: ~a" e))))
 
-(defun run-in-thread-pool (pool task-fn)
-  "Submit TASK-FN to the thread pool and return its result, or signal an error if the task fails."
-  (let ((result nil)
-        (lock (make-lock))
-        (cond-var (make-condition-variable))
-        (done-p nil))
-    (submit-task pool
-                 (lambda ()
-                   (let ((res (handler-case
-                                  (list :success (funcall task-fn))
-                                (error (e)
-                                  (list :error (format nil "Error in task: ~A" e))))))
-                     (with-lock-held (lock)
-                       (setf result res)
-                       (setf done-p t)
-                       (condition-notify cond-var)))))
-    (with-lock-held (lock)
-      (loop until done-p
-            do (condition-wait cond-var lock)))
-    (if (eq (first result) :success)
-        (second result)
-        (error (second result)))))
+(defun run-in-thread-pool (task-fn)
+  "Submit TASK-FN to the global thread pool and return its result."
+  (run-task *thread-pool* task-fn))
 
-(defvar *call-depth* 0)
-
-;; Define REST endpoint handlers
 (defun define-handlers ()
   "Define the REST endpoint handlers for /km and /km-unique."
-
   (define-easy-handler (km-handler :uri "/km" :default-request-type :post) ()
     "Handle POST requests to /km, evaluating the KM expression using the thread pool."
     (setf (content-type*) "application/json")
@@ -84,8 +62,7 @@
             (validate-expression expr-str)
             (let ((fail-mode (if (string-equal fail-mode-str "error") 'error 'fail))
                   (expr (read-from-string expr-str)))
-              (let ((result (run-in-thread-pool *thread-pool*
-                                                (lambda () (km:km expr :fail-mode fail-mode)))))
+              (let ((result (run-in-thread-pool (lambda () (km:km expr :fail-mode fail-mode)))))
                 (encode-json-to-string (mapcar #'prin1-to-string result))))))
       (error (e)
         (setf (return-code*) +http-bad-request+)
@@ -108,34 +85,31 @@
             (validate-expression expr-str)
             (let ((fail-mode (if (string-equal fail-mode-str "error") 'error 'fail))
                   (expr (read-from-string expr-str)))
-              (let ((result (run-in-thread-pool *thread-pool*
-                                                (lambda () (km:km-unique0 expr :fail-mode fail-mode)))))
+              (let ((result (run-in-thread-pool (lambda () (km:km-unique0 expr :fail-mode fail-mode)))))
                 (encode-json-to-string (list :value (prin1-to-string result)))))))
       (error (e)
         (setf (return-code*) +http-bad-request+)
         (encode-json-to-string (list :error (format nil "~a" e)))))))
 
 (defun start-server (&optional (port *default-port*))
-  (format t "Entering start-server with port ~a~%" port)
-  (incf *call-depth*)
-  (when (> *call-depth* 100)
-    (error "Possible infinite recursion detected at depth ~a" *call-depth*))
   (when *server*
     (format t "Stopping existing server~%")
     (stop-server))
-  ;;;(format t "Initializing thread pool~%")
-  ;;;(setf *thread-pool* (make-thread-pool))
+  (format t "Initializing thread pool~%")
+  (setf *thread-pool* (make-thread-pool :name "km-rest-pool"))
+  (format t "Thread pool initialized~%")
   (setf *server* (make-instance 'hunchentoot:easy-acceptor :port port))
+  (format t "Acceptor created~%")
   (define-handlers)
+  (format t "Handlers defined~%")
   (hunchentoot:start *server*)
-  (format t "KM REST server started on port ~a~%" port)
-  (decf *call-depth*))
+  (format t "KM REST server started on port ~a~%" port))
 
 (defun stop-server ()
   (format t "Entering stop-server~%")
   (when *server*
     (format t "Stopping server: ~a~%" *server*)
-    (stop *server*)
+    (hunchentoot:stop *server*)
     (setf *server* nil)
     (format t "Server stopped~%"))
   (when *thread-pool*
