@@ -1,5 +1,5 @@
 (defpackage :km-rest
-  (:use :cl :hunchentoot :jsown :km :km-threads)
+  (:use :cl :hunchentoot :jsown :km :km-threads :km-logging)
   (:export :start-server :stop-server))
 
 (in-package :km-rest)
@@ -9,7 +9,7 @@
 (defvar *shutdown-thread* nil "Thread handling shutdown.")
 (defvar *thread-pool* nil "Global variable to hold the thread pool instance.")
 (defvar *default-port* 8080 "Default port number if none is specified.")
-
+(km-logging:setup-file-logging ".\km-service.log" :info)
 (defparameter *allowed-functions*
   '("every" "instance-of" "subclass-of" "has-property" "all-instances" "all-subclasses"
     "equal" "not-equal" "greater-than" "less-than" "and" "or" "not"
@@ -58,10 +58,9 @@
             (unless (member fail-mode-str '("fail" "error") :test #'string-equal)
               (error "Invalid 'fail_mode'; must be 'fail' or 'error'"))
             ;;;(validate-expression expr-str)
-            (format t "KM-EXPRESSION: ~A~%" expr-str)
+            (log:info "KM-EXPRESSION: ~A" expr-str)
             (let ((fail-mode (if (string-equal fail-mode-str "error") 'error 'fail))
                   (expr (read-from-string expr-str)))
-              (format t "KM-EXPRESSION2: ~A~%" expr)
               (let ((result (task-result (submit-task *thread-pool* (lambda () (km:km expr-str :fail-mode fail-mode))))))
                 (jsown:to-json (mapcar #'prin1-to-string result))))))
       (error (e)
@@ -83,10 +82,9 @@
             (unless (member fail-mode-str '("fail" "error") :test #'string-equal)
               (error "Invalid 'fail_mode'; must be 'fail' or 'error'"))
             ;;;(validate-expression expr-str)
-                        (format t "KM-EXPRESSION: ~A~%" expr-str)
+            (log:info "KM-EXPRESSION: ~A" expr-str)
             (let ((fail-mode (if (string-equal fail-mode-str "error") 'error 'fail))
                   (expr (read-from-string expr-str)))
-                                (format t "KM-EXPRESSION2: ~A~%" expr)
               (let ((result (task-result (submit-task *thread-pool* (lambda () (km:km expr-str :fail-mode fail-mode))))))
                 (jsown:to-json (mapcar #'prin1-to-string result))))))
       (error (e)
