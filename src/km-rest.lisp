@@ -9,7 +9,7 @@
 (defvar *shutdown-thread* nil "Thread handling shutdown.")
 (defvar *thread-pool* nil "Global variable to hold the thread pool instance.")
 (defvar *default-port* 8080 "Default port number if none is specified.")
-(km-logging:setup-file-logging ".\km-service.log" :info)
+(km-logging:setup-file-logging "km-service.log" :info)
 (defparameter *allowed-functions*
   '("every" "instance-of" "subclass-of" "has-property" "all-instances" "all-subclasses"
     "equal" "not-equal" "greater-than" "less-than" "and" "or" "not"
