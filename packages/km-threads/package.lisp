@@ -3,6 +3,7 @@
     (make-package :km-threads
                   :use '(:common-lisp
                          :jsown
+                         :cl-threadpool
                          :bordeaux-threads))))
 (in-package :km-threads)
 (defvar *using-km-threads-package* nil)

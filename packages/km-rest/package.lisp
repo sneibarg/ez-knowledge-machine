@@ -2,7 +2,7 @@
 (eval-when (:compile-toplevel :load-toplevel :execute)
   (unless (find-package :km-rest)
     (defpackage :km-rest
-      (:use :common-lisp)
+      (:use :common-lisp :km-threads)
       (:export :start-server :stop-server :run-in-thread-pool))))  
 
 (in-package :km-rest)

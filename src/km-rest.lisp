@@ -89,14 +89,22 @@
                 (encode-json-to-string (list :value (prin1-to-string result)))))))
       (error (e)
         (setf (return-code*) +http-bad-request+)
-        (encode-json-to-string (list :error (format nil "~a" e)))))))
+        (encode-json-to-string (list :error (format nil "~a" e))))))
+
+  (define-easy-handler (stop-handler :uri "/stop" :default-request-type :get) ()
+    "Stop the KM REST server and exit the process."
+    (setf (content-type*) "application/json")
+    (stop-server)
+    (sb-ext:exit :code 0)
+    (jsown:to-json '(:obj ("status" . "stopped")))))
+
 
 (defun start-server (&optional (port *default-port*))
   (when *server*
     (format t "Stopping existing server~%")
     (stop-server))
   (format t "Initializing thread pool~%")
-  (setf *thread-pool* (make-thread-pool :name "km-rest-pool"))
+  (setf *thread-pool* (make-thread-pool))
   (format t "Thread pool initialized~%")
   (setf *server* (make-instance 'hunchentoot:easy-acceptor :port port))
   (format t "Acceptor created~%")
