@@ -1,6 +1,6 @@
 (defpackage :km-threads
   (:use :cl :cl-threadpool)
-  (:export :make-thread-pool :submit-task :shutdown-thread-pool :get-number-of-cores))
+  (:export :make-thread-pool :submit-task :task-result :shutdown-thread-pool :get-number-of-cores))
 
 (in-package :km-threads)
 
@@ -11,6 +11,9 @@
 (defun submit-task (pool task)
   "Submit a TASK to the thread pool and return a future."
   (cl-threadpool:add-job pool task))
+
+(defun task-result (future)
+  (job-result future))
 
 (defun shutdown-thread-pool (pool)
   "Gracefully shut down the thread pool."

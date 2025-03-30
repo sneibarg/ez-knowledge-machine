@@ -123,8 +123,14 @@
 (defun start ()
   "Start the KM REST server with configured parameters."
   (format t "Calling km-rest:start-server *port*=~A~%" *port*)
-  (km-rest:start-server *port*)
-  (format t "Exiting start.~%"))
+
+    ;; Start REPL in a background thread
+  (bordeaux-threads:make-thread
+   (lambda ()
+     (km-rest:start-server *port*)
+     (format t "Starting REPL in background thread.~%")
+     (sb-impl::toplevel-repl nil))
+   :name "repl-thread"))
 
 ;;; Stop the KM REST server
 (defun stop ()
@@ -153,17 +159,6 @@
                   (if sym
                       (set-parameter sym value)
                       (error "Unknown parameter: ~A" param-name))))
-       (start))))
-  ;; Start REPL in a background thread
-  (bordeaux-threads:make-thread
-   (lambda ()
-     (format t "Starting REPL in background thread.~%")
-     (sb-impl::toplevel-repl nil))
-   :name "repl-thread"))
+       (start)))))
 
-;;; Entry point
-(defun run-main ()
-  (main))
-
-;; Run the service when loaded
-(run-main)
+(main)

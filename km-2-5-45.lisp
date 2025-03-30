@@ -1,11 +1,11 @@
 ;;; FILE: README.txt
-;;; KM - The Knowledge Machine - Build Date:  Sat, Nov 07, 2015 12:51:02 PM
+;;; KM - The Knowledge Machine - Build Date:  Sat, Nov 07, 2015 12:51:02 PM 
 #|
 ======================================================================
 	 KM - THE KNOWLEDGE MACHINE - INFERENCE ENGINE 2.5.45
 ======================================================================
 
-This software is released under the Simplified BSD Licence (below). If you would like a
+This software is released under the Simplified BSD Licence (below). If you would like a 
 copy of this software issued under a different license please contact the authors.
 
 ======================================================================
@@ -43,7 +43,7 @@ Bruce Porter (porter@cs.utexas.edu)
 ======================================================================
 
 The source code, manuals, and a test suite of examples for the most
-recent version of KM are available at
+recent version of KM are available at 
 
 	http://www.cs.utexas.edu/users/mfkb/km/
 
@@ -53,7 +53,7 @@ Check this site for RELEASE NOTES and the CURRENT VERSION of KM.
 		USING THIS FILE:
 ======================================================================
 
-Save this file as (say) km.lisp, then load it into your favorite Lisp
+Save this file as (say) km.lisp, then load it into your favorite Lisp 
 environment:
 	% lisp
 	> (load "km")
@@ -61,15 +61,15 @@ environment:
 For greatly increased efficiency, make a compiled version of this file:
 	% lisp
 	> (compile-file "km")
-	> (load "km")
+	> (load "km")		
 will load the faster, compiled version in future.
 
-[Note: you no longer need to pre-load km.lisp before compiling,
+[Note: you no longer need to pre-load km.lisp before compiling, 
  as described in the manual]
 
 To start the query interpreter running, type (km):
 	> (km)
-	KM>
+	KM> 
 
 See the User Manual and Reference Manual for instructions on using KM,
 and building knowledge bases. The manuals are available at:
@@ -85,11 +85,11 @@ in the KM inference system. It can be loaded or compiled directly into
 Lisp, deconcatenation is not necessary for running KM.
 
 Although you can read/edit the below code all in this one file, it is
-very large and unweildy; you may prefer to break it up into the
+very large and unweildy; you may prefer to break it up into the 
 (approx 20) constituent files which it comprises. You can break it up
 either manually, looking for the ";;; FILE: <file>" headers
 below which denote the start of different files in this concatenation,
-OR use the Perl unpacker below which automatically cut this big file
+OR use the Perl unpacker below which automatically cut this big file 
 into its consistutent files.
 
 Peter Clark
@@ -101,13 +101,13 @@ peterc@allenai.org
 
 Note you don't have to disassemble km.lisp to use KM. However, if you
 want to read/edit the code, you might find it helpful to break it up into
-individual files.
+individual files. 
 
-If you do disassmble the files, then the single file loadme.lisp contains
-(commented out) load commands to load all the other constituent files, for
+If you do disassmble the files, then the single file loadme.lisp contains 
+(commented out) load commands to load all the other constituent files, for 
 your convenience. (Don't forget to uncomment the load commands in this file).
 
-If you don't disassemble the files and just work with km.lisp, then you can
+If you don't disassemble the files and just work with km.lisp, then you can 
 ignore all of this.
 
 Option 1. (For Emacs users)
@@ -140,12 +140,12 @@ Option 1. (For Emacs users)
                run M-x eval-last-sexp
 
 Option 2. (For non-Emacs users)
-
+  
   1. cut and paste the short Perl script below to a file, eg called
 	"disassemble"
   2. Make sure the first line is
 		#!/usr/local/bin/perl
-     and edit this path /usr/local/bin/perl as needed to point to the
+     and edit this path /usr/local/bin/perl as needed to point to the 
 	local version of Perl.
   3. Make the file executable:
 	% chmod a+x disassemble
@@ -183,7 +183,7 @@ print "$outfile created\n";
 while (<PACKED>) {
 	$lineno += 1;
 	($junk, $outfile) = split (/:/);
-	if ($junk =~ /^;;; FILE/o) {
+	if ($junk =~ /^;;; FILE/o) {	
 		close (OUTFILE);
 		chop($outfile);
 		unless (open (OUTFILE, ">$outfile")) {
@@ -207,12 +207,12 @@ print "Completed without errors. Processed $lineno lines of input from $fn.\n";
 
 ;;; File: loadme.lisp
 ;;; Purpose: load all the KM files, if you've disassembled the full KM
-;;; into its constituent files.
+;;; into its constituent files. 
 ;;; Usage: Uncomment and load this file to compile and load the individual KM
 ;;; files (assumed within the local directory)
 
 ;;; ****NOTE**** You DON'T need to uncomment this part of the code
-;;; if you are simply working with the single file km.lisp.
+;;; if you are simply working with the single file km.lisp. 
 
 #|
 ;;; compile-and-load function
@@ -263,7 +263,7 @@ print "Completed without errors. Processed $lineno lines of input from $fn.\n";
 ======================================================================
 		THE KM PACKAGE
 ======================================================================
-KM is released with two versions
+KM is released with two versions 
    (i) without an explicit package definition ([1] below commented out).
        KM will be in which ever package it is loaded into.
   (ii) with an explicit package definition ([1] below uncommented). KM will
@@ -316,7 +316,7 @@ The variable *km-package* is set to the KM package name that KM is in.
 ;;; Personal preference
 ;(setq *print-case* :downcase)
 
-;;; Dispatch mechanism not "compiled" be default, unless
+;;; Dispatch mechanism not "compiled" be default, unless 
 ;;; compiled-handlers.lisp is included.
 (defparameter *compile-handlers* nil)
 
@@ -336,7 +336,7 @@ The variable *km-package* is set to the KM package name that KM is in.
 (defparameter *fluent-instance-marker-string* (concatenate 'string *var-marker-string* "Some"))	; ie. "_Some"
 (defparameter *km-version-str* "2.5.45")
 (defparameter *year* "2015")
-(defparameter *newline-str* (make-string 1 :initial-element '#\Newline))
+(defparameter *newline-str* (make-string 1 :initial-element '#\Newline))	
 
 (defparameter *km-handler-function* nil) ; used in compiler.lisp
 
@@ -358,8 +358,8 @@ The variable *km-package* is set to the KM package name that KM is in.
 ;;; --------------------
 
 (defparameter *classes-using-assertions-slot* nil)
-(defparameter *are-some-definitions* nil)
-(defparameter *are-some-prototype-definitions* nil)
+(defparameter *are-some-definitions* nil)	
+(defparameter *are-some-prototype-definitions* nil)	
 (defparameter *are-some-prototypes* nil)
 (defparameter *are-some-subslots* nil)
 (defparameter *are-some-constraints* nil)
@@ -394,7 +394,7 @@ The variable *km-package* is set to the KM package name that KM is in.
     *record-explanations*		; default t
     *record-sources*			; default t
     *add-comments-to-names*		; t - print _Car3 as: _Car3 #|"a Car&Dog"|#
-    *check-kb*				; default nil
+    *check-kb*				; default nil    
     *classify-slotless-instances*	; default t
     *built-in-remove-subsumers-slots*	; #$(instance-of classes superclasses member-type) (is changed in AURA appn)
     *built-in-remove-subsumees-slots*	; #$(subclasses prototype-of domain range) 	 (is changed in AURA appn)
@@ -405,8 +405,8 @@ The variable *km-package* is set to the KM package name that KM is in.
     *justify-leaves*			; nil = by default, DON'T explain things that DON'T have comment tags
     *start-justifications-with-because* ; default t. If t, start justification text with "The s of f = v because:".
     ;;; Classification control
-    *classification-enabled*
-    *prototype-classification-enabled*
+    *classification-enabled* 
+    *prototype-classification-enabled* 
     *use-inheritance*
     *use-prototypes*
     *developer-mode*
@@ -491,9 +491,9 @@ The variable *km-package* is set to the KM package name that KM is in.
       *force-with-cloned-from*		; take cloned-from as a tagging slot
       *classify-in-local-situations*
       ))
-
+      
 ;;; Additional query-specific parameters. These change *during* reasoning.
-(defparameter *km-runtime-variables*
+(defparameter *km-runtime-variables* 
     '(*trace*
       *depth*
       *internal-logging*
@@ -607,7 +607,7 @@ The variable *km-package* is set to the KM package name that KM is in.
 ;;; avoids pre-loading km.lisp before compiling!
 
 ;;; New version, thanks to Sunil Mishra (SRI)
-;;; This version uses unwind-protect to ensure that the readtable-case gets reset,
+;;; This version uses unwind-protect to ensure that the readtable-case gets reset, 
 ;;; and cerror to allow resuming km from the entered debugger with a :cont.
 
 ;;; New version, extended to add a #t construct - thanks to Francis Leboutte
@@ -667,7 +667,7 @@ property-mult-property and property-div-property functions.
 ; (setf (readtable-case *t-readtable*) :upcase)
   (defvar *t-package* nil))
 
-(eval-when (:compile-toplevel :load-toplevel :execute)
+(eval-when (:compile-toplevel :load-toplevel :execute)   
   (defun hash-t-reader (stream subchar arg)
     (declare (ignore subchar arg))
     (let (;; bind *package* to the package that was in effect outside the
@@ -677,10 +677,10 @@ property-mult-property and property-div-property functions.
       (read stream t nil t))))
 
 ;; DEW: 2010/05/05  this call and the other calls to set-dispatch-macro-character
-;;   break in Allegro 8.2.  The code as is, is unfriendly - it changes the base-lisp
+;;   break in Allegro 8.2.  The code as is, is unfriendly - it changes the base-lisp 
 ;  readtable so that whenever a Lisp READ  comes across "#t" (or #$ #,)
-; it will flip to performing the read using a readtable stored by KM
-;; (which is a copy of whatever readtable was current when KM was loaded)
+; it will flip to performing the read using a readtable stored by KM 
+;; (which is a copy of whatever readtable was current when KM was loaded) 
 ;; instead of whatever readtable might have been let bound by someone else's code.
 
 ;; we now define these in *km-readtable*,
@@ -834,7 +834,7 @@ produces:
   (let ( (old-print-case *print-case*) )
     (prog2
 	(setq *print-case* :upcase)	; :upcase really means "case-sensitively"
-	(apply #'format (cons stream
+	(apply #'format (cons stream 
 			      (cons string (mapcar #'add-quotes args))))
       (setq *print-case* old-print-case))))
 
@@ -847,7 +847,7 @@ produces:
   (cond ((null obj) nil)
 ;	((aconsp obj) (cons (add-quotes (first obj)) (add-quotes (rest obj))))
 ;	((listp obj) (mapcar #'add-quotes obj)) ; no, this bombs on (add-quotes '((a b) (c d) . e)) which is not an aconsp
-; 2/15/12 - this handles both cases
+; 2/15/12 - this handles both cases	
 	((listp obj) (cons (add-quotes (first obj)) (add-quotes (rest obj))))
 	((stringp obj) (format nil "~s" obj)) 		; (concat "\"" obj "\"") <- Insufficient for "a\"b"
 	((and (symbolp obj)
@@ -879,7 +879,7 @@ produces:
 
 (defun write-km-vals2 (vals &optional (stream t))
   (cond ((null vals) (format stream "~a" nil))
-	((and (pairp vals)
+	((and (pairp vals) 
 	      (symbolp (first vals))
 	      (assoc (first vals) *special-symbol-alist*))
 	 (let ( (special-symbol-str (second (assoc (first vals) *special-symbol-alist*))) )
@@ -912,21 +912,21 @@ produces:
   (cond ((null list) (format stream ")"))
 	(t (cond (first-time-through (format stream "("))
 		 (t (format stream " ")))
-	   (cond ((aconsp list) (write-km-vals2 (first list) stream)
+	   (cond ((aconsp list) (write-km-vals2 (first list) stream) 
 		  (format stream " . ") (write-km-vals2 (rest list) stream) (format stream ")"))
 		 (t (write-km-vals2 (first list) stream)
 		    (write-km-list (rest list) stream nil))))))		; i.e. first-time-through = nil
-
+	   
 (defun tag-write (tags &optional (stream t) (first-time-through t))
   (cond ((null tags) (format stream "|#"))
 	(t (cond (first-time-through (format stream " #|"))
 		 (t (format stream " ")))
 	   (format stream "~s" (first tags))
 	   (tag-write (rest tags) stream nil))))			; i.e. first-time-through = nil
-
+	   
 ;;; "_Car23" -> "_Car"
 (defun skolem-root (string)
-  (cond
+  (cond 
    ((string= string ""))
    ((member (last-char string) '(#\0 #\1 #\2 #\3 #\4 #\5 #\6 #\7 #\8 #\9) :test #'char=)
     (skolem-root (butlast-char string)))
@@ -953,9 +953,9 @@ LIST of instances, so we have to be careful to splice them in appropriately.
 Added #@ to do splicing. (a #@b) = (a . #,b)
 
 However, we need to make it a reader macro so that KM will respond to
-embedded #, which would otherwise be unprocessed, eg. a handler for ","
+embedded #, which would otherwise be unprocessed, eg. a handler for "," 
 won't even reach the embedded unit in:
-	KM> (Pete has (owns (`(a Car with (age ,(the Number))))))
+	KM> (Pete has (owns (`(a Car with (age ,(the Number)))))) 
 	but a macro character will:
 	KM> (Pete has (owns ('(a Car with (age #,(the Number))))))
 
@@ -1025,7 +1025,7 @@ KM> '(:set (a Car) . #,(a Car))		<= use . #, to slice item at end of list
 (defparameter *multidepth-path-default-searchdepth* 5)
 
 ;;; *additional-keywords* ARE allowed as slot names
-(defparameter *additional-keywords*
+(defparameter *additional-keywords* 
   '#$(TheValue TheValues * called uniquely-called Self QUOTE UNQUOTE == /== > <))	; used for (scan-kb) in frame-io.lisp.
 (defparameter *infinity* 999999)
 
@@ -1037,10 +1037,10 @@ KM> '(:set (a Car) . #,(a Car))		<= use . #, to slice item at end of list
 	possible-values excluded-values spy unspy anonymous-instancep sanity-check
 	every the the1 the2 the3 theN theNth of forall forall2 with where theoneof theoneof2
 	forall-seq forall-seq2 forall-bag forall-bag2 the-class constraints-for rules-for
-	the+ a+ evaluate-paths clone a-prototype
+	the+ a+ evaluate-paths clone a-prototype 
 	oneof oneof2 It It2 if then else allof allof2 in and or not is & && &? &+ &+? &+! &! &&! = === /= + - / ^
 	>= <= isa #|expand-text add-clones-to in-which|# append
-	are includes thelast
+	are includes thelast 
 	:set :seq :bag :args :triple :pair :function :default
 	showme-here showme showme-all evaluate-all quote
 	delete evaluate has-value andify make-sentence make-phrase #|pluralize|#
@@ -1065,13 +1065,13 @@ KM> '(:set (a Car) . #,(a Car))		<= use . #, to slice item at end of list
     no-explanations explanations clear-situations
     sanity-checks no-sanity-checks store-kb restore-kb
     fail-quietly fail-noisily requires-km-version catch-explanations show-explanations show-explanations-xml
-    instance-of-is-fluent instance-of-is-nonfluent
+    instance-of-is-fluent instance-of-is-nonfluent 
     eval setq tracekm untracekm license enable-slot-checking disable-slot-checking
-    comments nocomments
+    comments nocomments 
     trace-to-file-on trace-to-file-off t2f-on t2f-off     ;;; From Raphael Van Dyck, for switching tracing on to a file
     ))
 
-(defparameter *downcase-km-lisp-exprs*
+(defparameter *downcase-km-lisp-exprs* 
     (mapcar #'(lambda (expr) (intern (string-downcase expr) *km-package*)) *km-lisp-exprs*))
 
 ;;; Directs KM to use process-load-expression for these commands used at the KM prompt
@@ -1082,10 +1082,10 @@ KM> '(:set (a Car) . #,(a Car))		<= use . #, to slice item at end of list
 ;;; Don't strip out (@ ...) structures for lists beginning with these items.
 (defparameter *no-decomment-headwords* '#$(comment show-comment explanation))
 
-;;; 10/28/02: These are calls where all the subcalls are direct calls to km-int, so we can defer decommenting down
+;;; 10/28/02: These are calls where all the subcalls are direct calls to km-int, so we can defer decommenting down 
 ;;; to there for the elements. i.e., we DON'T decomment the embedded structures when passing to km-int
 ;;; (defparameter *decomment-top-level-only-headwords* '#$(:set if))
-(defparameter *decomment-top-level-only-headwords*
+(defparameter *decomment-top-level-only-headwords* 
     '#$(if forall allof oneof theoneof forall-seq forall-bag
 	forall2 allof2 oneof2 theoneof2 forall-seq2 forall-bag2
 	:set :seq :bag :args :triple :pair :function
@@ -1098,7 +1098,7 @@ KM> '(:set (a Car) . #,(a Car))		<= use . #, to slice item at end of list
 ; No longer used...
 ;;; For annotation in explain.lisp
 ;;; Format (<pattern> <vars-to-annotate>). Note a var will only be annotated providing it's a list.
-;(defvar *patterns-to-annotate*
+;(defvar *patterns-to-annotate* 
 ;    '#$(((the ?x of ?y) (?y))
 ;	((the ?x ?y of ?z) (?z))))
 
@@ -1131,10 +1131,10 @@ KM> '(:set (a Car) . #,(a Car))		<= use . #, to slice item at end of list
 ;;;		      Looping on the parts of _Engine1!
 ;;; [2] Don't deref for showme, as we want to report "X is bound to Y"
 (defun km (&optional (kmexpr 'ask-user) &key (fail-mode (cond (*am-reasoning* *default-fail-mode*)
-							      (t *top-level-fail-mode*)))
+							      (t *top-level-fail-mode*))) 
 					     (reset-statistics t))
 ; (km-format t "fail-mode = ~a~%" fail-mode)
-  (cond
+  (cond 
    ((eq kmexpr 'ask-user) (km-read-eval-print))
    (*am-reasoning* (km-int kmexpr :fail-mode fail-mode)) ; km -> km-int if *am-reasoning* already
    (t (let ((*am-reasoning* t)		; so must be top-level KM call
@@ -1145,7 +1145,7 @@ KM> '(:set (a Car) . #,(a Car))		<= use . #, to slice item at end of list
 	(let* ((kmexpr0 (cond ((and (listp kmexpr) (member (first kmexpr) '#$(showme showme-all))) kmexpr) ; [2]
 			      (t (dereference kmexpr))))
 	       (answer0 (catch 'km-abort (desource (km-int kmexpr0 :fail-mode fail-mode))))	; [1]
-	       (answer (cond ((and (listp answer0) (eq (first answer0) 'km-abort))
+	       (answer (cond ((and (listp answer0) (eq (first answer0) 'km-abort)) 
 			      (km-format t "(Execution aborted)~%")
 			      nil)	; user or KM abort
 			     (t answer0))))
@@ -1164,10 +1164,10 @@ KM> '(:set (a Car) . #,(a Car))		<= use . #, to slice item at end of list
   (cond (*looping*			; better: Only need to reset the cache if you were looping.
 	 (reset-done) (setq *looping* nil)))
   (cond ((and km-expr (am-in-prototype-mode)) ; cosmetic: Store prototype build commands and print out if you do a save-kb
-	 (add-to-prototype-definition *curr-prototype* km-expr)))
+	 (add-to-prototype-definition *curr-prototype* km-expr))) 
   (cond ((and km-expr (km-assertion-expr km-expr)) (reset-done) #|(clear-cached-explanations)|#))) ; [1]
 
-;;; ----------
+;;; ----------   
 
 (defvar *last-question* nil)		; so we can simply ask "why" rather than "why" with a whole list of arguments
 (defvar *last-answer* nil)		; so we can simply ask "why" rather than "why" with a whole list of arguments
@@ -1179,7 +1179,7 @@ Thanks to Raphael Van Dyck for these improvements!
 The KM read-eval-print loop doesn't work well in Lispworks, especially when km
 enters the debugger.
 The problem arises because a T stream argument is often used in km functions and a T stream
-hasn't the same meaning in all the IO CL functions:
+hasn't the same meaning in all the IO CL functions: 
 - For the CL function format, a stream agument of t means writing to the standard output.
 - For the CL functions write, prin1, print, pprint and princ, a stream argument of t means
 writing to the terminal.
@@ -1196,7 +1196,7 @@ causing the value of the expression to be printed on the same line as the expres
 Note
 Maybe some other KM functions will need to be fixed in the same way.
 
-[1] We set-checkpoint here, rather than in km-eval-print, as (load-kb ... :verbose t) also calls km-eval-print, and
+[1] We set-checkpoint here, rather than in km-eval-print, as (load-kb ... :verbose t) also calls km-eval-print, and 
 we DON'T (?) want checkpointing used there too.
 |#
 (defun km-read-eval-print ()
@@ -1246,7 +1246,7 @@ we DON'T (?) want checkpointing used there too.
 	    (values answer error)))))
 
 #|
-Call to km-int:
+Call to km-int: 
 answer = EITHER the answer
          OR a list of three things: (km-abort <error-str> <error-struct>)
 RETURNS 3 values:
@@ -1279,12 +1279,12 @@ also no checkpointing done
 ;;;  (km-int <expr>) is the recursive to KM *internal* to the KM Engine
 ;;; ======================================================================
 
-;;; 		(km-int <expr>) will evaluate <expr>
+;;; 		(km-int <expr>) will evaluate <expr> 
 ;;;
 ;;; km evaluates the expression (a path) which is given to it, and returns a
 ;;; list of instances which the path points to.
-;;; <expr> must be either an INSTANCE or a PATH. (NB: A list of instances is
-;;; treated as a path. If you do want a set, you must precede the list by the
+;;; <expr> must be either an INSTANCE or a PATH. (NB: A list of instances is 
+;;; treated as a path. If you do want a set, you must precede the list by the 
 ;;; keyword ":set")
 ;;;
 ;;; Fail-modes: If km fails to find a referent at the end of the path,
@@ -1303,7 +1303,7 @@ also no checkpointing done
 
 #|
 Called by lazy-unify, where we want to look like trace-expr has gone through km-int, with kmexpr as the subgoal,
-even though this isn't literally true.
+even though this isn't literally true. 
 In other words, this splices an extra step in the trace output which doesn't really exist in KM.
 Rather than displaying:
 	-> (_Car1 &? _Car2)
@@ -1329,7 +1329,7 @@ the user.
       (let* ((users-goal (km-trace 'call "-> ~a" trace-expr))
 	     (answer (cond ((eq users-goal 'fail) nil)
 			   (t (km-int kmexpr :fail-mode fail-mode :check-for-looping check-for-looping :target target))))
-	     (users-response (cond ((or answer
+	     (users-response (cond ((or answer 		
 					(not (km-boolean-exprp kmexpr)))
 				    (km-trace 'exit "<- ~a~30T\"~a\"" answer trace-expr))
 				   (t (km-trace 'fail "<- FAIL!~30T\"~a\"" trace-expr)))) )
@@ -1350,15 +1350,15 @@ the user.
     (so that the sub-level comments get asserted in the KB)
 |#
 (defun km-int (kmexpr-with-comments &key (fail-mode (cond (*am-reasoning* *default-fail-mode*)
-							  (t *top-level-fail-mode*)))
+							  (t *top-level-fail-mode*))) 
 					 (check-for-looping t) target rewritep)
 ;  (cond ((null kmexpr-with-comments) (break)))
-  (cond
+  (cond 
    ((null *am-reasoning*) (km kmexpr-with-comments :fail-mode fail-mode)) ; eg. top-level (in-situation <x>) calls km-int
 
 ;;;   FAILED similification
    (t (let*
-	  ((kmexpr
+	  ((kmexpr 
 	     (cond ((km-assertion-expr kmexpr-with-comments) ; (every Car has (parts ((a Engine [Car1])))
 		    (desource+decomment-top-level kmexpr-with-comments)) ; NB leave embedded comments in here
 		   ((and (listp kmexpr-with-comments) ; (comment [Cat1] "a cat" "people like cats")
@@ -1367,14 +1367,14 @@ the user.
 				  (listp (third kmexpr-with-comments))
 				  (member (first (third kmexpr-with-comments)) *no-decomment-headwords*))))
 		    kmexpr-with-comments)
-		   ((or			; for these cases we DON'T want to decomment the embedded comments, they're
+		   ((or			; for these cases we DON'T want to decomment the embedded comments, they're 
 					; need as the expr is broken up
 		     (and target	; target= (the pets of Pete)
 			  (record-explanation-later kmexpr-with-comments)) ; ((a Cat [Cat1]) & (a Pet [Pet1]))
 		     (and (listp kmexpr-with-comments)
 			  (member (first kmexpr-with-comments) *decomment-top-level-only-headwords*)))
 		    (desource+decomment-top-level kmexpr-with-comments))
-;;; NEW: Decomment *everything* ONLY at the top level
+;;; NEW: Decomment *everything* ONLY at the top level		   
 		   (t (desource-top-level (decomment kmexpr-with-comments))))
 
 ;;; Why did I comment this out? Reinstate bits of it above...
@@ -1412,31 +1412,31 @@ the user.
 	 (push kmexpr *silent-spypoints-log*)))
   (cond ((and (not *are-some-constraints*) (constraint-exprp kmexpr)) (note-are-constraints)))
   (cond
-   ((member kmexpr '#$((tracekm) (TRACEKM) (trace) (TRACE)) :test #'equal)
+   ((member kmexpr '#$((tracekm) (TRACEKM) (trace) (TRACE)) :test #'equal) 
     (reset-trace-depth)
     (tracekm)
     '#$(t))
-   ((member kmexpr '#$((untracekm) (UNTRACEKM) (untrace) (UNTRACE)) :test #'equal)
+   ((member kmexpr '#$((untracekm) (UNTRACEKM) (untrace) (UNTRACE)) :test #'equal) 
     (reset-trace-depth)
     (untracekm)
     '#$(t))
    ((and (listp kmexpr)				; handle case-sensitivity for keywords in load-kb
 	 (member (first kmexpr) *loadsave-commands-with-keywords*))
     (process-load-expression kmexpr))
-   ((and (listp kmexpr) (member (first kmexpr) *km-lisp-exprs*))
+   ((and (listp kmexpr) (member (first kmexpr) *km-lisp-exprs*)) 
 ;   (eval kmexpr) '#$(t) ; old
     (let ((answer (listify (eval kmexpr))))
-      (cond ((and (null answer)
+      (cond ((and (null answer) 
 		  (eq fail-mode 'error)
 		  (not (and (triplep kmexpr) (eq (first kmexpr) 'setq))))
 	     (report-error 'user-error "No values found for ~a!~%" kmexpr)))
       answer))
-   ((and (listp kmexpr) (member (first kmexpr) *downcase-km-lisp-exprs*))
+   ((and (listp kmexpr) (member (first kmexpr) *downcase-km-lisp-exprs*)) 
 ;   (eval (cons (intern (string-upcase (first kmexpr)) *km-package*) (rest kmexpr))) '#$(t) ; old
     (let ((answer (listify (eval (cons (intern (string-upcase (first kmexpr)) *km-package*) (rest kmexpr)))))) ; new
-      (cond ((and (null answer)
+      (cond ((and (null answer) 
 		  (eq fail-mode 'error)
-		  (not (and (triplep kmexpr) (eq (first kmexpr) '#$setq))))
+		  (not (and (triplep kmexpr) (eq (first kmexpr) '#$setq))))	     
 	     (report-error 'user-error "No values found for ~a!~%" kmexpr)))
       answer))
    ((and (am-in-local-situation) (am-in-prototype-mode))
@@ -1458,11 +1458,11 @@ the user.
 	    (fully-evaluatedp kmexpr-with-comments) ; NEW: Need to pass through interpreter to catch explanation
      (eql (dereference kmexpr) kmexpr))	; Is this the reflexive case? see
     (cond ((km-setp kmexpr) (set-to-list kmexpr))
-	  ((and (listp kmexpr)
+	  ((and (listp kmexpr) 
 		(eq (first kmexpr) '#$:triple)
 		(not (= (length (rest kmexpr)) 3))
 		(report-error 'user-error "~a: A triple should have exactly three elements!~%" kmexpr)))
-	  ((and (listp kmexpr)
+	  ((and (listp kmexpr) 
 		(eq (first kmexpr) '#$:pair)
 		(not (= (length (rest kmexpr)) 2))
 		(report-error 'user-error "~a: A pair should have exactly two elements!~%" kmexpr)))
@@ -1476,7 +1476,7 @@ the user.
     (km-trace 'comment "Looping on ~a!" kmexpr)
 ;    (break)
     (handle-looping kmexpr))
-   ((and *km-depth-limit*
+   ((and *km-depth-limit* 
 	 (> *depth* *km-depth-limit*))
     (km-trace 'comment "Maximum depth limit reached, doing ~a!" kmexpr)
     (handle-looping kmexpr :reason 'depth-limit-reached))
@@ -1490,7 +1490,7 @@ the user.
 ;	   (or (and (kb-objectp instance1) (member instance1 *instances-being-unified*))
 ;	       (and (kb-objectp instance2) (member instance2 *instances-being-unified*)))))
     (let* ((instance1 (first kmexpr))
-	   (instance2 (third kmexpr))
+	   (instance2 (third kmexpr))    
 	   (instance-already-being-unified
 	    (cond ((member instance1 *instances-being-unified*) instance1)
 		  ((member instance2 *instances-being-unified*) instance2))))
@@ -1541,12 +1541,12 @@ the user.
 	   (let* ( (instance (fourth cexpr))
 		   (slot (second cexpr))
 ; [2]		   (vals (get-vals instance slot)) )	; no remove-constraints, as [1] prevents exprs with constraints in ; 5/3/01 - how???
-		   (vals (get-vals instance slot :situation (target-situation (curr-situation) instance slot))) ) ; no remove-constraints, as [1] prevents exprs
+		   (vals (get-vals instance slot :situation (target-situation (curr-situation) instance slot))) ) ; no remove-constraints, as [1] prevents exprs 
 	     (km-trace 'comment "Just using values found so far, = ~a..." vals)					  ; with constraints in ; 5/3/01 - how???
 	     (cond ((every #'fully-evaluatedp vals) vals)
 		   (t (let ((kmexpr2 (vals-to-val vals))) ; vals may be an expression! ? see test-suite/looping.km
 			(cond ((not (looping-on kmexpr2))  ; very important!!!!
-			       (let ((new-vals (km-int kmexpr2)))
+			       (let ((new-vals (km-int kmexpr2))) 
 
 ;			       (let ((new-vals (prog2   ; No  don't stack - will ALWAYS seem like looping!
 ;						   (push-to-goal-stack kmexpr2)    ; NOTE: must stack to spot looping during looping
@@ -1560,12 +1560,12 @@ the user.
 				 new-vals)))))))) ;						to upper calling level
 	  ((and (listp kmexpr)		; &-exprp too specific; want to include &? and &+? also
 		(val-unification-operator (second kmexpr))) ; (a &/&?/&! b): Inductive proof: Can assume (X &? Y) when proving (X &? Y)
-	   (cond ((member (second kmexpr) '(&? &+?))
+	   (cond ((member (second kmexpr) '(&? &+?)) 
 		  (case reason
 			(loop-detected (km-trace 'comment "Assuming ~a to prove ~a (ie. Inductive proof)" kmexpr kmexpr) '#$(t))
 			(depth-limit-reached (km-trace 'comment "Assuming success...") '#$(t))))			; Very questionable assumption!
 		 (t (let ( (val (find-if #'kb-objectp (&-expr-to-vals kmexpr))) )	; find first fully evaluated val
-		      (cond (val
+		      (cond (val 
 			     (case reason
 				   (loop-detected (km-trace 'comment "Assuming ~a to prove ~a (ie. Inductive proof)" kmexpr kmexpr))
 				   (depth-limit-reached (km-trace 'comment "Just using value found so far, = ~a..." val)))
@@ -1601,7 +1601,7 @@ the user.
   (cond (*profiling* (profile-call (desource kmexpr))))
 ;  (if (and *trace-log-on* (not *am-classifying*))								; **** another NEW LINE
 ;      (setq *trace-log* (cons `(,(1+ *depth*) call ,kmexpr-with-comments) *trace-log*))) ; **** NEW LINE
-  (let* (
+  (let* ( 
 	(users-goal (cond (target (km-trace 'call "-> ~a~40T [for ~a]"  				; "-> (a Car)  [for (the parts of _Car3)]"
 				     kmexpr-with-comments target))
 			  (t (km-trace 'call "-> ~a" kmexpr-with-comments))))
@@ -1618,7 +1618,7 @@ the user.
 		(values answer00 pattern))))
      (let ( (answer (remove-dup-instances (remove nil answer0))))		; NOTE includes dereferencing
        (cond ((and (null answer)
-		   (eq fail-mode 'error))
+		   (eq fail-mode 'error)) 
 	      (report-error 'user-error "No values found for ~a!~%" kmexpr-with-comments)))
        (process-km1-result answer kmexpr kmexpr-with-comments :fail-mode fail-mode :target target :handler-pattern handler-pattern :rewritep rewritep)))))
 
@@ -1626,13 +1626,13 @@ the user.
 #|
 *failed-unification-attempts*: To make sure we don't get stuck in a loop with *deferred-unifications*
 -> (_X & _Y1)
- -> (_X & _Y2)
- <- defer (_X & _Y2)
+ -> (_X & _Y2) 
+ <- defer (_X & _Y2) 
 <- (_X & _Y1) FAILS due to KB error
 -> (_X & _Y2) - now do the deferred unification
- -> (_X & _Y1)
+ -> (_X & _Y1)  
  <- defer (_X & _Y1)
-<- (_X & _Y2) FAILS due to KB error
+<- (_X & _Y2) FAILS due to KB error 
 -> (_X & _Y1) - now do the deferred unification
   etc. etc.
 
@@ -1648,11 +1648,11 @@ To break this pattern, if we've attempted and failed out of (_X & _Y1), we *don'
  (cond ((and (not rewritep)
 	     *record-explanations*
 	     (existential-exprp kmexpr))
-	(cond
+	(cond 
 	 ((not (singletonp answer))
 	  (report-error 'program-error "Multiple values from an existential expr ~a!~%" kmexpr))
 	 (t (let ((class (second kmexpr))) ; (a Car [with ...])
-	      (record-explanation-for `#$(the instance-of of ,(FIRST ANSWER)) class kmexpr-with-comments))))))
+	      (record-explanation-for `#$(the instance-of of ,(FIRST ANSWER)) class kmexpr-with-comments)))))) 
 ; (if (and *trace-log-on* (not *am-classifying*)) ; **** another NEW LINE
 ;      (setq *trace-log* (cons `(,*depth* exit ,kmexpr-with-comments ,answer) *trace-log*))) ; **** NEW LINE
  (cond ((or *catch-explanations* *print-explanations*) (catch-explanation kmexpr-with-comments (cond (answer 'exit) (t 'fail)))))
@@ -1663,7 +1663,7 @@ To break this pattern, if we've attempted and failed out of (_X & _Y1), we *don'
 		      (t (cond ((and *deferred-unifications*
 				     (listp kmexpr)
 				     (= (length kmexpr) 3)
-				     (full-equality-assertion-operator (second kmexpr))
+				     (full-equality-assertion-operator (second kmexpr))			      
 				     (kb-objectp (first kmexpr))
 				     (kb-objectp (third kmexpr)))
 				(push kmexpr *failed-unification-attempts*)
@@ -1676,7 +1676,7 @@ To break this pattern, if we've attempted and failed out of (_X & _Y1), we *don'
 	   (km1 kmexpr kmexpr-with-comments :fail-mode fail-mode :target target :rewritep rewritep))
 	  ((eq users-response 'fail)					; resets answer to be NIL [doesn't destroy cached non-nil answers though!]
 	   (increment-trace-depth)					; put *depth* back to where it was
-	   (process-km1-result nil kmexpr kmexpr-with-comments
+	   (process-km1-result nil kmexpr kmexpr-with-comments 
 			       :fail-mode fail-mode :target target :handler-pattern handler-pattern))
 	  (t answer))))
 
@@ -1692,7 +1692,7 @@ To break this pattern, if we've attempted and failed out of (_X & _Y1), we *don'
 ;;; EXTERNAL, from some other application - rewritten 1/19/08 to be identical in structure to (defun km ...)
 ;;; [1] must dereference top-level call to make sure looping isn't accidentally mis-triggered [see (defun km ...) comment]
 (defun km-unique (kmexpr &key (fail-mode (cond (*am-reasoning* *default-fail-mode*)
-					       (t *top-level-fail-mode*))))
+					       (t *top-level-fail-mode*)))) 
   (cond
    (*am-reasoning* (km-unique-int kmexpr :fail-mode fail-mode)) ; km-unique -> km-unique-int if *am-reasoning* already
    (t (let ((*am-reasoning* t)		; so must be top-level KM call
@@ -1720,9 +1720,9 @@ To break this pattern, if we've attempted and failed out of (_X & _Y1), we *don'
 
 ;;; INTERNAL, from within KM itself.
 (defun km-unique-int (kmexpr &key (fail-mode (cond (*am-reasoning* *default-fail-mode*)
-						   (t *top-level-fail-mode*)))
+						   (t *top-level-fail-mode*))) 
 				  target rewritep)
-  (cond
+  (cond 
    ((null *am-reasoning*) (km-unique kmexpr :fail-mode fail-mode))  ; if called from top-level call (in-situation ...) say
    (t (let ( (vals (km-int kmexpr :fail-mode fail-mode :target target :rewritep rewritep)) )
     (cond ((singletonp vals) (first vals))
@@ -1731,7 +1731,7 @@ To break this pattern, if we've attempted and failed out of (_X & _Y1), we *don'
 but it returned multiple values ~a!
 Just taking the first...(~a) ~%" kmexpr vals (first vals))
 		(first vals))
-	  ((eq fail-mode 'error)
+	  ((eq fail-mode 'error) 
 	   (report-error 'user-error "Expression ~a didn't return a value!~%" kmexpr)))))))
 
 ;;; ======================================================================
@@ -1763,7 +1763,7 @@ Just taking the first...(~a) ~%" kmexpr vals (first vals))
 
 ;;; The association list is a set of pairs of form (pattern function).
 ;;; Function gets applied to the values of variables in pattern, the
-;;; values stored in a list in the order they were encountered
+;;; values stored in a list in the order they were encountered 
 ;;; when (depth-first) traversing the km expression.
 
 ;;; Below: two alternative ways of embedding Lisp code
@@ -1780,14 +1780,14 @@ Just taking the first...(~a) ~%" kmexpr vals (first vals))
 (setf
   *km-handler-alist1*
   '(
-;;; [1] NEW: Here make another top level call, so
+;;; [1] NEW: Here make another top level call, so 
 ;;;	(i) the trace is easier to follow during debugging
 ;;;	(ii) the looping checker jumps in at the right moment
 ;;; [2] This is a bit of a hack; with looping, e.g. another query higher in the stack for (((a Cat)) && (the cats of Sue)),
 ;;;     KM may possibly return structured answers e.g. ((a Cat) (the cats of Sue)). Need to remove the non-evaluated ones (urgh).
 ;;;     See test-suite/restaurant.km for the source of this patch.
 ;;; [3] New! Remove the transitivity incompleteness described in the user manual
-    ( (#$the ?slot #$of ?frameadd)
+    ( (#$the ?slot #$of ?frameadd)  
       (lambda (fmode0 _target slot frameadd)
 	(declare (ignore _target))
 ;	(cond ((neq slot '#$instances) (check-situations-mode))) ; allow query for instances to slip through, for internal (all-instances) queries
@@ -1803,7 +1803,7 @@ Just taking the first...(~a) ~%" kmexpr vals (first vals))
 ; OLD			 (frames (km-int frameadd :fail-mode fmode)) )
 ; Now we at least see the looping and collect cached values
  			 (frames (cond ((every #'is-simple-km-term (val-to-vals frameadd))		; [4]
-;					(km-format t "Infinite recursion avoided for ~a!~%" `#$(the ,SLOT of ,FRAMEADD))
+;					(km-format t "Infinite recursion avoided for ~a!~%" `#$(the ,SLOT of ,FRAMEADD))   
 					(remove-dup-instances (val-to-vals frameadd)))		; includes dereferencing
 				       (t (km-int frameadd :fail-mode fmode :check-for-looping nil)))) ) 	; [3]
 		   (cond ((= *depth* 1) (setq *last-question* `(#$the ,slot #$of ,(vals-to-val frames)))))	; for explanation
@@ -1813,64 +1813,64 @@ Just taking the first...(~a) ~%" kmexpr vals (first vals))
 
 ; No, filter needs to be on ALL retrieved values, not just (the <slot> of <x>) expressions
 ;		   (let ((vals (cond ((not (equal frames (val-to-vals frameadd)))
-;				      (remove-if-not #'is-km-term
+;				      (remove-if-not #'is-km-term 
 ;					 (km-int `#$(the ,SLOT of ,(VALS-TO-VAL FRAMES)) :fail-mode fmode))) ; [1], [2]
-;				     (t (remove-if-not #'is-km-term
+;				     (t (remove-if-not #'is-km-term 
 ;						       (km-multi-slotvals frames slot :fail-mode fmode)))))) ; [2]
 ;		     (case slot
 ;		       (#$nowexists vals)
 ;		       (t (remove-if-not #'nowexists vals)))))))) )
 
     ( (#$a ?class)
-      (lambda (_fmode target class)
-	(declare (ignore  _fmode))
+      (lambda (_fmode target class) 
+	(declare (ignore  _fmode)) 
 	(list (create-instance class nil :target target))) )
 
     ( (#$a ?class #$called ?tag)
-      (lambda (_fmode target class tag)
-	(declare (ignore  _fmode))
+      (lambda (_fmode target class tag) 
+	(declare (ignore  _fmode)) 
 	(km-setq '*are-some-tags* t)
 	(cond ((km-tagp tag) (list (create-instance class `((#$called ,(VAL-TO-VALS TAG))) :target target)))
 	      (t (report-error 'user-error "~a~%    - The tag `~a' must be an atom or a constraint!" `#$(a ,CLASS called ,TAG) tag)))))
 
     ( (#$a ?class #$uniquely-called ?tag)
-      (lambda (_fmode target class tag)
-	(declare (ignore  _fmode))
+      (lambda (_fmode target class tag) 
+	(declare (ignore  _fmode)) 
 	(km-setq '*are-some-constraints* t)
 	(km-setq '*are-some-tags* t)
 	(cond ((km-tagp tag) (list (create-instance class `((#$uniquely-called ,(VAL-TO-VALS TAG))) :target target)))
 	      (t (report-error 'user-error "~a~%    - The tag `~a' must be an atom or a constraint!" `#$(a ,CLASS uniquely-called ,TAG) tag)))))
 
     ( (#$a ?class #$with &rest)
-      (lambda (_fmode target class slotsvals)
-	   (declare (ignore _fmode))
+      (lambda (_fmode target class slotsvals) 
+	   (declare (ignore _fmode)) 
 	   (cond ((are-slotsvals slotsvals)
 		  (let ( (instance (create-instance class (convert-comments-to-internal-form slotsvals) :target target)) )
 		    (cond ((am-in-prototype-mode) (km-int '#$(evaluate-paths))))	; route through interpreter for tracing + loop detection
 		    (list instance))))) )
 
     ( (#$a ?class #$uniquely-called ?tag #$with &rest)
-      (lambda (_fmode target class tag slotsvals)
+      (lambda (_fmode target class tag slotsvals) 
 	   (declare (ignore _fmode))
 	   (km-setq '*are-some-constraints* t)
 	   (km-setq '*are-some-tags* t)
 	   (cond ((not (km-tagp tag))
 		  (report-error 'user-error "~a~%   - The tag `~a' must be an atom or a constraint!" `#$(a ,CLASS uniquely-called ,TAG with ,@SLOTSVALS) tag))
 		 ((are-slotsvals slotsvals)
-		  (let ( (instance (create-instance class (cons `(#$uniquely-called ,(VAL-TO-VALS TAG))
-								(convert-comments-to-internal-form slotsvals))
+		  (let ( (instance (create-instance class (cons `(#$uniquely-called ,(VAL-TO-VALS TAG)) 
+								(convert-comments-to-internal-form slotsvals)) 
 						    :target target)) )
 		    (cond ((am-in-prototype-mode) (km-int '#$(evaluate-paths))))	; route through interpreter for tracing + loop detection
 		    (list instance))))) )
 
     ( (#$a ?class #$called ?tag #$with &rest)
-      (lambda (_fmode target class tag slotsvals)
+      (lambda (_fmode target class tag slotsvals) 
 	   (declare (ignore  _fmode))
 	   (km-setq '*are-some-tags* t)
 	   (cond ((not (km-tagp tag))
 		  (report-error 'user-error "~a~%   - The tag `~a' must be an atom or a constraint!" `#$(a ,CLASS called ,TAG with ,@SLOTSVALS) tag))
 		 ((are-slotsvals slotsvals)
-		  (let ( (instance (create-instance class (cons `(#$called ,(VAL-TO-VALS TAG))
+		  (let ( (instance (create-instance class (cons `(#$called ,(VAL-TO-VALS TAG)) 
 								(convert-comments-to-internal-form slotsvals))
 						    :target target)) )
 		    (cond ((am-in-prototype-mode) (km-int '#$(evaluate-paths))))	; route through interpreter for tracing + loop detection
@@ -1881,25 +1881,25 @@ Just taking the first...(~a) ~%" kmexpr vals (first vals))
 ;;; ======================================================================
 
     ( (#$a-prototype ?class)
-      (lambda (fmode target class)
+      (lambda (fmode target class) 
 	(km-int `#$(a-prototype ,CLASS with) :fail-mode fmode :target target :rewritep t)) )  ; rewrite, errors caught below
 
     ( (#$a-prototype ?class #$with &rest)
-      (lambda (_fmode _target class slotsvals)
-	   (declare (ignore  _fmode _target))
+      (lambda (_fmode _target class slotsvals) 
+	   (declare (ignore  _fmode _target)) 
 	   (cond ((am-in-local-situation)
 		  (report-error 'user-error "Can't enter prototype mode when in a Situation!~%"))
 	         ((am-in-local-theory)
-		  (report-error 'user-error "Can't enter prototype mode when in a Theory!~%"))
+		  (report-error 'user-error "Can't enter prototype mode when in a Theory!~%"))	    
 		 ((am-in-prototype-mode)
-		  (report-error 'user-error
+		  (report-error 'user-error 
 	    "~a~%Attempt to enter prototype mode while already in prototype mode (not allowed)!~%Perhaps you are missing an (end-prototype)?"
 	    			`#$(a-prototype ,CLASS with ,@SLOTSVALS)))
 	         ((are-slotsvals slotsvals)
 		  (new-context)
-		  (km-setq '*curr-prototype*
-			   (create-instance class
-					     `#$((prototype-of (,CLASS))
+		  (km-setq '*curr-prototype* 
+			   (create-instance class 
+					     `#$((prototype-of (,CLASS)) 
 ;						 ,(COND (SLOTSVALS `(prototype-scope ('(a ,CLASS with ,@SLOTSVALS))))
 						 ,(COND (SLOTSVALS `(prototype-scope ((the-class ,CLASS with ,@SLOTSVALS))))
 							(T `(prototype-scope (,CLASS))))
@@ -1926,7 +1926,7 @@ Just taking the first...(~a) ~%" kmexpr vals (first vals))
 	(let ( (source (km-unique-int expr :fail-mode 'error)) )
 	  (cond (source (list (clone source)))))) )
 
-    ( (#$evaluate-paths)
+    ( (#$evaluate-paths) 
       (lambda (_fmode _target)
 	(declare (ignore _fmode _target))
 	(eval-instances)
@@ -1940,35 +1940,35 @@ Just taking the first...(~a) ~%" kmexpr vals (first vals))
 ;;; ----------------------------------------------------------------------
 ;;; Type constraints don't get evaluated.
 
-    ( (#$must-be-a ?class)
+    ( (#$must-be-a ?class) 
       (lambda (_fmode _target _class) (declare (ignore  _fmode _target _class)) (note-are-constraints) nil))
-    ( (#$possible-values ?values)
+    ( (#$possible-values ?values) 
       (lambda (_fmode _target _values) (declare (ignore  _fmode _target _values)) (note-are-constraints) nil))
-    ( (#$excluded-values ?values)
+    ( (#$excluded-values ?values) 
       (lambda (_fmode _target _values) (declare (ignore  _fmode _target _values)) (note-are-constraints) nil))
 
     ( (#$must-be-a ?class #$with &rest)
-      (lambda (_fmode _target _class slotsvals)
-	   (declare (ignore  _fmode _target _class))
+      (lambda (_fmode _target _class slotsvals) 
+	   (declare (ignore  _fmode _target _class)) 
 	   (are-slotsvals slotsvals)				; Syntax check
 	   (note-are-constraints)
 	   nil))
 
-    ( (#$mustnt-be-a ?class)
-      (lambda (_fmode _target _class)
-	(declare (ignore  _fmode _target _class))
+    ( (#$mustnt-be-a ?class) 
+      (lambda (_fmode _target _class) 
+	(declare (ignore  _fmode _target _class)) 
 	(note-are-constraints) nil) )
 
     ( (#$mustnt-be-a ?class #$with &rest)
-      (lambda (_fmode _target _class slotsvals)
-	   (declare (ignore  _fmode _target _class))
+      (lambda (_fmode _target _class slotsvals) 
+	   (declare (ignore  _fmode _target _class)) 
 	   (are-slotsvals slotsvals)				; Syntax check
 	   (note-are-constraints)
 	   nil))
 
 ;;; New 1.4.0-beta10:
     ( (<> ?val) ; ie. means isn't val
-      (lambda (_fmode _target _val) (declare (ignore  _fmode _target _val)) (note-are-constraints) nil))
+      (lambda (_fmode _target _val) (declare (ignore  _fmode _target _val)) (note-are-constraints) nil)) 
 
     ( (#$no-inheritance) (lambda (_fmode _target) (declare (ignore _fmode _target))) nil )
 
@@ -2006,7 +2006,7 @@ Just taking the first...(~a) ~%" kmexpr vals (first vals))
       (lambda (fmode target expr)
 	(cond (*sanity-checks* (km-int expr :fail-mode fmode :target target))
 	 (t '#$(t)))) )
-
+    
     ((#$retain-expr ?expr)
      (lambda (fmode target expr)
        (let ((instance (fourth target))
@@ -2033,7 +2033,7 @@ Just taking the first...(~a) ~%" kmexpr vals (first vals))
 				  `(#$every ,cexpr #$has ,@slotsvals) cexpr))
 		   ((are-slotsvals slotsvals)		; check
 		    (let* ( (slotsvals00 (cond (*record-sources* (annotate-slotsvals slotsvals (make-source class)))
-					       (t slotsvals)))
+					       (t slotsvals))) 
 			    (slotsvals0 (convert-comments-to-internal-form slotsvals00)) )
 		      (add-slotsvals class slotsvals0 :facet 'member-properties))
 		    (cond ((and (assoc '#$assertions slotsvals)
@@ -2051,7 +2051,7 @@ Just taking the first...(~a) ~%" kmexpr vals (first vals))
 				  `(#$every ,cexpr #$also-has ,@slotsvals) cexpr))
 		   ((are-slotsvals slotsvals)		; check
 		    (let* ( (slotsvals00 (cond (*record-sources* (annotate-slotsvals slotsvals (make-source class)))
-					       (t slotsvals)))
+					       (t slotsvals))) 
 			    (slotsvals0 (convert-comments-to-internal-form slotsvals00)) )
 		      (add-slotsvals class slotsvals0 :facet 'member-properties :combine-values-by 'appending))
 		    (cond ((and (assoc '#$assertions slotsvals)
@@ -2071,7 +2071,7 @@ Just taking the first...(~a) ~%" kmexpr vals (first vals))
 				  `(#$every ,cexpr #$now-has ,@slotsvals) cexpr))
 		   ((are-slotsvals slotsvals)		; check
 		    (let* ( (slotsvals00 (cond (*record-sources* (annotate-slotsvals slotsvals (make-source class)))
-					       (t slotsvals)))
+					       (t slotsvals))) 
 			    (slotsvals0 (convert-comments-to-internal-form slotsvals00)) )
 		      (add-slotsvals class slotsvals0 :facet 'member-properties :combine-values-by 'overwriting))
 		    (cond ((and (assoc '#$assertions slotsvals)
@@ -2118,7 +2118,7 @@ Just taking the first...(~a) ~%" kmexpr vals (first vals))
 		    (classify instance :slots-that-changed (mapcar #'slot-in slotsvals))		; Because it's an instance
 		    (cond ((am-in-prototype-mode) (km-int '#$(evaluate-paths))))	; route through interpreter for tracing + loop detection
 		    (list instance))))) )
-
+    
     ((#$every ?instance-expr #$also-hasnt &rest)
      (lambda (_fmode _target instance-expr slotsvals)
        (declare (ignore  _fmode _target))
@@ -2157,7 +2157,7 @@ Just taking the first...(~a) ~%" kmexpr vals (first vals))
 ; Neah, let's assume these things better not change!!
 		    (un-done instance)		; In case redefinition	  - now in put-slotsvals; Later: No!!
 		    (classify instance)		; Because it's an instance
-;#|new|#	    (cond ((am-in-prototype-mode)
+;#|new|#	    (cond ((am-in-prototype-mode) 
 ;			   ; (eval-instances)
 ;			   (km-int '#$(evaluate-paths) :fail-mode 'error)))	; new: route through query interpreter for tracing and also loop detection
 		    (list instance))))) )
@@ -2192,7 +2192,7 @@ Just taking the first...(~a) ~%" kmexpr vals (first vals))
 	(declare (ignore fmode target))
 	(let ( (xv (km-unique-int x :fail-mode 'error))
 	       (yv (km-unique-int y :fail-mode 'error)) )
-	  (cond ((equal xv yv)
+	  (cond ((equal xv yv) 
 		 (report-error 'user-error "(~a /== ~a): ~a and ~a are the same object!~%"
 			       x y x y))
 		((kb-objectp xv) (km-int `#$(,XV has (/== (,YV))) :fail-mode 'error))
@@ -2255,33 +2255,33 @@ Just taking the first...(~a) ~%" kmexpr vals (first vals))
       (lambda (fmode target x y)
 	(let ( (unification (lazy-unify-exprs x y :classes-subsumep t :fail-mode fmode :target target)) )
 	  (cond (unification (list unification))
-		((eq fmode 'error)
+		((eq fmode 'error) 
 		 (report-error 'user-error "Unification (~a &+ ~a) failed!~%" x y))))) )
 
 ; No, test first before doing it, else you might leave side effects.
-; **NOTE** Unlike &!, &+! *is* allowed to quietly fail
+; **NOTE** Unlike &!, &+! *is* allowed to quietly fail   
     ((?x &+! ?y)
      (lambda (fmode target x y)
-       (cond ((km-int `(,x &+? ,y) :target target :fail-mode fmode) ; must test before doing it,
+       (cond ((km-int `(,x &+? ,y) :target target :fail-mode fmode) ; must test before doing it, 
 	      (km-int `(,x &! ,y) :target target :fail-mode 'error)) ; If &+? succeeds, route through query interpreter so pending-equality is seen. &! *must* succeed if &+? succeeds
-	     ((eq fmode 'error)
+	     ((eq fmode 'error) 
 	      (report-error 'user-error "Unification (~a &+! ~a) failed!~%" x y)))))
 
-; Attempt 2
+; Attempt 2 
 ;    ((?x &+! ?y)
 ;     (lambda (fmode target x y)
-;       (cond ((km-int `(,x &+? ,y) :target target :fail-mode fmode) ; must test before doing it,
+;       (cond ((km-int `(,x &+? ,y) :target target :fail-mode fmode) ; must test before doing it, 
 ;	      (let ((unification (lazy-unify-exprs x y :classes-subsumep t :eagerlyp t :fail-mode fmode :target target)) )
 ;		(cond (unification (list unification))
-;		      ((eq fmode 'error)
+;		      ((eq fmode 'error) 
 ;		       (report-error 'user-error "Unification (~a &+! ~a) failed!~%" x y))))))))
 
-; Attempt 1
+; Attempt 1 
 ;    ((?x &+! ?y)
 ;     (lambda (fmode target x y)
 ;	(let ( (unification (lazy-unify-exprs x y :classes-subsumep t :eagerlyp t :fail-mode fmode :target target)) )
 ;	  (cond (unification (list unification))
-;		((eq fmode 'error)
+;		((eq fmode 'error) 
 ;		 (report-error 'user-error "Unification (~a &+! ~a) failed!~%" x y))))) )
 
 ;;; ----------------------------------------
@@ -2316,7 +2316,7 @@ Just taking the first...(~a) ~%" kmexpr vals (first vals))
 				     class))))) )
 
 ;;; ======================================================================
-;;;		THEORIES - NEW
+;;;		THEORIES - NEW 
 ;;; ======================================================================
 
     ( (#$in-theory ?theory-expr)
@@ -2334,7 +2334,7 @@ Just taking the first...(~a) ~%" kmexpr vals (first vals))
 	(declare (ignore _fmode _target))
 	(mapc #'hide-theory (km-int theory-expr))
 	(cond ((visible-theories))
-	      (t '#$(t)))))
+	      (t '#$(t))))) 
 
     ( (#$see-theory ?theory-expr)
       (lambda (_fmode _target theory-expr)
@@ -2367,8 +2367,8 @@ Just taking the first...(~a) ~%" kmexpr vals (first vals))
 	   (declare (ignore _fmode _target))			; then just do a lookup ([2])
 	   (cond ((and (kb-objectp situation)
 		       (isa situation '#$Situation)
-; APR30		       (already-done frame slot situation))			; [1]
-		       (already-done frame slot))			; [1]
+; APR30		       (already-done frame slot situation))			; [1] 
+		       (already-done frame slot))			; [1] 
 #|OLD|#		  (remove-constraints (get-vals frame slot :situation (target-situation situation frame slot))))	; [2]
 ;#|NEW|#	  (get-vals-in-cache frame slot :situation situation))
 		 (t (in-situation situation `#$(the ,SLOT of ,FRAME))))) )
@@ -2404,10 +2404,10 @@ Just taking the first...(~a) ~%" kmexpr vals (first vals))
       (lambda (_fmode _target action-expr next-situation)
 	(declare (ignore _fmode _target))
 	(cond ((not (instance-of next-situation '#$Situation))
-	       (report-error 'user-error "(do ~a ~a): ~a should be an instance of Situation, but isn't!~%"
+	       (report-error 'user-error "(do ~a ~a): ~a should be an instance of Situation, but isn't!~%" 
 			     action-expr next-situation next-situation))
 	      (t (list (do-action action-expr :next-situation next-situation))))) )
-
+    
     ( (#$do-and-next ?action-expr)
       (lambda (_fmode _target action-expr)
 	   (declare (ignore _fmode _target))
@@ -2417,7 +2417,7 @@ Just taking the first...(~a) ~%" kmexpr vals (first vals))
       (lambda (_fmode _target action-expr next-situation)
 	   (declare (ignore _fmode _target))
 	(cond ((not (instance-of next-situation '#$Situation))
-	       (report-error 'user-error "(do ~a ~a): ~a should be an instance of Situation, but isn't!~%"
+	       (report-error 'user-error "(do ~a ~a): ~a should be an instance of Situation, but isn't!~%" 
 			     action-expr next-situation next-situation))
 	      (t (list (do-action action-expr :next-situation next-situation :change-to-next-situation t))))) )
 
@@ -2431,7 +2431,7 @@ Just taking the first...(~a) ~%" kmexpr vals (first vals))
       (lambda (_fmode _target action-expr next-situation)
 	(declare (ignore _fmode _target))
 	(cond ((not (instance-of next-situation '#$Situation))
-	       (report-error 'user-error "(do ~a ~a): ~a should be an instance of Situation, but isn't!~%"
+	       (report-error 'user-error "(do ~a ~a): ~a should be an instance of Situation, but isn't!~%" 
 			     action-expr next-situation next-situation))
 	      (t (list (do-action action-expr :next-situation next-situation :test-or-assert-pcs 'test))))) )
 
@@ -2444,10 +2444,10 @@ Just taking the first...(~a) ~%" kmexpr vals (first vals))
       (lambda (_fmode _target action-expr next-situation)
 	(declare (ignore _fmode _target))
 	(cond ((not (instance-of next-situation '#$Situation))
-	       (report-error 'user-error "(do ~a ~a): ~a should be an instance of Situation, but isn't!~%"
+	       (report-error 'user-error "(do ~a ~a): ~a should be an instance of Situation, but isn't!~%" 
 			     action-expr next-situation next-situation))
 	      (t (list (do-action action-expr :next-situation next-situation :change-to-next-situation t :test-or-assert-pcs 'test))))) )
-
+    
     ( (#$do-concurrently ?action-expr)
      (lambda (_fmode _target action-expr)
        (declare (ignore _fmode _target))
@@ -2460,7 +2460,7 @@ Just taking the first...(~a) ~%" kmexpr vals (first vals))
      (lambda (_fmode _target action-expr next-situation)
        (declare (ignore _fmode _target))
 	(cond ((not (instance-of next-situation '#$Situation))
-	       (report-error 'user-error "(do ~a ~a): ~a should be an instance of Situation, but isn't!~%"
+	       (report-error 'user-error "(do ~a ~a): ~a should be an instance of Situation, but isn't!~%" 
 			     action-expr next-situation next-situation))
 	      (t (let ((actions (km-int action-expr)))
 		   (mapc #'(lambda (action) (km-int `#$(do ,ACTION ,NEXT-SITUATION))) actions)
@@ -2479,7 +2479,7 @@ Just taking the first...(~a) ~%" kmexpr vals (first vals))
      (lambda (_fmode _target action-expr next-situation)
        (declare (ignore _fmode _target))
 	(cond ((not (instance-of next-situation '#$Situation))
-	       (report-error 'user-error "(do ~a ~a): ~a should be an instance of Situation, but isn't!~%"
+	       (report-error 'user-error "(do ~a ~a): ~a should be an instance of Situation, but isn't!~%" 
 			     action-expr next-situation next-situation))
 	      (t (let ((actions (km-int action-expr)))
 		   (mapc #'(lambda (action) (km-int `#$(do ,ACTION ,NEXT-SITUATION))) actions)
@@ -2489,7 +2489,7 @@ Just taking the first...(~a) ~%" kmexpr vals (first vals))
 ;;; Now returns the list of successful actions
     ( (#$do-script ?script)
       (lambda (fmode target script)
-	   (km-int `#$(forall (the actions of ,SCRIPT) (do-and-next It))
+	   (km-int `#$(forall (the actions of ,SCRIPT) (do-and-next It)) 
 	       :fail-mode fmode :target target :rewritep t)) )
 
     ( (#$do-plan ?plan-instance-expr)
@@ -2514,7 +2514,7 @@ Just taking the first...(~a) ~%" kmexpr vals (first vals))
       (lambda (_fmode _target triple-expr)
 	(declare (ignore _fmode _target))
 	(let* ( (triple (km-unique-int triple-expr)) )
-	  (cond
+	  (cond 
 	   ((not (km-triplep triple))
 	    (report-error 'user-error "(is-true ~a): ~a should evaluate to a triple! (evaluated to ~a instead)!~%"
 			  triple-expr triple))
@@ -2523,7 +2523,7 @@ Just taking the first...(~a) ~%" kmexpr vals (first vals))
 	   (t (let ( (frame (km-unique-int (second triple) :fail-mode 'error))
 		     (slot  (km-unique-int (third triple) :fail-mode 'error))
 		     (value (fourth triple)) )			; don't evaluate this!
-		(cond
+		(cond 
 		 ((null value) '#$(t))
 		 ((km-int `#$(,FRAME is '(a Thing with (,SLOT (,VALUE)))))))))))) )
 
@@ -2577,7 +2577,7 @@ Just taking the first...(~a) ~%" kmexpr vals (first vals))
     ( (#$in-every-situation ?situation-class ?expr)
       (lambda (fmode target situation-class km-expr)
 	   (cond ((not (is-subclass-of situation-class '#$Situation))
-		  (report-error 'user-error "~a:~%   Can't do this! (~a is not a subclass of Situation!)~%"
+		  (report-error 'user-error "~a:~%   Can't do this! (~a is not a subclass of Situation!)~%" 
 				`#$(in-every-situation ,SITUATION-CLASS ,KM-EXPR) situation-class))
 		 (t (let ( (modified-expr (sublis '#$((TheSituation . #,Self) (Self . SubSelf)) km-expr)) )
 		      (km-int `#$(in-situation ,*GLOBAL-SITUATION*
@@ -2606,7 +2606,7 @@ Just taking the first...(~a) ~%" kmexpr vals (first vals))
 
 ;;; Now merged into the single framework of subsumption checking.
     ( (#$thelast ?frame)
-      (lambda (_fmode _target frame) (declare (ignore  _fmode _target))
+      (lambda (_fmode _target frame) (declare (ignore  _fmode _target)) 
 	   (let ( (last-instance (search-stack frame)) )
 	     (cond (last-instance (list last-instance))))) )
 
@@ -2618,9 +2618,9 @@ Just taking the first...(~a) ~%" kmexpr vals (first vals))
       (lambda (fmode target frame) (km-int `(#$every ,frame #$with) :fail-mode fmode :target target :rewritep t)) )
 
     ( (#$every ?frame #$with &rest)
-      (lambda (_fmode _target frame slotsvals)
+      (lambda (_fmode _target frame slotsvals) 
 	   (declare (ignore  _fmode _target))
-	   (cond
+	   (cond 
 	    ((are-slotsvals slotsvals)
 	     (let ( (existential-expr
 		          (cond ((and (null slotsvals) (pathp frame)) 	  ; eg. (the (porter owns car))
@@ -2630,7 +2630,7 @@ Just taking the first...(~a) ~%" kmexpr vals (first vals))
 
 ;;; (the ...)  -- expects a unique answer
 
-;;; REDEFINITIONS:
+;;; REDEFINITIONS: 
 ;;;	(the ...) -> (find-the ...)
 ;;;	(forc (the ...)) -> (the ...)
 
@@ -2638,7 +2638,7 @@ Just taking the first...(~a) ~%" kmexpr vals (first vals))
 ;;; (The earlier version just send (the X) -> (the X with ...) -> (km-unique-int (every X with ...)), but then error messages were unintuitive)
 
     ( (#$the ?frame)
-      (lambda (fmode target frame)
+      (lambda (fmode target frame) 
 	(declare (ignore fmode target))
 	(let ( (answer (km-int `(#$every ,frame))) )
 	  (cond ((null answer)
@@ -2651,10 +2651,10 @@ Just taking the first...(~a) ~%" kmexpr vals (first vals))
       (lambda (fmode target frame slotsvals)
 	(declare (ignore fmode target))
 	   (let ( (answer (km-int `(#$every ,frame #$with ,@slotsvals))) )
-	     (cond ((null answer)
+	     (cond ((null answer) 
 		    (report-error 'user-error "No values found for expression ~a!~%" `#$(the ,FRAME with ,@SLOTSVALS)))
 		   ((not (singletonp answer))
-		    (report-error 'user-error "Expected a single value for expression ~a, but found multiple values ~a!~%"
+		    (report-error 'user-error "Expected a single value for expression ~a, but found multiple values ~a!~%" 
 				  `#$(the ,FRAME with ,@SLOTSVALS) answer))
 		   (t answer)))))
 
@@ -2664,7 +2664,7 @@ Just taking the first...(~a) ~%" kmexpr vals (first vals))
 ;;; (forc (porter owns car)
 
 ;;; Rewrites, to allow path notation to be used...
-    ( (#$the+ ?slot #$of ?frameadd)
+    ( (#$the+ ?slot #$of ?frameadd)  
       (lambda (_fmode target slot frameadd)
 	(declare (ignore _fmode))
 	(km-int `#$(the+ Thing with (,(INVERT-SLOT SLOT) (,FRAMEADD))) :fail-mode 'error :target target :rewritep t)))
@@ -2678,12 +2678,12 @@ Just taking the first...(~a) ~%" kmexpr vals (first vals))
      (lambda (fmode target frame) (km-int `(#$the+ ,frame #$with) :fail-mode fmode :target target :rewritep t)) )
 
     ( (#$the+ ?frame #$with &rest)
-      (lambda (_fmode _target frame slotsvals)
+      (lambda (_fmode _target frame slotsvals) 
 	    (declare (ignore  _fmode _target))
-;	    (cond
+;	    (cond 
 ;	     ((km-int `(#$the ,frame #$with ,@slotsvals)))	  ; OLD: (the ... with ...) *always* generates error on failure, so bypass this.
 	    (let ( (val (km-unique-int `(#$every ,frame #$with ,@slotsvals))) )	; NEW		; PS don't surpress error for (the ...)!
-	      (cond
+	      (cond 
 	       (val (list val))
 	       ((are-slotsvals slotsvals)
 		(let ( (existential-expr
@@ -2695,7 +2695,7 @@ Just taking the first...(~a) ~%" kmexpr vals (first vals))
    ( (#$a+ &rest)							; a+ is synonym for the+
      (lambda (fmode target rest) (km-int `(#$the+ ,@rest) :fail-mode fmode :target target :rewritep t)) )
 
-;;; [1] above: Do an eval-instance forces inverses in! For example, doing
+;;; [1] above: Do an eval-instance forces inverses in! For example, doing 
 ;;;    (the+ Leg with (part-of ((the Dog with (owned-by (Bruce))))))
 ;;; should not just return _Leg2, but also add (Bruce owns _Dog3), and (_Dog3 parts _Leg2)
 
@@ -2714,15 +2714,15 @@ Just taking the first...(~a) ~%" kmexpr vals (first vals))
 				  `(#$every ,cexpr #$has-definition ,@slotsvals) cexpr))
 		   ((are-slotsvals slotsvals)
 		    (let* ((slotsvals00 (cond (*record-sources* (annotate-slotsvals slotsvals (make-source class)))
-					       (t slotsvals)))
-			   (slotsvals0 (convert-comments-to-internal-form slotsvals00))
-			   (parents-of-defined-concept
+					       (t slotsvals))) 
+			   (slotsvals0 (convert-comments-to-internal-form slotsvals00)) 
+			   (parents-of-defined-concept 
 			    (desource+decomment (vals-in (assoc '#$instance-of slotsvals0)) :delistifyp nil)) )
 		      (cond ((not (every #'kb-objectp parents-of-defined-concept))
 			     (report-error 'user-error "~a~%The `instance-of' slot-filler(s) in a has-definition must be atomic class name(s) only.~%"
 					   `(#$every ,cexpr #$has-definition ,@slotsvals0)))
 			    ((null parents-of-defined-concept)
-			     (report-error 'user-error
+			     (report-error 'user-error 
 					   "~a~%You must specify an `instance-of' slot value for a has-definition, pointing to the parent class(es)!~%"
 					   `(#$every ,cexpr #$has-definition ,@slotsvals0)))
 			    (t (add-slotsvals class slotsvals0 :facet 'member-definition)
@@ -2741,22 +2741,22 @@ Just taking the first...(~a) ~%" kmexpr vals (first vals))
 				  `(#$every ,cexpr #$now-has-definition ,@slotsvals) cexpr))
 		   ((are-slotsvals slotsvals)
 		    (let* ((slotsvals00 (cond (*record-sources* (annotate-slotsvals slotsvals (make-source class)))
-					       (t slotsvals)))
-			   (slotsvals0 (convert-comments-to-internal-form slotsvals00))
-			   (parents-of-defined-concept
+					       (t slotsvals))) 
+			   (slotsvals0 (convert-comments-to-internal-form slotsvals00)) 
+			   (parents-of-defined-concept 
 			    (desource+decomment (vals-in (assoc '#$instance-of slotsvals0)) :delistifyp nil)) )
 		      (cond ((not (every #'kb-objectp parents-of-defined-concept))
 			     (report-error 'user-error "~a~%The `instance-of' slot-filler(s) in a now-has-definition must be atomic class name(s) only.~%"
 					   `(#$every ,cexpr #$now-has-definition ,@slotsvals0)))
-			    ((and (null parents-of-defined-concept)
+			    ((and (null parents-of-defined-concept) 
 				  slotsvals0) ; But (every X now-has-definition) is ok as a way to REMOVE a definition
-			     (report-error 'user-error
+			     (report-error 'user-error 
 					   "~a~%You must specify an `instance-of' slot value for a now-has-definition, pointing to the parent class(es)!~%"
 					   `(#$every ,cexpr #$now-has-definition ,@slotsvals0)))
 
 			    (t ; [1] Delete old definition:
 			       (let ((member-definition-parents (get-vals class '#$instance-of :facet 'member-definition)))
-				 (cond (member-definition-parents
+				 (cond (member-definition-parents 
 					(unpoint-parents-to-defined-concept class member-definition-parents 'member-definition))))
 			       (mapc #'(lambda (situation)
 					 (mapc #'(lambda (slotvals)
@@ -2782,17 +2782,17 @@ Just taking the first...(~a) ~%" kmexpr vals (first vals))
 	   (declare (ignore  _fmode _target))
 	   (let ( (instance (km-unique-int instance-expr :fail-mode 'error)) )
 	     (cond ((not (kb-objectp instance))
-		    (report-error 'user-error "~a~%~a isn't/doesn't evaluate to a KB object name.~%"
+		    (report-error 'user-error "~a~%~a isn't/doesn't evaluate to a KB object name.~%" 
 				  `(#$every ,instance-expr #$has-definition ,@slotsvals) instance-expr))
 		   ((are-slotsvals slotsvals)	; check
-		    (let* ((slotsvals0 (desource+decomment slotsvals)) ; Can't handle comments on instances yet, so strip
+		    (let* ((slotsvals0 (desource+decomment slotsvals)) ; Can't handle comments on instances yet, so strip 
 			   				 ; them off and throw them out, unlike for (every ... has-def...)
 			   (parents-of-defined-concept (vals-in (assoc '#$instance-of slotsvals0))))
 		      (cond ((not (every #'kb-objectp parents-of-defined-concept))
 			     (report-error 'user-error "~a~%The `instance-of' slot-filler(s) in a has-definition must be atomic class name(s) only.~%"
 					   `(,instance-expr #$has-definition ,@slotsvals0)))
 			    ((null parents-of-defined-concept)
-			     (report-error 'user-error
+			     (report-error 'user-error 
 					   "~a~%You must specify an `instance-of' slot value for a has-definition, pointing to the parent class(es)!~%"
 					   `(,instance-expr #$has-definition ,@slotsvals0)))
 			    (t (add-slotsvals instance slotsvals0 :facet 'own-definition)
@@ -2807,10 +2807,10 @@ Just taking the first...(~a) ~%" kmexpr vals (first vals))
 	   (declare (ignore  _fmode _target))
 	   (let ( (instance (km-unique-int instance-expr :fail-mode 'error)) )
 	     (cond ((not (kb-objectp instance))
-		    (report-error 'user-error "~a~%~a isn't/doesn't evaluate to a KB object name.~%"
+		    (report-error 'user-error "~a~%~a isn't/doesn't evaluate to a KB object name.~%" 
 				  `(#$every ,instance-expr #$now-has-definition ,@slotsvals) instance-expr))
 		   ((are-slotsvals slotsvals)	; check
-		    (let* ((slotsvals0 (desource+decomment slotsvals)) ; Can't handle comments on instances yet, so strip
+		    (let* ((slotsvals0 (desource+decomment slotsvals)) ; Can't handle comments on instances yet, so strip 
 			   				 ; them off and throw them out, unlike for (every ... now-has-def...)
 			   (parents-of-defined-concept (vals-in (assoc '#$instance-of slotsvals0))))
 		      (cond ((not (every #'kb-objectp parents-of-defined-concept))
@@ -2818,13 +2818,13 @@ Just taking the first...(~a) ~%" kmexpr vals (first vals))
 					   `(,instance-expr #$now-has-definition ,@slotsvals0)))
 			    ((and (null parents-of-defined-concept)
 				  slotsvals0)
-			     (report-error 'user-error
+			     (report-error 'user-error 
 					   "~a~%You must specify an `instance-of' slot value for a now-has-definition, pointing to the parent class(es)!~%"
 					   `(,instance-expr #$now-has-definition ,@slotsvals0)))
-
+			    
 			    (t ; [1] Delete old definition:
 			       (let ((own-definition-parents (get-vals instance '#$instance-of :facet 'own-definition)))
-				 (cond (own-definition-parents
+				 (cond (own-definition-parents 
 					(unpoint-parents-to-defined-concept instance own-definition-parents 'own-definition))))
 			       (mapc #'(lambda (situation)
 					 (mapc #'(lambda (slotvals)
@@ -2834,9 +2834,9 @@ Just taking the first...(~a) ~%" kmexpr vals (first vals))
 						     (put-vals instance slot nil :facet 'own-definition :situation situation)))
 					       (get-slotsvals instance :situation situation :facet 'own-definition)))
 				     (all-situations-and-theories))
-
+			       
 			       ; [2] Assert new definition. NB if parents-of-defined-concept is NIL, then there is no new definition.
-			       (cond (parents-of-defined-concept ; might be NIL if you are DELETING a definition
+			       (cond (parents-of-defined-concept ; might be NIL if you are DELETING a definition			       
 				      (add-slotsvals instance slotsvals0 :facet 'own-definition)
 				      (point-parents-to-defined-concept instance parents-of-defined-concept 'own-definition)
 				      (km-setq '*are-some-definitions* t)
@@ -2861,7 +2861,7 @@ Just taking the first...(~a) ~%" kmexpr vals (first vals))
 		     (declare (ignore  _fmode _target))
 		     (let ( (xval (km-unique-int x :fail-mode 'error))
 			    (yval (km-unique-int y :fail-mode 'error)) )
-		       (cond ((and (numberp xval) (numberp yval))
+		       (cond ((and (numberp xval) (numberp yval)) 
 			      (cond ((> xval yval) '#$(t))))))))
 
     ( (?x < ?y) (lambda (_fmode _target x y)
@@ -2903,7 +2903,7 @@ Just taking the first...(~a) ~%" kmexpr vals (first vals))
 
     ; ----------------------------------------
 
-    ( (?x #$and &rest)
+    ( (?x #$and &rest) 
       (lambda (_fmode _target x rest)
 	(declare (ignore  _fmode _target))
 	(cond ((and (listp x)
@@ -2939,11 +2939,11 @@ Just taking the first...(~a) ~%" kmexpr vals (first vals))
 ;;;		SUBSUMPTION TESTING
 ;;; ======================================================================
 
-    ( (?x #$is-subsumed-by ?y)
+    ( (?x #$is-subsumed-by ?y) 
       (lambda (fmode target x y)
 	(km-int `(,y #$subsumes ,x) :fail-mode fmode :target target :rewritep t)) )
 
-    ( (?x #$subsumes ?y)
+    ( (?x #$subsumes ?y) 
       (lambda (_fmode _target x y)
 	   (declare (ignore  _fmode _target))
 	   (let ( (yv (km-int y)) )
@@ -2953,12 +2953,12 @@ Just taking the first...(~a) ~%" kmexpr vals (first vals))
 				    (subsumes xv yv))
 			       '#$(t)))))))))
 
-    ( (?x #$is-covered-by ?y)
+    ( (?x #$is-covered-by ?y) 
       (lambda (fmode target x y)
 	(km-int `(,y #$covers ,x) :fail-mode fmode :target target :rewritep t)) )
 
 ; replace with generalized isa
-;    ( (?x #$covers ?y)
+;    ( (?x #$covers ?y) 
 ;      (lambda (_fmode x y)
 ;	   (declare (ignore  _fmode))
 ;	   (let ( (yv (km-unique-int y)) )
@@ -2976,25 +2976,25 @@ Just taking the first...(~a) ~%" kmexpr vals (first vals))
     ( (?y #$isa ?x)
       (lambda (_fmode _target y x)
 	   (declare (ignore  _fmode _target))
-	   (let* ( (yvals (km-int y))
+	   (let* ( (yvals (km-int y)) 
 		   (yv (first yvals)) )
-	     (cond ((null yvals)
+	     (cond ((null yvals) 
 		    (report-error 'user-error "Doing ~a:~% ~a evaluates to nil (should evaluate to an instance!)~%" `(,y #$isa ,x) y))
 		   ((not (singletonp yvals))
-		    (report-error 'user-error "Doing ~a:~% ~a evaluates to multiple values ~a (should evaluate to a single instance!)~%"
+		    (report-error 'user-error "Doing ~a:~% ~a evaluates to multiple values ~a (should evaluate to a single instance!)~%" 
 				  `(,y #$isa ,x) y yvals))
 		   (t (let* ((xvals (km-int x))
 			     (xv (first xvals)))
-			(cond ((null xvals)
+			(cond ((null xvals) 
 			       (report-error 'user-error "Doing ~a:~% ~a evaluates to nil (should evaluate to something!)~%" `(,y #$isa ,x) x))
 			      ((not (singletonp xvals))
-			       (report-error 'user-error "Doing ~a:~% ~a evaluates to multiple values ~a (should evaluate to a single object!)~%"
+			       (report-error 'user-error "Doing ~a:~% ~a evaluates to multiple values ~a (should evaluate to a single object!)~%" 
 					     `(,y #$isa ,x) x xvals))
 			      ((kb-objectp xv)
 			       (cond ((isa yv xv) '#$(t)))) ; quick test
 			      ((covers (list xv) yv) '#$(t)))))))) ) ; more complex test for expressions
-
-    ( (?x #$is ?y)
+    
+    ( (?x #$is ?y) 
       (lambda (_fmode _target x y)
 	   (declare (ignore  _fmode _target))
 	   (let ( (xv (km-unique-int x)) )
@@ -3005,21 +3005,21 @@ Just taking the first...(~a) ~%" kmexpr vals (first vals))
 
 ;;; ======================================================================
 
-    ( (?xs #$includes ?y)
+    ( (?xs #$includes ?y) 
       (lambda (_fmode _target xs y)
 	   (declare (ignore  _fmode _target))
 	   (let ((xs-vals (km-int xs))
-;		 (y-val (km-unique-int y :fail-mode 'error)) ; no, I think it's ok for this to return NIL
-		 (y-val (km-unique-int y)))
+;		 (y-val (km-unique-int y :fail-mode 'error)) ; no, I think it's ok for this to return NIL 
+		 (y-val (km-unique-int y)))	     
 	     (cond ((member y-val (dereference xs-vals) :test #'equal) '#$(t))))))
 
-    ( (?xs #$is-superset-of ?ys)
+    ( (?xs #$is-superset-of ?ys) 
       (lambda (_fmode _target xs ys)
 	   (declare (ignore  _fmode _target))
 	   (let ( (xs-vals (km-int xs))
 		  (ys-vals (km-int ys)) )
 	     (cond ((subsetp ys-vals (dereference xs-vals) :test #'equal) '#$(t))))) )
-
+			   
 ;;; ======================================================================
 ;;;		SEQUENCE MANIPULATION
 ;;; ======================================================================
@@ -3028,19 +3028,19 @@ Just taking the first...(~a) ~%" kmexpr vals (first vals))
       (lambda (_fmode _target seq-expr1 seq-expr2)
 	(declare (ignore  _fmode _target))
 	(let* ( (seq1 (km-unique-int seq-expr1))
-		(seq2 (km-unique-int seq-expr2))
+		(seq2 (km-unique-int seq-expr2)) 
 		(elts1 (cond ((or (km-seqp seq1)
 				  (km-bagp seq1)) (seq-to-list seq1))
 			     ((null seq1) nil)
 			     ((is-km-term seq1) (list seq1))
-			     (t (report-error 'user-error "(~a append ~a): ~a doesn't evaluate to an instance, sequence, or bag!"
+			     (t (report-error 'user-error "(~a append ~a): ~a doesn't evaluate to an instance, sequence, or bag!" 
 					      seq-expr1 seq-expr2 seq-expr1))))
-		(elts2 (cond ((or (km-seqp seq2)
+		(elts2 (cond ((or (km-seqp seq2) 
 				  (km-bagp seq2)) (seq-to-list seq2))
 			     ((null seq2) nil)
 			     ((is-km-term seq2) (list seq2))
-			     (t (report-error 'user-error "(~a append ~a): ~a doesn't evaluate to an instance, sequence, or bag!"
-					      seq-expr1 seq-expr2 seq-expr2))))
+			     (t (report-error 'user-error "(~a append ~a): ~a doesn't evaluate to an instance, sequence, or bag!" 
+					      seq-expr1 seq-expr2 seq-expr2)))) 
 		(result-type (cond ((or (and (km-seqp seq1) (km-bagp seq2))
 					(and (km-seqp seq2) (km-bagp seq1)))
 				    (report-error 'user-error "(~a append ~a): Elements should be both sequences or both bags!"
@@ -3061,7 +3061,7 @@ Just taking the first...(~a) ~%" kmexpr vals (first vals))
 	(let* ( (vals (km-int expr)) )
 	  (cond (vals (km-trace 'comment "Now find just those value(s) whose tag = ~a..." tag)))
 	  (let* ( (tags (val-to-vals tag))
-		  (target-vals (remove-if #'(lambda (val)
+		  (target-vals (remove-if #'(lambda (val) 
 					      (set-difference tags (append (km-int `#$(the called of ,VAL))
 									   (km-int `#$(the uniquely-called of ,VAL)))
 							      :test #'equal))
@@ -3082,30 +3082,30 @@ Just taking the first...(~a) ~%" kmexpr vals (first vals))
 ;;; > (a man with (parts ((a arm) (a leg) (a arm))))
 ;;; _man1187
 ;;; > (allof ((_man1187 parts)) where (it isa arm))
-;;; (_arm1188 _arm1190)
-    ( (#$allof ?set #$where ?test)
+;;; (_arm1188 _arm1190) 
+    ( (#$allof ?set #$where ?test)	
       (lambda (fmode target set test)
 	   (km-int `(#$forall ,set #$where ,test #$It) :fail-mode fmode :target target :rewritep t)))  ; equivalent
 
-;;; New for KM1.4.0 beta-12
-    ( (#$allof ?set #$must ?test)
+;;; New for KM1.4.0 beta-12    
+    ( (#$allof ?set #$must ?test)	
       (lambda (fmode target set test)
 	(declare (ignore fmode target))
-	(cond ((every #'(lambda (instance)
-			  (km-int (subst Instance '#$It test)))
+	(cond ((every #'(lambda (instance) 
+			  (km-int (subst Instance '#$It test))) 
 		      (km-int set))
 	       '#$(t)))))
 
 ;;; New for KM1.4.0 beta-18
-    ( (#$allof ?set #$where ?test2 #$must ?test)
+    ( (#$allof ?set #$where ?test2 #$must ?test)	
       (lambda (fmode target set test2 test)
 	(declare (ignore fmode target))
-	(cond ((every #'(lambda (instance)
+	(cond ((every #'(lambda (instance) 
 			  (km-int (subst Instance '#$It test)))
 		      (km-int `#$(allof ,SET where ,TEST2)))
 	       '#$(t)))))
 
-    ( (#$oneof ?set #$where ?test)
+    ( (#$oneof ?set #$where ?test)	
       (lambda (fmode target set test)
 	(declare (ignore fmode target))
 	(let ( (answer (find-if #'(lambda (member)
@@ -3114,7 +3114,7 @@ Just taking the first...(~a) ~%" kmexpr vals (first vals))
 	  (cond (answer (list answer))))) )
 
 ;;; New  1.4 - check to ensure there's a single value
-    ( (#$theoneof ?set #$where ?test)
+    ( (#$theoneof ?set #$where ?test)	
       (lambda (fmode target set test)
 	   (let ( (val (km-unique-int `(#$forall ,set #$where ,test #$It) :fail-mode fmode :target target :rewritep t)) )  ; equivalent
 	     (cond (val (list val))))) )
@@ -3153,7 +3153,7 @@ Just taking the first...(~a) ~%" kmexpr vals (first vals))
 			(not (km-seqp (first sequences))))
 		    (report-error 'user-error "~a: ~a should evaluate to a single sequence (:seq ... ...)!~%"
 				  `#$(forall-seq ,SEQ where ,CONSTRAINT ,VALUE) seq))
-		   (t (list
+		   (t (list 
 		       (cons '#$:seq
 			    (remove 'to-remove
 			     (mapcar #'(lambda (member)
@@ -3166,12 +3166,12 @@ Just taking the first...(~a) ~%" kmexpr vals (first vals))
       (lambda (_fmode _target seq constraint value)
 	   (declare (ignore  _fmode _target))
 	   (let ( (sequences (km-int seq)) )
-	     (cond ((null sequences) nil)
+	     (cond ((null sequences) nil)	     
 		   ((or (not (singletonp sequences))
 			(not (km-seqp (first sequences))))
 		    (report-error 'user-error "~a: ~a should evaluate to a single sequence (:seq ... ...)!~%"
 				  `#$(forall-seq2 ,SEQ where ,CONSTRAINT ,VALUE) seq))
-		   (t (list
+		   (t (list 
 		       (cons '#$:seq
 			    (remove 'to-remove
 			     (mapcar #'(lambda (member)
@@ -3192,7 +3192,7 @@ Just taking the first...(~a) ~%" kmexpr vals (first vals))
 			(not (km-bagp (first bags))))
 		    (report-error 'user-error "~a: ~a should evaluate to a single bag (:bag ... ...)!~%"
 				  `#$(forall-bag ,BAG where ,CONSTRAINT ,VALUE) bag))
-		   (t (list
+		   (t (list 
 		       (cons '#$:bag
 			     (remove nil
 				     (mapcar #'(lambda (member)
@@ -3209,7 +3209,7 @@ Just taking the first...(~a) ~%" kmexpr vals (first vals))
 			(not (km-bagp (first bags))))
 		    (report-error 'user-error "~a: ~a should evaluate to a single bag (:bag ... ...)!~%"
 				  `#$(forall-bag2 ,BAG where ,CONSTRAINT ,VALUE) bag))
-		   (t (list
+		   (t (list 
 		       (cons '#$:bag
 			     (remove nil
 				     (mapcar #'(lambda (member)
@@ -3220,29 +3220,29 @@ Just taking the first...(~a) ~%" kmexpr vals (first vals))
 ;;; ----------
 
 ;;; To allow nesting, we also have forall2, whose referents are "it2"
-    ( (#$allof2 ?set #$where ?test)
+    ( (#$allof2 ?set #$where ?test)	
       (lambda (fmode target set test)
 	   (km-int `(#$forall2 ,set #$where ,test #$It2) :fail-mode fmode :target target :rewritep t)))  ; equivalent
 
-;;; New for KM1.4.0 beta-12
-    ( (#$allof2 ?set #$must ?test)
+;;; New for KM1.4.0 beta-12    
+    ( (#$allof2 ?set #$must ?test)	
       (lambda (fmode target set test)
 	(declare (ignore fmode target))
-	(cond ((every #'(lambda (instance)
-			  (km-int (subst Instance '#$It2 test)))
+	(cond ((every #'(lambda (instance) 
+			  (km-int (subst Instance '#$It2 test))) 
 		      (km-int set))
 	       '#$(t)))))
 
 ;;; New for KM1.4.0 beta-18
-    ( (#$allof2 ?set #$where ?test2 #$must ?test)
+    ( (#$allof2 ?set #$where ?test2 #$must ?test)	
       (lambda (fmode target set test2 test)
 	(declare (ignore fmode target))
-	(cond ((every #'(lambda (instance)
+	(cond ((every #'(lambda (instance) 
 			  (km-int (subst Instance '#$It2 test)))
 		      (km-int `#$(allof2 ,SET where ,TEST2)))
 	       '#$(t)))))
 
-    ( (#$oneof2 ?set #$where ?test)
+    ( (#$oneof2 ?set #$where ?test)	
       (lambda (fmode target set test)
 	(declare (ignore fmode target))
 	(let ( (answer (find-if #'(lambda (member)
@@ -3262,7 +3262,7 @@ Just taking the first...(~a) ~%" kmexpr vals (first vals))
       (lambda (fmode target bag value)
 	   (km-int `(#$forall-bag2 ,bag #$where t ,value) :fail-mode fmode :target target :rewritep t)))  ; equivalent
 
-    ( (#$theoneof2 ?set #$where ?test)
+    ( (#$theoneof2 ?set #$where ?test)	
       (lambda (fmode target set test)
 	   (let ( (val (km-unique-int `(#$forall2 ,set #$where ,test #$It2) :fail-mode fmode :target target :rewritep t)) )  ; equivalent
 	     (cond (val (list val))))) )
@@ -3280,28 +3280,28 @@ Just taking the first...(~a) ~%" kmexpr vals (first vals))
 ;;;			NEW: VARIABLES!!!
 ;;; ======================================================================
 
-    ( (#$allof ?var #$in  ?set #$where ?test)
+    ( (#$allof ?var #$in  ?set #$where ?test)	
       (lambda (fmode target var set test)
 	(cond ((not (km-varp var))
 	       (report-error 'user-error "~a: Second argument should be a variable (e.g., ?x)!~%" `(#$allof ,var #$in ,set #$where ,test)))
 	      (t (km-int `(#$forall ,var #$in ,set #$where ,test ,var) :fail-mode fmode :target target :rewritep t)))) )  ; equivalent
 
-    ( (#$allof ?var #$in ?set #$must ?test)
+    ( (#$allof ?var #$in ?set #$must ?test)	
       (lambda (fmode target var set test)
 	(declare (ignore fmode target))
 	(allof-must var set test)) )
 
-    ( (#$allof ?var #$in ?set #$where ?test2 #$must ?test)
+    ( (#$allof ?var #$in ?set #$where ?test2 #$must ?test)	
       (lambda (fmode target var set test2 test)
 	(declare (ignore fmode target))
 	(allof-where-must var set test2 test)) )
 
-    ( (#$oneof ?var #$in ?set #$where ?test)
+    ( (#$oneof ?var #$in ?set #$where ?test)	
       (lambda (fmode target var set test)
 	(declare (ignore fmode target))
 	(oneof-where var set test)) )
 
-    ( (#$theoneof ?var #$in ?set #$where ?test)
+    ( (#$theoneof ?var #$in ?set #$where ?test)	
       (lambda (fmode target var set test)
 	(cond ((not (km-varp var))
 	       (report-error 'user-error "~a: Second argument should be a variable (e.g., ?x)!~%" `(#$theoneof ,var #$in ,set #$where ,test)))
@@ -3341,14 +3341,14 @@ Just taking the first...(~a) ~%" kmexpr vals (first vals))
       (lambda (_fmode _target var bag constraint value)
 	   (declare (ignore  _fmode _target))
 	   (cond ((not (km-varp var))
-		  (report-error 'user-error "~a: Second argument should be a variable (e.g., ?x)!~%"
+		  (report-error 'user-error "~a: Second argument should be a variable (e.g., ?x)!~%" 
 				`(#$forall-bag ,var #$in ,bag #$where ,constraint ,value)))
 		 (t (let ( (bags (km-int bag)) )
 		      (cond ((or (not (singletonp bags))
 				 (not (km-bagp (first bags))))
 			     (report-error 'user-error "~a: ~a should evaluate to a single bag (:bag ... ...)!~%"
 					   `#$(forall-bag ,VAR in ,BAG where ,CONSTRAINT ,VALUE) bag))
-			    (t (list
+			    (t (list 
 				(cons '#$:bag
 				      (remove nil
 					      (mapcar #'(lambda (member)
@@ -3360,14 +3360,14 @@ Just taking the first...(~a) ~%" kmexpr vals (first vals))
       (lambda (_fmode _target var seq constraint value)
 	   (declare (ignore  _fmode _target))
 	   (cond ((not (km-varp var))
-		  (report-error 'user-error "~a: Second argument should be a variable (e.g., ?x)!~%"
+		  (report-error 'user-error "~a: Second argument should be a variable (e.g., ?x)!~%" 
 				`(#$forall-seq ,var #$in ,seq #$where ,constraint ,value)))
 		 (t (let ( (sequences (km-int seq)) )
 		      (cond ((or (not (singletonp sequences))
 				 (not (km-seqp (first sequences))))
 			     (report-error 'user-error "~a: ~a should evaluate to a single sequence (:seq ... ...)!~%"
 					   `#$(forall-seq ,VAR in ,SEQ where ,CONSTRAINT ,VALUE) seq))
-			    (t (list
+			    (t (list 
 				(cons '#$:seq
 				      (remove 'to-remove
 					      (mapcar #'(lambda (member)
@@ -3380,7 +3380,7 @@ Just taking the first...(~a) ~%" kmexpr vals (first vals))
 
 ;;; Given a function with zero arguments, KM will automatically evalute it.
     ( (function ?lispcode)		;;; NB NOT #$function, as we mean Lisp FUNCTION (#')
-      (lambda (_fmode _target lispcode)
+      (lambda (_fmode _target lispcode) 
 	(declare (ignore  _fmode _target))
 ;	(km-format t "CALLING FUNCTION~%")
 	   (let* ( (answer0 (funcall (eval (list 'function lispcode)))) ; lispcode can return a val, or list of vals
@@ -3389,7 +3389,7 @@ Just taking the first...(~a) ~%" kmexpr vals (first vals))
 		   (t (report-error 'user-error
 "In call to external Lisp procedure
   ~a
-Lisp procedure should return a list of fully evaluated KM objects (e.g.,
+Lisp procedure should return a list of fully evaluated KM objects (e.g., 
 instances, or :seq/:bag/:pair of instances), but instead returned:
    ~a~%" lispcode answer0))))) )
 
@@ -3398,22 +3398,22 @@ instances, or :seq/:bag/:pair of instances), but instead returned:
 ;;; ======================================================================
 
 ;;; Shorthands
-    ( (#$the1 ?slot #$of ?frameadd)
+    ( (#$the1 ?slot #$of ?frameadd)  
       (lambda (fmode target slot frameadd)
 	(km-int `#$(the1 of (the ,SLOT of ,FRAMEADD)) :fail-mode fmode :target target :rewritep t)) )
 
-    ( (#$the2 ?slot #$of ?frameadd)
+    ( (#$the2 ?slot #$of ?frameadd)  
       (lambda (fmode target slot frameadd)
 	(km-int `#$(the2 of (the ,SLOT of ,FRAMEADD)) :fail-mode fmode :target target :rewritep t)) )
 
-    ( (#$the3 ?slot #$of ?frameadd)
+    ( (#$the3 ?slot #$of ?frameadd)  
       (lambda (fmode target slot frameadd)
 	(km-int `#$(the3 of (the ,SLOT of ,FRAMEADD)) :fail-mode fmode :target target :rewritep t)) )
 
 ;;; ----------
 
 ;;; [1] New: tolerate (the1 of x), where x isn't structured
-    ( (#$the1 #$of ?frameadd)
+    ( (#$the1 #$of ?frameadd)  
       (lambda (fmode target frameadd)
 	(let ( (multiargs (km-int frameadd :fail-mode fmode :target target :rewritep t)) )
 	  (km-int (vals-to-val
@@ -3425,7 +3425,7 @@ instances, or :seq/:bag/:pair of instances), but instead returned:
 ;		(t (report-error 'user-error "~a! the1 expects multi-argument values for ~a, but got ~a instead!~%"
 ;				 `#$(the1 of ,FRAMEADD)  frameadd multiargs))))) )
 
-    ( (#$the2 #$of ?frameadd)
+    ( (#$the2 #$of ?frameadd)  
       (lambda (fmode target frameadd)
 	(let ( (multiargs (km-int frameadd :fail-mode fmode :target target :rewritep t)) )
 	 (km-int (vals-to-val
@@ -3436,7 +3436,7 @@ instances, or :seq/:bag/:pair of instances), but instead returned:
 ;		(t (report-error 'user-error "~a! the2 expects multi-argument values for ~a, but got ~a instead!~%"
 ;				 `#$(the2 of ,FRAMEADD)  frameadd multiargs))))) )
 
-    ( (#$the3 #$of ?frameadd)
+    ( (#$the3 #$of ?frameadd)  
       (lambda (fmode target frameadd)
 	(let ( (multiargs (km-int frameadd :fail-mode fmode :target target :rewritep t)) )
 	  (km-int (vals-to-val
@@ -3448,7 +3448,7 @@ instances, or :seq/:bag/:pair of instances), but instead returned:
 ;		(t (report-error 'user-error "~a! the3 expects multi-argument values for ~a, but got ~a instead!~%"
 ;				 `#$(the3 of ,FRAMEADD)  frameadd multiargs))))) )
 
-    ( (#$theN ?nexpr #$of ?frameadd)
+    ( (#$theN ?nexpr #$of ?frameadd)  
       (lambda (fmode target nexpr frameadd)
 	(let ( (n (km-unique-int nexpr :fail-mode 'error))
 	       (multiargs (km-int frameadd :fail-mode fmode :target target :rewritep t)) )
@@ -3457,14 +3457,14 @@ instances, or :seq/:bag/:pair of instances), but instead returned:
 		 (report-error 'user-error "Doing ~a. ~a should evaluate to a non-negative integer!~%" `#$(the ,NEXPR of ,FRAMEADD) nexpr))
 		(t (km-int (vals-to-val
 		    (mapcar #'(lambda (multiarg)
-			       (cond ((and (km-structured-list-valp multiarg)
+			       (cond ((and (km-structured-list-valp multiarg) 
 					   (< n (length multiarg)))		; elt returns error if n out of range under Mac CommonLisp
 				      (elt multiarg n))
 				     ((= n 1) multiarg)))					; nil otherwise
 			   multiargs))))))) )
 
 ;;; This is slightly bad naming but oh well. theN is used for a SINGLE structured value. theNth is used for multiple values (sets).
-    ( (#$theNth ?nexpr #$of ?frameadd)
+    ( (#$theNth ?nexpr #$of ?frameadd)  
       (lambda (fmode target nexpr frameadd)
 	(let ( (n (km-unique-int nexpr :fail-mode 'error))
 	       (vals (km-int frameadd :fail-mode fmode :target target :rewritep t)) )
@@ -3475,7 +3475,7 @@ instances, or :seq/:bag/:pair of instances), but instead returned:
 		      (elt vals (1- n)))
 		 (list (elt vals (1- n))))))) )
 
-;	        ((every #'km-structured-list-valp multiargs)
+;	        ((every #'km-structured-list-valp multiargs) 
 ;		 (mapcar #'(lambda (seq) (and (< n (length seq)) 		; NB (:seq 1 2 3) has 3 (not 4) elements
 ;					      (elt seq n))) multiargs))
 ;		(t (report-error 'user-error "~a! theN expects multi-argument values for ~a, but got ~a instead!~%"
@@ -3509,22 +3509,22 @@ instances, or :seq/:bag/:pair of instances), but instead returned:
 
 ;;; ----------------------------------------
 
-   ( (?expr + &rest) (lambda (fmode target expr rest)
-			  (let ( (x (km-unique-int expr :fail-mode fmode :target target :rewritep t))
+   ( (?expr + &rest) (lambda (fmode target expr rest) 
+			  (let ( (x (km-unique-int expr :fail-mode fmode :target target :rewritep t)) 
 				 (y (km-unique-int rest :fail-mode fmode :target target :rewritep t)) )
 			    (cond ((and (numberp x) (numberp y)) (list (+ x y)))))))
-   ( (?expr - &rest) (lambda (fmode target expr rest)
-			  (let ( (x (km-unique-int expr :fail-mode fmode :target target :rewritep t))
+   ( (?expr - &rest) (lambda (fmode target expr rest) 
+			  (let ( (x (km-unique-int expr :fail-mode fmode :target target :rewritep t)) 
 				 (y (km-unique-int rest :fail-mode fmode :target target :rewritep t)) )
 			    (cond ((and (numberp x) (numberp y)) (list (- x y)))))))
-   ( (?expr * &rest) (lambda (fmode target expr rest)
-			  (let ( (x (km-unique-int expr :fail-mode fmode :target target :rewritep t))
+   ( (?expr * &rest) (lambda (fmode target expr rest) 
+			  (let ( (x (km-unique-int expr :fail-mode fmode :target target :rewritep t)) 
 				 (y (km-unique-int rest :fail-mode fmode :target target :rewritep t)) )
 			    (cond ((and (numberp x) (numberp y)) (list (* x y)))))))
-   ( (?expr / &rest) (lambda (fmode target expr rest)
-			  (let ( (x (km-unique-int expr :fail-mode fmode :target target :rewritep t))
+   ( (?expr / &rest) (lambda (fmode target expr rest) 
+			  (let ( (x (km-unique-int expr :fail-mode fmode :target target :rewritep t)) 
 				 (y (km-unique-int rest :fail-mode fmode :target target :rewritep t)) )
-			    (cond
+			    (cond 
 			     ((and (numberp x) (numberp y))
 #|new|#			      (cond ((and (zerop x)
 					  (zerop y) (list 1)))
@@ -3532,8 +3532,8 @@ instances, or :seq/:bag/:pair of instances), but instead returned:
 #|new|#                             ((zerop y) (list *infinity*))
                                     ((and (numberp x) (numberp y)) (list (/ x y)))))))) )
 
-   ( (?expr1 ^ ?expr2) (lambda (fmode target expr1 expr2)
-			  (let ( (x (km-unique-int expr1 :fail-mode fmode :target target :rewritep t))
+   ( (?expr1 ^ ?expr2) (lambda (fmode target expr1 expr2) 
+			  (let ( (x (km-unique-int expr1 :fail-mode fmode :target target :rewritep t)) 
 				 (y (km-unique-int expr2 :fail-mode fmode :target target :rewritep t)) )
 			    (cond ((and (numberp x) (numberp y)) (list (expt x y)))))))
 
@@ -3542,7 +3542,7 @@ instances, or :seq/:bag/:pair of instances), but instead returned:
 ;      (lambda (_fmode) (declare (ignore _fmode)) nil) )
 
 ;;; also handled in faster mechanism directly in km1. Leave it here for completeness
-    ( #$nil
+    ( #$nil 
       (lambda (_fmode _target) (declare (ignore _fmode _target)) nil) )
 
     ( nil		; ie. NIL
@@ -3556,38 +3556,38 @@ instances, or :seq/:bag/:pair of instances), but instead returned:
 
    ;;; NOTE: These are NOT rewrites, they are breaking up a goal into subgoals
     ( (#$:seq &rest)					; for :seq, build a one-element long structure
-      (lambda (fmode target exprs)
+      (lambda (fmode target exprs) 
 	   (declare (ignore target fmode))
-	   (let ( (sequence (mapcar #'(lambda (expr)
+	   (let ( (sequence (mapcar #'(lambda (expr)  
 					(vals-to-val (km-int expr #|:target target :rewritep t|#))) exprs)) )
 	     (cond (sequence `#$((:seq ,@SEQUENCE)))))) )
 
     ( (#$:bag &rest)					; for :bag, build a one-element long structure
-      (lambda (fmode target exprs)
+      (lambda (fmode target exprs) 
 	   (declare (ignore target fmode))
-	   (let ( (bag (mapcar #'(lambda (expr)
-				   (vals-to-val (km-int expr #|:target target :rewritep t|#)))
+	   (let ( (bag (mapcar #'(lambda (expr)  
+				   (vals-to-val (km-int expr #|:target target :rewritep t|#))) 
 			       exprs)) )
 	     (cond (bag `#$((:bag ,@BAG)))))) )
 
     ( (#$:function &rest)				; Identical code for functions...
-      (lambda (fmode target exprs)
+      (lambda (fmode target exprs) 
 	   (declare (ignore target fmode))
 	   (let ( (sequence (mapcar #'(lambda (expr)  (vals-to-val (km-int expr #|:target target :rewritep t|#))) exprs)) )
 	     (cond (sequence `#$((:function ,@SEQUENCE)))))) )
 
     ( (#$:pair &rest)					; for :seq, build a one-element long structure
-      (lambda (fmode target exprs)
+      (lambda (fmode target exprs) 
 	   (declare (ignore target fmode))
 	   (cond ((not (pairp exprs))
 		  (report-error 'user-error "~a: A pair should have exactly two elements!~%" `#$(:pair ,@EXPRS)))
-	    (t (let ( (sequence (mapcar #'(lambda (expr)
+	    (t (let ( (sequence (mapcar #'(lambda (expr)  
 					    (vals-to-val (km-int expr #|:target target :rewritep t|#))) exprs)) )
 		 (cond (sequence `#$((:pair ,@SEQUENCE)))))))) )
 
 ;;; Dec 00 - make this reflexive
-;;; Apr 01 - Put evaluation back again -- but not quite! Argh, can't quite put this back to normal,
-;;; 	     because I want to account for subsumption with triples like
+;;; Apr 01 - Put evaluation back again -- but not quite! Argh, can't quite put this back to normal, 
+;;; 	     because I want to account for subsumption with triples like 
 ;;; 		(:triple *Pete owns (a House)) and (:triple *Pete owns (mustnt-be-a House))
     ( (#$:triple ?frame-expr ?slot-expr ?val-expr)					; for :seq, build a one-element long structure
       (lambda (_fmode _target frame-expr slot-expr val-expr)
@@ -3595,19 +3595,19 @@ instances, or :seq/:bag/:pair of instances), but instead returned:
 	(let* ((slot (cond ((comparison-operator slot-expr) slot-expr) 	; can't pass >= etc. to km-unique-int (it's a keyword)
 			   (t (km-unique-int slot-expr :fail-mode 'error))))
 	       (frame (cond ((and (comparison-operator slot)
-				  (minimatch frame-expr '#$(the ?x of ?y))) frame-expr)		; very special case - retain structure
+				  (minimatch frame-expr '#$(the ?x of ?y))) frame-expr)		; very special case - retain structure 
 			    (t (km-unique-int frame-expr :fail-mode 'error))))
 	       (val-expr0 (desource+decomment val-expr))	; There shouldn't be any comments here, but just in case!
 	       (val (cond ((or (constraint-exprp val-expr0)  ; NB better decomment or else comment
 			       (existential-exprp val-expr0) ;    may cause failure.
-			       (comparison-operator slot))
+			       (comparison-operator slot)) 
 			   val-expr0)	; preserve expressions (a House) or (mustnt-be-a House) or
 					;  		(:triple (the age of X) < (the age of Y))
 			  (t (vals-to-val (km-int val-expr))))) )
 	  `#$((:triple ,FRAME ,SLOT ,VAL)))) )
 
     ( (#$:args &rest)					; for :seq, build a one-element long structure
-      (lambda (fmode target exprs)
+      (lambda (fmode target exprs) 
 	   (declare (ignore fmode target))
 	   (let ( (sequence (mapcar #'(lambda (expr)  (vals-to-val (km-int expr))) exprs)) )
 	     (cond (sequence `#$((:args ,@SEQUENCE)))))) )
@@ -3672,7 +3672,7 @@ instances, or :seq/:bag/:pair of instances), but instead returned:
 	(declare (ignore fmode0 target))
 	(let ( (frame (km-unique-int frameadd :fail-mode 'error)) )
 	  (mapcar #'quotify (collect-constraints-on-instance frame slot)))) )
-
+      
     ( (#$rules-for (#$the ?slot #$of ?frameadd))
       (lambda (fmode0 target slot frameadd)
 	(declare (ignore fmode0 target))
@@ -3697,7 +3697,7 @@ instances, or :seq/:bag/:pair of instances), but instead returned:
     ( (#$justify)
       (lambda (fmode target)
 	(declare (ignore fmode target))
-	(justify)))
+	(justify))) 
 
     ( (#$justify ?triple)
       (lambda (fmode target triple)
@@ -3720,7 +3720,7 @@ instances, or :seq/:bag/:pair of instances), but instead returned:
 	(declare (ignore fmode target))
 	(list (concat-list (insert-delimeter (get-justification :triple triple :format 'ascii) *newline-str*)))) )
 ; 8/9/05 Remove "----"s
-;	(list
+;	(list 
 ;	 (concat-list
 ;	  (cons (format nil "--------------------~%")
 ;		(append (insert-delimeter (get-justification :triple triple :format 'ascii) *newline-str*)
@@ -3737,12 +3737,12 @@ instances, or :seq/:bag/:pair of instances), but instead returned:
 					    :ignore-clone-cycles t))
 		(dereference explanations)))
 	'#$(t)) )
-
+   
     ( (#$explained-by ?instance ?expr)
      (lambda (fmode target instance expr)
        (declare (ignore fmode target))
        (explained-by instance expr)) )
-
+	
     ( (#$comment ?comment-tag &rest)
       (lambda (fmode target comment-tag data)
 	(declare (ignore fmode target))
@@ -3754,13 +3754,13 @@ instances, or :seq/:bag/:pair of instances), but instead returned:
 	(show-comment comment-tag)) )
 
     ( (quote ?expr)
-       (lambda (fmode target expr)
+       (lambda (fmode target expr) 
 	(declare (ignore fmode target))
 	 (let ( (processed-expr (process-unquotes expr)) )
 	   (cond (processed-expr (list (list 'quote processed-expr)))))) )
 
     ( (unquote ?expr)
-       (lambda (fmode target expr)
+       (lambda (fmode target expr) 
 	(declare (ignore fmode target))
 	 (report-error 'user-error "Doing #,~a: You can't unquote something without it first being quoted!~%" expr)) )
 
@@ -3771,7 +3771,7 @@ instances, or :seq/:bag/:pair of instances), but instead returned:
 	 '#$(t)))
 
     ( (#$evaluate ?expr)		; Can't use eval, as that's a Lisp call!
-       (lambda (fmode target expr)
+       (lambda (fmode target expr) 
 	    (let ( (quoted-exprs (km-int expr :fail-mode fmode :target target :rewritep t)) )
 	      (remove nil
 	      (my-mapcan #'(lambda (quoted-expr)
@@ -3786,13 +3786,13 @@ instances, or :seq/:bag/:pair of instances), but instead returned:
 ;					   (val (cond ((constraint-exprp (fourth quoted-expr)) (fourth quoted-expr)) ; NEW: constraints *preserved*
 ;						      (t (vals-to-val (km-int (fourth quoted-expr)))))) ) ; allow val to be NIL, atom, :set
 ;				      `#$((:triple ,FRAME ,SLOT ,VAL))))
-				   (t (report-error 'user-error
+				   (t (report-error 'user-error 
 						    "(evaluate ~a)~%evaluate should be given a quoted expression to evaluate!~%"
 						    quoted-expr))))
 			 quoted-exprs)))) )
 
     ( (#$exists ?frame)
-      (lambda (fmode target frame)
+      (lambda (fmode target frame) 
 	(report-error 'user-warning "(exists ~a): (exists <expr>) has been renamed (has-value <expr>) in KM 1.4.~%       Please update your KB! Continuing...~%" frame)
 	(km-int `#$(has-value ,FRAME) :fail-mode fmode :target target :rewritep t)) )
 
@@ -3800,39 +3800,39 @@ instances, or :seq/:bag/:pair of instances), but instead returned:
       (lambda (_fmode _target frame) (declare (ignore  _fmode _target)) (cond ((km-int frame) '#$(t)))) )
 
     ( (#$print ?expr)
-      (lambda (_fmode _target expr)
-	(declare (ignore _fmode _target))
+      (lambda (_fmode _target expr) 
+	(declare (ignore _fmode _target)) 
 	(let ( (vals (km-int expr)) )
 	  (km-format t "~a~%" vals)
 	  vals )))
 
     ( (#$format ?flag ?string &rest)
-      (lambda (_fmode _target flag string arguments)
-	(declare (ignore _fmode _target))
+      (lambda (_fmode _target flag string arguments) 
+	(declare (ignore _fmode _target)) 
 	(cond ((eq flag '#$t)
 	       (apply #'format `(t ,string ,@(mapcar #'(lambda (arg) (km-int arg)) arguments)))
 	      '#$(t))
 	      ((member flag '#$(nil NIL))
 	       (list (apply #'format `(nil ,string ,@(mapcar #'(lambda (arg) (km-int arg)) arguments)))))
-	      (t (report-error 'user-error "~a: Second argument must be `t' or `nil', not `~a'!~%"
+	      (t (report-error 'user-error "~a: Second argument must be `t' or `nil', not `~a'!~%" 
 			       `(#$format ,flag ,string ,@arguments) flag)))) )
-
+	       
     ( (#$km-format ?flag ?string &rest)
-      (lambda (_fmode _target flag string arguments)
-	(declare (ignore _fmode _target))
+      (lambda (_fmode _target flag string arguments) 
+	(declare (ignore _fmode _target)) 
 	(cond ((eq flag '#$t)
 	       (apply #'km-format `(t ,string ,@(mapcar #'(lambda (arg) (km-int arg)) arguments)))
 	      '#$(t))
 	      ((member flag '#$(nil NIL))
 	       (list (apply #'km-format `(nil ,string ,@(mapcar #'(lambda (arg) (km-int arg)) arguments)))))
-	      (t (report-error 'user-error "~a: Second argument must be `t' or `nil', not `~a'!~%"
+	      (t (report-error 'user-error "~a: Second argument must be `t' or `nil', not `~a'!~%" 
 			       `(#$km-format ,flag ,string ,@arguments) flag)))) )
-
+	       
 ;;; (_car1) -> (_car1)
 ;;; (_car1 _car2) -> (_car1 "and" _car2)
 ;;; (_car1 _car2 _car3) -> (_car1 "," _car2 ", and" _car3)
-    ( (#$andify ?expr)
-      (lambda (fmode target expr)
+    ( (#$andify ?expr)			
+      (lambda (fmode target expr) 
 	(list (cons '#$:seq (andify (km-int expr :fail-mode fmode :target target :rewritep t))))) ) ; to avoid removing duplicate ", "s
 
 ;;; [1] 6.9.00 - allow the subquery to fail quietly. The parent call can handle it as an error, if it so desires.
@@ -3857,7 +3857,7 @@ instances, or :seq/:bag/:pair of instances), but instead returned:
     ( (#$pluralize ?expr)
       (lambda (fmode target expr)
 	(declare (ignore fmode target))
-	(report-error 'user-error
+	(report-error 'user-error 
 		      "(pluralize ~a): pluralize is no longer defined in KM1.4 - use \"-s\" suffix instead!~%" expr)) )
 
 ;;; ======================================================================
@@ -3878,7 +3878,7 @@ instances, or :seq/:bag/:pair of instances), but instead returned:
       (lambda (fmode target)
 	(declare (ignore fmode target))
 	(unspy)) )
-
+    
     ((#$profile ?expr)
      (lambda (fmode target expr)
        (declare (ignore fmode target))
@@ -3911,28 +3911,28 @@ instances, or :seq/:bag/:pair of instances), but instead returned:
 	(cond ((null args) (taxonomy))
 	      ((singletonp args) (taxonomy (km-unique (first args))))
 	      ((pairp args) (taxonomy (km-unique (first args)) (km-unique (second args))))
-	      (t (report-error 'user-error
+	      (t (report-error 'user-error 
 			       "Too many arguments to the taxonomy function! Format is (taxonomy <top-node> <relation-to-descend>)~%")))) )
 
 ;;; ======================================================================
 ;;;		ROLLBACK MECHANISM
 ;;; ======================================================================
 
-    ( (#$checkpoint)
-      (lambda (fmode target)
-	(declare (ignore fmode target))
+    ( (#$checkpoint) 
+      (lambda (fmode target) 
+	(declare (ignore fmode target)) 
 	(set-checkpoint) '#$(t)) )
 
     ( (#$checkpoint ?checkpoint-id)
       (lambda (fmode target checkpoint-id)
-	(declare (ignore fmode target))
+	(declare (ignore fmode target)) 
 	(cond ((null checkpoint-id)
 	       (report-error 'user-error "(checkpoint ~a): Argument to checkpoint can't be NIL!~%" checkpoint-id))
 	      (t (set-checkpoint checkpoint-id) '#$(t)))))
 
     ( (#$undo)					; called only from within a program (km ...), NOT from the KM prompt
-      (lambda (fmode target)
-	(declare (ignore fmode target))
+      (lambda (fmode target) 
+	(declare (ignore fmode target)) 
 	(cond ((undo) '#$(t)))) )
 
 ;;; This is rather an ugly macro...oh well, let's leave it here
@@ -3960,8 +3960,8 @@ instances, or :seq/:bag/:pair of instances), but instead returned:
 	  (cond ((null seq) nil)
 		((km-seqp seq)
 		 (list (cons '#$:seq (reverse (rest seq)))))
-		(t (report-error 'user-error
-				 "Attempting to reverse a non-sequence ~a!~%[Sequences should be of the form (:seq <e1> ... <en>)]~%"
+		(t (report-error 'user-error 
+				 "Attempting to reverse a non-sequence ~a!~%[Sequences should be of the form (:seq <e1> ... <en>)]~%" 
 				 seq-expr))))))
 
     ( (#$:default ?expr)			 ; strip off and ignore :default flag
@@ -3982,11 +3982,11 @@ instances, or :seq/:bag/:pair of instances), but instead returned:
 	(declare (ignore fmode target))
 	(cond ((anonymous-instancep (km-unique-int expr :fail-mode 'error)) '#$(t)))) )
 
-;;; [1] below: NEW: Here make another top level call, so
+;;; [1] below: NEW: Here make another top level call, so 
 ;;;	(i) the trace is easier to follow during debugging
 ;;;	(ii) the looping checker jumps in at the right moment
 ;;; [1] e.g., user may want extra parentheses around maths: ((2 + 3) + (4)) should be a valid expression
-
+ 
     ( ?path
       (lambda (fmode0 target path)
 	(declare (ignore target))
@@ -4002,7 +4002,7 @@ instances, or :seq/:bag/:pair of instances), but instead returned:
 		 ((and (triplep path)
 		       (assoc (second path) *user-defined-infix-operators*))
 		  (let ( (infix-implementation-fn (second (assoc (second path) *user-defined-infix-operators*))) )
-		    (cond
+		    (cond 
 		     ((not (functionp infix-implementation-fn))
 		      (report-error 'user-error "
 The specified implementation of infix operator ~a is not a Lisp function! (missing \"#'\" prefix?)
@@ -4015,7 +4015,7 @@ The specified implementation was: ~a~%" (second path) infix-implementation-fn))
 				(t (report-error 'user-error
 					   "In call to external Lisp procedure
 (~a ~a ~a)
-Lisp procedure should return one/a list of fully evaluated KM objects (e.g.,
+Lisp procedure should return one/a list of fully evaluated KM objects (e.g., 
 instances, or :seq/:bag/:pair of instances), but instead returned:
    ~a~%" infix-implementation-fn x y answer0))))))))
 		 ((not *linear-paths*)
@@ -4035,12 +4035,12 @@ instances, or :seq/:bag/:pair of instances), but instead returned:
 					      (t (butlast path))))			; (f s f' s') -> (f s f')
 			      (slot0 (last-el path)) )
 			(cond ((structured-slotp slot0)
-			       (follow-multidepth-path (km-int frameadd :fail-mode fmode0)
+			       (follow-multidepth-path (km-int frameadd :fail-mode fmode0) 
 						       slot0 '* :fail-mode fmode0))   ; target-class = *
 			      (t (let* ( (slot (cond ((pathp slot0) (km-unique-int slot0 :fail-mode 'error))
-						     (t slot0)))
+						     (t slot0))) 
 					 (fmode (cond ((built-in-aggregation-slot slot) 'fail)
-						      (t fmode0)))
+						      (t fmode0))) 
 					 (frames (km-int frameadd :fail-mode fmode)) )
 				   (cond ((not (equal frames (val-to-vals frameadd)))
 					  (km-int `#$(,(VALS-TO-VAL FRAMES) ,SLOT) :fail-mode fmode))	; [1]
@@ -4056,17 +4056,17 @@ instances, or :seq/:bag/:pair of instances), but instead returned:
 
 
 ;;; ======================================================================
-;;;		QUOTED PATHS eg.  (Delta owns Plane (part *) Wing)
+;;;		QUOTED PATHS eg.  (Delta owns Plane (part *) Wing) 
 ;;;
-;;; a quoted path is of form:
+;;; a quoted path is of form: 
 ;;;		(...... <slot-structure> <target-class>)
-;;; where <slot-structure> is of the form
+;;; where <slot-structure> is of the form 
 ;;;		(<slot> *)
 ;;;   or 	(<slot> * <depth-limit>)
 ;;; ======================================================================
 
 ;;; here path is necessarily an ODD length, thus the last element is a target CLASS.
-(defun structured-slotp (slot)
+(defun structured-slotp (slot) 
   (and (listp slot) (eq (second slot) '*)))
 
 (defun follow-multidepth-path (values structured-slot target-class &key (fail-mode 'fail))
@@ -4075,10 +4075,10 @@ instances, or :seq/:bag/:pair of instances), but instead returned:
 	 (depth-limit (or (third structured-slot) *multidepth-path-default-searchdepth*)) )
     (cond ((null values) nil)
 	  ((not (integerp depth-limit))
-	   (report-error 'user-error "Non-integer depth ~a given for slot-structure ~a in quoted path!~%"
+	   (report-error 'user-error "Non-integer depth ~a given for slot-structure ~a in quoted path!~%" 
 			 depth-limit structured-slot))
 	  ((< depth-limit 1)
-	   (report-error 'user-error "Depth ~a given for slot-structure ~a in quoted path must be >= 1!~%"
+	   (report-error 'user-error "Depth ~a given for slot-structure ~a in quoted path must be >= 1!~%" 
 			 depth-limit structured-slot))
 	  (t (vals-in-class (follow-multidepth-path0 values slot depth-limit) target-class)))))
 
@@ -4087,7 +4087,7 @@ instances, or :seq/:bag/:pair of instances), but instead returned:
   (cond ((<= depth-limit 0) values-so-far)
 	((null values) values-so-far)
 	(t (let* ((new-values (km-int `#$(the ,SLOT of ,(VALS-TO-VAL VALUES)) :fail-mode 'fail))
-		  (novel-new-values (ordered-set-difference new-values (append start-values values-so-far)
+		  (novel-new-values (ordered-set-difference new-values (append start-values values-so-far) 
 							    :test #'equal)))
 	     (follow-multidepth-path0 novel-new-values slot (1- depth-limit)
 				      :start-values values :values-so-far (append values-so-far novel-new-values))))))
@@ -4117,8 +4117,8 @@ instances, or :seq/:bag/:pair of instances), but instead returned:
 	   (km-multi-slotvals0 frames slot)))))
 
 ;;; Returns a *LIST* of values   ((car) && (joe bad xd))
-(defun km-multi-slotvals0 (frames slot)
-  (cond
+(defun km-multi-slotvals0 (frames slot)   
+  (cond 
    ((not (check-isa-slot-object slot)) nil)
    ((and (eq slot '#$number) (null frames)) '(0))
 ;  ((null frames) nil)		No! Let aggregation of zero items continue
@@ -4130,7 +4130,7 @@ instances, or :seq/:bag/:pair of instances), but instead returned:
 	(#$third (list (third frames)))
 	(#$fourth (list (fourth frames)))
 	(#$fifth (list (fifth frames)))
-	(#$last (last frames))
+	(#$last (last frames)) 
 	(#$number (list (length frames)))
 	(#$bag `#$((:bag ,@FRAMES)))
 	(#$seq `#$((:seq ,@FRAMES)))
@@ -4151,10 +4151,10 @@ instances, or :seq/:bag/:pair of instances), but instead returned:
 			((and (singletonp frames) (km-bagp (first frames)))
 			 (let ( (appended (append-bags (first frames))) )
 			   (cond (appended (list appended)))))
-			(t (report-error 'user-error
+			(t (report-error 'user-error 
 					 "(the append of ~a): argument should be a single sequence of sequences, or bag of bags!"
 					 (vals-to-val frames)))))
-	(t (cond
+	(t (cond 
 	    ((and (member slot '#$(min max))				; can apply this to sets, as well as bags
 		  (not (singletonp frames)))
 	     (cond ((null frames)
@@ -4169,18 +4169,18 @@ instances, or :seq/:bag/:pair of instances), but instead returned:
 	     '(0))
 	    ((isa slot '#$Set-Aggregation-Slot)
 	     (let ( (quoted-function-name (km-unique-int `#$(the aggregation-function of ,SLOT))) )
-	       (cond
+	       (cond 
 		((not quoted-function-name)
 		 (report-error 'user-error "No aggregation-function definition given for the Aggregation-Slot ~a!~%" slot))
 		((not (quotep quoted-function-name))
-		 (report-error 'user-error
+		 (report-error 'user-error 
 			   "Function definition for Aggregation-Slot ~a should be a~%quoted function (eg. \"(sum has (aggregation-function ('#'+)))\"~%"
 			   slot))
 		(t (let ( (function (eval (second quoted-function-name))) )
-		     (cond
+		     (cond 
 		      ((not (functionp function))
 		       (report-error 'user-error
-			     "Function definition for Aggregation-Slot ~a should be~%a function! (eg. \"(sum has (aggregation-function ('#'+)))\"~%"
+			     "Function definition for Aggregation-Slot ~a should be~%a function! (eg. \"(sum has (aggregation-function ('#'+)))\"~%" 
 			     slot))
 		      (t (list (apply function (list frames))))))))))
 	    ((null frames) nil)
@@ -4207,7 +4207,7 @@ instances, or :seq/:bag/:pair of instances), but instead returned:
 ;;;   - slot is atomic. Frame may be a kb-instance (including (:set ...) (:triple ...)) or a string or number
 ;;;   - return the evaluated *list* of values for the slot of frame.
 ;;; NOTE: frame is already assumed to be dereferenced (using dereference)
-;;;     before this procedure is called.
+;;;     before this procedure is called. 
 ;;; This procedure first filters special cases, then calls km-slotvals-from-kb
 ;;;	for handling standard queries.
 (defun km-slotvals (frame slot &key (fail-mode 'fail))
@@ -4218,8 +4218,8 @@ instances, or :seq/:bag/:pair of instances), but instead returned:
 	     (quoted-expressionp frame))
 	 (case slot 				 ; (the name of (:triple *john wants *cash))
 	   (#$name  (list (km-name frame))) ; returns "john wants cash"
-	   (#$(instance-of classes) (tidy-classes slot (immediate-classes frame :enforce-constraints t))) ; synonyms
-	   (#$all-classes           (all-classes frame))
+	   (#$(instance-of classes) (tidy-classes slot (immediate-classes frame :enforce-constraints t))) ; synonyms	   
+	   (#$all-classes           (all-classes frame))	   
 ; No, just fail quietly I think.
 ;	   (t       (report-error 'user-error "I don't know how to take the ~a of a triple ~a!~%" slot frame))
 	   ))
@@ -4229,7 +4229,7 @@ instances, or :seq/:bag/:pair of instances), but instead returned:
 	((member slot '#$(sum min max average difference product quotient))
 	 (cond ((km-bagp frame)
 		(let ( (frames (bag-to-list frame)) )
-		  (case slot
+		  (case slot 
 			(#$sum (aggregate-vals #'+ frames))
 			(#$average (cond ((and (every #'numberp frames)
 					       (not (null frames)))
@@ -4244,7 +4244,7 @@ instances, or :seq/:bag/:pair of instances), but instead returned:
 				"(the ~a of ~a): ~a should be given a bag (:bag ...) as an argument!~% [(the bag of <set>) will convert sets to bags]"
 				slot frame slot))))
 	((km-argsp frame)						; (the age of (:args Pete Clark)) -> (the age of Pete)
-	 (km-int `#$(the ,SLOT of ,(SECOND FRAME)) :fail-mode fail-mode))
+	 (km-int `#$(the ,SLOT of ,(SECOND FRAME)) :fail-mode fail-mode))	
 	((eq slot '#$elements)
 	 (cond ((not (km-structured-list-valp frame))
 		(report-error 'user-error "Trying to find the elements of a non-sequence/non-bag ~a!~%Continuing, returning (~a)...~%" frame frame)
@@ -4261,8 +4261,8 @@ instances, or :seq/:bag/:pair of instances), but instead returned:
 	((km-functionp frame)
 	 (report-error 'user-error "Trying to take the slot of a function (not allowed!)~%     Doing (the ~a of ~a)~%" slot frame))
 	((km-structured-list-valp frame)			; :triple, :args, :function handled earlier
-	 (list (cons (first frame) (my-mapcan #'(lambda (el)
-						  (km-int `#$(the ,SLOT of ,EL) :fail-mode fail-mode))
+	 (list (cons (first frame) (my-mapcan #'(lambda (el) 
+						  (km-int `#$(the ,SLOT of ,EL) :fail-mode fail-mode)) 
 					      (rest frame)))))
 	((class-descriptionp frame)			; eg. '(every Dog)
 	 (case slot
@@ -4319,7 +4319,7 @@ instances, or :seq/:bag/:pair of instances), but instead returned:
 	   (km-trace 'comment " (the ~a of ~a) = ~a))" slot frame values)
 	   values))
         ((check-situations-mode frame slot) nil)
-;;; New check added to make sure there's no inferencing attempted on prototypes (unless in prototype mode)
+;;; New check added to make sure there's no inferencing attempted on prototypes (unless in prototype mode)	
 	((and (protoinstancep frame)
 	      (not (am-in-prototype-mode)))
 	 (report-error 'user-warning
@@ -4330,7 +4330,7 @@ instances, or :seq/:bag/:pair of instances), but instead returned:
 				"The (get-vals '#$~a '#$~a :situation *global-situation*) returned a structure which isn't fully evaluated!~%        ~a~%"
 				slot frame (desource+decomment vals))))
 	   vals))
-	((prog1
+	((prog1 
 	     (km-slotvals-from-kb frame slot :fail-mode fail-mode)
 	   (do-postponed-classifications frame slot)))
 	((eq slot '#$name)			; failed to compute it so generate it
@@ -4350,7 +4350,7 @@ instances, or :seq/:bag/:pair of instances), but instead returned:
 ;;; returns t if no reserved keywords, nil otherwise
 (defun no-reserved-keywords (vals)
   (cond ((not (intersection vals *reserved-keywords*)))
-	(t (report-error 'user-error
+	(t (report-error 'user-error 
 "Keyword(s) ~a found where concept name(s) were expected, within a
 list of ~a KM expressions: ~a
 (Error = missing parentheses?)~%"
@@ -4395,24 +4395,24 @@ list of ~a KM expressions: ~a
 ;;; Just used by me for tidying up the code
 (defun find-ignored ()
   (mapc #'(lambda (entry)
-	    (let* ( (pattern+vars+body (minimatch entry '(?pattern (lambda ?vars &rest))))
+	    (let* ( (pattern+vars+body (minimatch entry '(?pattern (lambda ?vars &rest)))) 
 		    (pattern (first pattern+vars+body))
 		    (vars (second pattern+vars+body))
 		    (body (third pattern+vars+body))
-		    (flat-body (flatten body))
+		    (flat-body (flatten body)) 
 		    (ignored-vars (remove-if #'(lambda (var) (member var flat-body)) vars)) )
 	      (mapc #'(lambda (ignored-var)
 			(km-format t "pattern: ~a - variable ~a ignored~%" pattern ignored-var))
 		    ignored-vars)))
 	*km-handler-alist*)
   t)
-
+	      
 
 ;;; ---------- for Jerome...
 
 (defun rules-for (slot frameadd &key retain-commentsp)
   (let* ( (frame (km-unique-int frameadd :fail-mode 'error)) )
-    (val-sets-to-expr (append (own-rule-sets frame slot :retain-commentsp retain-commentsp)
+    (val-sets-to-expr (append (own-rule-sets frame slot :retain-commentsp retain-commentsp) 
 			      (inherited-rule-sets frame slot :retain-commentsp retain-commentsp))
 		      :single-valuedp (single-valued-slotp slot))))
 
@@ -4424,7 +4424,7 @@ list of ~a KM expressions: ~a
 (defun allof-must (var set test)
   (cond ((not (km-varp var))
 	 (report-error 'user-error "~a: Second argument should be a variable (e.g., ?x)!~%" `(#$allof ,var #$in ,set #$must ,test)))
-	((every #'(lambda (instance)
+	((every #'(lambda (instance) 
 		    (km-int (subst instance var test)))
 		(km-int set))
 	 '#$(t))))
@@ -4432,7 +4432,7 @@ list of ~a KM expressions: ~a
 (defun allof-where-must (var set test2 test)
   (cond ((not (km-varp var))
 	 (report-error 'user-error "~a: Second argument should be a variable (e.g., ?x)!~%" `(#$allof ,var #$in ,set #$where ,test2 #$must ,test)))
-	((every #'(lambda (instance)
+	((every #'(lambda (instance) 
 		    (km-int (subst instance var test)))
 		(km-int `#$(allof ,VAR in ,SET where ,TEST2)))
 	 '#$(t))))
@@ -4488,9 +4488,9 @@ There are six sources of information for finding a slot's value:
 There are two caveats:
   1. We want to make an intermediate save of the results of 1-4 before adding in 5,
 	to avoid a special case of looping during subsumption checks.
-  2. If the slot is single-valued, then the projected value (1) should not be
+  2. If the slot is single-valued, then the projected value (1) should not be 
 	automatically combined in. Instead, (2-5) should first be computed, then
- 	if (1) is consistent with the combination of (2-5), it should be then unified
+ 	if (1) is consistent with the combination of (2-5), it should be then unified 
 	in, otherwise discarded.
      The procedure which handles this special case of projection is maybe-project-value.
 
@@ -4501,7 +4501,7 @@ was doing during the trace, although it makes the actual source code less clear 
 |#
 
 ;;; ======================================================================
-
+		     
 (defun km-slotvals-from-kb (instance0 slot &key fail-mode &aux (n 0))	; n for tracing purposes
  (declare (ignore fail-mode))
 
@@ -4529,14 +4529,14 @@ was doing during the trace, although it makes the actual source code less clear 
 				(pull-in-frame instance)
 				(mark-frame-as-done instance))))		; so it's never pulled in a second time.
 		Now it's pulled in, own-rule-sets will collect the data locally, not in *Global
-|#
+|#	  
 
 ;;; ---------- 0 3/4. COLLECT ALL THE RULE DATA NEEDED ----------
 
 ;;; NOTE: These basic parameters are computed *after* adding in prototypes, in case the prototypes extended
 ;;; some of data (specifically, own rules and constraints).
 #|
-[1] Special case:
+[1] Special case: 
 	(every Transcribe has
 	  (subevent ((a Copy with
 			(next-event ((if <test> then (the Copy subevent of Self) else ...)))))))
@@ -4572,7 +4572,7 @@ to be enforced (?).
 	  (instance (dereference instance0))
 	  (_check-prototype (cond ((and (protoinstancep instance)
 	  			        (not (am-in-prototype-mode)))
-			          (report-error 'user-error
+			          (report-error 'user-error 
 				  "Attempt to query a protoinstance ~a when not in prototype mode!~%         Doing (the ~a of ~a)~%"
 				  instance slot instance))))
 	  (target `(#$the ,slot #$of ,instance))
@@ -4581,27 +4581,27 @@ to be enforced (?).
 
 	  (inherited-rule-sets-x			; [1]
 	   (cond ((use-inheritance)
-		  (cond ((and (not own-rule-sets)	; avoid doing this multiple times: If the rule's already fired, don't need to re-refer to
-			      (am-in-local-situation) 					; the Skolem object
+		  (cond ((and (not own-rule-sets)	; avoid doing this multiple times: If the rule's already fired, don't need to re-refer to 
+			      (am-in-local-situation) 					; the Skolem object		
 			      (not (fluentp slot)))	; [2]
 			 (let ( (global-inherited-rule-sets (inherited-rule-sets instance slot :retain-commentsp t))
 				(local-inherited-rule-sets (inherited-rule-sets instance slot :retain-commentsp t :climb-situation-hierarchyp nil)) )
 			   (append local-inherited-rule-sets (reify-existentials-in-rule-sets global-inherited-rule-sets))))
 			(t (inherited-rule-sets instance slot :retain-commentsp t))))))  ; 2D search up classes and sitns
 
-	  (inherited-rule-sets
-	  	(cond (combine-values-by-appendingp
+	  (inherited-rule-sets 
+	  	(cond (combine-values-by-appendingp 
 		       (let ((xx (append-lists inherited-rule-sets-x)))
 		         (cond (xx (list xx)))))
 		      (t inherited-rule-sets-x)))
-
+		
 	  (inherited-rule-sets-all 	; for constraints with inherits-with-overrides, need ALL constraints still!
 	      (cond ((and (use-inheritance)
 	                  (not (inherit-with-overrides-slotp slot)))
 		     inherited-rule-sets)
-		    (t (inherited-rule-sets instance slot :retain-commentsp t
+		    (t (inherited-rule-sets instance slot :retain-commentsp t 
 		                            :ignore-inherit-with-overrides-restriction t))))
-	  (inherited-constraints (mapcan #'find-constraints-in-exprs inherited-rule-sets-all))   ; from classes
+	  (inherited-constraints (mapcan #'find-constraints-in-exprs inherited-rule-sets-all))   ; from classes	   
 
 	  (constraints (append inherited-constraints own-constraints))
 	  (no-inheritancep (and *use-no-inheritance-flag* (member '#$(no-inheritance) constraints :test #'equal)))
@@ -4621,8 +4621,8 @@ to be enforced (?).
 	  			    (cond ((and (tracep) (not (traceunifyp)))
 				           (let ((*trace* nil))
 					     (filter-using-constraints projected-vals0 constraints slot)))
-;				           (prog2 (suspend-trace)
-;					   (filter-using-constraints projected-vals0 constraints slot)
+;				           (prog2 (suspend-trace) 
+;					   (filter-using-constraints projected-vals0 constraints slot) 
 ;					   (unsuspend-trace)))
 					  (t (km-trace 'comment "(~ab) Test projected values ~a against constraints ~a" n projected-vals0 constraints)
 					     (filter-using-constraints projected-vals0 constraints slot))))
@@ -4634,11 +4634,11 @@ to be enforced (?).
 				       (not (equal projected-vals0 projected-vals))
 				       (km-trace 'comment "    Discarding projected values ~a (conflicts with constraints ~a)"
 						 (set-difference projected-vals0 projected-vals) constraints)))))
-	 (_project2-dummy (cond ((and projected-vals
+	 (_project2-dummy (cond ((and projected-vals 
 	                              multivaluedp)		; projection may fail later for single-valued slots (see maybe-project-val below)
 				  (let ( (prev-situation (prev-situation (curr-situation) instance)) )
-  				           (mapc #'(lambda (projected-val)
-					      (record-explanation-for target projected-val `(#$projected-from ,prev-situation)))
+  				           (mapc #'(lambda (projected-val) 
+					      (record-explanation-for target projected-val `(#$projected-from ,prev-situation))) 
 					  projected-vals)	; [1]
 				    (make-comment "Projected (the ~a of ~a) = ~a from ~a to ~a"
 							     slot instance projected-vals prev-situation (curr-situation))))))
@@ -4661,7 +4661,7 @@ to be enforced (?).
 #|
 [1] For non-fluents, although we ensure that values of slot will be stored in
 *Global (by put-slotvals in frame-io.lisp), we must also ensure that any direct *side effects*
-during the computation are *also* stored in *Global. This is because all the expr sets
+during the computation are *also* stored in *Global. This is because all the expr sets 
 necessarily came from *Global in the first place, but we (below) skip doing the computation
 in *Global by default for non-fluents.
 [Note we don't *only* do the computation in *Global, as the local situation alone may have the
@@ -4674,14 +4674,14 @@ Note indirect side-effects will be handled automatically by a recursive call to 
 ;;; [2] If the slot's a fluent, then we should apply the rules in the global situation to
 ;;;     make sure the global situation gets updated.
 ;;;     If it isn't, then we don't need to bother as the result will be posted back to
-;;;     the global situation anyway. We collect the "global values" and "global rules"
+;;;     the global situation anyway. We collect the "global values" and "global rules" 
 ;;;     later on and apply them locally here. *EXCEPT* for Events -- where we might not
-;;;     apply the global rules locally (if the action's not been carried out yet).
+;;;     apply the global rules locally (if the action's not been carried out yet). 
 ;;;   QN: What about unactualized actions, where we want to test preconditions? We may
 ;;;       want to apply global rules to local data to find the action's slot-values, but
 ;;;	  we block this later at [**]. So we'll miss some info.
 ;;;     For Events, although their slots are non-fluents, we still might want to collect
-;;; blocked, so in this special case we must look up
+;;; blocked, so in this special case we must look up 
 
 #|
 11/13/03: This bit of code is now redundant. Reasoning in a situation will NOT include switching to the parent
@@ -4693,7 +4693,7 @@ extend it to ALL parent situations.
 	  (supersituations (cond (supersituations0
 				  (remove *global-situation* supersituations0))
 				 (t supersituations0)))
-	  (supersituation-vals (cond ((and supersituations
+	  (supersituation-vals (cond ((and supersituations 
 					   (or (fluentp slot)	; If the slot isn't a fluent, then supersituations won't contribute anything
 					       (contains-some-existential-exprs inherited-rule-sets)
 					       (contains-some-existential-exprs own-rule-sets)))
@@ -4702,7 +4702,7 @@ extend it to ALL parent situations.
 					     (km-trace 'comment "(~a) Look in supersituation(s)" n)))
 ; not used any more		      (remove-fluent-instances
 				       (km-int (val-sets-to-expr
-						(mapcar #'(lambda (sitn)
+						(mapcar #'(lambda (sitn) 
 							    `#$((in-situation ,SITN (the ,SLOT of ,INSTANCE0))))
 							supersituations)
 						:combine-values-by-appendingp combine-values-by-appendingp
@@ -4717,7 +4717,7 @@ extend it to ALL parent situations.
 			      (cond ((tracep)				 ;     val, eg. from lazy unification)
 				     (setq n (1+ n))
 ;				     (km-format t "own-rule-sets = ~a~%" own-rule-sets)
-				     (km-trace 'comment "(~a) Local value(s): ~a" n
+				     (km-trace 'comment "(~a) Local value(s): ~a" n 
 					  (val-sets-to-expr own-rule-sets :single-valuedp single-valuedp))))
 			      (cond ((and (singletonp own-rule-sets)			 ; (a) no evaluation necessary
 					  (singletonp (first own-rule-sets))		; just ONE set of ONE item
@@ -4727,11 +4727,11 @@ extend it to ALL parent situations.
 					      (first (first own-rule-sets))))
 				      (first own-rule-sets))
 				    (t 				 ; (b) some evaluation necesary (eg. path in local slot)
-				    (km-int (val-sets-to-expr own-rule-sets
+				    (km-int (val-sets-to-expr own-rule-sets 
 				    		:combine-values-by-appendingp combine-values-by-appendingp
-				    		:single-valuedp single-valuedp)
+				    		:single-valuedp single-valuedp) 
 					    :target target))))))
-
+	
 ;;; Need to get these before the intermediate save, which may clobber them!
 	  (local-constraints (let ( (local-situation (target-situation (curr-situation) instance slot)) )
 			       (find-constraints-in-exprs (bind-self (get-vals instance slot :situation local-situation) instance))))
@@ -4739,9 +4739,9 @@ extend it to ALL parent situations.
 ;;; ---------- (1 or 2)-4. INTERMEDIATE COMBINE AND SAVE OF VALS (but not rules) ----------
 
 #| SPECIAL CASE: Storing intermediate result.
-   Now we store the intermediate result, in case when applying the rules we need to see
-   what we've got so far. [Case in point: _Engine23 from supersituation, (a Engine with
-   (connects ((the parts of ...)))) from classes, and if we fail to show (a Engine.. )
+   Now we store the intermediate result, in case when applying the rules we need to see 
+   what we've got so far. [Case in point: _Engine23 from supersituation, (a Engine with 
+   (connects ((the parts of ...)))) from classes, and if we fail to show (a Engine.. ) 
    subsumes _Engine23 due to subsumption check, we still want to assert _Engine23].
 
 [1] projecting a single-valued slot is done *later*
@@ -4749,13 +4749,13 @@ extend it to ALL parent situations.
 |#
 
 	  (n-first-source (cond ((and try-projectionp single-valuedp) 2) (t 1)))   ; [1]
-;	  (n-sources (length
-;		      (remove nil
+;	  (n-sources (length 
+;		      (remove nil 
 ;			      (list try-projectionp subslots supersituations own-rule-sets inherited-rule-sets))))
 	  (n-sources n)			; why bother computing them? Some may be nil, but that's fine.
 	  (val-sets (remove-duplicates
 		     (remove nil `(,(cond (multivaluedp projected-vals))  ; val-sets *EXCLUDES* inherited-rule-sets
-				   ,subslot-vals
+				   ,subslot-vals		
 				   ,supersituation-vals
 				   ,local-vals))
 ;				   ,@cloned-valsets))		; now merged in at set 3 1/2
@@ -4770,8 +4770,8 @@ of the two values. But instead they get asserted as two values, which later can 
 error. Let's patch this one, but JUST to check for forced unifications.
 |#
 
-	  (vals
-	   (cond
+	  (vals 
+	   (cond 
 	    ((null val-sets) nil)		  	             ; NO val sets found
 	    (t (let ( (singletonp-constraints (remove-if-not #'(lambda (constraint)
 								 (and (listp constraint)	 ; ignore :incomplete keyword
@@ -4780,18 +4780,18 @@ error. Let's patch this one, but JUST to check for forced unifications.
 							     constraints)) )
 		 (cond ((singletonp val-sets)			             ; ONE val set found
 			(cond ((not (dont-cache-values-slotp slot))
-			(let ( (vals0 (enforce-set-constraints
+			(let ( (vals0 (enforce-set-constraints 
 					(remove '#$:incomplete (first val-sets)) singletonp-constraints :target target)) )
 				 (put-vals instance slot vals0)
 				 vals0))
 			      (t (first val-sets))))
 		       (t (cond ((not (= n-first-source n-sources))
-				 (km-trace 'comment "(~a-~a) CombineX ~a-~a together"
+				 (km-trace 'comment "(~a-~a) CombineX ~a-~a together" 
 					   n-first-source n-sources n-first-source n-sources)))
 			  (let ( (vals0 (enforce-set-constraints
-			  			(km-int (val-sets-to-expr val-sets
+			  			(km-int (val-sets-to-expr val-sets 
 				  				:combine-values-by-appendingp combine-values-by-appendingp
-						  		:single-valuedp single-valuedp)
+						  		:single-valuedp single-valuedp) 
 							:target target)
 						 singletonp-constraints :target target)) )
 					 (cond ((not (dont-cache-values-slotp slot))
@@ -4803,10 +4803,10 @@ error. Let's patch this one, but JUST to check for forced unifications.
 ;;; Execute inherited rule sets
 ;;; [1] NOTE: local-vals = evaluation of own-rule-sets EXCEPT that :default entries are SKIPPED
 ;;;     So we'll pick them up again here as if they were inherited
-             (inherited-rule-sets00
+             (inherited-rule-sets00 
 	      (cond (*are-some-defaults*
-		      (mapcar #'(lambda (expr-set)
-		                      (evaluate-and-filter-defaults expr-set constraints vals slot
+		      (mapcar #'(lambda (expr-set) 
+		                      (evaluate-and-filter-defaults expr-set constraints vals slot 
 				                                   :single-valuedp single-valuedp))
 ;			      inherited-rule-sets))
 ;	  	              (append own-rule-sets inherited-rule-sets)))	; [1]
@@ -4814,48 +4814,48 @@ error. Let's patch this one, but JUST to check for forced unifications.
                               	       (mapcar #'(lambda (own-rules) ; [1]
 						  (find-exprs own-rules :expr-type 'default :plurality 'plural))
 					      own-rule-sets))
-				      inherited-rule-sets)))
+				      inherited-rule-sets)))	
                     (t inherited-rule-sets)))
 
-;          (_d0 (km-format t "~%instance = ~a, slot = ~a~%" instance slot))
+;          (_d0 (km-format t "~%instance = ~a, slot = ~a~%" instance slot))		    
 ;          (_d1 (km-format t "inherited-rule-sets = ~a~%" inherited-rule-sets))
 ;	  (_d2 (km-format t "inherited-rule-sets00 = ~a~%" inherited-rule-sets00))
 ;	  (_d3 (km-format t "vals = ~a~%" vals))
-;	  (_d4 (km-format t "local-vals = ~a~%" local-vals))
+;	  (_d4 (km-format t "local-vals = ~a~%" local-vals))	  
 ;	  (_d5 (km-format t "own-rule-sets = ~a~%" own-rule-sets))
 ;	  (_d6 (km-format t "constraints = ~a~%" constraints))
-	  (all-vals00
+	  (all-vals00 
 	   (cond ((not (use-inheritance)) (km-trace 'comment "(No inherited rules (Inheritance is turned off))") vals)
 		 (inherited-rule-sets00
 		  (cond (no-inheritancep (km-trace 'comment "(Ignore inherited rules, as there is a `(no-inheritance)' constraint on this slot)")
 					 vals)
 ; 8/29/07 - inherit-with-overrides change in semantics - now ALWAYS inherit, even if there's a local value
-; NEW: Turn this back on for simple cases
+; NEW: Turn this back on for simple cases					
 			((and vals (simple-inherit-with-overrides-slotp slot))
-			 (km-trace 'comment "(Ignore rules, as there are local values and the slot is a simple-inherit-with-overrides slot)")
+			 (km-trace 'comment "(Ignore rules, as there are local values and the slot is a simple-inherit-with-overrides slot)") 
 			 vals)
 			(t 				;		(NB inherited-constraints are necessarily in inherited-rule-sets!)
-			 (cond ((tracep)
+			 (cond ((tracep) 
 				(setq n (1+ n))
 				(cond ((inherit-with-overrides-slotp slot)
-				       (km-trace 'comment "(~a) Lowest rules, from inheritance with over-rides: ~a"
-				       			n (val-sets-to-expr inherited-rule-sets00
+				       (km-trace 'comment "(~a) Lowest rules, from inheritance with over-rides: ~a" 
+				       			n (val-sets-to-expr inherited-rule-sets00 
 							:single-valuedp single-valuedp)))
 				      (t (km-trace 'comment "(~a) From inheritance: ~a" n (val-sets-to-expr inherited-rule-sets00 :single-valuedp single-valuedp))))))
 			 (cond (vals (km-trace 'comment "(~a-~a) CombineY ~a-~a together" n-first-source n n-first-source n)))
 ; 8/29/07 - inherit-with-overrides change in semantics - discard inherited info only if clashes with any local value
-			 (cond
+			 (cond 
 			 ((and vals (inherit-with-overrides-slotp slot))
 ;			  (km-format t "DEBUG: ~a ~a (~a &? ~a)~%" instance slot vals inherited-rule-sets00)
 			    (cond (single-valuedp
 ;                             (km-format t "constraints = ~a~%" constraints)
 	 		      (let ((loc-vals (km-int (vals-to-&-expr vals) :target target)))
 			            (km-trace 'comment "See if inherited info is consistent with local vals...")
-			            (cond ((km-int `(,loc-vals &?
+			            (cond ((km-int `(,loc-vals &? 
  				                  ,(val-sets-to-expr inherited-rule-sets00 :single-valuedp t)))
-			    		   (km-trace 'comment "...yes! Inherited info is consistent with local vals. Unifying it in...")
-					   (km-int `(,loc-vals &
-					          ,(val-sets-to-expr inherited-rule-sets00 :single-valuedp t))
+			    		   (km-trace 'comment "...yes! Inherited info is consistent with local vals. Unifying it in...")		
+					   (km-int `(,loc-vals & 
+					          ,(val-sets-to-expr inherited-rule-sets00 :single-valuedp t)) 
 						  :target target))
 					  (t (km-trace 'comment "...no, inherited info isn't consistent with local info, so dropping inherited info.")
 					     loc-vals))))   ; drop inherited value if inconsistent with local
@@ -4864,12 +4864,12 @@ error. Let's patch this one, but JUST to check for forced unifications.
 				  (let* ((loc-vals (km-int (val-sets-to-expr (list vals)) :target target))
 				         (locgen-vals (km-int (val-sets-to-expr (cons loc-vals inherited-rule-sets00))
  				                          :target target)))
-				    (cond ((satisfies-constraints locgen-vals constraints slot)
-			    		   (km-trace 'comment "...yes! Inherited info is consistent with local vals. Unifying it in...")
+				    (cond ((satisfies-constraints locgen-vals constraints slot) 
+			    		   (km-trace 'comment "...yes! Inherited info is consistent with local vals. Unifying it in...")		
  				            locgen-vals)
 					  (t (km-trace 'comment "...no, inherited info isn't consistent with local info, so dropping inherited info.")
 					     loc-vals))))))
-			       (t (km-int (val-sets-to-expr (cons vals inherited-rule-sets00)
+			       (t (km-int (val-sets-to-expr (cons vals inherited-rule-sets00) 
 				                         :single-valuedp single-valuedp) :target target)))
 			 )))
 		 (t vals)))
@@ -4893,7 +4893,7 @@ error. Let's patch this one, but JUST to check for forced unifications.
 ;;; ---------- 1-5. CONDITIONAL PROJECTION OF SINGLE-VALUED SLOT'S VALUE ----------
 
 	  (all-vals1
-	     (cond (multivaluedp
+	     (cond (multivaluedp 
 		    all-vals0)		; multivalued case: already handled
 		   (t (let ( (projected-val (maybe-project-value projected-vals 		; single-valued case: combine only if compatible
 								 all-vals0 slot instance n)) )
@@ -4905,11 +4905,11 @@ error. Let's patch this one, but JUST to check for forced unifications.
 ;; No! Constraint-checking done in && procedure
 ;; Later: Yes! Do it here! && misses constraint-checking for non-&& cases
 ;;;
-;; NOTE: all-vals1 can be nil; we might coerce new vals to appear!
-;; LATER: 1/22/08: how can we coerce new vals to appear??
+;; NOTE: all-vals1 can be nil; we might coerce new vals to appear! 
+;; LATER: 1/22/08: how can we coerce new vals to appear?? 
 ;;;		   Maybe I was thinking of when *max-padding-instances* > 0?? Let's add that in as an extra condition.
            (all-vals2 (cond ((and constraints
-	                          (or all-vals1 (> *max-padding-instances* 0))		; NEW 1/22/08
+	                          (or all-vals1 (> *max-padding-instances* 0))		; NEW 1/22/08 
 				  )
 	                     (cond ((and (tracep) (not (traceconstraintsp)))
 			            (let ((*trace* nil))
@@ -4917,7 +4917,7 @@ error. Let's patch this one, but JUST to check for forced unifications.
 				   (t (km-trace 'comment "(~ab) Test values against constraints ~a" n constraints)
 				      (enforce-constraints all-vals1 constraints :target target))))
 			  (t all-vals1)))
-
+	  
 	  (all-vals (cond ((remove-subsumers-slotp slot) (remove-subsumers all-vals2))
 			  ((remove-subsumees-slotp slot) (remove-subsumees all-vals2))
 			  (t all-vals2)))
@@ -4930,18 +4930,18 @@ error. Let's patch this one, but JUST to check for forced unifications.
 
 	(declare (ignore _check-prototype _project1-dummy _project2-dummy _clones-dummy))
 
-    (cond ((not (dont-cache-values-slotp slot))
+    (cond ((not (dont-cache-values-slotp slot)) 
            (put-vals instance slot all-vals-and-constraints)		; store result, even if NIL [2]
 	   ; NOTE: process-km1-results will record the explanation for vals, but NOT for constraints, so let's do that here
 	   (cond (*record-explanations*
-;	   (km-format t "target = ~a, vals = ~a, local-constraints = ~a~%" target
+;	   (km-format t "target = ~a, vals = ~a, local-constraints = ~a~%" target 
 ;			   (mapcar #'desource+decomment local-constraints) local-constraints)
 		  (mapc #'(lambda (local-constraint)	; local-constraint includes source info
 		             (let ((val (desource+decomment local-constraint)))
 			       (cond ((not (equal val local-constraint))	; i.e., local-constraint has source info
-			              (record-explanation-for target val local-constraint))))) ; so SKIP (constraint ...)
+			              (record-explanation-for target val local-constraint))))) ; so SKIP (constraint ...) 
 			local-constraints)))))						; exprs (they're unannotated)
-
+	   
 ;  Why was classify removed in earlier versions?
 ;    (classify instance)
 ; Remove it again. Only at instance creation, and addition of facts via has, do we reclassify
@@ -4964,10 +4964,10 @@ error. Let's patch this one, but JUST to check for forced unifications.
 ;;; ======================================================================
 ;;; 			END OF km-slotvals-from-kb!!!
 ;;; ======================================================================
-
+   
 ;;; (recursive-ruleset '#$_Car23 '#$parts '#$(_Engine3 (the parts of (the parts of _Car23))))
 ;;; -> t
-;;; This is using cheap tricks to check for recursive rules! If it accidentally makes a
+;;; This is using cheap tricks to check for recursive rules! If it accidentally makes a 
 ;;; mistake it's not an error, just an inefficiency.
 (defun recursive-ruleset (instance slot ruleset)
   (search `#$(,SLOT of ,INSTANCE) (flatten ruleset)))
@@ -4980,7 +4980,7 @@ error. Let's patch this one, but JUST to check for forced unifications.
 Look up the slotvals from the previous situation (if any).
 Assume test "(and (am-in-local-situation) (projectable slot instance))" has already been passed.
 [1] 9/8/00 - We must ensure that EVENTS have non-inertial slot values, even if the user's failed to specify that these
-		 slots are non-inertial fluents.
+		 slots are non-inertial fluents. 
 	To ensure this, BOTH (Event slot Instance) and (Instance invslot Event) triples CANNOT be projected.
 	[2] in projectable() removes the former, and [1] below removes the latter.
 |#
@@ -4988,14 +4988,14 @@ Assume test "(and (am-in-local-situation) (projectable slot instance))" has alre
 (defun km-slotvals-via-projection (instance slot)
   (let ((prev-situation (cond (*project-cached-values-only* (prev-situation-with-vals (curr-situation) instance slot))
 			      (t (prev-situation (curr-situation) instance)))))
-    (cond (prev-situation
+    (cond (prev-situation 
 	   (km-int `#$(in-situation ,PREV-SITUATION (the ,SLOT of ,INSTANCE))))
 	  ((tracep) (km-trace 'comment "    (Can't compute what ~a's previous situation is)" (curr-situation))))))
-
+  
 ;;; For single-valued slots only. Only project a value if it unifies with the local value.
 ;;; Returns a singleton list of the resulting (possibly unified) value.
 (defun maybe-project-value (projected-values local-values slot instance n-sources)
-  (cond
+  (cond 
    ((null projected-values) nil)
    ((equal projected-values local-values) (first projected-values))		; NB assume projected-values is a singleton list
    (t (let ( (prev-situation (prev-situation (curr-situation) instance))
@@ -5003,32 +5003,32 @@ Assume test "(and (am-in-local-situation) (projectable slot instance))" has alre
 	     (local-value (first local-values)) )
 	(cond
 	  ((>= (length projected-values) 2)
-	   (km-format t "ERROR! Projected multiple values ~a for the single-valued slot `~a' on instance ~a!~%"
+	   (km-format t "ERROR! Projected multiple values ~a for the single-valued slot `~a' on instance ~a!~%"  
 		      projected-values slot instance)
 	   (km-format t "ERROR! Discarding all but the first value (~a)...~%" (first projected-values))))
-	(cond
+	(cond 
 	  ((>= (length local-values) 2)
 	   (km-format t "ERROR! Found multiple values ~a for the single-valued slot `~a' on instance ~a!~%"
 		      local-values slot instance)
 	   (km-format t "ERROR! Discarding all but the first value (~a)...~%" (first local-values))))
-	(cond ((null local-value)
+	(cond ((null local-value) 
 	       (km-trace 'comment "(1-~a) Projecting (the ~a of ~a) = (~a) from ~a" n-sources slot instance projected-value prev-situation)
 	       (make-comment "Projected (the ~a of ~a) = (~a) from ~a to ~a"
 					slot instance projected-value prev-situation (curr-situation))
 	       projected-value)
 	      (t (let ( (unified (lazy-unify projected-value local-value)) )
-		   (cond (unified
-			  (km-trace 'comment "(1-~a) Projecting and unifying (the ~a of ~a) = (~a) from ~a"
+		   (cond (unified 
+			  (km-trace 'comment "(1-~a) Projecting and unifying (the ~a of ~a) = (~a) from ~a" 
 				 n-sources slot instance projected-value prev-situation)
 			  (make-comment "Projected (the ~a of ~a) = (~a) from ~a to ~a"
 						   slot instance projected-value prev-situation (curr-situation))
 			  unified)		; return projected-value if can unify...
-			 (t (km-trace 'comment "(1-~a) Discarding projected value (the ~a of ~a) = (~a) (conflicts with new value (~a))"
+			 (t (km-trace 'comment "(1-~a) Discarding projected value (the ~a of ~a) = (~a) (conflicts with new value (~a))" 
 				   n-sources slot instance projected-value local-value))))))))))
 
 ;;; If a slot has no value in a situation, and it's projectable, then assume the
 ;;; value in the previous situation still applies.
-;;; Note that KM doesn't distinguish "unknown" vs. "no value". By default,
+;;; Note that KM doesn't distinguish "unknown" vs. "no value". By default, 
 ;;; no conclusion is taken to mean "unknown", unless the slot is labeled as
 ;;; having property "complete", in which case it is taken to mean "no value",
 ;;; and hence shouldn't be projected.
@@ -5084,7 +5084,7 @@ Assume test "(and (am-in-local-situation) (projectable slot instance))" has alre
 ;(defun add-to-active-situations (situation)
 ;  (km-setq '*all-active-situations* (cons situation *all-active-situations*)))
 
-;(defun all-active-situations ()
+;(defun all-active-situations () 
 ;  (cond (*deactivate-old-situations* (remove-duplicates (dereference *all-active-situations*)))
 ;	(t (all-situations))))
 
@@ -5198,20 +5198,20 @@ other:
 )
 
 ;;; These slots are ONLY placed on slot frames, and are used as a cue that a slot is being described
-(defparameter *slots-slots* '#$(domain range cardinality inverse inverse2 inverse3 inverse12
+(defparameter *slots-slots* '#$(domain range cardinality inverse inverse2 inverse3 inverse12 
 			      fluent-status inherit-with-overrides simple-inherit-with-overrides aggregation-function))
 
 (eval-when (:compile-toplevel :load-toplevel :execute)
-(defparameter *built-in-single-valued-slots*
-  (append
+(defparameter *built-in-single-valued-slots* 
+  (append 
    '#$(#|domain range|# cardinality aggregation-function #|complete|# ignore-inverses
-			inverse inverse2 inverse3 remove-subsumers remove-subsumees inherit-with-overrides
+			inverse inverse2 inverse3 remove-subsumers remove-subsumees inherit-with-overrides 
 			simple-inherit-with-overrides fluent-status seq-length bag-length
 	      #|prev-situation|# ; but not next-situation (S can have multiple S'-A pairs)
 	      after-situation-of ; but not before-situation-of (S can be before multiple A-S' pairs)
 ; NEW: Now allow actions to be performed more than once, so these are now multivalued
-;	      before-situation
-;             after-situation
+;	      before-situation 
+;             after-situation 
 	      prototype-participant-of #|prototype-of prototype-scope |#
 	      combine-values-by-appending uniquely-called dont-cache-values nowexists
 	      abs log exp sqrt floor)
@@ -5219,22 +5219,22 @@ other:
 )
 
 (eval-when (:compile-toplevel :load-toplevel :execute)
-(defparameter *built-in-multivalued-slots*
+(defparameter *built-in-multivalued-slots* 
   '#$(domain range #|M-new|# element-type element-type-of
       superclasses subclasses instances instance-of locked-instance-of locked-instances add-list del-list pcs-list ncs-list
-      supersituations subsituations subslots superslots
+      supersituations subsituations subslots superslots 
       slots-to-opportunistically-evaluate
 ;	      as views useful-views				; for view mechanism
       prev-situation		; modified for Andreas
       next-situation block-projection-for
-	      before-situation-of
+	      before-situation-of 
 ; NEW: Now allow actions to be performed more than once, so these are now multivalued
-	      before-situation
-	      after-situation
+	      before-situation 
+	      after-situation 
       domain-of range-of fluent-status-of called
-      prototype-participants prototypes prototype-of cloned-from clone-built-from has-built-clones
+      prototype-participants prototypes prototype-of cloned-from clone-built-from has-built-clones 
       has-clones prototype-scope
-      #|text|# #|name print-name <-- should be single-valued!!|#
+      #|text|# #|name print-name <-- should be single-valued!!|# 
       name		; 3.6.00 now allow structures for name, to be stringified later by make-sentence
       #|terms <- no longer built-in |#
       elements ;;; for busting up sequences into their elements
@@ -5248,7 +5248,7 @@ other:
 
 (eval-when (:compile-toplevel :load-toplevel :execute)
 (defparameter *built-in-slots*
-  (append *built-in-single-valued-slots*
+  (append *built-in-single-valued-slots* 
 	  *built-in-multivalued-slots*))
 )
 
@@ -5263,7 +5263,7 @@ PROBLEM! if make them complete, then we get into trouble with
 do-script, which with multiple actions assumes the actions (hence the
 add-list and del-lists) will be projected accross multiple situations! |#
 
-(defparameter *default-built-in-inertial-fluent-slots*
+(defparameter *default-built-in-inertial-fluent-slots* 
     (cond ; ((not *clones-are-global*) '#$(nowexists cloned-from))
 	  (t '#$(nowexists))))
 (defparameter *built-in-inertial-fluent-slots* *default-built-in-inertial-fluent-slots*)
@@ -5280,24 +5280,24 @@ add-list and del-lists) will be projected accross multiple situations! |#
 ;;;
 (defun compute-built-in-non-fluent-slots ()
   (let ((ht (make-hash-table :test 'eq :size 200))
-        (slots (set-difference *built-in-slots*
+        (slots (set-difference *built-in-slots* 
                                (append *built-in-inertial-fluent-slots* *built-in-non-inertial-fluent-slots*))))
     (dolist (x slots)
       (setf (gethash x ht) t))
     ht))
-
+ 
 ;;; May be recomputed if built-in-inertial-fluent-slots changes (see instance-of-is-fluent)
 (defparameter *built-in-non-fluent-slots*
     (compute-built-in-non-fluent-slots))
 
 ;;; Let's allow the user to toggle these...
-(defun instance-of-is-nonfluent ()
+(defun instance-of-is-nonfluent () 
   (km-setq '*instance-of-is-fluent* nil)
   (km-setq '*built-in-inertial-fluent-slots* *default-built-in-inertial-fluent-slots*)
   (km-setq '*built-in-non-fluent-slots*
 	(compute-built-in-non-fluent-slots)))
 
-(defun instance-of-is-fluent ()
+(defun instance-of-is-fluent () 
   (km-setq '*instance-of-is-fluent* t)
   (km-setq '*built-in-inertial-fluent-slots* (append  *default-built-in-inertial-fluent-slots* '#$(instance-of instances)))
   (km-setq '*built-in-non-fluent-slots*
@@ -5315,13 +5315,13 @@ add-list and del-lists) will be projected accross multiple situations! |#
 ;;; EXPRESSIONLESS SLOTS:
 ;;; The following slots can't have KM expressions as values, only
 ;;; atomic values. This is because they are accessed by optimized access methods
-;;; (get-vals) which assume atomic values and make no attempt to
+;;; (get-vals) which assume atomic values and make no attempt to 
 ;;; evaluate any expressions found there. Also, their values are not unified together,
 ;;; they are set unioned, which means that find-vals will encounter a list of values,
 ;;; not a to-be-unifed value expression.
 ;;; NOTE: KM doesn't actually make the test of built-in-atomic-vals-only -- rather the assumptions of expressionlessness
 ;;; 	  are hard-wired into the code itself.
-(defparameter *built-in-atomic-vals-only-slots*
+(defparameter *built-in-atomic-vals-only-slots* 
 ; no longer used  (cons *tag-slot*
 	'#$(domain range cardinality #|complete|# arity slots-to-opportunistically-evaluate locked-instances locked-instance-of
 		   inverse inverse2 inverse3 inherit-with-overrides simple-inherit-with-overrides
@@ -5329,10 +5329,10 @@ add-list and del-lists) will be projected accross multiple situations! |#
 		   instance-of 		; (in fact may have constraints, but is handled in immediate-classes so it's as if atomic)
 		   locked-instance-of locked-instances
 		   supersituations members member-of
-		   prototypes prototypes-of
-		   prototype-participants prototype-participant-of
+		   prototypes prototypes-of 
+		   prototype-participants prototype-participant-of 
 		   clone-built-from has-built-clones
-		   cloned-from has-clones
+		   cloned-from has-clones 
 		   domain-of range-of remove-subsumers remove-subsumees
 		   subsituations subslots superslots id combine-values-by-appending dont-cache-values ignore-inverses
 		   fluent-status called uniquely-called block-projection-for
@@ -5344,15 +5344,15 @@ add-list and del-lists) will be projected accross multiple situations! |#
 ;;; (Note: we might expect domain/range to inherit from slot classes, but let's assume not).
 ;;; NOTE: if instance-of is fluent, then we'd need to remove it from this list.
 ;;; (defparameter it earlier, as it's used earlier)
-(setq *built-in-nonfluent-lookup-only-slots*
-  (cons '#$prototype-scope
+(setq *built-in-nonfluent-lookup-only-slots* 
+  (cons '#$prototype-scope 
 	(set-difference *built-in-atomic-vals-only-slots*
 			'#$(members	   ; may be computed (e.g., in test-suite/constraints.km)
 			    assertions)))) ; test-suite.km includes a assertion using #, so must process
 
 ;;; (every f has (s (v))), (every f has (s (v'))) -> (every f has (s (v v'))) NOT (every f has (s ((v) && (v'))))
 ;;; Also - all INVERSE assertions are automatically by appending; sigh and urgh!
-(defparameter *built-in-combine-values-by-appending-slots*
+(defparameter *built-in-combine-values-by-appending-slots* 
   (append '#$(> < /== == add-list del-list pcs-list ncs-list prototype-scope) *built-in-atomic-vals-only-slots*))
 
 ;;; REMOVE-SUBSUMERS-SLOTS:
@@ -5374,9 +5374,9 @@ add-list and del-lists) will be projected accross multiple situations! |#
 (defparameter *built-in-slots-with-constraints* '#$(instance-of == < > called uniquely-called))
 
 (defparameter *built-in-classes*
-  '#$(Integer Number Thing Slot Aggregate Aggregation-Slot
-	      Seq-Aggregation-Slot Bag-Aggregation-Slot Set-Aggregation-Slot
-	      String Class Situation Boolean Partition
+  '#$(Integer Number Thing Slot Aggregate Aggregation-Slot 
+	      Seq-Aggregation-Slot Bag-Aggregation-Slot Set-Aggregation-Slot 
+	      String Class Situation Boolean Partition 
 	      Exhaustive-Partition Cardinality Fluent-Status
 	      Pair Triple Sequence Bag Theory Function))
 
@@ -5419,16 +5419,16 @@ add-list and del-lists) will be projected accross multiple situations! |#
 )
 
 ;;; Make a fn to allow reference in an earlier file without problem
-(defun built-in-instance-of-links () *built-in-instance-of-links*)
+(defun built-in-instance-of-links () *built-in-instance-of-links*)	
 
 (defparameter *valid-fluent-statuses* '#$(*Fluent *Inertial-Fluent *Non-Fluent))
 
 (defparameter *built-in-instances*
   (append *valid-cardinalities* *valid-fluent-statuses* `#$(t f T #|F|# ,*GLOBAL-SITUATION*)))
 
-(defparameter *built-in-frames*
+(defparameter *built-in-frames* 
   (append *built-in-slots*
-	  *built-in-classes*
+	  *built-in-classes* 
 	  *built-in-instances*))
 
 ;;; don't track inverses of these slots:
@@ -5437,12 +5437,12 @@ add-list and del-lists) will be projected accross multiple situations! |#
 ; no longer used  (cons *tag-slot*
 	'#$(prototype-scope cardinality aggregation-function #|complete|# add-list del-list pcs-list ncs-list
 	     #|cloned-from|# #|label|# 							; [1]
-	     inherit-with-overrides simple-inherit-with-overrides #|duplicate-valued|#
+	     inherit-with-overrides simple-inherit-with-overrides #|duplicate-valued|# 
 	     called uniquely-called arity nowexists
 	     block-projection-for remove-subsumers remove-subsumees :incomplete
 	     combine-values-by-appending dont-cache-values ignore-inverses
 	     name == #|text print-name terms|#)) ;;; no! inverse2 inverse3
-
+      
 ;;; eg. DON'T record inverses for T, eg. (T has (open-of (Box1))
 (defparameter *non-inverse-recording-concept* *built-in-instances*)
 
@@ -5456,13 +5456,13 @@ add-list and del-lists) will be projected accross multiple situations! |#
 (defun built-in-set-aggregation-slot (slot) (member slot *built-in-set-aggregation-slots*))
 (defun built-in-aggregation-slot (slot) (member slot *built-in-aggregation-slots*))
 
-(defun non-inverse-recording-slot (slot)
+(defun non-inverse-recording-slot (slot) 
   (or (member slot *non-inverse-recording-slot*)
       (get-vals slot '#$ignore-inverses :situation *global-situation* :dereferencep nil)))
 
 (defun non-inverse-recording-concept (concept) (member concept *non-inverse-recording-concept*))
 
-(defun universalp (slot)
+(defun universalp (slot) 
   (gethash slot *built-in-non-fluent-slots*))
 
 (defun built-in-concept-type (concept)
@@ -5471,19 +5471,19 @@ add-list and del-lists) will be projected accross multiple situations! |#
 	((member concept *built-in-classes*) "class")
 	((member concept *built-in-instances*) "instance")))
 
-(defun combine-values-by-appending-slotp (slot)
+(defun combine-values-by-appending-slotp (slot) 
   (or (member slot *built-in-combine-values-by-appending-slots*)
       (member slot *neq-slots*)
       (get-vals slot '#$combine-values-by-appending :situation *global-situation* :dereferencep nil)))
 
-(defun remove-subsumers-slotp (slot)
+(defun remove-subsumers-slotp (slot) 
   (or (member slot *built-in-remove-subsumers-slots*)
       (get-vals slot '#$remove-subsumers :situation *global-situation* :dereferencep nil)))
 
 (defun dont-cache-values-slotp (slot)
   (get-vals slot '#$dont-cache-values :situation *global-situation* :dereferencep nil))
 
-(defun remove-subsumees-slotp (slot)
+(defun remove-subsumees-slotp (slot) 
   (or (member slot *built-in-remove-subsumees-slots*)
       (get-vals slot '#$remove-subsumees :situation *global-situation* :dereferencep nil)))
 
@@ -5493,7 +5493,7 @@ add-list and del-lists) will be projected accross multiple situations! |#
 						     constraint no-inheritance retain-expr))
 (defparameter *set-constraint-keywords* '#$(at-least at-most exactly set-constraint sometimes set-filter))
 (defparameter *constraint-keywords* (append *val-constraint-keywords* *set-constraint-keywords*))
-(defparameter *constraint-slots* '(== /== < >))
+(defparameter *constraint-slots* '(== /== < >))			
 
 ;;; ======================================================================
 
@@ -5509,12 +5509,12 @@ add-list and del-lists) will be projected accross multiple situations! |#
 ;(defvar *classification-disabled-temporarily* nil)	; reset to nil at each KM call, in case KM bombs when it's set to t
 (defvar *installing-inverses-enabled* t)
 
-(defun enable-classification ()
+(defun enable-classification () 
   (km-setq '*classification-enabled* t)
   (km-setq '*prototype-classification-enabled* t)
   '#$(t))
 
-(defun disable-classification ()
+(defun disable-classification () 
   (km-setq '*classification-enabled* nil)
   (km-setq '*prototype-classification-enabled* nil)
   '#$(t))
@@ -5534,13 +5534,13 @@ add-list and del-lists) will be projected accross multiple situations! |#
 
 ; (defvar *slot-checking-enabled* nil)	 ; in header.lisp
 
-(defun enable-slot-checking ()
+(defun enable-slot-checking () 
   (km-format t "(Run-time checking of slot domain/range constraints enabled)~%")
   (km-setq '*slot-checking-enabled* t)
   t)
 
-(defun disable-slot-checking ()
-  (cond ((not *slot-checking-enabled*)
+(defun disable-slot-checking () 
+  (cond ((not *slot-checking-enabled*) 
 ;	 (km-format t "(Run-time checking of slot domain/range constraints already disabled)~%")
 	 )
 	(t (km-format t "(Run-time checking of slot domain/range constraints disabled)~%")
@@ -5554,8 +5554,8 @@ add-list and del-lists) will be projected accross multiple situations! |#
 
 (defparameter *built-in-inverses*
   '#$((inverse inverse)				; important!!
-      (inverse2 inverse2)
-      (inverse3 inverse3)
+      (inverse2 inverse2)	
+      (inverse3 inverse3)	
       (instances instance-of)
       (instance-of instances)
       (locked-instance-of locked-instances)
@@ -5587,14 +5587,14 @@ add-list and del-lists) will be projected accross multiple situations! |#
       (after-situation next-situation)
       (prev-situation before-situation)		; <S' S A> -> <A S S'>
       (before-situation prev-situation)))
-
+	
 ;;; ======================================================================
 ;;;			COREFERENTIALITY
 ;;; ======================================================================
 
 #|
 Some frames are, in fact, typed variables. They are denoted by having
-a name which begins with "_", eg _person34 is a "variable frame" of type
+a name which begins with "_", eg _person34 is a "variable frame" of type 
 person. Variable frames can be bound to other frames. The unifier
 (km/lazy-unify.lisp) is the thing which does the unifying.
 |#
@@ -5602,7 +5602,7 @@ person. Variable frames can be bound to other frames. The unifier
 ;;; bind: RESULT is irrelevant, only the side-effect is important.
 ;;; [1] - check to prevent circular bindings
 ;;; NOTE: frame2 is considered the result of the binding.
-;(defun km-bind (frame1 frame2)
+;(defun km-bind (frame1 frame2) 
 ;  (cond ((not (eql (dereference frame1) (dereference frame2)))	; [1]
 ;	 (km-setf frame1 'binding frame2)
 ;	 (merge-cached-explanations frame1 frame2)
@@ -5613,17 +5613,17 @@ person. Variable frames can be bound to other frames. The unifier
 
 ;;; Actually, we only need to cache old2-slotsvals for where there's an old1-slotsvals.
 ;;; Modified KM procedure.
-;;; NOTE: ununify is not designed to handle things like (km-bind _Thing1 (:seq 1 2 3))
+;;; NOTE: ununify is not designed to handle things like (km-bind _Thing1 (:seq 1 2 3)) 
 ;;; (e.g., what would the ununify call look like in the first place?)
 ;;; See km-notes/ununify-notes.txt for more info
 ;;; [1] NOTE: We delete the frame contents but KEEP it as a known frame, as it has a binding still
-;(defun km-bind (frame1 frame2)
+;(defun km-bind (frame1 frame2)     
 ;  (cond ((not (eql (dereference frame1) (dereference frame2))) ; [1]
-(defun km-bind (frame1d frame2d)
+(defun km-bind (frame1d frame2d) 
   (let ((frame1 (dereference frame1d))	; 2/9/12 - no we need to bind the DEREFERENCED objects. Really the caller should ensure this, but we'll do it here
 	(frame2 (dereference frame2d)))
   (cond ((not (eql frame1 frame2))
-	 (cond
+	 (cond 
 	  ((and *allow-ununify* (kb-objectp frame2))
 	   (let* ((situations (all-active-situations))
 		  (s+old2s (remove nil
@@ -5655,7 +5655,7 @@ person. Variable frames can be bound to other frames. The unifier
 	 (make-comment "(rename-class ~a ~a) - The two classes are identical (ignoring)!~%" old-class new-class))
 	((neq (dereference old-class) old-class)
 	 (report-error 'user-error
-		       "(rename-class ~a ~a) - ~a has already been renamed (to ~a), so can't rename it again!~%"
+		       "(rename-class ~a ~a) - ~a has already been renamed (to ~a), so can't rename it again!~%" 
 		       old-class new-class old-class (dereference old-class)))
 	((unusable-frame-name new-class)
 	 (report-error 'user-error "(rename-class ~a ~a) - ~a is already in use, so can't rename to it!~%"
@@ -5689,7 +5689,7 @@ person. Variable frames can be bound to other frames. The unifier
 	       frame
 	     (cons dframe0 drframe))))
  	(t frame)))
-
+ 
 (defun needs-dereferencing (frame)
   (declare (optimize (speed 3) (safety 0)))
   (cond ((symbolp frame) (get-binding frame))
@@ -5733,7 +5733,7 @@ person. Variable frames can be bound to other frames. The unifier
   (cond ((null frame) nil)
         ((symbolp frame)
          (let ((binding (get-binding frame)))
-           (if binding
+           (if binding 
                (dereference0 binding)
              frame)))
         ((listp frame)
@@ -5769,7 +5769,7 @@ person. Variable frames can be bound to other frames. The unifier
 ;;; Note: deleted frames are NOT KB concepts, but may still be mentioned elsewhere in the KB.
 ;;; They should have no internal structure, as delete-frame deleted it all.
 ;;; RETURNS: The concepts that have changed, and any concepts that have been deleted (obsolete)
-;;; NOTE: IF you do (rename-class <old> <new>), then <new> will NOT be in the list of
+;;; NOTE: IF you do (rename-class <old> <new>), then <new> will NOT be in the list of 
 ;;;       modified-concepts -- the modification (i.e., addition) was already performed earlier, so is not done here.
 ;;;	  <old> will be returned in the list of deleted concepts.
 ;;; NOTE: If :unintern t, then the deleted frames are uninterned. Thus the 2nd value returned, the deleted frames,
@@ -5823,7 +5823,7 @@ OLD LESS EFFICIENT
 ; (defun bind-to-nil (frame) (km-bind frame 'deleted) t)
 
 (defun show-binding (frame)
-  (cond ((get frame 'binding)
+  (cond ((get frame 'binding) 
 	 (terpri) (km-format t "~a" frame) (show-binding0 (get-binding frame)))))
 
 (defun show-binding0 (frame)
@@ -5836,7 +5836,7 @@ OLD LESS EFFICIENT
 (defun ununifiable (frame2) (get frame2 'ununify-data))
 
 (defun ununify (frame2)
-  (let*
+  (let* 
       ((ununify-data (get frame2 'ununify-data))
        (curr-situation (curr-situation))
        (f1+s-old2s (first ununify-data))
@@ -5857,7 +5857,7 @@ OLD LESS EFFICIENT
 			   (old2-slotsvals (second s+old2))) ; may be nil
 		      (cond
 		       (old1-slotsvals
-			(in-situation situation) ; for each situation
+			(in-situation situation) ; for each situation		    
 			(mapc #'(lambda (old1-slotvals)
 				  (let* ((slot (slot-in old1-slotvals))
 					 (old2-slotvals (assoc slot old2-slotsvals))
@@ -5918,10 +5918,10 @@ rather than a list of values! (Missing parentheses?)~%"
 (defun make-slotvals (slot vals) (list slot vals))
 
 (defun are-slotsvals (slotsvals)
-  (cond
+  (cond 
    ((not (listp slotsvals))
     (report-error 'user-error "Bad structure ~a for list of slot-values!~%Should be of form (s1 (v1 ... vn)) (s2 (...)) ...)~%" slotsvals))
-   (t (every
+   (t (every 
        #'(lambda (slotvals)
 	     (cond
 		((not (pairp slotvals))
@@ -5933,7 +5933,7 @@ rather than a list of values! (Missing parentheses?)~%"
 		 (report-error 'user-error "Bad structure ~a for slot+values!~%Values ~a for slot ~a should be a list!~%"
 			       slotvals (second slotvals) (slot-in slotvals)))
 		((member (slot-in slotvals) *reserved-keywords*)
-		 (report-error 'user-error "Bad structure ~a for slot+values!~%The slot `~a' is a reserved KM keyword, and cannot be used as a slot name!~%"
+		 (report-error 'user-error "Bad structure ~a for slot+values!~%The slot `~a' is a reserved KM keyword, and cannot be used as a slot name!~%" 
 			       slotvals (slot-in slotvals)))
 		((no-reserved-keywords (vals-in slotvals))		; generates its own error otherwise
 		 (cond ((or (some #'(lambda (val) (and (listp val) (member (first val) *constraint-keywords*))) (vals-in slotvals))
@@ -5973,7 +5973,7 @@ USED BY THESE FUNCTIONS
 	    (add-val instance slot val install-inversesp situation))
 	vals))
 
-;;; add-val: add a value to a instance's slot.
+;;; add-val: add a value to a instance's slot. 
 ;;; EXCEPT NB new value is simply added, not unified
 ;;;   [Reason: Don't want *red:: color-of: ((_car1) && (_car2) && (_car3))]
 ;;; [1] Unfortunately this won't catch all redundancies. Consider:
@@ -5989,23 +5989,23 @@ USED BY THESE FUNCTIONS
 	  (oldvals (cond ((single-valued-slotp slot) (un-andify oldvals1))
 			 (t oldvals1))) )
 ;   (km-format t "add-val: oldvals1 = ~a, oldvals = ~a~%" oldvals1 oldvals)
-    (cond
-     ((null oldvals)
+    (cond 
+     ((null oldvals) 
       (un-done instance :slot slot :situation situation)	; [rather than just (un-done instance)]
       (put-vals instance slot (list val) :install-inversesp install-inversesp :situation situation))
      ((member val oldvals :test #'equal))		; val is already there, everything uptodate
-     ((single-valued-slotp slot)
+     ((single-valued-slotp slot) 
            (un-done instance :slot slot :situation situation)  ; [rather than just (un-done instance)]
-	   (put-vals instance slot
+	   (put-vals instance slot 
 		     (val-to-vals (vals-to-&-expr (append oldvals (list val))))
-		     :install-inversesp nil 		 ; install-inversesp would be ineffective here, as we've a STRUCTURE
-		     :situation situation)
-	   (cond (install-inversesp
+		     :install-inversesp nil 		 ; install-inversesp would be ineffective here, as we've a STRUCTURE 
+		     :situation situation)		
+	   (cond (install-inversesp 
 		  (install-inverses instance slot (list val) situation))))	  ; NOW do it manually for the new value...
      ((remove-subsumers-slotp slot)	  				  ; eg. instance-of, superclasses. See [1]
       (cond ((some #'(lambda (oldval) (is-subclass-of oldval val)) oldvals)) ; don't need it
 	    (t #|NEW|#	   (un-done instance :slot slot :situation situation)
-	       (put-vals instance slot
+	       (put-vals instance slot 
 ;;; Unnecessary overwork! ->  (remove-subsumers (cons val oldvals))
 #|NEW|#			      (cons val (remove-if #'(lambda (oldval) (is-subclass-of val oldval)) oldvals))
 			      :install-inversesp install-inversesp :situation situation)
@@ -6013,18 +6013,18 @@ USED BY THESE FUNCTIONS
      ((remove-subsumees-slotp slot)					  ; eg. subclasses
       (cond ((some #'(lambda (oldval) (is-subclass-of val oldval)) oldvals)) ; don't need it!
 	    (t #|NEW|#	   (un-done instance :slot slot :situation situation)
-	       (put-vals instance slot
-;;; Unnecessary overwork! ->  (remove-subsumees (cons val oldvals))
+	       (put-vals instance slot 
+;;; Unnecessary overwork! ->  (remove-subsumees (cons val oldvals)) 
 #|NEW|#			      (cons val (remove-if #'(lambda (oldval) (is-subclass-of oldval val)) oldvals))
 			      :install-inversesp install-inversesp :situation situation))))
      ((&&-exprp oldvals)
       (let ( (valsets (&&-exprs-to-valsets oldvals)) )
-	  (cond
+	  (cond 
 	   ((some #'(lambda (valset) (member val valset :test #'equal)) valsets))	 ; already there
 	   (t (un-done instance :slot slot :situation situation)
-	      (let ( (new-valsets (valsets-to-&&-exprs
+	      (let ( (new-valsets (valsets-to-&&-exprs 
 				   (append (butlast valsets) (list (append (last-el valsets) (list val)))))) )
-		(put-vals instance slot new-valsets
+		(put-vals instance slot new-valsets 
 			  :install-inversesp install-inversesp :situation situation))))))
      (t (put-vals instance slot (append oldvals (list val)) :install-inversesp install-inversesp :situation situation))))) ; preserve order (nicer)
 
@@ -6065,20 +6065,20 @@ Now: which ones of these might result in an own-rule in the global situation bei
 |#
 
 #|
-IF vals is nil, this will delete a slot (and its value) from a instance.
+IF vals is nil, this will delete a slot (and its value) from a instance. 
 If vals is non-nil, the new vals will overwrite the old vals.
 	**NOTE** DOESN'T remove inverse links or scan through situations for any deleted old vals, so you shouldn't
 	use put-vals to destructively change vals unless you are absolutely sure no inverses need removing. (Instead,
 	use (X now-has Y) which does handle inverses)
-NOTE: vals can validly be NIL, in the case where (i) lazy-unify may put a *path*
-on an instance's slot, then (ii) it later is evaluated to NIL. So in that case, a put-vals with NIL will
+NOTE: vals can validly be NIL, in the case where (i) lazy-unify may put a *path* 
+on an instance's slot, then (ii) it later is evaluated to NIL. So in that case, a put-vals with NIL will 
 remove that cached path.
 This DOESN'T require that the right situation has been identified, here the determination of target-situation is done WITHIN this procedure
 [1] NOTE: Normally:
      (km '#$(_Cat1 has (color ((*black [comment1])))))
 will assert
      (_Car1 has (color (*black)))	and an explanation (_Car1 color *black) (*black [comment1])
-This is fine, with one exception:
+This is fine, with one exception: 
      (km '#$(_Cat1 has (prototype-scope ((the-class Cat [comment1])))))
 When we assert this, we DO need to retain the comment tags, as when testing prototype-scope, we:
 	(i) check a new instance is covered by the prototype-scope
@@ -6089,7 +6089,7 @@ In the latter case, we need to retain the comments in the prototype-scope expres
 
 ;(defun put-vals (instance slot vals0 &key (facet 'own-properties) (install-inversesp t) (situation (curr-situation)))
 (defun  put-vals (instance slot vals0 &key (facet 'own-properties) (install-inversesp t) (situation (target-situation (curr-situation) instance slot)))
-  (cond
+  (cond 
    ((and (some #'protoinstancep (cons instance vals0))
 	 (neq situation *global-situation*))
     (report-error 'user-warning
@@ -6106,12 +6106,12 @@ In the latter case, we need to retain the comments in the prototype-scope expres
 		(anonymous-instancep instance)
 		(not (member slot '#$(instances ; instance-of
 				    prototypes ; prototype-of
-;				    prototype-scope
+;				    prototype-scope      
 				    has-clones cloned-from
-				    has-built-clones clone-built-from
-;				    prototype-participants prototype-participant-of
+				    has-built-clones clone-built-from 
+;				    prototype-participants prototype-participant-of 
 				    ))))
-	     (report-error 'user-error
+	     (report-error 'user-error 
 			 "Attempt to assert with protoinstance(s) ~a when not in prototype mode!~%         Doing (the ~a of ~a) = ~a~%"
 			 (delistify (remove-if-not #'protoinstancep (cons instance vals0)))
 			 slot instance vals0)))
@@ -6122,12 +6122,12 @@ In the latter case, we need to retain the comments in the prototype-scope expres
 	     (class-vals (cond ((eq slot '#$superclasses) (cons instance vals)) ; specifically for disjointness test, to spot
 			       (t vals)))) ; (X superclasses Y) violates Partition {X Y}
 	(cond (*slot-checking-enabled* (check-domain-and-range instance slot vals)))
-	(cond
+	(cond 
 	 ((member instance *reserved-keywords*)
 	  (report-error 'user-error "Attempt to use keyword `~a' as the name of a frame/slot (not allowed!)~% Doing (~a has (~a ~a))~%"
 			instance instance slot vals))
 	 ((not (kb-objectp instance))
-	  (report-error 'program-error "Attempting to assert information on a non-kb-object ~a...~%Ignoring the slot-vals (~a ~a)~%"
+	  (report-error 'program-error "Attempting to assert information on a non-kb-object ~a...~%Ignoring the slot-vals (~a ~a)~%" 
 			instance slot vals))
 
 	 (t
@@ -6136,18 +6136,18 @@ In the latter case, we need to retain the comments in the prototype-scope expres
 		 (add-val slot '#$instance-of '#$Slot t *global-situation*))) ; install-inversesp = t
 	  (let* ( ; (target-situation (target-situation situation instance slot vals)) ; compute target situation AFTER potentially changing fluent status
 		 (target-situation situation) ; 1/24/11 - PEC No, that's overly complex and not needed I think
-		 (old-slotsvals (get-slotsvals instance :facet facet :situation target-situation))
+		 (old-slotsvals (get-slotsvals instance :facet facet :situation target-situation)) 
 		 (old-vals (vals-in (assoc slot old-slotsvals))) )
 
 ;;; Below is too slow with a large KB, so make it switchable (default off). We do this in case obj stack is flushed
-;;; (requested by Andre Renard)
+;;; (requested by Andre Renard)	
 	    (cond (*active-obj-stack* (mapc #'push-to-obj-stack `(,instance ,@vals))))
-
-	    (cond
+	    
+	    (cond 
 	     ((equal vals old-vals) vals)
 	     (t (let ( (putobj-facet (curr-situation-facet facet target-situation)) )
 		  (cond ((not (known-frame instance)) (push-to-obj-stack instance))) ; new, 3.7.00
-		  (cond ((null vals)
+		  (cond ((null vals) 
 			 (putobj instance (remove-assoc-entry slot old-slotsvals) putobj-facet))
 			(t (putobj instance (update-assoc-list old-slotsvals (make-slotvals slot vals)) putobj-facet)
 			   (cond ((eq slot '#$prototype-scope)
@@ -6176,14 +6176,14 @@ In the latter case, we need to retain the comments in the prototype-scope expres
 				  (let* ((subclasses (append vals (my-mapcan #'all-subclasses vals))))		; append vals, to spot error with partition (A B) given (A has (superclasses (B)))
 				    (cond ((/= (length subclasses) (length (remove-duplicates subclasses)))
 					   (let ((violated (remove-duplicates (bag-difference subclasses (remove-duplicates subclasses)))))
-					     (report-error 'user-warning
+					     (report-error 'user-warning 
 							  "Partition violation! This new partition ~a with members ~a is violated by class(s):~%~a~%" instance vals (delistify violated))))))))
 
 	 ;;; REVISED: Replace user-error with user-warning, because we want AURA to continue in the face of a partition violation (so instances don't spontaneously fail to be created)
 			   (cond ((member slot '#$(instance-of superclasses))
 				  (cond ((disjoint-classes (remove-if-not #'kb-objectp class-vals) :check-singletonp t)
-					 (let* ((violated-partitions (remove-duplicates
-								      (remove-singletons
+					 (let* ((violated-partitions (remove-duplicates 
+								      (remove-singletons 
 								       (disjoint-classes (remove-if-not #'kb-objectp class-vals) :check-singletonp t))))) ; :check-singletonp t - do extra work to find indirect problems
 					   (report-error 'user-warning `(|partition-violation| ,instance ,slot ,class-vals ,violated-partitions) ;   (_X1 instance-of X) but (X has (superclasses (Y NonY)))
 							 (cond ((singletonp vals)
@@ -6193,7 +6193,7 @@ In the latter case, we need to retain the comments in the prototype-scope expres
 							 (mapcar #'(lambda (violated-partition) (list violated-partition (get-vals violated-partition '#$members))) violated-partitions)))))
 				  (cond ((eq slot '#$superclasses) ; also need to check all these subclasses, e.g., Partition = (X Y) (A superclasses (X B)) then (B superclasses Y) -> need to check A
 					 (mapc #'(lambda (subclass) (violated-partitions-at-class subclass :indirectp t)) (remove-duplicates (my-mapcan #'all-subclasses class-vals)))))))
-
+			   
 ;		       (cond ((and *are-some-views*
 ;				   (eq slot '#$instance-of))
 ;			      (install-views instance (remove-if #'constraint-exprp (set-difference vals old-vals)))))
@@ -6213,7 +6213,7 @@ In the latter case, we need to retain the comments in the prototype-scope expres
   (let ( (instance-of-slotvals (assoc '#$instance-of slotsvals)) )
     (cond (instance-of-slotvals (cons instance-of-slotvals (remove-if #'(lambda (slotvals) (eq (slot-in slotvals) '#$instance-of)) slotsvals)))
 	  (t slotsvals))))
-
+  
 ;;; --------------------
 
 ;;; ONLY used by KM itself to remove redundant superclasses, nowhere else within KM (though outside applications my use it)
@@ -6225,12 +6225,12 @@ In the latter case, we need to retain the comments in the prototype-scope expres
 			 (t oldvals1))) )
     (cond ((not (member val oldvals :test #'equal))
 	   (km-format t "Warning! Trying to delete non-existent value ~a on (the ~a of ~a)!~%" val slot instance))
-	  ((single-valued-slotp slot)
+	  ((single-valued-slotp slot) 
 	   (let ((new-val (vals-to-&-expr (remove val oldvals :test #'equal))))
 	     (put-vals instance slot (cond (new-val (list new-val))) :install-inversesp nil :situation situation))
-					; uninstall-inversesp would be ineffective here, as we've a STRUCTURE
+					; uninstall-inversesp would be ineffective here, as we've a STRUCTURE 
 	   (delete-explanation instance slot val :explanation-to-delete 'all :situation situation)
-	   (cond (uninstall-inversesp
+	   (cond (uninstall-inversesp 
 		  (uninstall-inverses instance slot (list val) situation) ; NOW do it manually for the new val
 ; Moved to uninstall-inverses
 ; 		  (delete-explanation val (invert-slot slot) instance :explanation-to-delete 'all :situation situation)
@@ -6238,16 +6238,16 @@ In the latter case, we need to retain the comments in the prototype-scope expres
 	   (un-done instance :situation situation) ; 1.4.0-beta8: Don't forget this! Important!!
 	   t)
 	  (t (put-vals instance slot (remove val oldvals :test #'equal) :install-inversesp nil :situation situation)
-	     (delete-explanation instance slot val :explanation-to-delete 'all :situation situation)
-	     (cond (uninstall-inversesp
+	     (delete-explanation instance slot val :explanation-to-delete 'all :situation situation)	     
+	     (cond (uninstall-inversesp 
 		    (uninstall-inverses instance slot (list val) situation) ; NOW do it manually for  new val
 		    (delete-explanation val (invert-slot slot) instance :explanation-to-delete 'all :situation situation)))
-	     (un-done instance :slot slot :situation situation)	; 3/28/08 - for good measure
+	     (un-done instance :slot slot :situation situation)	; 3/28/08 - for good measure 
 	     t))))
 
 ;;; Simpler than delete-val above: just put a nil in for the to-be-deleted value. I *think* this is ok!
 ;;; NOTE: This is NOT used anywhere in KM or outside, and so is not really tested.
-(defun fast-delete-val (instance slot val0 &optional (uninstall-inversesp t)
+(defun fast-delete-val (instance slot val0 &optional (uninstall-inversesp t) 
 						(situation (target-situation (curr-situation) instance slot)))
   (let* ((val (dereference val0))
 	 (old-vals (get-vals instance slot :situation situation))
@@ -6259,8 +6259,8 @@ In the latter case, we need to retain the comments in the prototype-scope expres
 ;;; Only used by fast-delete-val above
 ; (defun uninstall-inverse (frame slot val0 &optional (situation (curr-situation)))
 (defun   uninstall-inverse (frame slot val0 &optional (situation (target-situation (curr-situation) frame slot)))
-  (cond ((not (non-inverse-recording-slot slot))
-	 (let ((invslot (invert-slot slot))
+  (cond ((not (non-inverse-recording-slot slot))		
+	 (let ((invslot (invert-slot slot)) 
 	       (val (dereference val0)))
 	   (cond ((and (kb-objectp val)
 		       (not (non-inverse-recording-concept val))) ; eg. don't want boolean (T has (open-of (Box1))
@@ -6328,7 +6328,7 @@ extra effort is not worth solving this issue, only for the classes Slot, Partiti
 ;;; [1] MODIFIED Feb04: add the target-situation finder here for the special case where situation is not specified
 ; [1]  get-vals (frame slot &key (facet 'own-properties) (situation (curr-situation))                               (dereferencep t))
 (defun get-vals (frame slot &key (facet 'own-properties) (situation (target-situation (curr-situation) frame slot)) (dereferencep t))
-  (cond ((and (symbolp slot)
+  (cond ((and (symbolp slot) 
 ;	      (is-km-term frame))		; bug
 	      (kb-objectp frame))
 	 (cond (dereferencep (dereference (vals-in (assoc slot (get-slotsvals frame :facet facet :situation situation :dereferencep nil)))))
@@ -6352,11 +6352,11 @@ extra effort is not worth solving this issue, only for the classes Slot, Partiti
 (defun get-unique-val (frame slot &key (facet 'own-properties) (situation (target-situation (curr-situation) frame slot)) (fail-mode 'fail))
   (let ( (vals (get-vals frame slot :facet facet :situation situation)) )
     (cond ((singletonp vals) (first vals))
-	  (vals (report-error 'user-error
-			      "(the ~a of ~a) should have at most one value,~%but it returned multiple values ~a!~%Just taking the first...(~a) ~%"
+	  (vals (report-error 'user-error 
+			      "(the ~a of ~a) should have at most one value,~%but it returned multiple values ~a!~%Just taking the first...(~a) ~%" 
 			      slot frame vals (first vals))
 		(first vals))
-	  ((eq fail-mode 'error)
+	  ((eq fail-mode 'error) 
 	   (report-error 'user-error "No value found for the ~a of ~a!~%" slot frame)))))
 
 ;;; ----------
@@ -6367,7 +6367,7 @@ extra effort is not worth solving this issue, only for the classes Slot, Partiti
 	(t (getobj frame (curr-situation-facet facet situation)))))
 
 ;;; ----------------------------------------
-;;; NEW - same thing, but just deal with member properties. A "ruleset" is a list of expressions on
+;;; NEW - same thing, but just deal with member properties. A "ruleset" is a list of expressions on 
 ;;; some class's slot, which should be applied to instances of that class.
 ;;; Here we collect both `assertional' and `definitional' rules; it'd be nice to ignore the definitional
 ;;; rules, or just take them if no assertional rules, but that would be incomplete wrt. the intended
@@ -6375,7 +6375,7 @@ extra effort is not worth solving this issue, only for the classes Slot, Partiti
 ;;; We have to search in two dimensions: (1) up the isa hierarchy and (2) up the situation hierarchy.
 
 
-#|
+#| 
 NEW: IF   supersituation S1 yields the rule (a ...)
      AND  instance exists in S1
      THEN it is redundant to also evaluate the expression in situation,
@@ -6388,12 +6388,12 @@ So, we return two values:
 |#
 ;;; ---------- search ALL situations and classes
 
-;(defun inherited-rule-sets (instance slot &key (situation (curr-situation))
+;(defun inherited-rule-sets (instance slot &key (situation (curr-situation)) 
 (defun  inherited-rule-sets (instance slot &key (situation (target-situation (curr-situation) instance slot))
-					       retain-commentsp (climb-situation-hierarchyp t)
+					       retain-commentsp (climb-situation-hierarchyp t) 
 					       ignore-inherit-with-overrides-restriction)
-  (let ((rulesets+classes (inherited-rulesets+classes instance slot :situation situation
-						      :retain-commentsp retain-commentsp
+  (let ((rulesets+classes (inherited-rulesets+classes instance slot :situation situation 
+						      :retain-commentsp retain-commentsp 
 						      :climb-situation-hierarchyp climb-situation-hierarchyp
 						      :ignore-inherit-with-overrides-restriction
 						      ignore-inherit-with-overrides-restriction
@@ -6401,10 +6401,10 @@ So, we return two values:
     (remove-duplicates (append-lists (mapcar #'first rulesets+classes)) ; strip off classes
 		       :test #'equal :from-end t)))
 
-;;; RETURNS: a list of (<class> (<ruleset1> <ruleset2>...))
-(defun inherited-rulesets+classes (instance0 slot &key ; (situation (curr-situation))
+;;; RETURNS: a list of (<class> (<ruleset1> <ruleset2>...)) 
+(defun inherited-rulesets+classes (instance0 slot &key ; (situation (curr-situation)) 
 						         (situation (target-situation (curr-situation) instance0 slot))
-							 retain-commentsp
+							 retain-commentsp 
 							 (climb-situation-hierarchyp t) ignore-inherit-with-overrides-restriction)
   (let* ((instance (dereference instance0))
 	 (all-situations (cond ((not climb-situation-hierarchyp) (list situation))
@@ -6416,7 +6416,7 @@ So, we return two values:
 	   (desource+decomment
 	    (bind-self (inherited-rule-sets+classes-with-overrides slot (immediate-classes instance) (append all-situations visible-theories)) instance)
 	    :retain-commentsp retain-commentsp))
-	  (t (desource+decomment
+	  (t (desource+decomment 
 	      (bind-self (inherited-rule-sets+classes2 slot (all-classes instance) (append all-situations visible-theories)) instance)
 	      :retain-commentsp retain-commentsp)))))
 
@@ -6425,7 +6425,7 @@ So, we return two values:
 ;;; Slots are declared to use this by setting their "inherit-with-overrides" property to t
 ;;; REVISED 8.16.00:
 ;;; With multiple inheritance, climb up all the branches stopping at the point(s) where you hit a rule.
-;;; REVISED 12.11.00:
+;;; REVISED 12.11.00: 
 ;;; Don't bother also ascending situation hierarchy, instead use all situations immediately
 ;;; RETURNS: A list of rulesets+class pairs
 (defun inherited-rule-sets+classes-with-overrides (slot classes all-situations)
@@ -6460,7 +6460,7 @@ So, we return two values:
   (let ((rulesets+classes (inherited-rule-sets+classes2 slot classes situations)))
     (remove-duplicates (append-lists (mapcar #'first rulesets+classes)) ; strip off classes
 		       :test #'equal :from-end t)))
-
+  
 ;;; Find all the rule sets on all the classes in all the situations
 ;;; Is MAPCAN SAFE
 ;;; RETURNS: A list of rulesets+class pairs
@@ -6512,7 +6512,7 @@ USER(45): (mapcar #'list
        (bind-self
 	(remove nil
 		(append
-		 (&&-exprs-to-valsets (or (get-vals instance slot :facet 'own-properties :situation start-situation)
+		 (&&-exprs-to-valsets (or (get-vals instance slot :facet 'own-properties :situation start-situation) 
 					  (get-vals instance slot :facet 'own-definition :situation start-situation)))
 		 (supersituation-own-rule-sets instance slot :situation start-situation :retain-commentsp retain-commentsp)))
 	instance)
@@ -6534,7 +6534,7 @@ If situation = *Global, then this procedure just searches (visible-theories)
 |#
 ;(defun supersituation-own-rule-sets (instance slot &key retain-commentsp (situation (curr-situation)))
 (defun supersituation-own-rule-sets (instance slot &key retain-commentsp (situation (target-situation (curr-situation) instance slot)))
-  (cond
+  (cond 
    ((and (isa-clone instance)								; [2]
 	 (neq situation *global-situation*)
 	 (inertial-fluentp slot)
@@ -6564,7 +6564,7 @@ If situation = *Global, then this procedure just searches (visible-theories)
 ;;; NOTE: This won't collect constraints on subslots
 ;;; [1] retain-commentsp t for efficiency, we'll remove them later.
 ;;; [2] Actually, this decomment step is redundant because find-constraints-in-exprs ALWAYS does a decomment anyway!
-(defun collect-constraints-on-instance (instance slot &key retain-commentsp ignore-prototypes
+(defun collect-constraints-on-instance (instance slot &key retain-commentsp ignore-prototypes 
 ;							   (situation (curr-situation)))
 							   (situation (target-situation (curr-situation) instance slot)))
   (let ((constraints+sources
@@ -6576,17 +6576,17 @@ If situation = *Global, then this procedure just searches (visible-theories)
 ;;; Each <source> in <sources> is either a CLASS or an INSTANCE or (cloned-from <prototype-root> <clone-root>)
 ;;; For constraints from UNCLONED prototypes, <source> is simply CLASS of the prototype
 ;;; Used for AURA - see aura-api.txt
-(defun collect-constraints+sources-on-instance (instance slot &key ; (situation (curr-situation))
+(defun collect-constraints+sources-on-instance (instance slot &key ; (situation (curr-situation)) 
 							             (situation (target-situation (curr-situation) instance slot))
 								     retain-commentsp ignore-prototypes)
   (cond ((and *are-some-constraints*								; optimization flag
 	      (or (member slot *built-in-slots-with-constraints*)
 		  (not (member slot *built-in-slots*))))
 ; HLO-2308: make sure constraints on prototypes are unified in:
-; 	 (cond (*are-some-prototypes* (km `(#$the ,slot #$of ,instance))))
+; 	 (cond (*are-some-prototypes* (km `(#$the ,slot #$of ,instance)))) 
 ; HLO-2325: The above line is too aggressive, and causes infinite reasoning. Let's try something simpler at [2]
 	 (let* ((inherited-rulesets+classes
-		 (inherited-rulesets+classes instance slot :situation situation :retain-commentsp t))
+		 (inherited-rulesets+classes instance slot :situation situation :retain-commentsp t)) 
 		(inherited-constraints+classes	; list of (class constraints)
 		 (mapcan #'(lambda (rulesets+class)
 			     (let* ((rulesets (first rulesets+class))
@@ -6609,7 +6609,7 @@ If situation = *Global, then this procedure just searches (visible-theories)
 					    (my-mapcan #'explanation-in isv-explanations)))
 				   (list (list own-constraint instance)))))	; new
 			 own-constraints))
-#|[2]|#		(prototype-constraints+sources (prototype-constraints+sources instance slot
+#|[2]|#		(prototype-constraints+sources (prototype-constraints+sources instance slot 
 									      :ignore-prototypes ignore-prototypes)))
 	   (mapcar #'(lambda (key+vals)  ; remove duplicates from vals
 		       (list (first key+vals) (remove-duplicates (second key+vals) :test #'equal :from-end t)))
@@ -6632,7 +6632,7 @@ If situation = *Global, then this procedure just searches (visible-theories)
 	 (protoinstances (get-vals instance '#$cloned-from))) ; (ii)
 ;    (km-format t "prototypes = ~a, protoinstances = ~a~%" prototypes protoinstances)
     (my-mapcan #'(lambda (protoinstance)
-		(let* ((constraints
+		(let* ((constraints 
 			(find-constraints-in-exprs (get-vals protoinstance slot :situation *global-situation*)))
 		       (ok-constraints	; [1]
 			(remove-if #'(lambda (constraint)
@@ -6660,7 +6660,7 @@ If situation = *Global, then this procedure just searches (visible-theories)
     (mapcan #'(lambda (class)
 		(let ((prototypes (get-vals class '#$prototypes)))
 		  (mapcan #'(lambda (prototype)
-			      (let* ((constraints
+			      (let* ((constraints 
 				      (find-constraints-in-exprs (get-vals prototype slot :situation *global-situation*)))
 				     (ok-constraints ; [1]
 				      (remove-if #'(lambda (constraint)
@@ -6679,7 +6679,7 @@ If situation = *Global, then this procedure just searches (visible-theories)
 ;;; Same, but start at classes
 ;;; [1] all-superclasses0 like all-superclasses, except *excludes* Thing and includes classes.
 ;;;	Perfect!
-(defun inherited-rule-sets-on-classes (classes slot &key (situation (curr-situation))
+(defun inherited-rule-sets-on-classes (classes slot &key (situation (curr-situation)) 
 							 retain-commentsp
 							 ignore-inherit-with-overrides-restriction)
   (let* ( (all-situations (cond ((and (neq situation *global-situation*)
@@ -6705,7 +6705,7 @@ If situation = *Global, then this procedure just searches (visible-theories)
 ;;; Local to the slot AND situation
 ;(defun local-constraints (instance slot &key (situation (curr-situation)))
 (defun  local-constraints (instance slot &key (situation (target-situation (curr-situation) instance slot)))
-  (cond
+  (cond 
    (*are-some-constraints*								; optimization flag
     (find-constraints-in-exprs (bind-self
 				(or (get-vals instance slot :facet 'own-properties :situation situation)     ; This disjunct should be in get-vals-
@@ -6717,7 +6717,7 @@ If situation = *Global, then this procedure just searches (visible-theories)
 ;;; ======================================================================
 
 (defun has-situation-specific-info (frame situation)
-  (some #'(lambda (prop-list)
+  (some #'(lambda (prop-list) 
 	    (getobj frame (curr-situation-facet prop-list situation)))
 	*all-facets*))
 
@@ -6740,20 +6740,20 @@ Continuing, but ignoring definition...~%" frame frame frame))
 		 (let ( (children (get parent defined-children-facet)) )
 ; Below. NO! This can cause redundant superclasses to be added based on load order.
 ; at time of load, parent is NOT a redundant superclass. But later load a X <| superclass link and parent
-; BECOMES redundant :-(. Better not to assert it in the first place.
+; BECOMES redundant :-(. Better not to assert it in the first place. 			   
 ;			   (cond ((eq facet 'member-definition)   ; Prologue: add the implied taxonomic link
 ;				  (km-int `(,frame #$has (#$superclasses (,parent))) :fail-mode 'error)))
-		   (cond
+		   (cond 
 		    ((member frame children)) ; already got this definition
-		    (t (case defined-children-facet
+		    (t (case defined-children-facet 
 			 ((defined-instances defined-subclasses)
 				    ;(setf (get parent defined-children-facet) (cons frame children))
 ;				    (make-transaction `(setf ,parent ,defined-children-facet ,(cons frame children)))
 				  ;;; NEW: Must try most specific classifications first! HLO bug
 			  (make-comment "Noting a definition for ~a..." frame)
 			  (km-setf parent defined-children-facet (most-specific-first (cons frame children))))
-			 (defined-prototypes
-			  (km-setf parent defined-children-facet (most-specific-prototype-scopes-first
+			 (defined-prototypes 
+			  (km-setf parent defined-children-facet (most-specific-prototype-scopes-first 
 								                      (cons frame children)))
 			     (cond ((not simple-classp)
 				    (make-comment "Noting a definition for prototype ~a..." frame)
@@ -6782,12 +6782,12 @@ Continuing, but ignoring definition...~%" frame frame frame))
 
 ;; ----------
 
-;;; (most-specific-prototype-scopes-first '#$(_Synthesis7901 _Protein-synthesis161))
+;;; (most-specific-prototype-scopes-first '#$(_Synthesis7901 _Protein-synthesis161)) 
 ;;;	-> (|_Protein-synthesis161| |_Synthesis7901|)
 (defun most-specific-prototype-scopes-first (protoroots)
   (let* ((class+protoroot-pairs	; e.g., ((Synthesis _Synthesis7901) (Protein-synthesis _Protein-synthesis161))
 	 (mapcan #'(lambda (protoroot)
-		     (let ((scope-classes
+		     (let ((scope-classes 
 			    (remove-subsumers
 			     (mapcar #'(lambda (scope)
 					 (cond ((class-descriptionp scope)
@@ -6801,7 +6801,7 @@ Continuing, but ignoring definition...~%" frame frame frame))
 	 (ordered-classes (most-specific-first (remove-duplicates (mapcar #'first class+protoroot-pairs)))))
     (collect-prototypes-for-classes ordered-classes (gather-by-key class+protoroot-pairs))))
 
-;;; (COLLECT-PROTOTYPES-FOR-CLASSES
+;;; (COLLECT-PROTOTYPES-FOR-CLASSES 
 ;;;   '#$(Protein-synthesis Synthesis) '#$((Synthesis (_Synthesis7901)) (Protein-synthesis (_Protein-synthesis161))))
 ;;; -> (_Protein-synthesis161 _Synthesis7901)
 (defun collect-prototypes-for-classes (ordered-classes class+protoroots-list &key collected-so-far)
@@ -6812,7 +6812,7 @@ Continuing, but ignoring definition...~%" frame frame frame))
 	     (uncollected (ordered-set-difference protoroots-at-class collected-so-far)) ; may be nil, of course
 	     (new-collected (append collected-so-far uncollected)))
 	(collect-prototypes-for-classes (rest ordered-classes) class+protoroots-list :collected-so-far new-collected)))))
-
+	
 ;;; ----------
 
 ;;; Undo the above
@@ -6838,7 +6838,7 @@ Continuing, but ignoring definition...~%" frame frame frame))
 ;;; *don't* install (less-than has (instance-of (Slot))), which will happen otherwise
 ;;; [4] Would use (not (non-inverse-recording-slot <i>)), but some assertions may not have been done by this point so would
 ;;;     not yet be valid.
-(defun add-slotsvals (instance add-slotsvals &key (facet 'own-properties) ; (install-inversesp t)
+(defun add-slotsvals (instance add-slotsvals &key (facet 'own-properties) ; (install-inversesp t) 
 						  (situation (curr-situation)) combine-values-by (bind-selfp t))
 ;  (let ( (old-classes (cond ((assoc '#$instance-of add-slotsvals) (immediate-classes instance)))) )	; for view mechanism
   (cond ((or (not (known-frame instance)) *active-obj-stack*) (push-to-obj-stack instance))) ; new 3/28/08
@@ -6866,7 +6866,7 @@ Continuing, but ignoring definition...~%" frame frame frame))
 			 (uninstall-inverses instance slot (ordered-set-difference old-vals add-vals) situation0)
 
 	 		 ;;; And more complex, Adding (A r NEW) will *also* overwrite (NEW invr OLD2) (and thus (OLD2 r NEW)) if invr is single-valued.
-			 (cond ((single-valued-slotp invslot) 		       ; If (X now-has (wife (Y))), and wife-of is single-valued, and Y was already wife-of Z, then
+			 (cond ((single-valued-slotp invslot) 		       ; If (X now-has (wife (Y))), and wife-of is single-valued, and Y was already wife-of Z, then 
 									       ; we also need to retract Y wife-of Z.
 				(mapc #'(lambda (add-val)
 					  (cond ((kb-objectp add-val)		; for HLO-4553
@@ -6889,8 +6889,8 @@ Continuing, but ignoring definition...~%" frame frame frame))
 		(cond ((or new-vals (eq combine-values-by 'overwriting))		; null new-vals means no change
 		       (put-vals instance slot new-vals :facet facet :install-inversesp nil :situation situation0)
 ;		       (km-format t "add-slotsvals = ~a~%" add-slotsvals)
-;		       (cond (install-inversesp
-		       (cond ((member facet '(own-definition own-properties))
+;		       (cond (install-inversesp 
+		       (cond ((member facet '(own-definition own-properties))			      			      
 ;			      (install-inverses instance slot new-vals situation0)))))))		; [2]
 			      (install-inverses instance slot add-vals situation0))))))))		; [2]
 	  (reorder-slotsvals new-add-slotsvals))
@@ -6904,7 +6904,7 @@ Continuing, but ignoring definition...~%" frame frame frame))
 			  *slots-slots*)
 		    (isa instance '#$Slot))
 		(eq facet 'own-properties))		; don't do this for Slot classes!
-	   (cond ((and (not (assoc '#$instance-of add-slotsvals))
+	   (cond ((and (not (assoc '#$instance-of add-slotsvals)) 
 		       (not (isa instance '#$Slot))
 		       *coerce-undeclared-slots*)
 		  (add-vals instance '#$instance-of '#$(Slot) :situation *global-situation*)))
@@ -6912,8 +6912,8 @@ Continuing, but ignoring definition...~%" frame frame frame))
 		       (not (non-inverse-recording-slot instance)) ; avoid instance=situation-specific -> assert (situation-specific-of has ...)
 		       (or *coerce-undeclared-slots*
 			   (isa instance '#$Slot)			; forward WAS declared, so declare inverse also
-			   (assoc '#$instance-of add-slotsvals)))
-		  (add-vals (invert-slot instance) '#$instance-of
+			   (assoc '#$instance-of add-slotsvals))) 			   
+		  (add-vals (invert-slot instance) '#$instance-of 
 ; 			    (or (vals-in (assoc '#$instance-of add-slotsvals)) '#$(Slot)) 		; I don't think this is justified!
 ; No - not okay. slot1 has instance-of Entity-to-Value ===> invslot1 has instance-of Value-to-Entity
 			    '#$(Slot)
@@ -6933,7 +6933,7 @@ NOTE: These are older comments from an earlier version compute-new-slotsvals, no
 ((s1 (a b)) (s2 (c d e)) (s3 (f g)))
 [1] This could be made more efficient by only doing pair-wise subsumption tests between old-vals and extra-vals,
     rather than all possible pairings. See more efficient version in add-val, earlier.
-[2] Defined in subsumes.lisp. NB *only* do this check for own properties!
+[2] Defined in subsumes.lisp. NB *only* do this check for own properties! 
 	Why: Originally becuase the remove-subsuming-exprs check evaluates the expressions!
 [3] Now we do a two-way check: if old-expr subsumes new-expr, or new-expr subsumes old-expr, then remove the subsumer.
     This is just a generalized case of remove-subsumers [1b], preserving which was in which set.
@@ -6964,10 +6964,10 @@ about it for now.
 ;;; [1] only meaningful for remove-subsumers-slotp etc. cases, otherwise discard result.
 (defun compute-new-vals (slot old-vals0 add-vals &key combine-values-by)
   (let* ( (old-vals (cond ((single-valued-slotp slot) (un-andify old-vals0))		; ((a & b)) -> (a b)
-			  (t old-vals0)))
-	  (extra-vals   (ordered-set-difference add-vals old-vals :test #'equal)) )
+			  (t old-vals0))) 
+	  (extra-vals   (ordered-set-difference add-vals old-vals :test #'equal)) )		
     (cond ((remove-subsumers-slotp slot) (cond (extra-vals (remove-subsumers (append old-vals extra-vals))) (t old-vals0))) ; [1]
-	  ((remove-subsumees-slotp slot) (cond (extra-vals (remove-subsumees (append old-vals extra-vals))) (t old-vals0)))
+	  ((remove-subsumees-slotp slot) (cond (extra-vals (remove-subsumees (append old-vals extra-vals))) (t old-vals0))) 
 	  ((combine-values-by-appending-slotp slot) (cond (extra-vals (remove-dup-instances (append old-vals extra-vals))) (t old-vals0)))
 	  ((eq combine-values-by 'appending)
 	   (cond ((single-valued-slotp slot) (val-to-vals (vals-to-&-expr (remove-dup-instances (append old-vals add-vals)))))
@@ -6988,10 +6988,10 @@ about it for now.
 				 valsets)) nil)
 		     ((and (every #'constraint-exprp add-vals)		; Efficiency and prettier (x) && (c) -> (x c) not ((x) && (c))
 			   (singletonp valsets))
-;		      (km-format t "~%compute-new-vals: new-valset = ~a, valsets = ~a, result = ~a~%~%" add-vals valsets
+;		      (km-format t "~%compute-new-vals: new-valset = ~a, valsets = ~a, result = ~a~%~%" add-vals valsets 
 ;				 (remove-duplicates (append (first valsets) add-vals) :test #'equal))
 		      (remove-duplicates (append (first valsets) add-vals) :test #'equal))
-		     (t ; (km-format t "~%compute-new-vals: new-valset = ~a, valsets = ~a, result = ~a~%~%" add-vals valsets
+		     (t ; (km-format t "~%compute-new-vals: new-valset = ~a, valsets = ~a, result = ~a~%~%" add-vals valsets 
 			;	   (valsets-to-&&-exprs (append valsets (list add-vals))))
 ;		      (km-format t "trying reduced...~%")
 		      (let ( (reduced-valsets (cond ((<= nvalsets 10)
@@ -7029,18 +7029,18 @@ about it for now.
 					  target)
   (let ( (parent (dereference parent0))
 	 (slotsvals (dereference slotsvals0)) )
-    (cond
-        ((kb-objectp parent)
+    (cond 
+        ((kb-objectp parent) 
 ;	     (eq parent '#$Number))	; the one valid class which *isn't* a KB object	; WHY NOT???
 	 (setq *statistics-skolems* (1+ *statistics-skolems*))
-	 (create-named-instance (create-instance-name parent prefix-string) parent slotsvals
+	 (create-named-instance (create-instance-name parent prefix-string) parent slotsvals 
 				:bind-selfp bind-selfp :target target))
 ;;; NEW 2.29.00: Handle descriptions as class objects
 	((class-descriptionp parent)
 	 (let* ((dclass+dslotsvals (class-description-to-class+slotsvals parent))
 		(dclass (first dclass+dslotsvals))
 		(dslotsvals (second dclass+dslotsvals)))
-	   (create-named-instance (create-instance-name dclass prefix-string) dclass (append dslotsvals slotsvals)
+	   (create-named-instance (create-instance-name dclass prefix-string) dclass (append dslotsvals slotsvals) 
 				  :bind-selfp bind-selfp :target target)))
 	(t (report-error 'user-error "Class name must be a symbol or class description! (was ~a)~%" parent)))))
 
@@ -7055,7 +7055,7 @@ Here I know the name of the new frame to create
     instance-of is a remove-subsumers slot)
 |#
 (defun create-named-instance (newframe parent slotsvals0 &key (bind-selfp t) target)
-  (cond
+  (cond 
    ((not (kb-objectp newframe))
     (report-error 'user-error "Ignoring slots on non-kb-object ~a...~%Slots: ~a~%" newframe slotsvals0))
    (t (let* ((extra-classes (vals-in (assoc '#$instance-of slotsvals0))) ; [1]
@@ -7063,7 +7063,7 @@ Here I know the name of the new frame to create
 	     (slotsvals1 (update-assoc-list slotsvals0 (list '#$instance-of all-classes)))
 ; [5]					    (list '#$instance-of (remove-subsumers (cons parent extra-classes))))) ; [5]
 	     (slotsvals2 (cond (bind-selfp (bind-self slotsvals1 newframe))
-			       (t slotsvals1)))
+			       (t slotsvals1))) 
 	     (slotsvals (mapcar #'(lambda (slotvals)
 				    (let ((slot (slot-in slotvals))
 					  (vals (vals-in slotvals)))
@@ -7073,13 +7073,13 @@ Here I know the name of the new frame to create
 ;	(km-format t "slotsvals1 = ~a, slotsvals2 = ~a, slotsvals = ~a~%" slotsvals1 slotsvals2 slotsvals)
 	(add-slotsvals newframe slotsvals :bind-selfp bind-selfp) ; allow Self to preserved in exceptional circumstances (prototype-scope)
 
-	(cond ((am-in-prototype-mode)
+	(cond ((am-in-prototype-mode) 
 	       (add-val newframe '#$prototype-participant-of (curr-prototype) t *global-situation*)))  ; install-inverses = t; Note in GLOBAL situation
 #|NEW|#	(make-assertions newframe slotsvals)	; MOVED from situations only
 	(un-done newframe)		; in case it's a redefinition	MOVED to put-slotsvals Later: No!
 	(let ( (slots-that-changed (remove '#$instance-of (mapcar #'slot-in slotsvals))) )
 	  (cond (target (push (list target newframe) *postponed-classifications*))
-		(t (classify newframe :slots-that-changed slots-that-changed)))) ; with *indirect-classification* on, see
+		(t (classify newframe :slots-that-changed slots-that-changed)))) ; with *indirect-classification* on, see 
 										 ; note [1] below
 	(mapc #'(lambda (slot)
 		  (km-trace 'comment "New instance ~a: evaluating slot ~a opportunistically..." newframe slot)
@@ -7123,8 +7123,8 @@ OLD: (desource+decomment-top-level (*black (comm [Comment1] _Dog1))) USED TO -> 
 (defun remove-sources-from-vals (instance slot vals)
   (mapcar #'(lambda (valexp)
 	      (let* ((val (desource+decomment-top-level valexp)))
-		(cond ((and val
-			    (fully-evaluatedp val)
+		(cond ((and val 
+			    (fully-evaluatedp val) 
 			    (not (equal val valexp)))
 		       (record-explanation-for `#$(the ,SLOT of ,INSTANCE) val valexp)
 		       val)
@@ -7141,7 +7141,7 @@ OLD: (desource+decomment-top-level (*black (comm [Comment1] _Dog1))) USED TO -> 
 ;;; [1] Consider the user saves a KB, then reloads it in a new session. As the gentemp
 ;;; counter starts form zero again, there's a small chance it will re-create the name
 ;;; of an already used frame, so we need to check for this.
-(defun create-instance-name (parent &optional (prefix-string (cond ((am-in-prototype-mode) *proto-marker-string*)
+(defun create-instance-name (parent &optional (prefix-string (cond ((am-in-prototype-mode) *proto-marker-string*) 
 								   (t *var-marker-string*))) add-to-kb-object-list)
   (cond ((and (checkkbp) (not (known-frame parent)))
 	 (report-error 'user-warning "Class ~a not declared in KB.~%" parent)))
@@ -7163,7 +7163,7 @@ OLD: (desource+decomment-top-level (*black (comm [Comment1] _Dog1))) USED TO -> 
 		  (intersection (all-classes instance) *classes-using-assertions-slot*))
 	     (assoc '#$assertions slotsvals))			; has local assertions
 	 (let ( (assertions (subst '#$Self '#$SubSelf (km-int `#$(the assertions of ,INSTANCE)))) )	; SubSelf becomes Self
-	   (mapc #'(lambda (assertion)
+	   (mapc #'(lambda (assertion) 
 		     (cond ((not (quotep assertion))
 			    (report-error 'user-error "Unquoted assertion ~a on ~a! Ignoring it...~%" assertion instance))
 			   (t (let ( (situated-assertion (cond ((isa instance '#$Situation) `#$(in-situation ,INSTANCE ,(UNQUOTE ASSERTION))) ; [1]
@@ -7178,7 +7178,7 @@ OLD: (desource+decomment-top-level (*black (comm [Comment1] _Dog1))) USED TO -> 
 ;;; Here KM records which slot-values have been computed. If KM subsequently
 ;;; need those slot-values, it just does a lookup rather than a recomputation.
 ;;; note-done and reset-done are called by interpreter.lisp.
-;;; Aug 98: We have to note "done in a situation", note just "done". Just
+;;; Aug 98: We have to note "done in a situation", note just "done". Just 
 ;;; because KM knows X's age in Sitn1, doesn't mean it knows it in Sitn2!
 ;;; ======================================================================
 
@@ -7213,7 +7213,7 @@ OLD: (desource+decomment-top-level (*black (comm [Comment1] _Dog1))) USED TO -> 
 		    (setf (get frame 'done) (cons (list slot situation) done-so-far))))))))
 
 (defun already-done (frame slot &optional (situation (target-situation (curr-situation) frame slot)))
-   (and (kb-objectp frame)
+   (and (kb-objectp frame) 
 ;       (member (list slot situation) (get frame 'done) :test #'equal)  - old - less efficient
 #|new|# (member-if (lambda (item)		; More efficient version, thanks to Sunil Mishra!
 		    (and (consp item)
@@ -7240,8 +7240,8 @@ We can probably make it do that though with a (very) special purpose line of cod
 ;	 (showme frame)
 ;	 (km-format t "remprop on ~a~%" frame)
 	 (remprop frame 'done)
-	 (mapc #'(lambda (instance)
-		   (cond ((kb-objectp instance)
+	 (mapc #'(lambda (instance) 
+		   (cond ((kb-objectp instance) 
 ;			  (km-format t "also remprop on ~a~%" instance)
 			  (remprop instance 'done))))
 	       (my-mapcan #'(lambda (situation)
@@ -7256,7 +7256,7 @@ We can probably make it do that though with a (very) special purpose line of cod
 	       (t (remprop frame 'done))))
 	(t (let* ( (done-so-far (get frame 'done))
 		   (next-situations (all-next-situations (or situation (curr-situation)))) )
-	     (setf (get frame 'done) (remove-if #'(lambda (pair)
+	     (setf (get frame 'done) (remove-if #'(lambda (pair) 
 						    (and (member (second pair) next-situations)
 							 (or (null slot) (eq (first pair) slot))))
 						done-so-far))))))
@@ -7264,7 +7264,7 @@ We can probably make it do that though with a (very) special purpose line of cod
 #|
 ;;; KM 2.0.35 and earlier
 (defun un-done (frame &key slot situation)
-  (cond ((or ; (am-in-global-situation)
+  (cond ((or ; (am-in-global-situation) 
 	     (eq situation *global-situation*)
 	     (and (null situation) (am-in-global-situation))
 	     (null slot)
@@ -7275,7 +7275,7 @@ We can probably make it do that though with a (very) special purpose line of cod
 	(t (let* ( (done-so-far (get frame 'done))
 		   (next-situations (all-next-situations (or situation (curr-situation)))) )
 ;	     (km-format t "next-situations = ~a~%" next-situations)
-	     (setf (get frame 'done) (remove-if #'(lambda (pair)
+	     (setf (get frame 'done) (remove-if #'(lambda (pair) 
 						    (and (member (second pair) next-situations)
 							 (or (null slot) (eq (first pair) slot))))
 						done-so-far))))))
@@ -7292,7 +7292,7 @@ We can probably make it do that though with a (very) special purpose line of cod
   (mapc #'(lambda (frame)
 	    (cond ((get frame 'done)
 		   (km-format t "~a:~%" frame)
-		   (mapc #'(lambda (slot+situations)
+		   (mapc #'(lambda (slot+situations) 
 			     (km-format t "     ~a~20T [in ~a]~%" (first slot+situations) (second slot+situations)))
 			 (gather-by-key (get frame 'done))))))
 	(get-all-concepts))
@@ -7315,7 +7315,7 @@ We can probably make it do that though with a (very) special purpose line of cod
   (let ( (all-situations (cond ((and (neq situation *global-situation*)
 				     (fluentp slot))
 				(cons situation (all-supersituations situation)))
-			       (t (list *global-situation*))))
+			       (t (list *global-situation*)))) 
 	 (visible-theories (visible-theories)) )
     (some #'(lambda (situation)
 	      (some #'(lambda (subslot)
@@ -7336,8 +7336,8 @@ If it is just having existing expressions computed into values, don't reclassify
 |#
 
 ;;; Wrapper to limit tracing....
-;;; [1] slot-of-interest as option: classify is never called now giving this argument. But if it was, only consider
-;;;     possible-new-parent classes which have something explicit to offer for slot's value. 10/23/00 drop
+;;; [1] slot-of-interest as option: classify is never called now giving this argument. But if it was, only consider 
+;;;     possible-new-parent classes which have something explicit to offer for slot's value. 10/23/00 drop 
 ;;;     this for now.
 ;;; [2] slot-that-changed: Only do reclassification work if slot-that-changed might directly affect the class.
 ;;;	Note: If *indirect-classification* = t, then slot-that-changed is NOT used
@@ -7351,13 +7351,13 @@ If it is just having existing expressions computed into values, don't reclassify
   (cond ((and (classification-enabled)
 	      (or (not (protoinstancep instance))	; [1]
 		  (am-in-prototype-mode))
-	      (or (not (listp slots-that-changed))
+	      (or (not (listp slots-that-changed))		
 		  (set-difference slots-that-changed *neq-slots*)) ; there must be at least one non-NEQ slot that changed, to trigger reclassification
 	      (or *classify-slotless-instances*
 		  slots-that-changed)		; may be NIL, as opposed to unspecified
 	      (or *are-some-definitions*
 		  (and *are-some-prototype-definitions* *prototype-classification-enabled*))
-	      (or (am-in-global-situation)
+	      (or (am-in-global-situation) 
 		  *classify-in-local-situations*)
 	      (and (or *recursive-classification* (not *am-classifying*))
 		   (neq *am-classifying* instance)))
@@ -7368,29 +7368,29 @@ If it is just having existing expressions computed into values, don't reclassify
 		 (t (classify0 instance :slots-that-changed slots-that-changed :slot-of-interest slot-of-interest)))))))
 
 ;;; Question: Does the order of which classifications are attempted matter?
-;;; The current implementation tries the more specific classes up to the more general ones.
+;;; The current implementation tries the more specific classes up to the more general ones. 
 ;;; A comment in point-parents-to-defined-concept reads:
 ;;; 		"NEW: Must try most specific classifications first! HLO bug"
 ;;; So obviously the specific-to-general ordering is important!!
 ;;; (The ordering is effected by most-specific-first in point-parents-to-defined-concept).
 (defun classify0 (instance &key slots-that-changed slot-of-interest)
-  (cond
+  (cond 
    ((not (kb-objectp instance))
     (report-error 'user-error "Attempt to classify a non-kb-object ~a!~%" instance))
    ((is-an-instance instance)				; NEW: Don't try classifying Classes!
     (let ( (all-parents  (all-classes instance)) )  ; (immediate-classes ...) would
 						      ; be faster but incomplete
 	(cond ((some #'(lambda (parent)
-			 (or (classify-as-member instance parent :slots-that-changed slots-that-changed
+			 (or (classify-as-member instance parent :slots-that-changed slots-that-changed 
 						 :slot-of-interest slot-of-interest)
-			     (classify-as-coreferential instance parent :slots-that-changed slots-that-changed
+			     (classify-as-coreferential instance parent :slots-that-changed slots-that-changed 
 							:slot-of-interest slot-of-interest)
-			     (classify-as-prototype instance parent :slots-that-changed slots-that-changed
+			     (classify-as-prototype instance parent :slots-that-changed slots-that-changed 
 							:slot-of-interest slot-of-interest)))
 			 all-parents)	; if success, then must re-iterate, as the success
-	       (classify0 instance
+	       (classify0 instance 
 			  :slots-that-changed 'unspecified	 	; may make previously failed classifications now succeed
-			  :slot-of-interest slot-of-interest)))))))
+			  :slot-of-interest slot-of-interest)))))))    
 
 ;(defun do-postponed-classifications ()
 ;  (mapc #'(lambda (postponed-classification)
@@ -7474,11 +7474,11 @@ If it is just having existing expressions computed into values, don't reclassify
 		       (already-done instance dslot)
 		       (singletonp ivals) ; and already got an instance
 		       (kb-objectp (first ivals))) ; not a constraint e.g., dslot = instance-of, ivals = ((<> *ShinerBock))
-		  (isa (first ivals) class)) ; check class membership
+		  (isa (first ivals) class)) ; check class membership		  
 		 (t))))))
 
 ;;; ----------
-
+		      
 ;;; The hierarchy looks:       parent (eg. put)
 ;;;                           /                \
 ;;;                  instance (eg. _put12)      possible-new-parent (eg. tell)
@@ -7492,10 +7492,10 @@ If it is just having existing expressions computed into values, don't reclassify
    (cond (satisfiedp
 ; 	  (cond ((unifiable-with-expr instance `#$(a Thing with . ,(FIND-SLOTSVALS POSSIBLE-NEW-PARENT 'MEMBER-PROPERTIES)))	; New test!
 ;	  (cond ((km-int `#$(,INSTANCE &? (a Thing with . ,(FIND-SLOTSVALS POSSIBLE-NEW-PARENT 'MEMBER-PROPERTIES))))  ; new test [1]
-	  (cond ((km-int `#$(,INSTANCE &? (a ,POSSIBLE-NEW-PARENT with
+	  (cond ((km-int `#$(,INSTANCE &? (a ,POSSIBLE-NEW-PARENT with 
 					  ,@(GET-SLOTSVALS POSSIBLE-NEW-PARENT :FACET 'MEMBER-PROPERTIES :SITUATION *GLOBAL-SITUATION*))))  ; new test [1,2]
 		 (cond ((check-classification-with-user instance possible-new-parent)
-			(setq *statistics-classifications-succeeded* (1+ *statistics-classifications-succeeded*))
+			(setq *statistics-classifications-succeeded* (1+ *statistics-classifications-succeeded*)) 
 			(add-immediate-class instance possible-new-parent explanation)
 			t)
 		       (t (add-val instance '#$instance-of `(<> ,possible-new-parent) nil		; add constraint, to prevent further retries
@@ -7522,13 +7522,13 @@ If it is just having existing expressions computed into values, don't reclassify
    (add-val instance '#$instance-of new-immediate-parent t ; install-inverses = t
 	    (target-situation (curr-situation) instance '#$instance-of (list new-immediate-parent)))	; target situation
    ;;; OLD
-;  (record-explanation-for `#$(the instance-of of ,INSTANCE) new-immediate-parent explanation :situation *global-situation*)
+;  (record-explanation-for `#$(the instance-of of ,INSTANCE) new-immediate-parent explanation :situation *global-situation*)   
    ;;; NEW: Copy, rather than delete, the old explanations over
    (let* ((old-isv-explanations (get-all-explanations instance '#$instance-of))
 	  (old-instance-of-isv-explanations (remove-if-not #'(lambda (isv-expn) (eq (second isv-expn) '#$instance-of)) old-isv-explanations))
 	  (old-instance-of-explanations (mapcar #'explanation-in old-instance-of-isv-explanations))
 	  (new-instance-of-explanations (cons explanation old-instance-of-explanations))
-	  (new-instance-of-isv-explanations
+	  (new-instance-of-isv-explanations 
 	   (mapcar #'(lambda (explanation)
 		       `(,instance #$instance-of ,new-immediate-parent ,explanation))
 		   new-instance-of-explanations)))
@@ -7536,7 +7536,7 @@ If it is just having existing expressions computed into values, don't reclassify
      (put-explanations instance '#$instance-of new-instance-of-isv-explanations))
 
 ;  (cond ((isa instance '#$Situation) (make-situation-specific-assertions instance)))
-   (make-assertions instance)	; test later
+   (make-assertions instance)	; test later	
    (un-done instance)))		; all vals to be recomputed now - now in add-slotsvals; later: No!
 
 ;;; (satisfies-definition '_get32 'db-lookup)
@@ -7548,17 +7548,17 @@ If it is just having existing expressions computed into values, don't reclassify
 ;;;     Also note the Class in the definition is stored as (instance-of (Class)) rather than (the-class Class with ...)
 (defun satisfies-definition (instance class &key slots-that-changed)
   (let ( (definitional-slotsvals (bind-self (get-slotsvals class :facet 'member-definition :situation *global-situation*) instance)) )
-    (cond
+    (cond 
      ((or *indirect-classification*
  	  (eq slots-that-changed 'unspecified)		; distinct from NIL, means no slots changed
-	  (intersection slots-that-changed (mapcar #'slot-in definitional-slotsvals)))	; i.e. slots-that-changed must have something
+	  (intersection slots-that-changed (mapcar #'slot-in definitional-slotsvals)))	; i.e. slots-that-changed must have something 
       (km-trace 'comment "CLASSIFY: ~a has just been created/modified. Is ~a now a ~a?" 		   ; affecting the definition
 	instance instance class)
-      (setq *statistics-classifications-attempted* (1+ *statistics-classifications-attempted*))
-      (let* ( (description `'#$(a Thing with ,@DEFINITIONAL-SLOTSVALS))    ; [1]
+      (setq *statistics-classifications-attempted* (1+ *statistics-classifications-attempted*)) 
+      (let* ( (description `'#$(a Thing with ,@DEFINITIONAL-SLOTSVALS))    ; [1] 
 	      (satisfiedp (km-int `#$(,INSTANCE is ,DESCRIPTION))) )
 	(cond (*developer-mode* (km-format t "#")))
-	(cond (satisfiedp
+	(cond (satisfiedp 
 	       (km-trace 'comment "CLASSIFY: ~a *is* a ~a!" instance class))
 	      (t (km-trace 'comment "CLASSIFY: ~a is not a ~a." instance class)))
 	(values satisfiedp
@@ -7591,7 +7591,7 @@ but the unification of these two isn't permitted.
   (let ( (instance (dereference instance0)) )
     (some #'(lambda (possible-coreferential-instance)
 	      (cond ((and (not (eql instance possible-coreferential-instance))   ; already done!
-			  (or (null slot-of-interest)
+			  (or (null slot-of-interest) 
 			      (instance-has-something-to-say-about possible-coreferential-instance slot-of-interest)))
 		     (try-equating instance possible-coreferential-instance :slots-that-changed slots-that-changed))))
 	  (get parent 'defined-instances))))))
@@ -7600,11 +7600,11 @@ but the unification of these two isn't permitted.
   (cond ((satisfies-definition2 instance possible-coreferential-instance :slots-that-changed slots-that-changed)
 	 (unify-with-instance instance possible-coreferential-instance))))
 
-; [1]. Just doing (X & Y) doesn't fail,
+; [1]. Just doing (X & Y) doesn't fail, 
 (defun unify-with-instance (instance possible-coreferential-instance)
   (make-comment "~a satisfies definition of ~a," instance possible-coreferential-instance)
   (make-comment "so unifying ~a with ~a" instance possible-coreferential-instance)
-  (setq *statistics-classifications-succeeded* (1+ *statistics-classifications-succeeded*))
+  (setq *statistics-classifications-succeeded* (1+ *statistics-classifications-succeeded*)) 
   (cond ((km-int `(,instance & ,possible-coreferential-instance))		; so failure gets reported below instead
 	 (un-done instance))		; all vals to be recomputed now - now in put-slotsvals via lazy-unify. Later: no!
 	(t (report-error 'user-error "~a satisfies definition of ~a but won't unify with it!~%"
@@ -7612,13 +7612,13 @@ but the unification of these two isn't permitted.
 
 (defun satisfies-definition2 (instance poss-coref-instance &key slots-that-changed)
   (let ( (definitional-slotsvals (bind-self (get-slotsvals poss-coref-instance :facet 'own-definition :situation *global-situation*) instance)) )
-    (cond
+    (cond 
      ((or *indirect-classification*
 	  (eq slots-that-changed 'unspecified)
 	  (intersection slots-that-changed (mapcar #'slot-in definitional-slotsvals)))
-      (km-trace 'comment "CLASSIFY: ~a has just been created/modified. Is ~a now = ~a?"
+      (km-trace 'comment "CLASSIFY: ~a has just been created/modified. Is ~a now = ~a?" 
 		instance instance poss-coref-instance)
-      (setq *statistics-classifications-attempted* (1+ *statistics-classifications-attempted*))
+      (setq *statistics-classifications-attempted* (1+ *statistics-classifications-attempted*)) 
       (let* ( (description `'#$(a Thing with ,@DEFINITIONAL-SLOTSVALS))
 	      (satisfiedp (km-int `#$(,INSTANCE is ,DESCRIPTION))) )
 	(cond (*developer-mode* (km-format t "#")))
@@ -7631,16 +7631,16 @@ but the unification of these two isn't permitted.
 #|
 Note: the 'defined-prototypes for the below will be logged on Cell:
 (get '#$Cell 'defined-prototypes) -> (|_Euk-cell14|)
-(_Euk-cell14 has
+(_Euk-cell14 has 
   (instance-of (Euk-cell))
   (prototype-of (Euk-cell))
   (prototype-scope (Euk-cell
                     (the-class Cell with (has-part ((a Nucleus))))))
 
 ; Though we also got in the original conception of prototypes:
-(_Red-Wine1 has
-   (instance-of (Wine))
-   (prototype-of (Wine))
+(_Red-Wine1 has 
+   (instance-of (Wine)) 
+   (prototype-of (Wine))	    
    (prototype-scope ((the-class Wine with (color (*Red))))))
 
 So what class do we assign then when the classification succeeds?
@@ -7671,14 +7671,14 @@ So what class do we assign then when the classification succeeds?
 
 
 ; [2] these lookaheads copied from classify-as-member, don't know if we really need them
-; [3] Don't bother when the prototype class isn't reified, e.g., in the Wine example above.
+; [3] Don't bother when the prototype class isn't reified, e.g., in the Wine example above.		  
 		  (cond ((and (not (member class protoclasses)) ; [3]
 			      (might-have-slotsvals instance slotsvals) ; [2]
 			      (not (disjoint-class-sets (immediate-classes instance) protoclasses))) ; [2]
 			 (try-classifying-as-prototype instance protoclasses class-definition)))))
 	    class-definitions)))))
 
-;;; The has-definition version of this function included an &? test first to make sure of unifiability, but we
+;;; The has-definition version of this function included an &? test first to make sure of unifiability, but we 
 ;;; don't do that for prototypes. I *think* the &? test is merely to check for KB consistency, which we'll assume here.
 (defun try-classifying-as-prototype (instance protoclasses class-definition)
   (push-to-goal-stack `(,instance #$isa ,(first protoclasses)))  ; to avoid cloning the same prototype for this classfn
@@ -7700,12 +7700,12 @@ So what class do we assign then when the classification succeeds?
 ;;; prototype classification is also done there, it is also recorded in the explanation database in the same form.
 ;;; Thus you can't tell from the explanation database whether the definition was stored on a prototype or traditional class frame.
 (defun satisfies-class-definition (instance class-definition conclusion-classes)
-  (km-trace 'comment "CLASSIFY: ~a has just been created/modified. Is ~a now a ~a?"
+  (km-trace 'comment "CLASSIFY: ~a has just been created/modified. Is ~a now a ~a?" 
 	    instance instance (delistify conclusion-classes))
   (setq *statistics-classifications-attempted* (1+ *statistics-classifications-attempted*))
   (let* ((satisfiedp (km-int `#$(,INSTANCE isa ,CLASS-DEFINITION))))
     (cond (*developer-mode* (km-format t "#")))
-    (cond (satisfiedp
+    (cond (satisfiedp 
 	   (km-trace 'comment "CLASSIFY: ~a *is* a ~a!" instance (delistify conclusion-classes))
 	   (let* ((class+slotsvals (class-description-to-class+slotsvals class-definition))
 		  (class (first class+slotsvals))
@@ -7747,8 +7747,8 @@ So what class do we assign then when the classification succeeds?
           ((eq class target-class) class)
 	  ((eq class '#$Thing) nil)
 	  ((member class path-so-far)
-	   (report-error 'user-error "You have a cycle in the taxonomy (not allowed)!~%~a~%"
-			 (commaed-list (reverse (cons class path-so-far)) '->)))
+	   (report-error 'user-error "You have a cycle in the taxonomy (not allowed)!~%~a~%" 
+			 (commaed-list (reverse (cons class path-so-far)) '->)))	   
 	  ((and (kb-objectp class)
 		(kb-objectp target-class))
 	   (let ( (superclasses (immediate-superclasses class)) )
@@ -7762,8 +7762,8 @@ So what class do we assign then when the classification succeeds?
 (defun is-subslot-of (slot target-slot &key path-so-far)
     (cond ((eq slot target-slot) slot)
 	  ((member slot path-so-far)
-	   (report-error 'user-error "You have a cycle in the slot hierarchy (not allowed)!~%~a~%"
-			 (commaed-list (reverse (cons slot path-so-far)) '->)))
+	   (report-error 'user-error "You have a cycle in the slot hierarchy (not allowed)!~%~a~%" 
+			 (commaed-list (reverse (cons slot path-so-far)) '->)))	   
 	  ((and (kb-objectp slot)
 		(kb-objectp target-slot))
 	   (let ( (superslots (immediate-superslots slot)) )
@@ -7794,7 +7794,7 @@ So what class do we assign then when the classification succeeds?
 		  (,(symbol-value list) t))))
     (cond ((integerp instance) '(#$Integer))
 	  ((numberp instance) '(#$Number))
-	  ((fassoc instance *built-in-instance-of-links*)) ; e.g. t -> Boolean
+	  ((fassoc instance *built-in-instance-of-links*)) ; e.g. t -> Boolean    
 					;	((eq instance '#$*Global) '(#$Situation))
 	  ((fmember instance *built-in-set-aggregation-slots*) '#$(Set-Aggregation-Slot))
 	  ((fmember instance *built-in-seq-aggregation-slots*) '#$(Seq-Aggregation-Slot))
@@ -7818,15 +7818,15 @@ So what class do we assign then when the classification succeeds?
 	   (report-error 'user-error "ERROR! Attempt to find the instance-of of an non-KB object ~a -- ~a should be a non-keyword symbol!"
 			 instance instance)
 	   '#$(Thing))
-
+	  
 	  ((or (not (inertial-fluentp '#$instance-of)) ; allow redefinition of this thing
 	       (eq situation *global-situation*))
-
+	   
 
 ;;; 9/28/00 Rewrite this to explicitly test instance-of constraints [this test is bypassed by interpreter.lisp]
-	   (let* ( (vals+constraints (append (cond (*are-some-definitions*
+	   (let* ( (vals+constraints (append (cond (*are-some-definitions* 
 						    (get-vals instance '#$instance-of :facet 'own-definition :situation *global-situation*)))
-					     (get-vals instance '#$instance-of :facet 'own-properties :situation *global-situation*)))
+					     (get-vals instance '#$instance-of :facet 'own-properties :situation *global-situation*))) 
 		  (constraints (extract-constraints vals+constraints))
 		   (vals0 (remove-constraints vals+constraints))
 		   (vals (cond ((every #'kb-objectp vals0) vals0)
@@ -7835,7 +7835,7 @@ So what class do we assign then when the classification succeeds?
 				    (put-vals instance '#$instance-of (append vals1 constraints))
 				    (note-done instance '#$instance-of)
 				    vals1)))) )
-	     (cond
+	     (cond 
 					;	         (nil 	; NEW!!!!!! DISABLE THIS FUNCTION, IT CAUSES TOO MANY PROBLEMS!!
 					;		  (and enforce-constraints constraints)
 					;		  (enforce-constraints vals constraints instance '#$instance-of)  ; [3]
@@ -7844,7 +7844,7 @@ So what class do we assign then when the classification succeeds?
 	       ('#$(Thing)))
 	     ))
 
-					;APR30	((already-done instance '#$instance-of situation)
+					;APR30	((already-done instance '#$instance-of situation) 
 	  ((already-done instance '#$instance-of)
 	   (or (remove-constraints (get-vals instance '#$instance-of :situation situation))
 	       (remove-constraints (get-vals instance '#$instance-of :situation *global-situation*)) ; [1]
@@ -7877,10 +7877,10 @@ So what class do we assign then when the classification succeeds?
 	   (report-error 'user-warning "Object ~a not declared in KB.~%" instance)
 	   '(#$Thing))
 ; Hmm...can we get rid of automatically computed meta-classes?
-;	  ((find-vals instance '#$superclasses)
+;	  ((find-vals instance '#$superclasses) 
 ;	   (put-vals instance '#$instance-of '(#$Class) :situation situation)		; note-done is done above
 ;	   '(#$Class))
-	  (t (cond ((checkkbp)
+	  (t (cond ((checkkbp) 
 		    (report-error 'user-warning "Parent (superclasses/instance-of) for ~a not declared.~%" instance)))
 	     '(#$Thing)))))
 
@@ -7891,12 +7891,12 @@ So what class do we assign then when the classification succeeds?
 ;;; ======================================================================
 
 ;;; [1] Note, this was earlier, but I need to allow users to override the built-in taxonomy, unfortunately.
-;;; This is particularly so in AURA, where we have already relied on Entity as a superclass of Aggregate, and Entity contains
+;;; This is particularly so in AURA, where we have already relied on Entity as a superclass of Aggregate, and Entity contains 
 ;;; some important NLG information.
 ;;; Note also that immediate-subclasses similarly allows user definitions to override the *built-in-superclass-links*
 (defun immediate-superclasses (class)
   (cond ((eq class '#$Thing) nil)
-	((class-descriptionp class)
+	((class-descriptionp class) 
 	 (list (first (class-descriptionp class))))			; (the-class Remove with ...) -> (Remove)
 	((let ( (superclasses (get-vals class '#$superclasses)) )
 	   (cond ((member class superclasses)
@@ -7910,7 +7910,7 @@ So what class do we assign then when the classification succeeds?
 	 (report-error 'user-warning "Class ~a not declared in KB.~%" class)
 	 '(#$Thing))
 ;	((is-an-instance class) nil)
-	((checkkbp)
+	((checkkbp) 
 	 (report-error 'user-warning "superclasses not declared for `~a'.~%I'll assume superclass `Thing'.~%" class)
 	 '(#$Thing))
 	(t '(#$Thing))))
@@ -7927,7 +7927,7 @@ CL-USER(20): (km '#$(Car has (superclasses (Device))))
 CL-USER(21): (check-for-cycles)
 (|Car| |Device| |Vehicle| |Car|)
 |#
-(defun check-for-cycles ()
+(defun check-for-cycles () 
   (let ((all-classes (remove-if-not #'(lambda (concept)
 					(or (get-vals concept '#$subclasses)
 					    (get-vals concept '#$superclasses)))
@@ -7936,8 +7936,8 @@ CL-USER(21): (check-for-cycles)
 
 (defun check-for-cycles0 (class &key done)
   (cond ((member class done) (append (member class (reverse done)) (list class)))
-	(t (some #'(lambda (superclass)
-		     (check-for-cycles0 superclass :done (cons class done)))
+	(t (some #'(lambda (superclass) 
+		     (check-for-cycles0 superclass :done (cons class done))) 
 		 (or (get-vals class '#$superclasses)			; user-defined classes take priority (allow redefinition of built-ins)
 		     (rest (assoc class *built-in-superclass-links*))
 		     )))))
@@ -7968,7 +7968,7 @@ CL-USER(21): (check-for-cycles)
 	  (unplaced-classes+instances				; + includes classes explicitly directly under Thing
 	   (remove-if #'(lambda (concept)
 			  (let ( (superclasses (get-vals concept '#$superclasses :situation *global-situation*)) )
-			    (or (and superclasses
+			    (or (and superclasses 
 				     (not (equal superclasses '#$(Thing))))		   ; ie. is placed (and not under Thing)
 				(assoc concept *built-in-superclass-links*)))) ; [4], e.g. Integer, Aggregation-Slot
 		      all-objects))
@@ -7977,13 +7977,13 @@ CL-USER(21): (check-for-cycles)
 					      (or (get-vals concept '#$subclasses)
 						  (get-vals concept '#$superclasses)
 						  (member concept *built-in-classes*))) ; [3]
-					  unplaced-classes+instances))
+					  unplaced-classes+instances)) 
 	 (extra-classes (my-mapcan #'(lambda (class-superclass) ; [5]
 					(cond ((and (member (first class-superclass) all-objects)
 						    (not (member (second class-superclass) unplaced-classes))
 						    (not (assoc (second class-superclass) *built-in-superclass-links*)))
 					       (rest class-superclass))))
-				    *built-in-superclass-links*))
+				    *built-in-superclass-links*)) 
 	  )
     (remove '#$Thing (append extra-classes unplaced-classes))))
 |#
@@ -7991,7 +7991,7 @@ CL-USER(21): (check-for-cycles)
 (defun subclasses-of-thing ()
   (remove-duplicates
    (append (get-vals '#$Thing '#$subclasses)
-	   (mapcar #'first (remove-if-not #'(lambda (class+superclass)
+	   (mapcar #'first (remove-if-not #'(lambda (class+superclass) 
 					      (and (eq (second class+superclass) '#$Thing)
 						   (not (get-vals (first class+superclass) '#$superclasses)))) ; built-in not redefined by user
 					  *built-in-superclass-links*))
@@ -8046,7 +8046,7 @@ CL-USER(21): (check-for-cycles)
     (cond ((>= (length prev-situation-args-structures) 2)
 	   (km-trace 'comment "Warning! (the prev-situation of ~a) Multiple previous situations ~a found! Taking just the first (~a)..."
 		     situation prev-situation-args-structures prev-situation-args-structure)))
-    (cond ((not (equal prev-situation-args-structures0 prev-situation-args-structures))
+    (cond ((not (equal prev-situation-args-structures0 prev-situation-args-structures)) 
 	   (put-vals situation '#$prev-situation prev-situation-args-structures)
 ;APR30		   (note-done situation '#$prev-situation *global-situation*)))
 	   (note-done situation '#$prev-situation)))
@@ -8054,7 +8054,7 @@ CL-USER(21): (check-for-cycles)
 	   (arg1of prev-situation-args-structure))
 	  (t prev-situation-args-structure))))
 
-;;; Rather than going back to the previous situation, go back to the previous situation which has a
+;;; Rather than going back to the previous situation, go back to the previous situation which has a 
 ;;; value for instance's slot.
 (defun prev-situation-with-vals (situation instance slot)
   (let ((prev-situation (prev-situation situation instance)))
@@ -8063,7 +8063,7 @@ CL-USER(21): (check-for-cycles)
 		 (t (prev-situation-with-vals prev-situation instance slot)))))))
 
 ;(defun next-situations (situation)
-; (let ( (next-situation-args-structures
+; (let ( (next-situation-args-structures 
 ;     (get-vals situation '#$next-situation :situation *global-situation*)) ) ; eg ((:args _Sit23 _Action23)) [1]
 ;   (mapcar #'(lambda (next-situation-args-structure)
 ;	       (cond ((km-argsp next-situation-args-structure)
@@ -8093,15 +8093,15 @@ CL-USER(21): (check-for-cycles)
                    (report-error 'user-error "Can't work out next situation of ~a!" situation)))
             do (pushnew next-situation acc :test #'eq))
       acc)))
-
+      
 ;;; INCLUDES situation
 ;;; Optimized version from Francis Leboutte
-;(defun all-next-situations (situation)
+;(defun all-next-situations (situation) 
 ;  (cond ((null situation) nil)
 ;	(t (cons situation (mapcan #'all-next-situations (next-situations situation))))))
 (defun all-next-situations (situation)
   (declare (type symbol situation))
-  (declare (optimize (speed 3) (safety 0) (space 0) (debug 0)))
+  (declare (optimize (speed 3) (safety 0) (space 0) (debug 0))) 
   (cons situation
         (loop for situation in (next-situations situation)
               nconc (all-next-situations situation))))
@@ -8110,15 +8110,15 @@ CL-USER(21): (check-for-cycles)
 
 ;;; before-situation of an event
 (defun before-situation (event)
- (let ( (before-situation-args-structures
+ (let ( (before-situation-args-structures 
 	          (get-vals event '#$before-situation :situation *global-situation*)) ) ; eg ((:args _Sit23 _Action23)) [1]
-;  (let ( (before-situation-args-structure
+;  (let ( (before-situation-args-structure 
 ;	     (km-unique-int (find-unique-val event '#$before-situation :situation *global-situation*) ; eg ((:args _Sit23 _Action23)) [2]
 ;			)) )										; [3]
    (cond ((null before-situation-args-structures) nil)
 	 ((singletonp before-situation-args-structures)
 	  (let ( (before-situation-args-structure (km-unique-int (first before-situation-args-structures))) )
-	    (cond ((not (equal before-situation-args-structure
+	    (cond ((not (equal before-situation-args-structure 
 			       (first before-situation-args-structures)))
 		   (put-vals event '#$before-situation (list before-situation-args-structure)
 			     :situation *global-situation*)
@@ -8137,7 +8137,7 @@ CL-USER(21): (check-for-cycles)
 ;;; ======================================================================
 
 #|
-Efficiency: bind-self1 appears, to my surprise, 1.5 times slower (2.2 sec/million) than
+Efficiency: bind-self1 appears, to my surprise, 1.5 times slower (2.2 sec/million) than 
 bind-self2 (1.4 sec/million)!
 (defun bind-self1 (expr self) (subst self 'Self expr))
 (defun bind-self2 (frame self)
@@ -8153,7 +8153,7 @@ bind-self2 (1.4 sec/million)!
 #|
 [1] a quoted expression has structure (quote <expr>) -- it should be guaranteed to be a pair, by the way the Lisp reader proceses "'" and "#,"
 [2] Special case:
-(a Person with (owns ('(a Car with (made-by (#,Self)))))) should return
+(a Person with (owns ('(a Car with (made-by (#,Self)))))) should return 
 		... '(a Car with (made-by (_Person4)))
 	not	... '(a Car with (made-by (#,_Person4)))
 
@@ -8163,7 +8163,7 @@ bind-self2 (1.4 sec/million)!
 (showme (a Person with (likes ('(the sum of #,(the age of (evaluate '(the likes of #,Self))))))))
 		-> (_Person18 has (likes ('(the sum of #,(the age of (evaluate '(the likes of _Person18)))))))
 
-[3] It turns out, you can sometimes have quotes within quotes, e.g.
+[3] It turns out, you can sometimes have quotes within quotes, e.g. 
 	(*definition-qn has
 	  (answer-procedure ('#'(LAMBDA (CONCEPT) (SHOW-SLOT-VALUE CONCEPT 'text-def)))))
     So this isn't an error.
@@ -8194,11 +8194,11 @@ bind-self2 (1.4 sec/million)!
 (defun remove-subsumers (classes)
   (let ((nodup-classes (remove-duplicates classes :from-end t)))	; much more efficient, reduces combinatorics
    (remove-if #'(lambda (class)
-		  (some #'(lambda (other-class)
+		  (some #'(lambda (other-class) 
 			    (and (neq other-class class)
 				 (not (constraint-exprp class)) ; constraints allowed as class values
 				 (not (constraint-exprp other-class))	; constraints allowed as class values
-				 (is-subclass-of other-class class)))
+				 (is-subclass-of other-class class)))	 
 			nodup-classes))
 	      nodup-classes)))
 
@@ -8208,7 +8208,7 @@ bind-self2 (1.4 sec/million)!
 (defun remove-subsumees (classes)
   (remove-duplicates
    (remove-if #'(lambda (class)
-		  (some #'(lambda (other-class)
+		  (some #'(lambda (other-class) 
 			    (and (neq other-class class)
 				 (not (constraint-exprp class)) ; constraints allowed as class values
 				 (not (constraint-exprp other-class)) ; constraints allowed as class values
@@ -8217,7 +8217,7 @@ bind-self2 (1.4 sec/million)!
    :from-end t))
 
 ;;; (classes-subsumes-classes classes1 classes2)
-;;; TRUE if EVERY classes1 subsume SOME classes2. The intuition here is that
+;;; TRUE if EVERY classes1 subsume SOME classes2. The intuition here is that 
 ;;;    (remove-subsumers (append classes1 classes2)) -> classes2 (or more precisely -> (remove-subsumers classes2))
 ;;; This function still works if there are redundant classes in the list.
 ;;;
@@ -8247,7 +8247,7 @@ bind-self2 (1.4 sec/million)!
 ;;; ----------
 
 ;;; This *doesn't* include class in the list
-(defun all-superclasses (class)
+(defun all-superclasses (class) 
   (cond ((neq class '#$Thing)
 	 (cons '#$Thing (remove-duplicates (my-mapcan #'all-superclasses0 (immediate-superclasses class)))))))
 
@@ -8255,7 +8255,7 @@ bind-self2 (1.4 sec/million)!
 (defun all-superclasses0 (class &key path-so-far)
   (cond ((eq class '#$Thing) nil)		; for efficiency. #$Thing is added by all-superclasses above
 	((member class path-so-far)
-	 (report-error 'user-error "You have a cycle in the taxonomy (not allowed)!~%~a~%"
+	 (report-error 'user-error "You have a cycle in the taxonomy (not allowed)!~%~a~%" 
 		       (commaed-list (reverse (cons class path-so-far)) '->)))
 	(t (cons class (my-mapcan #'(lambda (c)
 				      (all-superclasses0 c :path-so-far (cons class path-so-far)))
@@ -8264,25 +8264,25 @@ bind-self2 (1.4 sec/million)!
 ;;; ----------
 
 ;;; This *doesn't* include class in the list
-(defun all-subclasses (class)
+(defun all-subclasses (class) 
   (remove-duplicates (mapcan #'all-subclasses0 (immediate-subclasses class))))
 
 ;;; Returns a *list* of subclasses, *including* class, but *not* including #$Thing, and possibly with duplicates.
 (defun all-subclasses0 (class &key path-so-far)
   (cond ((member class path-so-far)
-	 (report-error 'user-error "You have a cycle in the taxonomy (not allowed)!~%~a~%"
+	 (report-error 'user-error "You have a cycle in the taxonomy (not allowed)!~%~a~%" 
 		       (commaed-list (cons class path-so-far) '->)))
-	(t (cons class (my-mapcan #'(lambda (c)
+	(t (cons class (my-mapcan #'(lambda (c) 
 				      (all-subclasses0 c :path-so-far (cons class path-so-far)))
 				  (immediate-subclasses class))))))
 
 #|
-Prob. more efficient, but doesn't spot cycles.
+Prob. more efficient, but doesn't spot cycles. 
 (defun all-subclasses (class)
   (all-subclasses0 (list class)))
 
 (defun all-subclasses0 (classes &optional subclasses-so-far)
-  (cond
+  (cond 
    ((endp classes) subclasses-so-far)
    (t (let ( (class (first classes)) )
 	(cond ((member class subclasses-so-far)
@@ -8291,9 +8291,9 @@ Prob. more efficient, but doesn't spot cycles.
 		   (all-subclasses0 (rest classes) new-subclasses-so-far))))))))
 |#
 ;;; This *doesn't* include situation in the list
-(defun all-supersituations (situation)
+(defun all-supersituations (situation) 
   (cond ((neq situation *global-situation*)
-	 (cons *global-situation* (remove-duplicates
+	 (cons *global-situation* (remove-duplicates 
 				   (mapcan #'all-supersituations0 (immediate-supersituations situation)))))))
 
 ;;; Returns a *list* of situations, including situation but NOT including *global-situation*.
@@ -8315,15 +8315,15 @@ This is only used for:
 	- we should really use it for Partition also; sigh...
 Thus, we can get away being inefficient!!
 
-[1] This is probably redundant, as instances should never be declared a fluent. However, it used to be
+[1] This is probably redundant, as instances should never be declared a fluent. However, it used to be 
     allowed as an option a long time ago, so let's leave it there.
-    NOTE: We *won't* consider *Global to be an instance of Situation, as really Situation is meant to mean
+    NOTE: We *won't* consider *Global to be an instance of Situation, as really Situation is meant to mean 
     situation-specific situation
 [2] immediate-instances vs. full-immediate-instances
-    CLib has a few statements that involve (the instances of ...) and
+    CLib has a few statements that involve (the instances of ...) and 
     (the all-instances of ...), e.g., on Time-Instant and Time-Interval.
-    These are problematic with prototypes as currently a protoinstance is also
-    an instance, and so these statements collect and start reasoning on
+    These are problematic with prototypes as currently a protoinstance is also 
+    an instance, and so these statements collect and start reasoning on 
     protoinstances (not allowed!). It's a little schizophrenic, though,
     as the instance-of assertions are still there in the KB, just hidden
     from    (the instances of ...)
@@ -8370,9 +8370,9 @@ Thus, we can get away being inefficient!!
 
 ;;; Return a list of all situations used in the current session.
 ;;; It includes doing dereferencing (in all-instances)
-;;; [1] Strictly, should be remove-dup-instances; however all-instances has already done this (including dereferencing), so we just need to make sure
+;;; [1] Strictly, should be remove-dup-instances; however all-instances has already done this (including dereferencing), so we just need to make sure 
 ;;;	we don't have *global-situation* in twice.
-(defun all-situations ()
+(defun all-situations () 
   (cond ((am-in-global-situation)
 	 (remove-duplicates (cons *global-situation* (all-instances '#$Situation)) :from-end t))		; [1]
 	(t (let ( (curr-situation (curr-situation)) )
@@ -8389,16 +8389,16 @@ Thus, we can get away being inefficient!!
 ;	((get-vals situation '#$supersituations :situation *global-situation*))
 ;	(t (list *global-situation*))))
 
-;;; Modified by Fabien Dubail to include handling an expression in Supersituations
+;;; Modified by Fabien Dubail to include handling an expression in Supersituations 
 (defun immediate-supersituations (situation)
     (cond ((eq situation *global-situation*) nil)
           ((let ((supersits (get-vals situation '#$supersituations :situation *global-situation*)))
       						      ; get-vals > (|*Global| (|the| |world| |of| *S1))
 	    (remove nil                        ; (km-int `#$(,SIT)) can be Nil
                     (mapcar #'(lambda (sit)
-		            (cond ((kb-objectp sit) sit)
+		            (cond ((kb-objectp sit) sit)            
                                    (t (first (km-int `#$(,SIT))))))
-                    supersits))))
+                    supersits))))               
         (t (list *global-situation*))
         ))
 
@@ -8410,10 +8410,10 @@ Thus, we can get away being inefficient!!
 (defparameter *default-fluent-status* *default-default-fluent-status*)	; user can change this
 
 (defun default-fluent-status (&optional status)
-  (cond ((null status)
+  (cond ((null status) 
 	 (km-format t "By default, slots have fluent-status = ~a.~%" *default-fluent-status*)
 	 '#$(t))
-        ((member status *valid-fluent-statuses*)
+        ((member status *valid-fluent-statuses*) 
 ;	 (setq *default-fluent-status* status)
 ;	 (make-transaction `(setq *default-fluent-status* ,status))
 	 (km-setq '*default-fluent-status* status)
@@ -8426,45 +8426,45 @@ Thus, we can get away being inefficient!!
 ;;; [1] if slot is known as a fluent, then t. Else NIL.
 ;;; [2] if slot is NOT known to be a non-fluent, then t.
 (defun fluentp (slot)
-  (case *default-fluent-status*
+  (case *default-fluent-status* 
 	(#$*Non-Fluent 		      (member (fluent-status slot)
 					      '#$(*Fluent *Inertial-Fluent)))	; [1]
 	(#$(*Fluent *Inertial-Fluent) (neq (fluent-status slot)			; [2]
 					   '#$*Non-Fluent))))
 
 (defun inertial-fluentp (slot)
-  (case *default-fluent-status*
+  (case *default-fluent-status* 
 	(#$(*Non-Fluent *Fluent) (eq (fluent-status slot)
 				     '#$*Inertial-Fluent))
 	(#$*Inertial-Fluent      (not (member (fluent-status slot)
 					      '#$(*Non-Fluent *Fluent))))))
-
+    
 ;;; ----------
 
 ;;; [1] I could save a little CPU time with this
-;;; but this would remove the error check for inconsistent status.
+;;; but this would remove the error check for inconsistent status. 
 ;;; Even better would be to cache the whole fluentp result. But I don't think I need these
 ;;; optimizations for now.
-;; [2] Provide *either* an instance *or* a set of classes (of a non-created instance) to
+;; [2] Provide *either* an instance *or* a set of classes (of a non-created instance) to 
 ;;;	see if it's an event.
 ;;; [3] These are add-list, del-list, pcs-list, ncs-list. In this case, allow user override if he/she wants - Eagh, let's hope he/she doesn't!!!
 (defun fluent-status (slot)
-  (cond
+  (cond 
    ((member slot *built-in-inertial-fluent-slots*) '#$*Inertial-Fluent)
    ((member slot *built-in-non-inertial-fluent-slots*) '#$*Fluent)
    ((universalp slot) '#$*Non-Fluent)
-   ((let ( (fluent-status1 (get-unique-val slot '#$fluent-status :situation *global-situation*))
-	     (fluent-status2 #|(cond ((not fluent-status1) [1] |#
-			     (get-unique-val (invert-slot slot) '#$fluent-status
+   ((let ( (fluent-status1 (get-unique-val slot '#$fluent-status :situation *global-situation*)) 
+	     (fluent-status2 #|(cond ((not fluent-status1) [1] |# 
+			     (get-unique-val (invert-slot slot) '#$fluent-status 
 					     :situation *global-situation*)) )
 	(cond ((and fluent-status1 (not (member fluent-status1 *valid-fluent-statuses*)))
-	       (report-error 'user-error "Invalid fluent-status `~a' on slot `~a'! (Should be one of: ~a)~%"
+	       (report-error 'user-error "Invalid fluent-status `~a' on slot `~a'! (Should be one of: ~a)~%" 
 			     fluent-status1 slot *valid-fluent-statuses*))
 	      ((and fluent-status2 (not (member fluent-status2 *valid-fluent-statuses*)))
-	       (report-error 'user-error "Invalid fluent-status `~a' on slot `~a'! (Should be one of: ~a)~%"
+	       (report-error 'user-error "Invalid fluent-status `~a' on slot `~a'! (Should be one of: ~a)~%" 
 			     fluent-status2 (invert-slot slot) *valid-fluent-statuses*))
 	      ((and fluent-status1 fluent-status2 (neq fluent-status1 fluent-status2))
-	       (report-error 'user-error "Inconsistent declaration of fluent-status! ~a has fluent-status ~a, but ~a has fluent-status ~a.~%"
+	       (report-error 'user-error "Inconsistent declaration of fluent-status! ~a has fluent-status ~a, but ~a has fluent-status ~a.~%" 
 			     slot fluent-status1 (invert-slot slot) fluent-status2))
 	      (t (or fluent-status1 fluent-status2)))))))
 
@@ -8472,16 +8472,16 @@ Thus, we can get away being inefficient!!
 
 ;;; ----------
 
-(defun single-valued-slotp (slot)
+(defun single-valued-slotp (slot) 
   (member (cardinality-of slot) '#$(1-to-1 N-to-1)))
 
 (defun multivalued-slotp (slot) (not (single-valued-slotp slot)))
 
-(defun inherit-with-overrides-slotp (slot)
+(defun inherit-with-overrides-slotp (slot) 
   (or (get-vals slot '#$inherit-with-overrides :situation *global-situation* :dereferencep nil)
       (get-vals slot '#$simple-inherit-with-overrides :situation *global-situation* :dereferencep nil)))
 
-(defun simple-inherit-with-overrides-slotp (slot)
+(defun simple-inherit-with-overrides-slotp (slot) 
   (get-vals slot '#$simple-inherit-with-overrides :situation *global-situation* :dereferencep nil))
 
 (defun slots-to-opportunistically-evaluate (instance)
@@ -8492,7 +8492,7 @@ Thus, we can get away being inefficient!!
 
 ;;; Rather inefficient, I shouldn't need to do 2 kb-accesses for every slot query to see if it's single-valued or not!
 (defun cardinality-of (slot)
-  (cond
+  (cond 
    ((member slot *built-in-single-valued-slots*) '#$N-to-1)
    ((member slot *built-in-multivalued-slots*) '#$N-to-N)
    ((or (cardinality-of2 slot)
@@ -8504,11 +8504,11 @@ Thus, we can get away being inefficient!!
     (t (let ( (cardinalities (get-vals slot '#$cardinality :situation *global-situation* :dereferencep nil)) )
 	 (cond ((null cardinalities) nil) 		; was *default-cardinality* - but I need to check the slot's inverse first!
 	       (t (cond ((>= (length cardinalities) 2)
-			 (report-error 'user-error "More than one cardinality ~a declared for slot ~a!Just taking the first ...~%"
+			 (report-error 'user-error "More than one cardinality ~a declared for slot ~a!Just taking the first ...~%" 
 				       cardinalities slot)))
 		  (cond ((not (member (first cardinalities) *valid-cardinalities*))
-			 (report-error 'user-error
-				       "Invalid cardinality ~a declared for slot ~a.~%(Should be one of ~a). Assuming default ~a instead~%"
+			 (report-error 'user-error 
+				       "Invalid cardinality ~a declared for slot ~a.~%(Should be one of ~a). Assuming default ~a instead~%" 
 				       (first cardinalities) slot *valid-cardinalities* *default-cardinality*)
 			 *default-cardinality*)
 			(t (first cardinalities)))))))))
@@ -8533,21 +8533,21 @@ will install the triple  (*Sue loves-of (*Fred)) in the KB.
 
 [1] NOTE: special case for slot declarations:
 	(install-inverses 'from 'inverse '(to))
-want to assert
+want to assert   
 	(to (inverse (from)) (instance-of (Slot)))
 not just
 	(to (inverse (from))) 		; KM think's its a Class by default
 and also (situation-specific (t)) if the forward slot is situation-specific.
 This is justified because we know inverse's domain and range are Slot.
 
-[2] Complication with Situations and projection:
+[2] Complication with Situations and projection: 
   If   Fred loves {Sue,Mary}
   Then we km-assert Mike loves Mary,
   Then when we install-inverses, we assert Mary loves-of Mike, which over-rides
 	(and prevents projection of) the old value of Mary loves-of Fred. So
   	we have to prevent installation of inverses for projected facts, or
 	project the inverses also somehow.
-  This has now been fixed; partial information is now merged with, rather than
+  This has now been fixed; partial information is now merged with, rather than 
     	over-rides, projected information.
 
 With multiargument values, this is rather intricate...
@@ -8560,7 +8560,7 @@ With multiargument values, this is rather intricate...
      AND POSSIBLY (install-inverse Fred gives-amount-of-love (:args lots Sue))
      AND IF SO, ALSO (install-inverses Fred gives-amount-of-love (:args lots Sue))
     -> ...
-
+ 
 |#
 ;;; [1] put-vals for single-valued slots may be called with value (val & constraint), so must unpack this expression to make sure inverse is
 ;;; installed.
@@ -8573,7 +8573,7 @@ With multiargument values, this is rather intricate...
 	 (let ( (invslot (invert-slot slot)) )
 	   (mapc #'(lambda (val)
 		     (cond ((or (kb-objectp val) (km-argsp val)) (install-inverses0 val invslot frame slot situation))
-			   ((&-exprp val) (install-inverses frame slot (&-expr-to-vals val)) :situation situation))) ; [1] otherwise ignore it
+			   ((&-exprp val) (install-inverses frame slot (&-expr-to-vals val)) :situation situation))) ; [1] otherwise ignore it 
 		 vals)))))
 
 #|
@@ -8604,7 +8604,7 @@ situation for manipulating this data.
 	   )
 	  ((km-argsp invframe)							; multiargument value, eg. Fred loves (:args Sue lots)
 	   (install-inverses0 (second invframe) invslot 			; do first argument...    Sue loved-by (:args Fred lots)
-			    `#$(:args ,INVVAL ,@(REST (REST INVFRAME))) slot situation)
+			    `#$(:args ,INVVAL ,@(REST (REST INVFRAME))) slot situation)   
 	   (cond ((and (third invframe)						; do second argument...    lots love-given-to (:args Sue Fred)
 		       (or (assoc slot *built-in-inverse2s*)
 			   (get-unique-val slot '#$inverse2 :situation *global-situation*)))
@@ -8614,7 +8614,7 @@ situation for manipulating this data.
 		    (install-inverses0 (third invframe) inv2slot modified-args slot situation))))
 	   (cond ((and (third invframe)
 		       (get-unique-val slot '#$inverse12 :situation *global-situation*))
-		  (let ( (inv12slot (get-unique-val slot '#$inverse12 :situation *global-situation*))
+		  (let ( (inv12slot (get-unique-val slot '#$inverse12 :situation *global-situation*)) 
 			 (modified-args `#$(:args ,(ARG2OF INVFRAME) ,(ARG1OF INVFRAME) ,@(REST (REST (REST INVFRAME))))) )
 		    (add-val invval inv12slot modified-args t situation))))		; install-inversesp = t
 	   (cond ((and (fourth invframe)							; do third argument
@@ -8627,7 +8627,7 @@ situation for manipulating this data.
 
 ;;; Undo the install operation, INCLUDING deleting explanations.
 (defun uninstall-inverses (frame slot vals &optional (situation (target-situation (curr-situation) frame slot)))
-  (cond ((not (non-inverse-recording-slot slot))
+  (cond ((not (non-inverse-recording-slot slot))		
 	 (let ( (invslot (invert-slot slot)) )
 	   (mapc #'(lambda (val0)
 		     (let ( (val (dereference val0)) )
@@ -8654,9 +8654,9 @@ situation for manipulating this data.
 ;;; Note, we have to keep recurring until a stable state is reached. Just checking for newly created
 ;;; instances isn't good enough -- some expansions may cause delayed unifications, without creating new instances.
 (defun eval-instances (&optional (instances (obj-stack)) &key (n 0))
-  (cond
+  (cond 
    ((null instances))
-   ((>= n 100)
+   ((>= n 100) 
     (report-error 'user-error "eval-instances in frame-io.lisp!~%Recursion is causing an infinite graph to be generated! Giving up...~%"))
    (t (let ( (obj-stack (obj-stack)) )
 	(mapc #'simple-eval-instance instances)
@@ -8686,10 +8686,10 @@ situation for manipulating this data.
 
 ;;; [1] More conservative - only evaluate paths, rather than force inheritance when only atomic instances are present.
 ;;; return t if some expansion was done, to make sure we get everything!
-(defun simple-eval-instance (instance)
+(defun simple-eval-instance (instance) 
   (remove nil
-	  (mapcar #'(lambda (slotvals)
-		      (cond ((some #'(lambda (val)
+	  (mapcar #'(lambda (slotvals) 
+		      (cond ((some #'(lambda (val) 
 				       (and (not (fully-evaluatedp val))
 					    (not (constraint-exprp val))))
 ; for debugging				    (or (km-format t "expanding (~a has (~a (~a)))...~%" instance (slot-in slotvals) val) t)
@@ -8716,7 +8716,7 @@ situation for manipulating this data.
 ;;; Thanks to Ken Murray for this one:
 (defun invert-predicate (predicate &optional (argnum 2))
   "return the inverse variant of PREDICATE such that
-   the first and ARGNUMth args have been swapped."
+   the first and ARGNUMth args have been swapped." 
   (case argnum
     (1 predicate)
     (2 (invert-slot predicate))
@@ -8735,10 +8735,10 @@ Warning! Asserting (Pete has (location (Farm1 Farm2)))...
          Farm2 isn't a Place (violates the range constraint for `location')
 |#
 (defun check-domain-and-range (instance slot vals)
-  (let* ( (domains (domains-of slot))
-	  (ranges (ranges-of slot))
-	  (domain-violation
-	   (cond ((and domains
+  (let* ( (domains (domains-of slot)) 
+	  (ranges (ranges-of slot)) 
+	  (domain-violation 
+	   (cond ((and domains 
 		       (notany #'(lambda (domain) (instance-of instance domain)) domains))
 		  (cond ((some #'(lambda (domain) (compatible-classes :instance1 instance :classes2 (list domain))) domains))
 			(t (report-error 'user-error "Attempt to access (the ~a of ~a), but ~a is incompatible with the domains of `~a' ~a!"
@@ -8773,7 +8773,7 @@ Warning! Asserting (Pete has (location (Farm1 Farm2)))...
 
 (defun check-slot (frame slot values)
   (declare (ignore frame values))
-  (cond
+  (cond 
    ((not (checkkbp)))
    ((built-in-concept slot))
    ((undeclared-slot slot))
@@ -8781,12 +8781,12 @@ Warning! Asserting (Pete has (location (Farm1 Farm2)))...
 	     (ranges (ranges-of slot)) )
 	(cond ((not domains) (report-error 'user-warning "Domain for slot ~a not declared.~%" slot)))
 	(mapc #'(lambda (domain)
-		  (cond ((not (known-frame domain))
+		  (cond ((not (known-frame domain)) 
 			 (report-error 'user-warning "Domain ~a for slot ~a not declared in KB.~%" domain slot))))
 	      domains)
 	(cond ((not ranges) (report-error 'user-warning "Range for slot ~a not declared.~%" slot)))
 	(mapc #'(lambda (range)
-		  (cond ((not (known-frame range))
+		  (cond ((not (known-frame range)) 
 			 (report-error 'user-warning "Range ~a for slot ~a not declared in KB.~%" range slot))))
 	      ranges)))))
 
@@ -8799,12 +8799,12 @@ Warning! Asserting (Pete has (location (Farm1 Farm2)))...
       (get-vals (invert-slot slot) '#$domain :situation *global-situation*)))
 
 (defun undeclared-slot (slot)
-  (cond ((not (symbolp slot))
+  (cond ((not (symbolp slot)) 
 	 (report-error 'user-error "Non-slot ~a found where a slot was expected!~%" slot) t)
-	((and (not (known-frame slot))
+	((and (not (known-frame slot)) 
 	      (not (known-frame (invert-slot slot)))
 	      (not (built-in-concept slot)))
-	 (cond ((checkkbp) (report-error 'user-warning "Slot ~a (or inverse ~a) not declared.~%"
+	 (cond ((checkkbp) (report-error 'user-warning "Slot ~a (or inverse ~a) not declared.~%" 
 					 slot (invert-slot slot))))
 	 t)))
 
@@ -8857,7 +8857,7 @@ Call (clean-taxonomy) to recompute the taxonomy without redundancies.
 	(values changed-supers changed-subs)))))
 
 #|
-(defun update-subclasses-of-thing ()
+(defun update-subclasses-of-thing ()	
   (let* ((subclasses-of-thing (get-vals '#$Thing '#$subclasses))
 	 (actual-subclasses-of-thing (subclasses-of-thing)) ; [3]
 	 (extra-subclasses-of-thing (set-difference actual-subclasses-of-thing subclasses-of-thing)))
@@ -8866,7 +8866,7 @@ Call (clean-taxonomy) to recompute the taxonomy without redundancies.
 	   `((,extra-subclasses-of-thing (#$Thing)))))))		;;; Cs with changed superclasses, Cs with changed subclasses
 |#
 
-(defun update-subclasses-of-thing ()
+(defun update-subclasses-of-thing ()	
   (let ((extra-subclasses-of-thing (unplaced-classes)))
     (cond (extra-subclasses-of-thing
 	   (mapc #'(lambda (val) (add-val '#$Thing '#$subclasses val)) extra-subclasses-of-thing)
@@ -8928,11 +8928,11 @@ Now add C <| GenC, C <| D is redundant and should be removed, so foreach C's sup
 
 ;;; Check partitions below and above the argument class
 ;;; This function returns t if a partition was violated.
-(defun check-partitions (&optional (start-class '#$Thing))
+(defun check-partitions (&optional (start-class '#$Thing)) 
   (mapc #'violated-partitions-at-class (all-subclasses start-class)))
 
 #|
-(defun check-partitions (&optional (start-class '#$Thing))
+(defun check-partitions (&optional (start-class '#$Thing)) 
   (check-partitions0 (list start-class)))
 
 (defun check-partitions0 (classes &key done)
@@ -8947,7 +8947,7 @@ Now add C <| GenC, C <| D is redundant and should be removed, so foreach C's sup
 
 ;;; disjoint-classes collects all the superclasses of (and including) class and checks they are not disjoint.
 ;;; This function returns t if a partition was violated.
-(defun violated-partitions-at-class (class &key indirectp)
+(defun violated-partitions-at-class (class &key indirectp)  
   (let ((violated-partitions (remove-duplicates (remove-singletons (disjoint-classes (list class) :check-singletonp t)))))
     (cond
      (violated-partitions
@@ -8965,12 +8965,12 @@ Now add C <| GenC, C <| D is redundant and should be removed, so foreach C's sup
 ;;; [1] Note we don't dereference *curr-situation*, in case it's bound to *Global.
 ;;; If it is bound to global, we want to (i) change *curr-situation* to point to
 ;;; *Global directly and (ii) by a subtle interaction, (reset-kb) get's messed up
-;;; otherwise: If we leave *curr-situation* as (say) _S2, thinking it's *Global
+;;; otherwise: If we leave *curr-situation* as (say) _S2, thinking it's *Global 
 ;;; (as it's bound to *Global), but then do an (unbind), we're then left apparently
 ;;; in a (now unbound) _S2!
 
 ;;; Must return a list of values (here, just a singleton) for consistency
-(defun global-situation ()
+(defun global-situation () 
   (cond ((neq *curr-situation* *global-situation*)		; [1]
 	 (in-situation *global-situation*))
 	(t (list *global-situation*))))
@@ -9004,20 +9004,20 @@ Now add C <| GenC, C <| D is redundant and should be removed, so foreach C's sup
 	   (cond (km-expr (km-int km-expr))
 		 (t (list (curr-situation)))))
 	  ((am-in-prototype-mode)				; [1]
-	   (report-error 'user-error "Trying to do ~a: Can't enter a ~a when you're in prototype mode!~%"
+	   (report-error 'user-error "Trying to do ~a: Can't enter a ~a when you're in prototype mode!~%" 
 			 (cond ((and theoryp km-expr) `#$(in-theory ,SITUATION-EXPR ,KM-EXPR))
 			       (km-expr `#$(in-situation ,SITUATION-EXPR ,KM-EXPR))
 			       (theoryp `#$(in-theory ,SITUATION-EXPR))
 			       (t `#$(in-situation ,SITUATION-EXPR)))
 			 situation-class))
-	  ((or (not situation)
+	  ((or (not situation) 
 	       (not (kb-objectp situation)))
-	   (report-error 'user-error "~a doesn't evaluate to a ~a (results in ~a instead)!~%"
+	   (report-error 'user-error "~a doesn't evaluate to a ~a (results in ~a instead)!~%" 
 			 situation-expr situation-class situation-structure))
 	  ((not (isa situation situation-class))
-	   (report-error 'user-error "~a doesn't evaluate to a ~a (~a isn't declared an instance of ~a)!~%"
+	   (report-error 'user-error "~a doesn't evaluate to a ~a (~a isn't declared an instance of ~a)!~%" 
 			 situation-expr situation-class situation situation-class))
-	  ((not km-expr)
+	  ((not km-expr)   
 	   (cond ((and (kb-objectp situation-expr)
 		       (neq situation-expr situation))
 		  (make-comment "~a ~a is bound to ~a" situation-class situation-expr situation)))
@@ -9037,14 +9037,14 @@ Now add C <| GenC, C <| D is redundant and should be removed, so foreach C's sup
 (defun am-in-global-situation () (eq (curr-situation) *global-situation*))
 (defun am-in-local-situation () (and (neq (curr-situation) *global-situation*)
 				     (not (isa-theory (curr-situation)))))
-(defun change-to-situation (situation)
+(defun change-to-situation (situation) 
 ;  (make-transaction `(setq *curr-situation* ,situation)))
   (km-setq '*curr-situation* situation))
 
 (defun am-in-local-situation-or-theory () (neq (curr-situation) *global-situation*))
 
 ;;; next-situation will create a new situation which is at the next-situation relation
-;;; to the situation given.
+;;; to the situation given. 
 ;;; action is an INSTANCE (it better be!)
 ;;; RETURNS: The next situation
 (defun next-situation (action &key next-situation)
@@ -9053,16 +9053,16 @@ Now add C <| GenC, C <| D is redundant and should be removed, so foreach C's sup
 	  (t (let ((curr-situation (curr-situation))
 		   (new-situation (or next-situation (make-new-situation))))
 ;; changed by Fabien Dubail from "has" to "also-has" to avoid unification of anonymous actions
-	       (km-unique-int `#$(,NEW-SITUATION also-has
+	       (km-unique-int `#$(,NEW-SITUATION also-has                       
 		(instance-of (Situation))
 	 	(prev-situation ((:args ,CURR-SITUATION ,ACTION)))) :fail-mode 'error))))) ; inverse auto-installed
 
-(defun new-situation ()
+(defun new-situation () 
   (in-situation (make-new-situation)))
 
-(defun make-new-situation ()
+(defun make-new-situation () 
   (km-unique-int `#$(a Situation with (supersituations (,*GLOBAL-SITUATION*))) :fail-mode 'error))
-
+    
 ;;; always t for now -- disable this verification step
 (defun isa-situation-facet (situation) (declare (ignore situation)) t)
 
@@ -9112,10 +9112,10 @@ Now add C <| GenC, C <| D is redundant and should be removed, so foreach C's sup
 ;;;
 ;;; a PROPOSITION is a structure of the form (:triple F S V), where V may be (:set a b)
 ;;;
-;;; Note we must precompute all the effects *before* actually making them, to avoid one
+;;; Note we must precompute all the effects *before* actually making them, to avoid one 
 ;;; effect being considered as part of the initial situation for calculating another.
 ;;; [2] Here we insist the user to make Events explicitly identifiable by KM.
-;;;     KM uses this information when computing projection, namely NEVER project slot-values for Events.
+;;;     KM uses this information when computing projection, namely NEVER project slot-values for Events. 
 ;;;     The reason for this is somewhat complicated.
 ;;; [1] NOTE: consistency check &? in lazy-unify **DOESN'T** do projection, so better provoke it here!
 ;;; [3] It shouldn't really matter where I compute add-list and del-list, although the later position is better (in case the pcs-list fails).
@@ -9124,8 +9124,8 @@ Now add C <| GenC, C <| D is redundant and should be removed, so foreach C's sup
 ;;;	before this destruction is caused. Hack!
 ;;;	Later: No, we must evaluate del-list AFTER the pcs-list have been asserted! Suppose the del-list says (forall <x> (:triple ...))
 ;;;		  and the pcs-list asserts the existence of an <x>, we better make sure the pcs-list are evaluated first!
-;;; [4]
-;;;	We need to allow for conditional add-list and del-list, which means that
+;;; [4] 
+;;;	We need to allow for conditional add-list and del-list, which means that 
 ;;;	(i) add-list etc. are changed to non-inertial fluents
 ;;;     (ii) retrieval of the add-list etc. must be done in the situation BEFORE the action is performed, but AFTER any pcs have
 ;;;			been assumed
@@ -9138,12 +9138,12 @@ Now add C <| GenC, C <| D is redundant and should be removed, so foreach C's sup
 	KM 1.4.0.51 and later: IMPORTANT CHANGE!!
 	=========================================
 The default fluent-status of slots is now *Fluent, *NOT* *Inertial-Fluent.
-Make sure the fluent-status of your slots are set correctly -- See the
+Make sure the fluent-status of your slots are set correctly -- See the 
 KM Situations Manual, Section 6.2, p23-24 for the rules to follow.
 ----------------------------------------------------------------------
 ")
 	 (setq *user-has-been-warned* t)))
-  (cond
+  (cond 
    ((am-in-global-situation)
     (make-comment "Ignoring (do-action ~a) in global situation:" action-expr)
     (make-comment "Can only execute actions in local situations"))
@@ -9161,17 +9161,17 @@ KM Situations Manual, Section 6.2, p23-24 for the rules to follow.
 		       (curr-situation)
 		     (cond ((not change-to-next-situation) (in-situation old-situation)))))
 		  (t (km-trace 'comment "Computing the preconditions and effects of action ~a..." action)
-		     (let* ( (semi-evaluated-pcs-list (find-propositions action '#$pcs-list))
+		     (let* ( (semi-evaluated-pcs-list (find-propositions action '#$pcs-list))	
 			     (semi-evaluated-ncs-list (find-propositions action '#$ncs-list))
-					; Result = ((:triple expr expr expr) ... (:triple expr expr expr)).
-			     		; For each (:triple <f> <s> <v>), <f>, <s> are evaluated, and <v>
+					; Result = ((:triple expr expr expr) ... (:triple expr expr expr)). 
+			     		; For each (:triple <f> <s> <v>), <f>, <s> are evaluated, and <v> 
 					; is evaluated UNLESS <v> = an existential or constraint expr.
 					; This evaluation is done in handling (:triple ...) in interpreter.lisp itself
 			     )
-
+		       
 		       (cond ((or semi-evaluated-pcs-list semi-evaluated-ncs-list)
 			      (km-trace 'comment "Forward propogate relevant facts from previous situation...")	; [1]
-			      (mapc #'(lambda (frame+slot)
+			      (mapc #'(lambda (frame+slot) 
 					(let ( (frame (first frame+slot))
 					       (slot (second frame+slot)) )
 					  (cond ((comparison-operator slot)
@@ -9180,7 +9180,7 @@ KM Situations Manual, Section 6.2, p23-24 for the rules to follow.
 				    (remove-duplicates (mapcar #'(lambda (triple)
 								   (list (arg1of triple) (arg2of triple)))
 							       (append semi-evaluated-pcs-list semi-evaluated-ncs-list))))))
-
+		       
 		       (cond ((or semi-evaluated-ncs-list semi-evaluated-pcs-list)
 			      (km-trace 'comment "Preconditions of ~a which must be true in the old situation (~a)..." action old-situation)))
 		       (cond ((consistent-to-do-action action semi-evaluated-pcs-list semi-evaluated-ncs-list)
@@ -9189,14 +9189,14 @@ KM Situations Manual, Section 6.2, p23-24 for the rules to follow.
 					   (eq test-or-assert-pcs 'assert)
 					   (progn (km-format t "(~a ~a):~%Can't do this action because these precondition(s) aren't satisfied:~%~{  ~a~%~}"
 							     (cond (change-to-next-situation '#$try-do-and-next)
-								   (t '#$try-do)) action
+								   (t '#$try-do)) action 
 								   (desource+decomment unsatisfied-pcs))
 						  (cond (*interactive-preconditions*
 							 (eq (ynread "Would you like me to assume these precondition(s) are true (y or n)? ") 'y)))))
 				       (mapc #'(lambda (ncs-item) (km-assert ncs-item action :in-list '#$ncs-list)) semi-evaluated-ncs-list)
-				       (mapc #'(lambda (pcs-item)
+				       (mapc #'(lambda (pcs-item) 
 						 (make-comment "Assuming ~a, to do action ~a..." pcs-item action)
-						 (km-assert pcs-item action :in-list '#$pcs-list))
+						 (km-assert pcs-item action :in-list '#$pcs-list)) 
 					     unsatisfied-pcs)
 
 ; [4] PC - This isn't drastic enough: see test-suite/cache.km
@@ -9204,10 +9204,10 @@ KM Situations Manual, Section 6.2, p23-24 for the rules to follow.
 ;				       (un-done action :slot '#$del-list :situation (curr-situation))
 #| Do this instead |#		       (cond ((or semi-evaluated-ncs-list unsatisfied-pcs) (un-done action :situation (curr-situation))))
 
-				       (let* ( (next-situation0 (next-situation action :next-situation next-situation))
+				       (let* ( (next-situation0 (next-situation action :next-situation next-situation))	
 #|Now it's okay to have them here, see [4]|#
 #|tmp|#					       (add-list (find-propositions action '#$add-list))
-#|tmp|#					       (del-list (find-propositions action '#$del-list))
+#|tmp|#					       (del-list (find-propositions action '#$del-list)) 
 #|tmp|# #|[3]|#				       (evaluated-add-list (mapcar #'evaluate-triple add-list))
 #|tmp|#					       (evaluated-del-list (mapcar #'evaluate-triple del-list))
 					       (add-blk-list (block-list evaluated-add-list)) )
@@ -9231,8 +9231,8 @@ KM Situations Manual, Section 6.2, p23-24 for the rules to follow.
   (cond ((and (pathp (arg3of triple))
 	      (not (comparison-operator (arg2of triple))))
 	 (km-trace 'comment "Evaluate the individual frame/slot/val paths in~%        ~a..." triple)
-	 `(#$:triple ,(km-unique-int (arg1of triple) :fail-mode 'error)
-		     ,(km-unique-int (arg2of triple) :fail-mode 'error)
+	 `(#$:triple ,(km-unique-int (arg1of triple) :fail-mode 'error) 
+		     ,(km-unique-int (arg2of triple) :fail-mode 'error) 
 		     ,(vals-to-val (km-int (arg3of triple)))))
 	(t triple)))
 
@@ -9259,8 +9259,8 @@ But why do this for PCS also??????
 		 (cond ((and (single-valued-slotp slot)
 			     (not (constraint-exprp val)))
 			(cond ((km-setp val)
-			       (report-error 'user-error
-				     "do-action trying to assert multiple values for single-valued slot!~%Trying to assert ~a for (the ~a of ~a)!~%"
+			       (report-error 'user-error 
+				     "do-action trying to assert multiple values for single-valued slot!~%Trying to assert ~a for (the ~a of ~a)!~%" 
 				     (val-to-vals val) slot frame))
 			      (t (mapcan #'(lambda (val0)
 					     (cond ((kb-objectp val0)
@@ -9280,9 +9280,9 @@ But why do this for PCS also??????
     (cond (inconsistent-ncs
 	   (km-format t "(do ~a): Can't do this action as it would be inconsistent to assert negated precondition(s):~%~{  ~a~%~}"
 		      action (desource+decomment inconsistent-ncs))))
-    (and (null inconsistent-pcs)
+    (and (null inconsistent-pcs) 
 	 (null inconsistent-ncs))))	; condition for success
-
+		       
 (defun inconsistent-propositions (propositions &key in-list)
   (cond (propositions
 	 (km-trace 'comment "Checking that the ~a propositions:~%~{  ~a~%~}   are not inconsistent with the current KB..." in-list propositions)
@@ -9293,9 +9293,9 @@ But why do this for PCS also??????
 	 (let* ( (frame (second proposition))				; assumes frame and slot are already evaluated
 		 (slot  (third proposition))
 		 (inv-slot (invert-slot slot))
-		 (values (val-to-vals (fourth proposition))) )		; NB don't evaluate - leave it to the later KM
+		 (values (val-to-vals (fourth proposition))) )		; NB don't evaluate - leave it to the later KM 
 	   (case in-list
-		 (#$(pcs-list add-list)
+		 (#$(pcs-list add-list) 
 		    (cond ((member slot *inequality-relations*)		; In this case, values will be unevaluated (see handling of :triple in
 			   (cond ((null values)				;			interpreter.lisp)
 				  (report-error 'user-error "Triple ~a: missing a value to compare against!" proposition))
@@ -9306,10 +9306,10 @@ But why do this for PCS also??????
 				  (let* ( (x+y (minimatch frame '#$(the ?x of ?y)))
 					  (x (first x+y))
 					  (y (km-unique-int (second x+y) :fail-mode 'error)) )
-				    (km-int `#$(,Y &? (a Thing with
+				    (km-int `#$(,Y &? (a Thing with 
 						      (,X ((constraint (not (TheValue ,(INVERT-INEQUALITY-RELATION SLOT) ,(FOURTH PROPOSITION))))))))
 					)))
-				 (t (km-int `#$(not (,FRAME ,(INVERT-INEQUALITY-RELATION SLOT) ,(FOURTH PROPOSITION)))
+				 (t (km-int `#$(not (,FRAME ,(INVERT-INEQUALITY-RELATION SLOT) ,(FOURTH PROPOSITION))) 
 					))))	 ; just test it.
 			  (t (km-int `#$(,FRAME &? (a Thing with (,SLOT ,VALUES)))))))	 ; inverses installed automatically.
 		 (#$(ncs-list del-list) (every #'(lambda (value)
@@ -9343,30 +9343,30 @@ But why do this for PCS also??????
 ;;; [1] Don't use also-has!!!! also-has can only be safely used if Values are atomic, and as they are potentially unevaluated
 ;;;	then we must use "has" instead and let the unification system deal with it.
 (defun km-assert (proposition action &key in-list)	; in-list = '#$add-list or '#$del-list. action is purely for explanation facility.
-  (cond
+  (cond 
    ((km-triplep proposition)
     (let* ( (frame (second proposition))
 	    (slot  (third proposition))
 	    (inv-slot (invert-slot slot))
-;	    (values (val-to-vals (fourth proposition))) )
-	    (values
+;	    (values (val-to-vals (fourth proposition))) )		
+	    (values 
 	     (cond ((not (member slot *inequality-relations*))	 ; (if slot IS in *inequality-reliations*, then values is NOT used below)
 		    (km-int (fourth proposition))))) ; NO!! Need to preserve constraints here!! But we *do* want to evaluate, so the
-	    (constraints (extract-constraints
-			  (val-to-vals (fourth proposition)))) )	; inverses get installed. We'll ignore this incompleteness for now
+	    (constraints (extract-constraints 
+			  (val-to-vals (fourth proposition)))) )	; inverses get installed. We'll ignore this incompleteness for now 
       									; (only for pcs-list). New: Let's fold constraints back in. We need to
       									; evaluate values for storage in the explanations.
       (case in-list
-	    (#$(pcs-list add-list)
-	       (cond
+	    (#$(pcs-list add-list) 
+	       (cond 
 		((member slot *inequality-relations*)
 		 (cond ((minimatch frame '#$(the ?x of ?y))
 			(let* ( (x+y (minimatch frame '#$(the ?x of ?y)))
 				(x (first x+y))
 				(y (km-unique-int (second x+y) :fail-mode 'error)) )
-			  (km-int `#$(,Y also-has
+			  (km-int `#$(,Y also-has 
 				      (,X ((constraint (not (TheValue ,(INVERT-INEQUALITY-RELATION SLOT) ,(FOURTH PROPOSITION))))))) :fail-mode 'error)))))
-		; ELSE: nothing to assert, but constraint would have already been tested by is-consistent-to-assert
+		; ELSE: nothing to assert, but constraint would have already been tested by is-consistent-to-assert 
 		(t (km-int `#$(,FRAME has (,SLOT ,(APPEND VALUES CONSTRAINTS))) :fail-mode 'error)))	 ; inverses installed automatically.  [1]
 	       (mapc #'(lambda (value)
 			 (case in-list
@@ -9389,7 +9389,7 @@ But why do this for PCS also??????
 ;;; Convert (a Triple with ...) to :triple notation.
 ;;; slot is expected to be one of: #$(pcs-list ncs-list add-list del-list)
 ;;; RETURNS a list of KM triples (:triple expr expr expr)
-;;; For each (:triple <f> <s> <v>), <f>, <s> are evaluated, and <v>
+;;; For each (:triple <f> <s> <v>), <f>, <s> are evaluated, and <v> 
 ;;; is evaluated UNLESS <v> = an existential or constraint expr.
 ;;; This evaluation is done in handling (:triple ...) in interpreter.lisp itself
 (defun find-propositions (action slot)
@@ -9419,7 +9419,7 @@ But why do this for PCS also??????
 |#
 
 ;;; ======================================================================
-;;;		KM's THEORY MECHANISM
+;;;		KM's THEORY MECHANISM 
 ;;; ======================================================================
 
 ;;; In header.lisp
@@ -9454,7 +9454,7 @@ But why do this for PCS also??????
 
 (defun am-in-local-theory () (and (neq (curr-situation) *global-situation*) (isa-theory (curr-situation))))
 
-(defun in-theory (theory-expr &optional km-expr)
+(defun in-theory (theory-expr &optional km-expr) 
   (in-situation theory-expr km-expr t))					; theoryp = t
 
 (defun all-situations-and-theories () (append (all-situations) (all-theories)))
@@ -9469,13 +9469,13 @@ So if X is bound to Y, is bound to Z (X -> Y -> Z), and we delete frame Y,
 then we also delete the binding that Y -> Z, and thus X is left hanging
 (pointing to invisible Y). Thus must be very careful when deleting a single frame!
 NEW: Only allow deletion of known (valid) frames, to avoid this problem.
-NOTE: Suppose X -> Y and we delete Y: We better be sure that no X's are lying around in memory.
+NOTE: Suppose X -> Y and we delete Y: We better be sure that no X's are lying around in memory. 
 I *think* we are ok though: Consider:
 	(Foo has (r (X)))
 	(X has (invr (Foo)))	; [1]
 	(Y == X)		; thus there's a binding X -> Y, and KM will have rebuild [1] as:
 	(Y has (invr (Foo)))
-Now (delete-frame Y) will trigger (uninstall-inverses Y invr (Foo)).
+Now (delete-frame Y) will trigger (uninstall-inverses Y invr (Foo)). 
 And as uninstall-inverses does a get-vals on Foo, *including a dereference*, X will be dereferenced.
 For this reason we have to delete the inverses BEFORE deleting the frame itself.
 
@@ -9497,12 +9497,12 @@ So do a (dereference-kb) to clean up the old junk.
   (let ((frame (dereference frame0)))
   (cond ((known-frame frame)
 	 ;;; Delete definition pointers
-	 (cond (*are-some-definitions*
+	 (cond (*are-some-definitions* 
 		(let ((own-definition-parents (get-vals frame '#$instance-of :facet 'own-definition))
 		      (member-definition-parents (get-vals frame '#$instance-of :facet 'member-definition)))
-		  (cond (own-definition-parents
+		  (cond (own-definition-parents 
 			 (unpoint-parents-to-defined-concept frame own-definition-parents 'own-definition)))
-		  (cond (member-definition-parents
+		  (cond (member-definition-parents 
 			 (unpoint-parents-to-defined-concept frame member-definition-parents 'member-definition))))))
  	 ;;; Delete inverse links
 	 (cond (delete-inversesp
@@ -9535,7 +9535,7 @@ So do a (dereference-kb) to clean up the old junk.
 				   (t vals0))))
 		  (uninstall-inverses frame slot vals situation)))) ; includes explanations
 	 (put-vals frame slot nil :situation situation) ; delete the vals
-	 (delete-explanation frame slot '* :explanation-to-delete 'all :situation situation)
+	 (delete-explanation frame slot '* :explanation-to-delete 'all :situation situation)	 
 	 t)
 	(t (report-error 'user-error "(delete-frame ~a): ~a is not a known frame.~%" frame frame)))))
 
@@ -9552,19 +9552,19 @@ So do a (dereference-kb) to clean up the old junk.
 						  declared-symbols))
 				      (all-situations-and-theories))))
 	  (all-symbols (remove-duplicates (remove-if-not #'kb-objectp all-objects)))
-	  (user-symbols (set-difference all-symbols (append *built-in-frames*
-							    *km-lisp-exprs*
+	  (user-symbols (set-difference all-symbols (append *built-in-frames* 
+							    *km-lisp-exprs* 
 							    *downcase-km-lisp-exprs*
 							    *reserved-keywords*
 							    *additional-keywords*)))
-	 (undeclared-symbols (remove-if #'(lambda (symbol)
+	 (undeclared-symbols (remove-if #'(lambda (symbol) 
 					    (or (member symbol declared-symbols)
 						(assoc symbol *user-defined-infix-operators*) ; elements are (<sym> <fn>)
 						(comment-tagp symbol)
 						(dotted-slot symbol)	; e.g., |agent...|, used in explain
 						(km-varp symbol)
 						(member (invert-slot symbol) declared-symbols)))
-					user-symbols))
+					user-symbols)) 
 	 (missing-classes (remove-if #'(lambda (symbol)
 					 (or (get-vals symbol '#$instance-of)
 					     (get-vals symbol '#$superclasses)
@@ -9572,19 +9572,19 @@ So do a (dereference-kb) to clean up the old junk.
 				     declared-symbols)))
     (cond (undeclared-symbols
 	   (km-format t "A cursory check of the KB shows (at least) these symbols were undeclared:~%" (length undeclared-symbols))
-	   (mapc #'(lambda (symbol) (km-format t "   ~a~%" symbol))
+	   (mapc #'(lambda (symbol) (km-format t "   ~a~%" symbol)) 
 		 (sort (copy-list undeclared-symbols) #'string< :key #'symbol-name))
 	   (format t "----- end -----~%")))
     (cond (missing-classes
 	   (km-format t "The following ~a symbols have no instance-of or superclasses defined for them:~%"
 		      (length missing-classes))
-	   (mapc #'(lambda (symbol) (km-format t "   ~a~%" symbol))
+	   (mapc #'(lambda (symbol) (km-format t "   ~a~%" symbol)) 
 		 (sort (copy-list missing-classes) #'string< :key #'symbol-name))
 	   (format t "----- end -----~%")))
     '#$(t)))
 
 ;;; This removes quoted parts, e.g., (flatten-to-kb-objs '(a b (quote c) d)) -> (a b d)
-;;; Note (flatten-to-kb-objs 'a) -> (a);
+;;; Note (flatten-to-kb-objs 'a) -> (a); 
 ;;; apairs become normal pairs  (flatten-to-kb-objs '(a b c . d)) -> '(a b c d)
 (defun flatten-to-kb-objs (expr)
   (cond
@@ -9610,7 +9610,7 @@ So do a (dereference-kb) to clean up the old junk.
 #|
 Under these special circumstances, DON'T compute the value of a slot
 Specifically: You're in the global situation, but the slot is a fluent (so can only take on situation-specific values).
-   Also you are working with situations mode on (*am-in-situations-mode*=t). If that was nil, then everything's in global and
+   Also you are working with situations mode on (*am-in-situations-mode*=t). If that was nil, then everything's in global and 
    the fluent-status is irrelevant.
 |#
 (defun ignore-slot-due-to-situations-mode (slot)
@@ -9626,9 +9626,9 @@ Specifically: You're in the global situation, but the slot is a fluent (so can o
 (Not allowed, as `~a' is a fluent and you're using KM's situation mechanism).
 DEBUGGING HINTS:
  * IF you issued your query for the `~a' slot from the global situation
-   THEN you shouldn't do this! You should only issue queries for a fluent slot from
-        within a situation, not from the global KB.
-   SOLUTIONS:
+   THEN you shouldn't do this! You should only issue queries for a fluent slot from 
+        within a situation, not from the global KB. 
+   SOLUTIONS: 
      (i) Enter a situation by
 		KM> (new-situation)
 	 then reissue your query, or
@@ -9637,16 +9637,16 @@ DEBUGGING HINTS:
  * IF you issued your query from within a local situation
    THEN You may have a non-fluent slot depending on the value of a fluent slot (= bad!)
         and KM is trying to compute that non-fluent slot's values in the global situation.
-   TO LOCATE THIS: Type `g' to see the goal hierarchy, and look for a
-		   non-fluent slot's value being computed from a fluent's value.
-   TO FIX THIS: Change the non-fluent to be a *Fluent/*Inertial-Fluent, or edit the
+   TO LOCATE THIS: Type `g' to see the goal hierarchy, and look for a 
+		   non-fluent slot's value being computed from a fluent's value. 
+   TO FIX THIS: Change the non-fluent to be a *Fluent/*Inertial-Fluent, or edit the 
 		   dependency.~%" slot instance slot slot slot slot)
 	t)))
 
 ; old error message
 ;	 (report-error 'user-error "Attempt to call (the ~a of ~a) in the global situation!
-;As you are currently using KM's situations mechanism in your KB, you should only issue queries
-;for a fluent slot (here `~a') from within a situation, not from the global KB.
+;As you are currently using KM's situations mechanism in your KB, you should only issue queries 
+;for a fluent slot (here `~a') from within a situation, not from the global KB. 
 ; - To enter a situation, type (new-situation), or
 ; - To declare the `~a' slot as a non-fluent (i.e. with time-independent values), enter
 ;       (~a has (fluent-status (*Non-Fluent)))~%" slot instance slot slot slot)
@@ -9702,7 +9702,7 @@ DEBUGGING HINTS:
    set by (trace-to-file-on [<filename>]) and (trace-to-file-off) from lisp
    set by (t2f-on [<filename>]) and (t2f-off) from km")
 
-;;; ----------------------------------------
+;;; ---------------------------------------- 
 ;;; Thanks to Raphael Van Dyck for this extension to allow tracing output
 ;;; to be directed to a file.
 
@@ -9730,24 +9730,24 @@ DEBUGGING HINTS:
 
 ;;; ---------- error recording ----------
 
-(defun tracekm ()
-  (reset-trace)
+(defun tracekm () 
+  (reset-trace) 
   (cond (*trace* (format t "(Tracing of KM is already switched on)~%"))
 	(t (format t "(Tracing of KM switched on)~%") (km-setq '*trace* t) (setq *interactive-trace* t)))
   t)
 
-(defun untracekm ()
+(defun untracekm () 
   (reset-trace)
   (cond (*trace* (format t "(Tracing of KM switched off)~%") (setq *trace* nil) (setq *interactive-trace* nil))
 	(t (format t "(Tracing of KM is already switched off)~%")))
   t)
 
-(defun reset-trace ()
+(defun reset-trace () 
   (cond ((or *trace* *interactive-trace*)   ; user may have temporarily switched off either of these during last tracing.
 	 (setq *interactive-trace* t)
 	 (setq *trace* t)))
 ;  (setq *depth* 0) 			; new - trace might be reset in middle of computation, so don't do this!
-  (setq *suspended-trace* nil)
+  (setq *suspended-trace* nil) 
   (setq *trace-classify* nil)
   (setq *trace-subsumes* nil)
   (setq *trace-other-situations* nil)
@@ -9776,7 +9776,7 @@ DEBUGGING HINTS:
     (cond ((and expr
 		(not (member expr *spypoints* :test #'equal)))
 	   (setq *spypoints* (cons expr *spypoints*))))
-    (cond (*spypoints* (km-format t "The tracer will automatically switch on when evaluating these expressions/patterns:~%~{      ~a~%~}"
+    (cond (*spypoints* (km-format t "The tracer will automatically switch on when evaluating these expressions/patterns:~%~{      ~a~%~}" 
 				  (subst '#$&rest '&rest *spypoints*)))
 	  (t (km-format t "(You have no spypoints declared)~%")))
     '#$(t)))
@@ -9846,7 +9846,7 @@ If I type "z", *interactive-trace* is switched permanently off, EXCEPT *trace* i
 		  (cond ((eq mode 'call) 		   ; don't suspend on an EXIT, or depth will immediately creep below
 			 (suspend-trace))))		   ; the suspended depth
 		 ((string= debug-option "S")
-		  (cond ((eq mode 'call)
+		  (cond ((eq mode 'call) 		   
 			 (suspend-trace (1- *depth*)))))
 		 ((string= debug-option "o") (untracekm))
 		 ((string= debug-option "-A")
@@ -9866,7 +9866,7 @@ If I type "z", *interactive-trace* is switched permanently off, EXCEPT *trace* i
 		 ((string= debug-option "n") (setq *trace* nil) (setq *suspended-trace* nil))
 		 ((string= debug-option "f") 'fail)
 		 ((string= debug-option "g") (show-goal-stack) (km-trace2 mode string args :stream stream))
-		 ((string= debug-option "w")
+		 ((string= debug-option "w") 
 		  (let* ( (last-expr (stacked-expr (first (goal-stack))))
 			  (exprs (cond ((and (listp last-expr) (eq (second last-expr) '&)) (&-expr-to-vals last-expr))
 				       ((and (listp last-expr) (eq (second last-expr) '&&)) (append-lists (&&-exprs-to-valsets (list last-expr))))
@@ -9880,7 +9880,7 @@ If I type "z", *interactive-trace* is switched permanently off, EXCEPT *trace* i
 		  (km-trace2 mode string args :stream stream))
 		 ((string= debug-option "z") (setq *interactive-trace* nil))
 
-		 ((string= debug-option "+A")
+		 ((string= debug-option "+A") 
 		  (format t "(Will now trace absolutely everything)~%")
 		  (setq *trace-other-situations* t)
 		  (setq *trace-subsumes* t)
@@ -9888,37 +9888,37 @@ If I type "z", *interactive-trace* is switched permanently off, EXCEPT *trace* i
 		  (setq *trace-constraints* t)
 		  (setq *trace-classify* t)
 		  (km-trace2 mode string args :stream stream))
-		 ((string= debug-option "+S")
+		 ((string= debug-option "+S") 
 		  (format t "(Will now show more detailed trace in other situations)~%")
 		  (setq *trace-other-situations*   t) (km-trace2 mode string args :stream stream))
-		 ((string= debug-option "-S")
+		 ((string= debug-option "-S") 
 		  (format t "(Will no longer show a detailed trace in other situations)~%")
 		  (setq *trace-other-situations* nil) (km-trace2 mode string args :stream stream))
 
 		 ; This is for my own debugging, and not advertised to the user
-		 ((string= debug-option "+M")
+		 ((string= debug-option "+M") 
 		  (format t "(Will now show more detailed trace for some subsumption tests)~%")
 		  (setq *trace-subsumes*   t) (km-trace2 mode string args :stream stream))
-		 ((string= debug-option "-M")
+		 ((string= debug-option "-M") 
 		  (format t "(Will no longer show more detailed trace for some subsumption tests)~%")
 		  (setq *trace-subsumes* nil) (km-trace2 mode string args :stream stream))
 
-		 ((string= debug-option "+U")
+		 ((string= debug-option "+U") 
 		  (format t "(Will now show a more detailed trace during unification)~%")
 		  (setq *trace-unify*   t) (km-trace2 mode string args :stream stream))
-		 ((string= debug-option "-U")
+		 ((string= debug-option "-U") 
 		  (format t "(Will no longer show a detailed trace during unification)~%")
 		  (setq *trace-unify* nil) (km-trace2 mode string args :stream stream))
-		 ((string= debug-option "+C")
+		 ((string= debug-option "+C") 
 		  (format t "(Will now show a more detailed trace during constraint checking)~%")
 		  (setq *trace-constraints* t) (km-trace2 mode string args :stream stream))
-		 ((string= debug-option "-C")
+		 ((string= debug-option "-C") 
 		  (format t "(Will no longer show a detailed trace during constraint checking)~%")
 		  (setq *trace-constraints* nil) (km-trace2 mode string args :stream stream))
-		 ((string= debug-option "+X")
+		 ((string= debug-option "+X") 
 		  (format t "(Will now show more detailed trace during classification)~%")
 		  (setq *trace-classify*   t) (km-trace2 mode string args :stream stream))
-		 ((string= debug-option "-X")
+		 ((string= debug-option "-X") 
 		  (format t "(Will no longer show a detailed trace during classification)~%")
 		  (setq *trace-classify* nil) (km-trace2 mode string args :stream stream))
 
@@ -9928,8 +9928,8 @@ If I type "z", *interactive-trace* is switched permanently off, EXCEPT *trace* i
 		  (format t "----------------------------------------~%")
 		  (km-trace2 mode string args :stream stream))
 		 ((and (string/= debug-option "")
-		       (string/= debug-option "c"))
-		  (print-trace-options)
+		       (string/= debug-option "c")) 
+		  (print-trace-options) 
 		  (km-trace2 mode string args :stream stream)))))
 	(t (format stream "~%"))))
 
@@ -9939,11 +9939,11 @@ If I type "z", *interactive-trace* is switched permanently off, EXCEPT *trace* i
   (cond ((eq mode 'comment) (format stream " ")))		   ; extra space tabulation for comments
   (case mode
 	((call redo comment) (apply #'km-format `(,stream ,string . ,(desource-for-printing args))))   ; ie. (km-format t string arg1 ... argn)
-	((exit fail)
+	((exit fail) 
 	 (format stream (truncate-string (apply #'km-format `(nil ,string . ,(desource-for-printing args))) 80)))	; TRUNCATE these particular strings, and add ""
 	(t (report-error 'program-error "km-trace2: Unknown trace mode ~a!~%" mode))))
 
-(defun increment-trace-depth ()
+(defun increment-trace-depth () 
   (cond ((>= *depth* *statistics-max-depth*) (setq *statistics-max-depth* (1+ *depth*))))
   (setq *depth* (1+ *depth*)))
 (defun decrement-trace-depth () (setq *depth* (1- *depth*)))
@@ -9951,7 +9951,7 @@ If I type "z", *interactive-trace* is switched permanently off, EXCEPT *trace* i
 #|
 ;;; Iterate again, making sure counters stay unchanged.
 (defun retrace (mode string &optional args)
-  (cond ((eq mode 'call) (setq *depth* (1- *depth*))))	   ; (<- as it will be immediately incremented again)
+  (cond ((eq mode 'call) (setq *depth* (1- *depth*))))	   ; (<- as it will be immediately incremented again)  
   (apply #'km-trace `(,mode ,string . ,args)))		   ; ie. (km-trace mode string arg1 ... argn)
 |#
 
@@ -9980,7 +9980,7 @@ Debugging options during the trace:
   n       nonstop     - switch off trace for remainder of this query
   a       abort       - return to top-level prompt
   A       abort & off - return to top-level prompt AND switch off tracer
-  o       trace off   - permenantly switch off trace
+  o       trace off   - permenantly switch off trace 
   f       fail        - return NIL for current goal (use with caution!)
   z       zip         - complete query with noninterative trace
   d <f>   display <f> - display (showme) frame <f>
@@ -9995,7 +9995,7 @@ Also to show additional detail (normally not shown) for this query *only*:
   +M	  during subsumption testing
   -S,-U,-C,-X,-A,-M to unshow
 
-Or from the KM prompt:
+Or from the KM prompt: 
   KM> (trace)     switches on debugger
   KM> (untrace)   switches off the debugger
 ----------------------------------------
@@ -10009,7 +10009,7 @@ Debugging options:                              Also show detailed inference:
   r       retry      g    show goal stack       +U  during unification
   n       nonstop    d F  display frame F       -C,-S,-U to unshow
   o       trace off  S    big skip (to completion of parent goal)
-  h,?     help
+  h,?     help 
 |#
 
 #|
@@ -10019,10 +10019,10 @@ This is ok:
 	(t <foo>))
 This is not!
   (prog2 (suspend-trace) <foo> (unsuspend-trace))
-because the (unsuspend-trace) will restart the trace, even if the
+because the (unsuspend-trace) will restart the trace, even if the 
 trace was already off ie. (suspend-trace) had no effect.
 
-NOTE!! <foo> MUSTN'T be a function returning multiple values! prog2
+NOTE!! <foo> MUSTN'T be a function returning multiple values! prog2 
 seems to strip all but the first value off!
 |#
 
@@ -10034,7 +10034,7 @@ seems to strip all but the first value off!
 ;;; If we suspended the trace, but then the debugger kicked in again automatically, and
 ;;; then we switched off the trace (option "n"), we *don't* want to switch it back on again!
 (defun unsuspend-trace ()
-  (cond (*suspended-trace*
+  (cond (*suspended-trace* 
 	 (setq *suspended-trace* nil)
 	 (setq *trace* t))))
 
@@ -10045,12 +10045,12 @@ seems to strip all but the first value off!
 (defun make-comment (string &rest args)
   (cond (*show-comments* (apply #'km-format `(t ,(concat "(COMMENT: " string ")~%") ,@(desource-for-printing args))))))
 
-(defun comments ()
+(defun comments () 
   (cond (*show-comments* (format t "(Display of comments is already switched on)~%"))
 	(t (format t "(Display of comments is switched on)~%") (km-setq '*show-comments* t)))
   t)
 
-(defun nocomments ()
+(defun nocomments () 
   (cond (*show-comments* (format t "(Display of comments is switched off)~%") (km-setq '*show-comments* nil))
         (t ;; (format t "(Display of comments is already switched off)~%") turned off pointless message dm 8/18/11
            nil))
@@ -10060,7 +10060,7 @@ seems to strip all but the first value off!
 ;;;		ERRORS
 ;;; ======================================================================
 #|
-OLD Behaviors on error - KM 2.1
+OLD Behaviors on error - KM 2.1 
   *error-report-silent*     - t: ignore the error and continue. Overrides abort-on-error-report
   *abort-on-error-report*   - t: report error and abort (NEW: now throwing the error message back too)
  			    - NIL: report error and switch on debugger at next opportunity
@@ -10119,7 +10119,7 @@ example:
                                (t (format nil "ERROR! Error in report-error! Unrecognized error type ~a!~%" error-type))))
 	    (continuation (cond ((eq (on-error) 'continue) "[Will continue though] ")
 				(t "")))
-	    (error-str (concat error-str-prefix continuation
+	    (error-str (concat error-str-prefix continuation 
 			       (apply #'km-format `(nil ,string ,@(desource-for-printing args))))))
 ; 1. Print error message
        (cond ((not (member (on-error) '(continue-silently ignore abort-silently))) (format t error-str)))
@@ -10127,11 +10127,11 @@ example:
        (cond ((eq error-type 'user-warning) (push (trim-whitespace error-str) *warnings*))
 	     (t (push (trim-whitespace error-str) *errors*)
 		(push error-data *error-structures*)))
-; 3. Further actions
+; 3. Further actions 
 ;       (km-format t "(on-error) = ~a~%" (on-error))
        (cond ((member error-type '(user-warning nodebugger-error)) nil) ; no action
 	     ((member (on-error) '(ignore continue-silently)) nil) ; no action
-	     ((or			; *abort-on-error-report*
+	     ((or			; *abort-on-error-report* 
 		 (member (on-error) '(abort abort-silently))
 		 (eq error-type 'abort-error))
              ;; FLE 02Aug2005: when using (km `#$(...)) this message is generally
@@ -10147,7 +10147,7 @@ example:
 			  (not *suspended-trace*))
 		    (format t "
 	-------------------------
-	**Switching on debugger**
+	**Switching on debugger** 
 Options include:
   g: to see the goal stack
   r: to retry current goal
@@ -10158,8 +10158,8 @@ Options include:
 	-------------------------
 
 ")))
-	     (setq *trace* t)
-	     (setq *interactive-trace* t)
+	     (setq *trace* t) 
+	     (setq *interactive-trace* t) 
 	     (setq *suspended-trace* nil)
 	     (cond ((or (eq (on-error) 'break) *developer-mode*) (break)))
 	     nil)
@@ -10191,14 +10191,14 @@ Aborting (as I don't know what error reporting mode to use for reporting an erro
 ;;; [1] ((call [0]) (call [1]) (call [2]) (exit [2]) (fail [1]))
 ;;; ->  ((call [0])
 (defun catch-explanation (kmexpr-with-comments mode)
-  (cond
-   ((not (and (listp kmexpr-with-comments)
+  (cond 
+   ((not (and (listp kmexpr-with-comments) 
 	      (member (first kmexpr-with-comments) *no-decomment-headwords*)))
-    (let* ( (comment-tags (get-comment-tags kmexpr-with-comments))
+    (let* ( (comment-tags (get-comment-tags kmexpr-with-comments)) 
 	    (explanations (mapcar #'(lambda (comment-tag) (get-comment2 comment-tag mode)) comment-tags)) )
       (cond ((and explanations *catch-explanations*)
-	     (case mode
-		   ((call exit)
+	     (case mode 
+		   ((call exit) 
 		    (km-setq '*explanations* (cons `(,(1+ *depth*) ,mode ,comment-tags ,explanations) *explanations*)))
 		   (fail (km-setq '*explanations* (trim-failed-explanations *explanations* (1+ *depth*) comment-tags))))))
       (cond ((and explanations *print-explanations*)
@@ -10207,7 +10207,7 @@ Aborting (as I don't know what error reporting mode to use for reporting an erro
 		   explanations)))))))
 
 (defun trim-failed-explanations (explanations depth comment-tags)
-  (cond ((endp explanations)
+  (cond ((endp explanations) 
 	 (report-error 'program-error "Fail encountered in the explanation stack without a matching call!~%Depth ~a, comment-tags ~a~%"
 		       depth comment-tags))
 	((and (= (first (first explanations)) depth)
@@ -10240,7 +10240,7 @@ Aborting (as I don't know what error reporting mode to use for reporting an erro
 
 (defun show-explanation (explanation depth mode comment-tags &key format (stream t))
   (declare (ignore comment-tags))
-  (let ( (sentence (make-phrase (km explanation)))
+  (let ( (sentence (make-phrase (km explanation))) 
 	 (nl (cond (stream *newline-str*) (t ""))) )
     (case format
 ;	  (ascii (km-format stream (concat "~vT~a: ~a" nl) depth (string-upcase mode) sentence))
@@ -10270,7 +10270,7 @@ Aborting (as I don't know what error reporting mode to use for reporting an erro
 		     (mode (second explanation-str))
 		     (comment-tags (third explanation-str))
 		     (explanations (fourth explanation-str)) )
-		(mapcar #'(lambda (explanation)
+		(mapcar #'(lambda (explanation) 
 			    (show-explanation explanation depth mode comment-tags
 					      :format format :stream nil))
 			explanations)))
@@ -10287,7 +10287,7 @@ Aborting (as I don't know what error reporting mode to use for reporting an erro
     (cond ((and expr
 		(not (member expr *silent-spypoints* :test #'equal)))
 	   (setq *silent-spypoints* (cons expr *silent-spypoints*))))
-    (cond (*silent-spypoints* (km-format t "KM will log subgoals when evaluating these expressions/patterns:~%~{      ~a~%~}"
+    (cond (*silent-spypoints* (km-format t "KM will log subgoals when evaluating these expressions/patterns:~%~{      ~a~%~}" 
 				  (subst '#$&rest '&rest *silent-spypoints*)))
 	  (t (km-format t "(You have no silent spypoints declared)~%")))
     '#$(t)))
@@ -10316,32 +10316,32 @@ Aborting (as I don't know what error reporting mode to use for reporting an erro
 (defparameter *annotated-constraints* '#$(must-be-a exactly at-most at-least))
 ; (defparameter *subslot-comment-tag* '|[subslot-reasoning]|) - move to header.lisp as is used in get-slotvals.lisp
 (defparameter *subslot-comment* 		; built-in comment tag
-    '#$(comment [subslot-reasoning] ""
-		(:seq "The" TheSubslot "of" Value1 "=" Value2 ", and" TheSubslot "is a subslot of" TheSlot)
+    '#$(comment [subslot-reasoning] "" 
+		(:seq "The" TheSubslot "of" Value1 "=" Value2 ", and" TheSubslot "is a subslot of" TheSlot) 
 		(:triple Value1 TheSubslot Value2)))
 
 #|
 TERMINOLOGY:
 A COMMENT is a tag [cat], converted internally to (comm [cat] Self), denoting a comment tag for
-	explanation purposes.
+	explanation purposes. 
         Special case: for subslot queries, the internal comment tag form has an extra argument: (comm [subslot-reasoning] Self <subslot>), see get-slotvals.lisp
 A SOURCE is a structure (@ _Car1 Car parts Engine), embedded in an expression as the LAST element, denoting the frame
 	where the expression originally came from.
 
 Both COMMENTS and SOURCES are embedded WITHIN KM expressions, e.g,
-	(a Engine [cat])
+	(a Engine [cat])	
 	(a Engine (@ _Car1 Car parts))
 	(*engine2 [cat])
-	(*engine2 (@ _Car1 Car parts))
+	(*engine2 (@ _Car1 Car parts))	
 
-;;; ======================================================================
+;;; ======================================================================	
 
 RECORDING EXPLANATIONS
   (record-explanation-for target val expr &key situation)
 	target = (the <slot> of <instance>)
 
  - The explaining expr may include a "source" annotation about the origin of the
-   expression e.g. (a Engine (@ Car parts))
+   expression e.g. (a Engine (@ Car parts))  
  - situation is the situation in which the computation was done, *not* necessarily
    *Global for non-fluent slots. [This might mean there's duplicate explanations in
    the KB, one in each situation, for non-fluent slots].
@@ -10363,8 +10363,8 @@ RECORDING EXPLANATIONS
       )
 
 RETRIEVING EXPLANATIONS
- - (why [instance slot val situation])
-   NEW: (why [triple situation])
+ - (why [instance slot val situation]) 
+   NEW: (why [triple situation]) 
    will print out an explanation for this triple, using the functions below.
 
  - (get-explanations instance slot val [situation])
@@ -10380,7 +10380,7 @@ RETRIEVING EXPLANATIONS
    to show the directionality, e.g.,
 	   (explanation (:triple _Control1 object _Device2)    ((a Device (@ _Drive1 Control object))))
            (explanation (:triple _Device2 object-of _Control1) ((inverse (a Device (@ _Drive1 Control object)))))
-
+   
    where <explanation> is one of the KM expressions deriving the triple, with FOUR different possible forms:
      - (cloned-from _ProtoDrive1 _Drive1 _ProtoCar1)   ; cloned from _ProtoCar1 in _ProtoDrive1 to _Drive1
      - (added-at Drive-With-Passenger "Here's my comment")  ; manually added
@@ -10391,7 +10391,7 @@ RETRIEVING EXPLANATIONS
 	  ((a Dog))					    ; if user accidentally put too many parentheses
 	  (retain-expr (a Old))
 
-NOTE:
+NOTE: 
   get-explanations AGGREGATES (i s v expln1) (i s v expln2) ... into (i s v expln*)
   (get-all-explanations instance slot) & (get-explanation-data instance) does NOT aggregate the explanations together.
 
@@ -10410,11 +10410,11 @@ NOTE:
     - descriptions is a list of English translations of the rule
     - justifications is a list of English justifications of the rule
     - body is the expression which was evaluated, justifying the triple.
-    - path is the location of that body, in the form of
+    - path is the location of that body, in the form of 
 	(class1 slot1 class2 slot2 ...)
     - rule is a simple syntactic combination of the path + body, looking
       like this:
-	(every class1 has
+	(every class1 has 
 	   (slot1 ((a class2 with
 		      (slot2 (body))))))
 
@@ -10434,7 +10434,7 @@ Self -- this helps with prototypes also, so that as the prototype is cloned,
 the comment is cloned also.
 |#
 ; Moved to interpreter.lisp
-;(defvar *patterns-to-annotate*
+;(defvar *patterns-to-annotate* 
 ;    '#$(((the ?x of ?y) (?y))
 ;	((the ?x ?y of ?z) (?z))))
 
@@ -10460,8 +10460,8 @@ SOURCES *NOT* allowed on
 	- structured list vals (:triple ...)
 		otherwise a (desource-top-level ...) doesn't prune them all
 
-ALSO: I aggressively decomment and desource constraints in
-;(defun find-constraints-in-exprs (exprs)
+ALSO: I aggressively decomment and desource constraints in 
+;(defun find-constraints-in-exprs (exprs) 
 ;  (desource+decomment (find-constraints exprs 'plural)))
 
 In an ideal world, it'd be better to pass these comments back with the constraints
@@ -10522,7 +10522,7 @@ INPUT: expr is an element of the list returned by (get-explanations1 f s v). Thr
 ;;; should go to (a Wheel with (position ( front )))
 ;;;          not (a Wheel with (position ((front))))
 ;;; [2] Unusual to have a null :seq but possible (and is in rkf-clib-one.km)
-(defun desource (expr)
+(defun desource (expr) 
   (cond ((delistifiable-sourced-pairp expr)
 	 (desource (first expr)))
         ((listp expr)
@@ -10535,7 +10535,7 @@ INPUT: expr is an element of the list returned by (get-explanations1 f s v). Thr
 ; so want (instance-of (Car [comm1])) -> (instance-of (Car)), not (instance-of Car)
 ; [2] :nodelistification t:: ((x [com1]) && (y)) -> ((x) && (y)) NOT (x && (y))
 (defun decomment (expr &key (no-delistification t))
-  (cond ((and (delistifiable-commented-pairp expr)
+  (cond ((and (delistifiable-commented-pairp expr)  
 	      (not no-delistification))
 	 (decomment (first expr)))
 	((and (listp expr)
@@ -10595,17 +10595,17 @@ INPUT: expr is an element of the list returned by (get-explanations1 f s v). Thr
 
 (defconstant *comment-marker-char* #\[)
 
-(defun comment-tagp (tag)
-  (or (internal-commentp tag)
+(defun comment-tagp (tag) 
+  (or (internal-commentp tag) 
       (user-commentp tag)))
 
-(defun comment-or-sourcep (tag)
+(defun comment-or-sourcep (tag) 
   (or (internal-commentp tag) 	; (comm [cat] Self)
       (sourcep tag)		; (@ _Car1 Cat parts)
       (user-commentp tag)))	; [cat]
 
 ;;; e.g., (comm [cat] Self)
-(defun internal-commentp (tag)
+(defun internal-commentp (tag)	
   (declare (optimize (speed 3) (safety 0) (space 0) (debug 0)))  ; optimized by Francis Leboutte
   (and (listp tag)
        (eq (first tag) '#$comm)))
@@ -10647,7 +10647,7 @@ INPUT: expr is an element of the list returned by (get-explanations1 f s v). Thr
 
 ; Less efficient implementation; improved version below thanks to Sunil Mishra.
 ;(defun desource+decomment (expr &key retain-commentsp)
-;  (cond ((and (listp expr)
+;  (cond ((and (listp expr) 
 ;	      (not retain-commentsp))
 ;	 (remove-if #'comment-or-sourcep (mapcar #'desource+decomment expr)))
 ;	(t expr)))
@@ -10667,7 +10667,7 @@ INPUT: expr is an element of the list returned by (get-explanations1 f s v). Thr
 	       (decommented-expr comment-foundp)
 	       (desource+decomment1 expr)
 	     (cond ((and delistifyp
-			 comment-foundp
+			 comment-foundp 
 			 (not (km-structured-list-valp expr))
 			 (not (eql (first expr) '#$no-inheritance))) ; no longer used, but must stay listified
 		    (delistify decommented-expr)) ; (*cat [1]) -> *cat not (*cat)
@@ -10744,19 +10744,19 @@ INPUT: expr is an element of the list returned by (get-explanations1 f s v). Thr
   (and (pairp expr)			; [1]
        (comment-or-sourcep (second expr))
        (not (km-structured-list-valp expr)) ; note (:seq (@ p)) -> (:seq), not :seq [2]
-       (not (eql (first expr) '#$no-inheritance)))) ; no longer used, but must stay listified
+       (not (eql (first expr) '#$no-inheritance)))) ; no longer used, but must stay listified  
 
 (defun delistifiable-sourced-pairp (expr)
   (and (pairp expr)			; [1]
        (sourcep (second expr))
        (not (km-structured-list-valp expr)) ; note (:seq (@ p)) -> (:seq), not :seq [2]
-       (not (eql (first expr) '#$no-inheritance)))) ; no longer used, but must stay listified
+       (not (eql (first expr) '#$no-inheritance)))) ; no longer used, but must stay listified  
 
 (defun delistifiable-commented-pairp (expr)
   (and (pairp expr)			; [1]
        (comment-tagp (second expr))
        (not (km-structured-list-valp expr)) ; note (:seq (@ p)) -> (:seq), not :seq [2]
-       (not (eql (first expr) '#$no-inheritance)))) ; no longer used, but must stay listified
+       (not (eql (first expr) '#$no-inheritance)))) ; no longer used, but must stay listified  
 
 ;;; ------------------------------
 
@@ -10772,7 +10772,7 @@ INPUT: expr is an element of the list returned by (get-explanations1 f s v). Thr
 ;;; (a (b (@ x)) (@ y)) -> (a b (@ y))
 
 (defun desource-all-but-top-level (expr)
-  (cond ((listp expr) (mapcar #'desource expr))
+  (cond ((listp expr) (mapcar #'desource expr))	
 	(t expr)))
 
 ;;; ----------
@@ -10799,7 +10799,7 @@ INPUT: expr is an element of the list returned by (get-explanations1 f s v). Thr
 		 (explanations+justifications (transpose (mapcar #'get-comment (get-comment-tags expr)))) )
 	   (cond ((>= (length sources) 2)
 		  (report-error 'nodebugger-error "get-comments: More than one source path ~a (?). Just using first...~%" sources)))
-	   (values (remove nil (first  explanations+justifications))
+	   (values (remove nil (first  explanations+justifications)) 
 		   (remove nil (second explanations+justifications))
 		   rule
 		   source-path
@@ -10818,7 +10818,7 @@ INPUT: expr is an element of the list returned by (get-explanations1 f s v). Thr
 ;;;		  Thus (every...) statements may still occur, but only with has-definition as the 3rd argument (every ... has-definition ...)
 ;;; :ignore-constraintsp - any rule which comes from a must-be-a constraint is ignored (dropped).
 (defun build-rule (expr0 &key ignore-constraintsp)
-  (cond
+  (cond 
    ((eq (explanation-type expr0) '#$every) expr0)			; [1]
    ((eq (explanation-type expr0) '#$cloned-from) expr0)
    ((eq (explanation-type expr0) '#$added-at) expr0)
@@ -10826,7 +10826,7 @@ INPUT: expr is an element of the list returned by (get-explanations1 f s v). Thr
    (t (let* ((source (first (sources expr0)))  ; should never be multiple sources, but just in case!
 	     (expr (desource expr0))
 	     (source-path (source-path source)))
-	(cond
+	(cond 
 	 ((and ignore-constraintsp (intersection *annotated-constraints* (flatten source-path) :test #'equal)) nil)
 ;	 ((and ignore-constraintsp (member '#$must-be-a (flatten source-path) :test #'equal)) nil)
 	 ((or (null source-path)
@@ -10846,7 +10846,7 @@ INPUT: expr is an element of the list returned by (get-explanations1 f s v). Thr
 	       (t expr)))
 ;	((and (listp (first path))	; REVISED
 ;	      (eq (first (first path)) '#$must-be-a))
-;	 `(#$must-be-a ,(second (first path))
+;	 `(#$must-be-a ,(second (first path)) 
 ;	   		#$with (,(second path) (,(build-embedded-val (rest (rest path)) expr)))))
 	(t (let* ((class (first path))
 		  (slot0 (second path))
@@ -10856,8 +10856,8 @@ INPUT: expr is an element of the list returned by (get-explanations1 f s v). Thr
 ;	     (km-format t "slot0 = ~a~%" slot0)
 ;	     (km-format t "slot = ~a~%" slot)
 	     `(,every-a ,class ,has-with
-			(,slot (,(build-embedded-val (rest (rest path)) expr
-						     :every-a (cond (must-be-a-p '#$must-be-a)
+			(,slot (,(build-embedded-val (rest (rest path)) expr 
+						     :every-a (cond (must-be-a-p '#$must-be-a) 
 								    (t '#$a))))))))))
 
 ;;; ------------------------------
@@ -10877,14 +10877,14 @@ INPUT: expr is an element of the list returned by (get-explanations1 f s v). Thr
 
 #|
 This version returns the *whole* ("a" "b" (:set (the part of Self))):
-
+ 
 KM> (comment [x] "a" "b" (:set (the part of Self)))
 
 USER: (get '|[x]| 'comment)
 ("a" "b" (:set (the part of Self)))
 
 CL-USER(19): (get-comment '#$(comm [x] _Car1))		; internal form of comment
-("a" "b" (:set (the part of _Car1)))
+("a" "b" (:set (the part of _Car1)))		
 
 CL-USER(20): (get-comment2 '#$(comm [x] _Car1) 'call)
 "b"
@@ -10895,7 +10895,7 @@ CL-USER(21): (get-comment2 '#$(comm [x] _Car1) 'exit)
 ;;; [1] Should no longer arise -- *all* comments are converted to internal form
 (defun get-comment (comment-tag)
   (cond ; ((user-commentp comment-tag) (get comment-tag 'comment)) ; [1]
-	((internal-commentp comment-tag)
+	((internal-commentp comment-tag) 
 	 (let ( (comment (get (second comment-tag) 'comment))
 		(self (third comment-tag)) )
 	   (bind-self comment self)))))
@@ -10904,8 +10904,8 @@ CL-USER(21): (get-comment2 '#$(comm [x] _Car1) 'exit)
 ;;; [1] Should no longer arise -- *all* comments are converted to internal form
 (defun get-comment2 (comment-tag mode)
   (cond ; ((user-commentp comment-tag) (get comment-tag 'comment)) [1]
-	((internal-commentp comment-tag)
-	 (let* ((self (third comment-tag))
+	((internal-commentp comment-tag) 
+	 (let* ((self (third comment-tag)) 
 		(comments (cond ((eq (second comment-tag) *subslot-comment-tag*) (rest (rest *subslot-comment*)))
 				(t (bind-self (get (second comment-tag) 'comment) self)))))
 	   (case mode
@@ -10948,13 +10948,13 @@ CL-USER(21): (get-comment2 '#$(comm [x] _Car1) 'exit)
 #|
 explanations are triples <slot val explanation>
 target = (the <slot> of <instance>) - we ASSUME this is GUARANTEED by this point.
-Or this? (defun record-explanation-for (target val expr &key (situation (cond ((existential-exprp expr) *global-situation*)
+Or this? (defun record-explanation-for (target val expr &key (situation (cond ((existential-exprp expr) *global-situation*) 
 										(t (curr-situation)))))
 [1] If call (km-int '#$_Expose2), km-int *will* call km1 if '#$_Expose2 dereferences to something else e.g. _Expose3. BUT we don't
 want to record _Expose3 as an explanation for _Expose2, hence the listp test.
 [2] was getting combinatorial: a b c ((:set m1) (:set m1 m2) (:set m1 m2 m3) ... (:set m1 m2 m3 c))
     No! We *do* need :set!
-	(every Amino-Acid-Sequence has
+	(every Amino-Acid-Sequence has 
 	  (has-region ((a Carboxyl-Terminus (@ Amino-Acid-Sequence has-region))
 	               (a Amino-Terminus (@ Amino-Acid-Sequence has-region)))))
 
@@ -10971,12 +10971,12 @@ We can't pair the right set member with the evaluated result, as this informatio
 new-explanation: (:set a b)   old-explanation (:set a b c)	-> store (:set a b), discard (:set a b c)
 new-explanation: a	      old-explanation (:set a b c)	-> store a
 
-[4]
+[4] 
 KM> (every Car has (parts ((a Engine) (a Wheel))))
 KM> (the parts of (a Car))
 CL-USER(31): (get-explanation-data '#$_Car520)
 ((_Car520 parts _Wheel522 (a Wheel (@ _Car520 Car parts)))
- (_Car520 parts _Engine521 (a Engine (@ _Car520 Car parts)))
+ (_Car520 parts _Engine521 (a Engine (@ _Car520 Car parts))) 
  (_Car520 instance-of Car (a Car)))
 CL-USER(32): (reset-done)
 KM> (the parts of _Car520)	; same query
@@ -10984,7 +10984,7 @@ CL-USER(33): (get-explanation-data '#$_Car520)
 ((_Car520 parts _Wheel522 (:set _Engine521 _Wheel522)) 	; <------- we really don't want these new ones!
  (_Car520 parts _Engine521 (:set _Engine521 _Wheel522)) 	; <------- we really don't want these new ones!
  (_Car520 parts _Wheel522 (a Wheel (@ _Car520 Car parts)))
- (_Car520 parts _Engine521 (a Engine (@ _Car520 Car parts)))
+ (_Car520 parts _Engine521 (a Engine (@ _Car520 Car parts))) 
  (_Car520 instance-of Car (a Car)))
 
 NOTE: record-explanation-for doesn't get called for unification (&, &&, etc.) operators -- in process-km1-result,
@@ -10993,22 +10993,22 @@ never gets called in the end for such exprs)
 |#
 (defun record-explanation-for (target val expr0 &key (situation (curr-situation)) ignore-clone-cycles forcep)
  (cond ((or *record-explanations*
-	    (and *record-explanations-for-clones*
+	    (and *record-explanations-for-clones* 
 		 (member (explanation-type expr0) '#$(cloned-from added-at))))	; two clone-based explanation structures
 	(let* ((slot (second target))
-	       (expr1 (modify-set-explanation expr0))
+	       (expr1 (modify-set-explanation expr0)) 
 	       (expr (desource-all-but-top-level expr1)))	; don't need to store embedded sources in expln database
-	  (cond
+	  (cond 
 	   ((and (listp *record-explanations*) ; Now can be a LIST of slots worth recording explanations for
-		 (not (member slot *record-explanations*))	; i.e., is not worth recording explanation
+		 (not (member slot *record-explanations*))	; i.e., is not worth recording explanation 
 		 (not (member (invert-slot slot) *record-explanations*)))
 	    nil)
 	   ((and (listp target)		; lazy-unify sometimes now gives :target (the <slot> of (i1 &! i2))
 		 (not (kb-objectp (fourth target)))) nil)
-	   ((and (km-setp expr)
+	   ((and (km-setp expr) 
 		 (notevery #'(lambda (val) (is-km-term (desource val))) (set-to-list expr)))
 	    (report-error 'program-error
-			  "A not-fully-evaluated :set was unexpectedly passed as an explanation to ~a.~%"
+			  "A not-fully-evaluated :set was unexpectedly passed as an explanation to ~a.~%" 
 			  `(record-explanation-for ,target ,val ,expr)))
 	   ((and (listp expr) 		; [1]
 		 val
@@ -11022,13 +11022,13 @@ never gets called in the end for such exprs)
 							       :ignore-clone-cycles ignore-clone-cycles)) )
 	      (cond ((member isv-explanation old-isv-explanations :test #'equal)) ; a	       a    -> a
 
-		    ; 10/7/11 - it might not actually have been asserted, if val's class is already <| class
+		    ; 10/7/11 - it might not actually have been asserted, if val's class is already <| class		    
 		    ; IF it's an instance-of slot BUT the value was never asserted THEN ignore the explanation
 		    ((and (not forcep)
 			  (or (member slot *built-in-remove-subsumers-slots*)
 			      (member slot *built-in-remove-subsumees-slots*))
 			  (not (member val (get-vals instance slot))))
-;		     (km-format t "DEBUG: Not asserting value + explanation for ~a (more specific assertion already in the KB) [1]~%"
+;		     (km-format t "DEBUG: Not asserting value + explanation for ~a (more specific assertion already in the KB) [1]~%" 
 ;			`(,instance ,slot ,val))
 		     nil
 		     )
@@ -11044,9 +11044,9 @@ never gets called in the end for such exprs)
 		     (let ((class (second (desource expr)))) ; (a Car) -> Car
 		       ; 10/7/11 - it might not actually have been asserted, if val's class is already <| class
 		       (cond ((member class (get-vals val '#$instance-of))
-			      (record-explanation-for `#$(the instance-of of ,VAL) class expr :situation situation
+			      (record-explanation-for `#$(the instance-of of ,VAL) class expr :situation situation    
 						      :ignore-clone-cycles ignore-clone-cycles))
-;			     (t (km-format t "DEBUG: Not asserting value + explanation for ~a (more specific assertion already in the KB) [2]~%"
+;			     (t (km-format t "DEBUG: Not asserting value + explanation for ~a (more specific assertion already in the KB) [2]~%" 
 ;					   `(,val #$instance-of ,class)))
 			    ))))))
 	   )))))
@@ -11057,7 +11057,7 @@ never gets called in the end for such exprs)
 REDUNDANT NOW: :set explanations are never stored.
 ;;; Slightly complex, to minimise storage of :sets
 (defun update-isv-explanations (old-isv-explanations isv-explanation)
-  (cond
+  (cond 
    ((endp old-isv-explanations) (list isv-explanation))
    (t (let ( (old-isv-explanation (first old-isv-explanations)) )
 	(cond ((not (equal (triple-in old-isv-explanation) (triple-in isv-explanation)))
@@ -11093,19 +11093,19 @@ REDUNDANT NOW: :set explanations are never stored.
 	      (null *last-answer*))
 	 (km-format t "There are no answers to explain!~%"))
 	((null triple)
-	 (let* ( (slot+frameadd (minimatch *last-question* '#$(the ?slot of ?frameadd)))
+	 (let* ( (slot+frameadd (minimatch *last-question* '#$(the ?slot of ?frameadd))) 
 		 (slot (first slot+frameadd))
 		 (frameadd (second slot+frameadd)) )
-	   (cond
+	   (cond 
 	    ((not slot+frameadd)
-	     (km-format t "Which conclusion are you asking about? (Here, I can't guess). Enter in the form
+	     (km-format t "Which conclusion are you asking about? (Here, I can't guess). Enter in the form 
    	(why (:triple <instance> <slot> <value>))
 e.g.
    KM> (why (:triple _Car1 parts _Engine1))~%"))
 	    (t (let ( (values *last-answer*)
 		      (instances (km-int frameadd)) )	; if *last-answer*, then frames necc. not null
 		 (km-format t "I'll assume you're asking me:~%Why ~a = ~a...~%~%" *last-question* values)
-		 (mapc #'(lambda (instance)
+		 (mapc #'(lambda (instance) 
 			   (mapc #'(lambda (value)
 				     (why0 `(#$:triple ,instance ,slot ,value) situation))
 				 values))
@@ -11135,7 +11135,7 @@ KM> (why (:triple *MyCar parts _Engine1))
 	  (isv-multi-explanations (get-explanations instance slot val situation)) )	; returns two, forward and back
     (cond ((not (equal instance instance0)) (km-format t "(~a is bound to ~a)~%" instance0 instance)))
     (cond ((not (equal val val0)) (km-format t "(~a is bound to ~a)~%" val0 val)))
-    (cond
+    (cond 
      ((null isv-multi-explanations)
       (km-format t "(:triple ~a ~a ~a [in ~a]) because:~%  (no explanation available)~%" instance slot val situation))
      (t (mapc #'(lambda (isv-explanation)
@@ -11174,7 +11174,7 @@ Each <explanation> describes how (i s v) or (v invs i) was computed, and has 4 d
     (a Device)					; traditional (the source frame could not be located through)
   - (cloned-from _Drive3 _Drive1)		; cloned from protoype _Drive3
   - (added-at Drive-With-Passenger "Here's my comment") ; manually added
-  - (projected-from _Situation3)		;
+  - (projected-from _Situation3)		; 	
 
 Note: is **MAPCAN-SAFE**
 |#
@@ -11194,12 +11194,12 @@ Note: is **MAPCAN-SAFE**
   (let* ((explanations (get-explanations1 instance slot val situation)))
     (cond (explanations (list instance slot val explanations)))))
 
-;;; RETURNS: List of explanations,
+;;; RETURNS: List of explanations, 
 ;;; 	where an explanation = (every ...), (cloned-from ...), (added-at ...), (projected-from ...)
 (defun get-explanations1 (instance0 slot val0 &optional (situation (curr-situation)))
   (let* ((instance (dereference instance0))
 	 (val (dereference val0))
-	 (explanations (mapcar #'fourth (remove-if-not #'(lambda (x)
+	 (explanations (mapcar #'fourth (remove-if-not #'(lambda (x) 
 							   (and (eq (second x) slot)
 								(equal (third x) val)))
 ;								 (is-subslot-of (second x) slot)))	; has-part is explanation for has-structure
@@ -11229,12 +11229,12 @@ NOTE: Will return multiple (i s v explanation) for the same i-s-v if >1 expln (e
 which get deposited in the global situation even if we're in KM situation-mode.
 2/8/02: No, this transfer from global to local is done in the interpreter, and only on a demand-driven basis
 4/13/06: No, let's go back to this, instead of doing the copying in km-slotvals-from-kb
-NOTE: slot is solely to determine the target-situation to look in. slot can be NIL, in which case target-situation
+NOTE: slot is solely to determine the target-situation to look in. slot can be NIL, in which case target-situation 
 is the current situation.
 NEW: Always do a dereferencep in case it's called from Lisp directly
-NOTES:
+NOTES: 
   - Can switch of ignore-clone-cycles check for when loading the KB, where load order matters.
-  - Will *not* return subslot explanations, e.g., (get-all-explanations _Cell1 has-structure) will not return has-part
+  - Will *not* return subslot explanations, e.g., (get-all-explanations _Cell1 has-structure) will not return has-part 
     explanations (where has-part is a subslot of has-structure). Rather, the subslot agglomeration is handled
     in get-explanations above.
 |#
@@ -11244,7 +11244,7 @@ NOTES:
   (cond ((kb-objectp instance)
 	 (let* ((target-situation (target-situation situation instance slot))
 		(global-isv-explanations (get-explanation-data instance :situation *global-situation*))
-		(decycled-global-isv-explanations
+		(decycled-global-isv-explanations 
 		 (cond (ignore-clone-cycles (dereference global-isv-explanations))
 		       (t (remove-clone-cycles (dereference global-isv-explanations)))))
 		(all-isv-explanations (cond ((eq target-situation *global-situation*) decycled-global-isv-explanations)
@@ -11315,13 +11315,13 @@ NOTES:
 ;;; does not even look in local for non-fluent explanations. This was causing some explanations to be unseen
 ;;; by get-supports earlier.
 (defun put-explanation-data (instance isv-explanations &key (situation (curr-situation)))
-  (cond
+  (cond 
    (*report-explanation-clone-warnings*
     (mapc #'(lambda (isv-explanation)
 	    (let ((explanation (explanation-in isv-explanation)))
 	      (cond ((and (eq (explanation-type explanation) '#$cloned-from)
 			  (not (prototypep (second explanation))))
-		     (report-error 'user-warning
+		     (report-error 'user-warning 
 	   "Attempt to explain a triple as cloned-from a non-prototype!~%    ~a~%   I'll assert it anyway (I'll assume the source prototype is to be loaded later, but if not this might be indicative of a KB error)~%"	isv-explanation)))))
 	  isv-explanations)))
   (cond
@@ -11342,30 +11342,30 @@ NOTES:
 ======================================================================
 
 Suppose (_MyPet breathes *yes) is cloned-from both (_Pet1 breathes *yes) and (_Fish1 breathes *yes).
-This info will be stored in the explanation database.
+This info will be stored in the explanation database. 
 Suppose then (_Fish1 breathes *yes) is deleted; we need to remove the support on _MyPet.
 Can do this like this:
    (delete-support-by-prototypes-in-class '#$(_MyPet breathes *yes) '#$Fish)
 or equivalently like this:
-   (delete-support-by-prototypes '#$(_MyPet breathes *yes) '#$(_Fish1))
+   (delete-support-by-prototypes '#$(_MyPet breathes *yes) '#$(_Fish1))   
 
-These functions do a simple update (removal) from the explanation database of the (cloned-from _Fish1 _MyPet)
+These functions do a simple update (removal) from the explanation database of the (cloned-from _Fish1 _MyPet) 
    record.
 
 See knowledge-revision/delete-triples/test-delete-triple2.lisp for full example.
 
 RETURNED VALUE: (Irrelevant)
-|#
+|#   
 (defun delete-support-by-prototypes-in-class (triple class &key (situation (curr-situation)) (explanation-types-to-delete '#$(cloned-from)))
   (delete-support-by-prototypes triple (get-vals class '#$prototypes) :situation situation :explanation-types-to-delete explanation-types-to-delete))
 
 (defun delete-support-by-prototypes (triple prototype-roots &key (situation (curr-situation)) (explanation-types-to-delete '#$(cloned-from)))
-  (cond
+  (cond 
    ((or (not (listp explanation-types-to-delete))
 	(set-difference explanation-types-to-delete '#$(cloned-from added-at)))
     (report-error 'user-error "delete-support-by-prototypes: :explanation-types-to-delete must be a list whose values are a subset of (cloned-from added-at).
 	Instead was :explanation-types-to-delete '~a~%" explanation-types-to-delete))
-   (t (let*
+   (t (let* 
         ((prototype-classes (my-mapcan #'(lambda (protoroot) (get-vals protoroot '#$prototype-of)) prototype-roots))
 	 (f (first triple))
 	 (s (second triple))
@@ -11403,7 +11403,7 @@ RETURNED VALUE: (Irrelevant)
 	     (cond ((null explanation)
 		    (report-error 'program-error "Null explanation passed to delete-isv-explanation (not allowed!)"))
 		   (t (delete-explanation f s v :explanation-to-delete explanation :situation situation)))))))
-
+    
 ;;; ----------
 ;;; explanation-to-delete = 'all -> delete ALL explanations for (f s v)
 ;;; NOTE: This assumes that explanation-to-delete is stored on (instance slot val), not (val invslot instance)
@@ -11411,7 +11411,7 @@ RETURNED VALUE: (Irrelevant)
 (defun delete-explanation (instance0 slot val0 &key explanation-to-delete (situation (curr-situation)))
   (cond ((null explanation-to-delete)
 	 (report-error 'program-error "Null explanation passed to (delete-explanation ~a ~a ~a :explanation-to-delete ~a) (not allowed!)" instance0 slot val0 explanation-to-delete))
-	((kb-objectp instance0)
+	((kb-objectp instance0)	 
 	 (let* ((instance (dereference instance0))
 		(val (dereference val0))
 		(explanation-to-delete0 (dereference explanation-to-delete))
@@ -11422,7 +11422,7 @@ RETURNED VALUE: (Irrelevant)
 		  (not (member `(,instance ,slot ,val ,explanation-to-delete0) isv-explanations :test #'equal)))
 	     (report-error 'user-error "Failed to delete explanation (doesn't seem to exist):~% ~a~%"
 			   `(,instance ,slot ,val ,explanation-to-delete0)))
-	    (t (let ((new-isv-explanations
+	    (t (let ((new-isv-explanations 
 		      (cond ((neq explanation-to-delete 'all)
 			     (remove `(,instance ,slot ,val ,explanation-to-delete0) isv-explanations :test #'equal))
 			    (t (remove-if #'(lambda (isv-explanation)
@@ -11432,7 +11432,7 @@ RETURNED VALUE: (Irrelevant)
 					  isv-explanations)))))
 		 (cond ((eq explanation-to-delete 'all)
 			(make-comment "Deleting all explanations supporting (~a ~a ~a)..." instance0 slot val0))
-		       (t (make-comment "Deleting explanation ~a supporting (~a ~a ~a)..."
+		       (t (make-comment "Deleting explanation ~a supporting (~a ~a ~a)..." 
 					explanation-to-delete instance0 slot val0)))
 		 (put-explanations instance slot new-isv-explanations :situation situation))))))))
 
@@ -11450,10 +11450,10 @@ RETURNED VALUE: (Irrelevant)
 (defun delete-supports-from-class0 (instance0 class &key (situation (curr-situation)))
   (let* ((instance (dereference instance0))
 	 (isv-explanations (get-explanation-data instance :situation situation :dereference t)))
-    (cond ((some #'(lambda (isv-explanation)
+    (cond ((some #'(lambda (isv-explanation) 
 		     (member class (originated-from-classes (explanation-in isv-explanation))))
 		 isv-explanations)
-	   (let ((new-isv-explanations
+	   (let ((new-isv-explanations 
 		  (remove-if #'(lambda (isv-explanation)
 				 (let ((origins (originated-from-classes (explanation-in isv-explanation))))
 				   (cond ((member class origins)
@@ -11467,7 +11467,7 @@ RETURNED VALUE: (Irrelevant)
 #|
 Inverse to get-explanations:
 	(get-explanations i s v) -> <structs>
-	(delete-explanations i s v <structs>)
+	(delete-explanations i s v <structs>) 
 |#
 (defun delete-explanations (i s v structs)
   (mapc #'(lambda (explanation)
@@ -11489,14 +11489,14 @@ Inverse to get-explanations:
 		   (instance (first explanation))
 		   (slot (second explanation))
 		   (value (third explanation))
-		   (exprs (fourth explanation))
+		   (exprs (fourth explanation)) 
 		   (additional-explanations (remove-if-not #'(lambda (additional-explanation)
 							      (and (eq (first additional-explanation) instance)
 								   (eq (second additional-explanation) slot)
 								   (eql (third additional-explanation) value)))
 							  (rest explanations))) )
 	     (cond (additional-explanations
-		    (cons (list instance slot value
+		    (cons (list instance slot value 
 				(remove-duplicates (append-lists (cons exprs (mapcar #'fourth additional-explanations))) :test #'equal))
 			  (combine-explanations
 			   (ordered-set-difference (rest explanations) additional-explanations :test #'equal))))
@@ -11529,22 +11529,22 @@ When two instances get unified, we better unify their explanations too!
 
 #|
 [1] Triple itself not be there if 2 explanations for same triple, e.g.,:
-recessive-explanations = ((_Tangible-Entity4 instance-of Tangible-Entity (a Tangible-Entity (@ _Leave2 Move object)))
+recessive-explanations = ((_Tangible-Entity4 instance-of Tangible-Entity (a Tangible-Entity (@ _Leave2 Move object))) 
 			  (_Tangible-Entity4 instance-of Tangible-Entity (a Tangible-Entity (@ _Leave2 Move-From object))))
 |#
 (defun merge-explanations-in-situation (dominant-i recessive-i &key situation)
   (let ((recessive-explns (get-all-explanations recessive-i nil :situation situation)))
 ;    (km-format t "recessive-explanations = ~a~%" recessive-explns)
     (cond (recessive-explns
-	   (let* ((dominant-explns (get-all-explanations dominant-i nil :situation situation))
+	   (let* ((dominant-explns (get-all-explanations dominant-i nil :situation situation)) 
 		  (lost-recessive-explns0 (ordered-set-difference recessive-explns dominant-explns :test #'equal))
-		  (lost-recessive-explns
+		  (lost-recessive-explns 
 		   (cond ((neq situation '#$*Global) lost-recessive-explns0)
 					; all built-in-remove-subsumer/ee-slots are in *Global
 			 (t (remove-if #'(lambda (isv-expln) ; drop explanation if the triple it supports has vanished
 					 (let ((slot (second isv-expln))
 					       (val (third isv-expln)))
-			;;; It's only for these slots that a value may magically vanish via unification
+			;;; It's only for these slots that a value may magically vanish via unification 
 			;;; NOTE: We count on dominant-i necessarily being more specific than recessive-i,
 			;;;       i.e., that a dominant-i explanation will need to be dropped. This should hold,
 			;;;       as unification always prefers the more specific concept name as the dominant.
@@ -11557,17 +11557,17 @@ recessive-explanations = ((_Tangible-Entity4 instance-of Tangible-Entity (a Tang
 								     (is-subclass-of val class)) ; thus val will be dropped
 								 (get-vals dominant-i slot))))
   						  ;;; forward direction of triple will disappear anyway through unification
-;						  (km-format t "DEBUG: Dropping value + explanation for ~a (triple dropped from KB)~%"
+;						  (km-format t "DEBUG: Dropping value + explanation for ~a (triple dropped from KB)~%" 
 ;							     (triple-in isv-expln))
 						  (cond ((member recessive-i (get-vals val (invert-slot slot)))  ; [1]
 							 (delete-val val (invert-slot slot) recessive-i #| uninstall-inverses = |# nil)))
 						  t))))
 				     lost-recessive-explns0)))))
-	     (cond (lost-recessive-explns
+	     (cond (lost-recessive-explns 
 		    (put-explanations dominant-i nil (remove-duplicates (append dominant-explns lost-recessive-explns) :test #'equal :from-end t)
 				      :situation situation))))))))
 
-;;; ----------
+;;; ----------  
 
 (defun explain-all (&key (include-globalp t))
   (mapc #'(lambda (instance)
@@ -11580,8 +11580,8 @@ recessive-explanations = ((_Tangible-Entity4 instance-of Tangible-Entity (a Tang
 				    (mapc #'(lambda (val)
 					      (km-format t "~%(:triple ~a ~a ~a [in ~a]) because:~%~{   ~a~%~}" instance slot val situation
 #|NEW|#							 (mapcar #'build-rule
-								 (mapcar #'fourth
-									 (remove-if-not #'(lambda (x)
+								 (mapcar #'fourth 
+									 (remove-if-not #'(lambda (x) 
 											    (eql (third x) val))
 											slot-explanations)))))
 					  vals)))
@@ -11594,7 +11594,7 @@ recessive-explanations = ((_Tangible-Entity4 instance-of Tangible-Entity (a Tang
 #|
 ;;; [1] For Shaken, *leave* explanations on the prototypes. They should stay.
 (defun clear-explanations ()
-  (let ( (facets (cons 'explanation
+  (let ( (facets (cons 'explanation 
 		       (mapcar #'(lambda (situation)
 				   (curr-situation-facet 'explanation situation))
 			       (all-situations)))) )
@@ -11606,7 +11606,7 @@ recessive-explanations = ((_Tangible-Entity4 instance-of Tangible-Entity (a Tang
 	  (get-all-concepts))
     t))
 
-;;; *Leave* the prototype-style explanations, and also for Shaken the ((@ SME entered))
+;;; *Leave* the prototype-style explanations, and also for Shaken the ((@ SME entered)) 
 ;;; explanation flag. Everything else can be removed.
 (defun clear-explanations ()
   (let ( (explanation-facets (cons 'explanation
@@ -11615,9 +11615,9 @@ recessive-explanations = ((_Tangible-Entity4 instance-of Tangible-Entity (a Tang
 					   (all-situations))) )
     (mapc #'(lambda (frame)
 	      (mapc #'(lambda (explanation-facet)
-			(let* ( (old-explanations (get frame explanation-facet))
-			        (new-explanations nil) )		; NEW 12/29/07
-;				(new-explanations
+			(let* ( (old-explanations (get frame explanation-facet)) 
+			        (new-explanations nil) )		; NEW 12/29/07 
+;				(new-explanations 
 ;				 (remove-if
 ;				  #'(lambda (explanation)
 ;				      (standard-explanation-expr (fourth explanation)))
@@ -11644,22 +11644,22 @@ recessive-explanations = ((_Tangible-Entity4 instance-of Tangible-Entity (a Tang
 	  (get-all-concepts))
     t))
 
-(defun explanations (&optional slots)
+(defun explanations (&optional slots) 
   (cond ((and slots (listp slots)) (setq *record-explanations* slots))
 	(t (setq *record-explanations* t))))
 (defun no-explanations () (setq *record-explanations* nil))
 
 ;;; (a Engine (@ Car parts)) is standard, i.e. from a standard KB frame
 ;;; (every Car has (parts ((a Engine)))) is not (comes from Shaken), neither is ((@ SME entered))
-;(defun standard-explanation-expr (expr)
+;(defun standard-explanation-expr (expr) 
 ;  (and (listp expr) (neq (first expr) '|every|) (not (sourcep (first expr)))))
 
-;;; ----------
+;;; ---------- 
 
 ;;; New function (not used):
 ;;; [1] For Shaken, *leave* explanations on the prototypes. They should stay. But clober everything else.
 (defun clear-all-explanations ()
-  (let ( (facets (cons 'explanation
+  (let ( (facets (cons 'explanation 
 		       (mapcar #'(lambda (situation)
 				   (curr-situation-facet 'explanation situation))
 			       (all-situations-and-theories)))) )
@@ -11693,7 +11693,7 @@ recessive-explanations = ((_Tangible-Entity4 instance-of Tangible-Entity (a Tang
 
 ;;; Disable for automatic system
 ; (defun clear-cached-explanations () '#$(t))
-;  (mapc #'(lambda (instance)
+;  (mapc #'(lambda (instance) 
 ;	    (km-setf instance 'cached-explanations nil))
 ;	*instances-with-cached-explanations*)
 ;  (setq *instances-with-cached-explanations* nil))
@@ -11701,7 +11701,7 @@ recessive-explanations = ((_Tangible-Entity4 instance-of Tangible-Entity (a Tang
 ;;; Rename to avoid collisions.
 ;;; NOTE: Not used by KM (it's indirectly flushed by km-remprops during (reset-kb)
 ;(defun clear-evaluation-cache ()
-;  (mapc #'(lambda (instance)
+;  (mapc #'(lambda (instance) 
 ;	    (km-setf instance 'cached-explanations nil))
 ;	*instances-with-cached-explanations*)
 ;  (setq *instances-with-cached-explanations* nil)
@@ -11709,7 +11709,7 @@ recessive-explanations = ((_Tangible-Entity4 instance-of Tangible-Entity (a Tang
 
 ;;; Rewritten to avoid global variable. Only used now in test-suite/cache-problem.km
 (defun clear-evaluation-cache ()
-  (mapc #'(lambda (instance)
+  (mapc #'(lambda (instance) 
 	    (km-setf instance 'cached-explanations nil))
 	(get-all-objects))
   '#$(t))
@@ -11729,9 +11729,9 @@ recessive-explanations = ((_Tangible-Entity4 instance-of Tangible-Entity (a Tang
 (defun merge-cached-explanations (i1 i2)
   (cond ((and (kb-objectp i1) (kb-objectp i2))
 	 (let ((merged-i (dereference i2))
-	       (merged-cached-explanations
-		 (remove-duplicates (append (dereference (get i1 'cached-explanations))
-					    (dereference (get i2 'cached-explanations)))
+	       (merged-cached-explanations 
+		 (remove-duplicates (append (dereference (get i1 'cached-explanations)) 
+					    (dereference (get i2 'cached-explanations))) 
 				    :test #'equal)) )
 	   (km-setf merged-i 'cached-explanations merged-cached-explanations)))))
 
@@ -11739,35 +11739,35 @@ recessive-explanations = ((_Tangible-Entity4 instance-of Tangible-Entity (a Tang
 ;;;		ANNOTATE WITH SOURCES
 ;;; ======================================================================
 #|
-GIVEN
+GIVEN 
 (annotate-every-expr '#$
-    (every Car has
-	(parts ((a Engine with
+    (every Car has 
+	(parts ((a Engine with 
 		   (parts ((a Wheel)))))
  	       ((a Seat)))
         (engine ((the Engine parts of Self))))))
 
 RETURN
-      (every Car has
-	(parts ((a Engine with
+      (every Car has 
+	(parts ((a Engine with 
 		   (parts ((a Wheel [@Car]))) [@Car]))
  	       ((a Seat [@Car])))
 	(engine ((the Engine parts of Self [@Car]))))
 
 NOTE: must-be-a constraints get special processing, by wrapping the slot in a (<slot> must-be-a) structure:
 
-	(every Car has
+	(every Car has 
 	    (parts ((must-be-a Engine (@ Self Car (parts must-be-a))))))
 
-	(every Car has
-	    (parts ((must-be-a Engine with
-			(parts ((must-be-a Cylinder (@ Self Car (parts must-be-a) Engine (parts must-be-a)))))
+	(every Car has 
+	    (parts ((must-be-a Engine with 
+			(parts ((must-be-a Cylinder (@ Self Car (parts must-be-a) Engine (parts must-be-a))))) 
 			(@ Self Car (parts must-be-a))))))
 
-This is because to evaluate the constraint, enforce-val-constraint replaces the (must-be-a Engine ...)
-with (a Engine ...), thus losing the information that the class came from a constraint rather than
+This is because to evaluate the constraint, enforce-val-constraint replaces the (must-be-a Engine ...) 
+with (a Engine ...), thus losing the information that the class came from a constraint rather than 
 existential expression. By wrapping the must-be-a in the source info, we preserve this knowledge
-for explanation purposes.
+for explanation purposes. 
 
 Note, the explanations affected are for (_Engine1 instance-of Engine), not (_Car1 parts _Engine1) triples.
 |#
@@ -11775,7 +11775,7 @@ Note, the explanations affected are for (_Engine1 instance-of Engine), not (_Car
 ;;; [1] These slots are candidates for access via low-level get-vals, which doesn't filter out the
 ;;; source tags.
 (defun annotate-slotsvals (slotsvals source)
-  (cond
+  (cond 
    ((endp slotsvals) nil)
    ((null *record-sources*) slotsvals)
    (t (let ( (slotvals (first slotsvals)) )
@@ -11831,7 +11831,7 @@ EXAMPLES:
 		  (or embedded-structurep
 		      (and (not (kb-objectp val)) ; e.g., number, string. But *do* annotate constants, e.g., *cat, say
 			   (not (numberp val))    ; New: *DO* annotate numbers and strings
-			   (not (stringp val))
+			   (not (stringp val))   
 			   )))
 	     (comment-tagp val)
 	     (km-varp val)
@@ -11842,14 +11842,14 @@ EXAMPLES:
 ;;; e.g., (every Car has (age ((:pair (a Number) *year)))) records a source for (:pair _Number23 *year) and
 ;;; (_Number23 instance-of Number). See the test at the end of test-suite/explanations.km
 
-	     (and (constraint-exprp val)  ; now DON'T source-comment constraints, or else we get duplicates [3]. Hmmm.
+	     (and (constraint-exprp val)  ; now DON'T source-comment constraints, or else we get duplicates [3]. Hmmm. 
 		  (or (eq val '#$:incomplete)
 		      (and (listp val)
 ;			   (not (eq (first val) '#$must-be-a)))))	; EXCEPT let's annotate must-be-a now
 			   (not (member (first val) *annotated-constraints*))))) ; EXCEPT lets annotate must-be-a etc
 	     )
 	 val)
-;	((and (singletonp val)
+;	((and (singletonp val) 
 ;	      (listp (first val))
 ;	      (report-error 'user-warning "Bad syntax: Unnecessary use of double parentheses around an expression ~a~%Could just be ~a instead (?)"
 ;			    val (first val))
@@ -11864,7 +11864,7 @@ EXAMPLES:
 	      (member (first (desource+decomment-top-level val)) '#$(a every must-be-a)))
 	 (let* ((class-to-add (second (desource+decomment-top-level val)))
 		(wrapper (cond ((eq (first (desource+decomment-top-level val)) '#$must-be-a) '#$must-be-a)))
-;		(annotated-every-expr (annotate-every-expr val (add-to-source source
+;		(annotated-every-expr (annotate-every-expr val (add-to-source source 
 ;									      (cond (wrapper (list wrapper class-to-add))
 ;										    (t class-to-add)))))
 		(source0 (cond (wrapper `(,@(butlast source) (,(last-el source) ,wrapper)))
@@ -11880,26 +11880,26 @@ EXAMPLES:
 	      (member (second val) '(& &+)))
 	 (cond ((member (fourth val) '(& &+))
 		`(,(annotate-val (first val) source :embedded-structurep embedded-structurep)
-		  ,(second val)
+		  ,(second val) 
 		  ,@(annotate-val (rest (rest val)) source :embedded-structurep embedded-structurep))) ; [1a]
-	       (t `(,(annotate-val (first val) source :embedded-structurep embedded-structurep)
-		    ,(second val)
+	       (t `(,(annotate-val (first val) source :embedded-structurep embedded-structurep) 
+		    ,(second val) 
 		    ,@(annotate-vals (rest (rest val)) source :embedded-structurep embedded-structurep))))) ; [1b]
 	((and (listp val)
 	      (eq (second val) '&&))
 	 (cond ((eq (fourth val) '&&)
-		`(,(annotate-vals (first val) source :embedded-structurep embedded-structurep)
-		  ,(second val)
+		`(,(annotate-vals (first val) source :embedded-structurep embedded-structurep) 
+		  ,(second val) 
 		  ,@(annotate-val (rest (rest val)) source :embedded-structurep embedded-structurep))) ; [2a]
 	       ((not (= (length val) 3))
 		(report-error 'user-error "Badly formed && expr - should be (exprs && exprs) [no comments allowed!]~%   ~a~%" val)
 		val)
-	       (t `(,(annotate-vals (first val) source :embedded-structurep embedded-structurep)
-		    ,(second val)
+	       (t `(,(annotate-vals (first val) source :embedded-structurep embedded-structurep) 
+		    ,(second val) 
 		    ,(annotate-vals (third val) source :embedded-structurep embedded-structurep))))) ; [2b]
 	((intersection val '(& && &+)) val) ; e.g. ([Car1] _Car1 & (a Car))	 - actually shouldn't be allowed
 
-;;; Certain expressions, starting with a *decomment-top-level-only-headwords* should have their subexpresssions
+;;; Certain expressions, starting with a *decomment-top-level-only-headwords* should have their subexpresssions 
 ;;; also annotated.
 	((and (listp val)
 	      (member (first val) *decomment-top-level-only-headwords*))
@@ -11912,21 +11912,21 @@ EXAMPLES:
 ; [1] DON'T annotate top-level if not done above, as it may be a keyword e.g. (LAMBDA () (KM0 (QUOTE ...)))
 	      ((null val) nil)
 	      (embedded-structurep (annotate-embedded-structures val dotted-source)) ; [1]
-; [2] Otherwise, DO attach source to the top level constant or expression.
-; e.g. (every Foo has (parts ((:pair (a Car) Self))
+; [2] Otherwise, DO attach source to the top level constant or expression.	
+; e.g. (every Foo has (parts ((:pair (a Car) Self)) 
 ;     val = (:pair (a Car) Self)  --annotated--> (:pair (a Car (@ Self Foo parts...)) Self (@ Self Foo parts))
 ; also    = (the1 of ...)
 ;	    (make-phase ...)
 ;           (?x == (...))    etc.
 	      (t			; (km-format t "val = ~a~%" val)
-	         (attach-source-to-expr
+	         (attach-source-to-expr 
 		  (annotate-embedded-structures val dotted-source) source))))) ; [2] keep looking inside
 	)))
 
 ;;; Forall embedded (a ...) expressions, annotate them and it's subexpressions. Leave everything else.
 (defun annotate-embedded-structures (expr source)
   (cond ((listp expr)
-	 (mapcar #'(lambda (elt)
+	 (mapcar #'(lambda (elt) 
 		     (cond ((and (listp elt) (eq (first elt) '#$a)) (annotate-val elt source))
 			   (t (annotate-embedded-structures elt source))))
 		 expr))
@@ -11943,7 +11943,7 @@ EXAMPLES:
 (defun dotted-slot (slot)
   (and (symbolp slot) (ends-with (symbol-name slot) "...")))
 
-(defun attach-source-to-expr (expr source)
+(defun attach-source-to-expr (expr source) 
   (cond ((and (listp expr) (not (some #'sourcep expr))) 	; not already commented
 	 (append expr (list source)))
 ;	(t expr)
@@ -11978,7 +11978,7 @@ EXAMPLES:
    ((and (eq search-for 'has)
 	 (member first-el '#$(has with)))
     (cons first-el (annotate-slotsvals (rest every-expr) source)))
-   (t (report-error 'user-error "Syntax error! Encountered at ~a~%  doing:~%  ~a~%"
+   (t (report-error 'user-error "Syntax error! Encountered at ~a~%  doing:~%  ~a~%" 
 		    (append '(|...|) every-expr '(|...|)) (stacked-expr (last-el (goal-stack))))))))
 
 ;;; ======================================================================
@@ -12006,7 +12006,7 @@ EXAMPLES:
 (defun get-justification (&key triple (situation (curr-situation)) (depth 0) (format 'xml) (tab 0))
   (let ((last-question *last-question*)		; make a note of last-qa, as it might get reset during reasoning
 	(last-answer *last-answer*))
-    (prog1
+    (prog1 
 	(flatten (list
 		  (cond ((eq format 'xml) (list (format nil "<explanation-structure>"))))
 		  (get-justification0 :triple triple :situation situation :depth depth :format format :tab tab)
@@ -12017,7 +12017,7 @@ EXAMPLES:
 ;;; Same as above, except without the XML wrapper. Here the returned strings might be nested.
 ;;; Input (:triple f s v)
 (defun get-justification0 (&key triple (situation (curr-situation)) (tab 0) done-triples (depth 0) (format 'xml))
-  (cond
+  (cond 
    ((and triple (not (km-triplep triple)))
     (report-error 'user-error "(justify ~a): Argument should be a triple (justify (:triple <f> <s> <v>))!" triple))
    ((> depth 20)
@@ -12025,7 +12025,7 @@ EXAMPLES:
    (t (let ((triples (compute-triples triple))) ; (:triple f x *) -> find *, and return list of (:triple f x v) forall v
 	(mapcar #'(lambda (triple0)
 		    (cond ((member triple0 done-triples :test #'equal) nil)
-			  (t (get-justification1 triple0 :situation situation :tab tab
+			  (t (get-justification1 triple0 :situation situation :tab tab 
 						 :done-triples (append triples done-triples)
 						 :depth depth :format format))))
 		triples)))))
@@ -12035,15 +12035,15 @@ EXAMPLES:
   (let ((instance (arg1of triple))
 	(slot (arg2of triple))
 	(value (arg3of triple)))
-    (or (get-justification2 instance slot value :situation situation :tab tab
+    (or (get-justification2 instance slot value :situation situation :tab tab 
 			    :done-triples done-triples :depth depth :format format)
-	(get-justification2 value (invert-slot slot) instance :situation situation :tab tab
-			    :done-triples done-triples :depth depth :format format)
+	(get-justification2 value (invert-slot slot) instance :situation situation :tab tab 
+			    :done-triples done-triples :depth depth :format format)	
 	(justify-leaf triple :situation situation :tab tab :done-triples done-triples :depth depth :format format))))
 
 (defvar *start-justifications-with-because* t)
 
-(defun get-justification2 (instance slot value &key (situation (curr-situation)) (tab 0) done-triples (depth 0)
+(defun get-justification2 (instance slot value &key (situation (curr-situation)) (tab 0) done-triples (depth 0) 
 						    (format 'xml))
   (let* ((isv-multi-explanations (get-explanations0 instance slot value situation)) ; returns (i s v explanations)
 	 (explanations (explanations-in isv-multi-explanations))
@@ -12059,8 +12059,8 @@ EXAMPLES:
 						     (make-phrase (expand-text instance))
 						     (make-phrase (expand-text value))))))
 		 (mapcar #'(lambda (comment-tag)
-			     (get-comment-justification comment-tag `(#$:triple ,instance ,slot ,value)
-							:situation situation
+			     (get-comment-justification comment-tag `(#$:triple ,instance ,slot ,value) 
+							:situation situation 
 							:tab tab :done-triples done-triples :depth depth :format format))
 			 comment-tags)
 ;		 (concat (spaces tab) (format nil "Therefore, the ~a of ~a = ~a." (arg2of atriple)
@@ -12068,7 +12068,7 @@ EXAMPLES:
 ;					      (make-phrase (expand-text (arg3of atriple)))))
 ;		 (mapcar #'(lambda (subslot-explanation)
 ;			     (get-comment-justification *subslot-comment-tag*
-;							`(#$:triple ,instance ,slot ,value)
+;							`(#$:triple ,instance ,slot ,value) 
 ;							:situation situation
 ;							:tab tab :done-triples done-triples :depth depth :format format
 ;							:subslot (second subslot-explanation)))	; special, for subslots
@@ -12080,13 +12080,13 @@ EXAMPLES:
 ;;; INPUT: A comment tag and :triple
 ;;; RETURNS: A list of strings, expressing that comment in English
 ;;; NOTE: This function will recurse using subgoals in the comment tag, passed to get-justification0
-(defun get-comment-justification (comment-tag triple &key (situation (curr-situation)) (tab 0) done-triples
+(defun get-comment-justification (comment-tag triple &key (situation (curr-situation)) (tab 0) done-triples 
 							  (depth 0) (format 'xml))
 ;  (km-format t "triple = ~a~%" triple)
   (let* ((frame (arg1of triple))
 	 (slot (arg2of triple))
 	 (value (arg3of triple))
-	 (subslot (fourth comment-tag))	; special case to squirrel away the subslot
+	 (subslot (fourth comment-tag))	; special case to squirrel away the subslot 
 	 (bindings `((#$Value1 . ,frame) (#$TheSlot . ,slot) (#$Value2 . ,value) (#$TheSubslot . ,subslot)))
 	 (caller   (sublis bindings (get-comment2 comment-tag 'call)))
 	 (exiter   (sublis bindings (get-comment2 comment-tag 'exit)))
@@ -12100,11 +12100,11 @@ EXAMPLES:
     (list
      (cond (*developer-mode*
 	    (case format
-	      (ascii (list
-		      (concat (spaces tab)
+	      (ascii (list 
+		      (concat (spaces tab) 
 			      (km-format nil "(Doing triple: ~a)~%Entry text for ~a:" triple (desource1 comment-tag))))))))
      (case format
-       (ascii (cond (caller (concat (spaces tab)
+       (ascii (cond (caller (concat (spaces tab) 
 				    (make-phrase (km-int caller :fail-mode 'fail))))))
        (xml (cond (caller (concat (format nil "<explanation><call>")
 				  (xmlify (make-phrase (km-int caller :fail-mode 'fail)))
@@ -12112,10 +12112,10 @@ EXAMPLES:
 					; recurse on subgoals
 ;     (km-format t "subgoals = ~a~%" subgoals)
 ;     (km-format t "sublis = ~a~%" `((#$Value1 . ,frame) (#$Value2 . ,value)))
-
-     (mapcar #'(lambda (subgoal)
+     
+     (mapcar #'(lambda (subgoal)					 
 		 (get-justification0 :triple subgoal
-				     :situation situation :tab (+ tab 2)
+				     :situation situation :tab (+ tab 2) 
 				     :done-triples done-triples
 				     :depth (1+ depth)
 				     :format format))
@@ -12124,7 +12124,7 @@ EXAMPLES:
 	    (case format
 		  (ascii (list (concat (spaces tab) (km-format nil "(Doing triple: ~a)~%Exit text for ~a:" triple (desource1 comment-tag))))))))
      (case format
-       (ascii (cond (exiter (concat (spaces tab)
+       (ascii (cond (exiter (concat (spaces tab) 
 				    (cond ((eq comment-tag *subslot-comment-tag*) "  ")(t ""))
 				    (km-format nil (make-phrase (km-int exiter)))) ; was (km ...)?
 			    )))
@@ -12149,7 +12149,7 @@ I've chosen just to present the source class(es) for the triple, but NOT the who
 The rules were pulled from the explanation database, and are of the usual 4 types:
 	#$added-at, #$cloned-from, #$projected-from, or the first element of a KM expr.
 In *addition*, for prototypes, we can trace the cloned-from links back to the source class(es).
-     Tracing the cloned-from links, and looking at the recordings in the explanation database, are
+     Tracing the cloned-from links, and looking at the recordings in the explanation database, are	
      essentially redundant. However, if we have *record-explanations-for-clones* set to NIL, which
      is a sensible setting, then we can still find where the clones came from.
 
@@ -12163,52 +12163,52 @@ Note that we look at sources for BOTH directions of the triple (f s v) and (v in
 	 (slot (arg2of triple))
 	 (value (arg3of triple)))
     (cond (*developer-mode*		; [1]
-	   (let ((rules (mapcar #'build-rule
+	   (let ((rules (mapcar #'build-rule 
 				(my-mapcan #'explanation-in (get-explanations instance slot value situation)))))
 	    (case format
-	     (ascii
-	      (cond (rules (concat-list
+	     (ascii 
+	      (cond (rules (concat-list 
 			    `(,*newline-str* ,(spaces tab) ,(km-format nil "subgoal ~a: Computed from:~%" triple)
 					     ,@(mapcan #'(lambda (rule)
 							   (list (spaces (+ tab 2)) (km-format nil "~a~%" rule)))
 						       rules))))
-		    (t (concat-list `(,*newline-str* ,(spaces tab)
+		    (t (concat-list `(,*newline-str* ,(spaces tab) 
 				     ,(km-format nil "subgoal ~a: Computed from: (unrecorded!)" triple)))))))))
 	  ((and *justify-leaves*
-		(neq slot '#$instance-of)) ; else "the instance-of of nucleus = nucleus"
+		(neq slot '#$instance-of)) ; else "the instance-of of nucleus = nucleus" 
 	   (let* ((forward-source-classes (source-classes-for-triple instance slot value situation))
 		  (reverse-source-classes (source-classes-for-triple value (invert-slot slot) instance situation))
 		  (source-classes (remove-duplicates (append forward-source-classes reverse-source-classes)))
 		  (instance-classes (remove-subsumers (immediate-classes instance))) ; ug, AURA keeps subsumers sometimes
 		  (value-classes (remove-subsumers (immediate-classes value)))
-		  (instance-to-show
+		  (instance-to-show 
 		   (cond ((intersection instance-classes source-classes) instance)
 			 ((intersection value-classes source-classes) value)
 			 (t instance)))
 		  (value-to-show
 		   (cond ((intersection instance-classes source-classes) value)
 			 ((intersection value-classes source-classes) instance)
-			 (t value)))
+			 (t value)))		   
 		  (slot-to-show
 		   (cond ((intersection instance-classes source-classes) slot)
 			 ((intersection value-classes source-classes) (invert-slot slot))
-			 (t slot)))
+			 (t slot)))		   
 		  )
 	     (case format
 		(ascii (concat (spaces tab)
-			       (format nil "The ~a of ~a = ~a."
-				       slot-to-show
-				       (make-phrase (expand-text instance-to-show))
+			       (format nil "The ~a of ~a = ~a." 
+				       slot-to-show 
+				       (make-phrase (expand-text instance-to-show)) 
 				       (make-phrase (expand-text value-to-show)))
-			       (cond (source-classes (format nil " (from ~a)"
+			       (cond (source-classes (format nil " (from ~a)" 
 							     (concat-list (commaify source-classes))))
 				     (t ""))))
 		(xml (concat "<explanation><leaf>"
 			     (xmlify (format nil "The ~a of ~a = ~a."
-					     slot-to-show
-					     (make-phrase (expand-text instance-to-show))
+					     slot-to-show 
+					     (make-phrase (expand-text instance-to-show)) 
 					     (make-phrase (expand-text value-to-show))))
-			     (cond (source-classes
+			     (cond (source-classes 
 				    (format nil " (from ~a)" (concat-list (commaify source-classes))))
 				   (t ""))
 			     "</leaf></explanation>"))))))))
@@ -12270,16 +12270,16 @@ source-classes-v = Cell, Euk-Cell, Human-Cell
 					   (remove-subsumers (immediate-classes protoroot)))
 				       source-protoroots-iv))
 	 (nonredundant-source-classes-iv (remove-subsumers source-classes-iv)) ; [1]
-	 (source-classes
+	 (source-classes 
 	  (or nonredundant-source-classes-iv		; don't care about rules, if prototypes already supplied the data
 	      (remove-duplicates (my-mapcan #'originated-from-classes rules))))) ; sources from explanations
-
+    
     source-classes))
 
 ;;; ALL source protoroots
 (defun source-protoroots-for-instance (instance)
   (remove-duplicates
-   (my-mapcan #'(lambda (protoinstance)
+   (my-mapcan #'(lambda (protoinstance) 
 		  (get-vals protoinstance '#$prototype-participant-of))
 	      (node-cloned-from* instance))))
 
@@ -12290,7 +12290,7 @@ source-classes-v = Cell, Euk-Cell, Human-Cell
 	 (protoinstances-of-interest (remove-if-not #'(lambda (protoinstance)	; [1]
 							(intersection (immediate-classes protoinstance) classes))
 						    protoinstances))
-	 (protoroots-of-interest (my-mapcan #'(lambda (protoinstance)
+	 (protoroots-of-interest (my-mapcan #'(lambda (protoinstance) 
 						(get-vals protoinstance '#$prototype-participant-of))
 					    protoinstances-of-interest)))
     protoroots-of-interest))
@@ -12299,28 +12299,28 @@ source-classes-v = Cell, Euk-Cell, Human-Cell
 ;;; ======================================================================
 
 (defun compute-triples (&optional triple0)
-  (cond
+  (cond 
    (triple0
     (let* ( (triple (km-unique-int triple0))
 	    (instance (arg1of triple))
 	    (slot (arg2of triple))
-	    (value0 (arg3of triple))
+	    (value0 (arg3of triple)) 
 	    (values (cond ((eq value0 '*) (km-int `#$(the ,SLOT of ,INSTANCE)))	; was (km ...)?
 			  (t (val-to-vals value0)))) )
       (mapcar #'(lambda (value) (list '#$:triple instance slot value)) values)))
    ((null *last-answer*)
     (km-format t "There's no recorded last answer, so I'm not sure what you're asking me to justify!~%"))
-   (t (let* ( (slot+frameadd (minimatch *last-question* '#$(the ?slot of ?frameadd)))
+   (t (let* ( (slot+frameadd (minimatch *last-question* '#$(the ?slot of ?frameadd))) 
 	      (slot (first slot+frameadd))
 	      (frameadd (second slot+frameadd)) )
-	(cond
+	(cond 
 	 ((not slot+frameadd)
-	  (km-format t "Which conclusion are you asking about? (Here, I can't guess). Enter in the form
+	  (km-format t "Which conclusion are you asking about? (Here, I can't guess). Enter in the form 
                (justify (:triple <instance> <slot> <value>))~%"))
 	 (t (let ( (instances (km-int frameadd)) 	 	; if *last-answer*, then frames necc. not null
 		   (values *last-answer*) )
 	      (km-format t "I'll assume you're asking me to justify:~%   ~a = ~a...~%~%" *last-question* values)
-	      (mapcan #'(lambda (instance)
+	      (mapcan #'(lambda (instance) 
 			  (mapcar #'(lambda (value)
 				      (list '#$:triple instance slot value))
 				  values))
@@ -12334,7 +12334,7 @@ source-classes-v = Cell, Euk-Cell, Human-Cell
 (defun xmlify (string)
   (let ( (chars (explode string)) )
     (cond ((intersection chars '(#\< #\> #\&))
-	   (concat-list (mapcar #'(lambda (char)
+	   (concat-list (mapcar #'(lambda (char) 
 				    (case char
 					  (#\< "&lt;")
 					  (#\> "&gt;")
@@ -12349,7 +12349,7 @@ source-classes-v = Cell, Euk-Cell, Human-Cell
 ======================================================================
 Feb 2008: Reini Urban reported that the space-conscious version below by Carl Shapiro does
 not work under CLisp. (http://article.gmane.org/gmane.lisp.clisp.devel:17562).
-Sam Steingold [sds@gnu.org] reports that his investigation shows that it creates
+Sam Steingold [sds@gnu.org] reports that his investigation shows that it creates 
 circular code which does not work in clisp, sbcl and cmucl.
 As a result, I'm restoring the old space-intensive version above.
 ======================================================================
@@ -12399,7 +12399,7 @@ As a result, I'm restoring the old space-intensive version above.
 				      (list `(setf (char ,out-string j) ,char)
 					    `(incf j)))
 				  (coerce in-string 'list)))))
-
+	   
     (do ((i 0 (1+ i))
          (j 0))
         ((= i length) new-string)
@@ -12437,12 +12437,12 @@ As a result, I'm restoring the old space-intensive version above.
 ;  (let ((f (first triple))
 ;	(s (second triple))
 ;	(v (third triple)))
-;    (remove-duplicates
+;    (remove-duplicates 
 ;     (append (intersection (my-mapcan #'prototype-classes (triple-cloned-from-originally triple)) ; prototypes
 ;			   (my-mapcan #'all-classes (triple-expanded-from triple)))	; [1]
-;      	     (my-mapcan #'originated-from-classes
+;      	     (my-mapcan #'originated-from-classes 
 ;			(remove-cloned-from-explns (get-explanations1 f s v))) ; traditional
-;	     (my-mapcan #'originated-from-classes
+;	     (my-mapcan #'originated-from-classes 
 ;			(remove-cloned-from-explns (get-explanations1 v (invert-slot s) f)))))))
 
 #|
@@ -12450,7 +12450,7 @@ As a result, I'm restoring the old space-intensive version above.
   (let ((f (first triple))
 	(s (second triple))
 	(v (third triple)))
-    (remove-duplicates
+    (remove-duplicates 
      (append (my-mapcan #'originated-from-classes (get-explanations1 f s v))
 	     (my-mapcan #'originated-from-classes (get-explanations1 v (invert-slot s) f))))))
 |#
@@ -12465,27 +12465,27 @@ ALGORITHM OVERVIEW:
 (get-supports <triple>) is essentially* the intersection of triple-cloned-from-originally** and the explanation database: any
    supporting triple must be both a triple-cloned-from-originally and part of a valid explanation of <triple>.
    Thus get-supports is necessarily a subset* of the originating classes that triple-cloned-from-originally would offer.
-   * get-supports additionally returns supports from CLib axioms, and will compute supports where <triple> is a constraint.
+   * get-supports additionally returns supports from CLib axioms, and will compute supports where <triple> is a constraint. 
      triple-cloned-from-originally does neither of these.
- ** (triple-cloned-from-originally <triple>): We find the triples Ts that <triple> was triple-cloned-from, and remove
-     all the "pass through" triples PT in classes PC that:
-	a. themselves rely on another triple in Ts
+ ** (triple-cloned-from-originally <triple>): We find the triples Ts that <triple> was triple-cloned-from, and remove 
+     all the "pass through" triples PT in classes PC that: 
+	a. themselves rely on another triple in Ts 
 	b. have no added-at supports themselves, i.e., does NOT have (explanation PT ((added-at PC "User defined"))), although
 		it can still have (explanation PT ((added-at GenC "User defined"))) and remain a pass-through triple
 
 ALGORITHM for (get-supports <triple>):
- 1. Find all explanations for <triple>.
+ 1. Find all explanations for <triple>. 
     For each explanation, collect the supporting class:
          a. cloned-from explanations tell us that <triple> was cloned from <triple'> in <prototype>, thus collect <prototype-class>.
 	 b. added-at explanations directly tell us which <class> the triple was added at
 	 c. (every <class> has ...) explanations tell us which traditional KM <class> (CLib) was used to create <triple>
 
- 2. As a refinement: There is a special case where some cloned-from supports may no longer be valid, as follows:
-    Suppose (y r3 z) was cloned-from (origy r3 origz) in a prototype rooted at protoroot:
+ 2. As a refinement: There is a special case where some cloned-from supports may no longer be valid, as follows: 
+    Suppose (y r3 z) was cloned-from (origy r3 origz) in a prototype rooted at protoroot:   
 
                                     [protoroot] -r2-> [origy] -r3-> [origz]     <== origin (support) of a triple in new-protoroot
     was cloned to		            |             |           |
-                     [new-protoroot] -r1-> [x]     -r2-> [y]  -r3-> [z]		<== prototype being worked on
+                     [new-protoroot] -r1-> [x]     -r2-> [y]  -r3-> [z]		<== prototype being worked on 
 
     get-supports checks that [x] still exists in the new protoroot, otherwise the inheritance is no longer valid.
     This is done by finding all the (origy r3 origz) using triple-cloned-from-originally, hence protoroot for each,
@@ -12498,11 +12498,11 @@ ALGORITHM for (get-supports <triple>):
    (my-mapcan #'(lambda (support-detail)		; eg., a triple, or (added-at C "User defined") structure
 		  (classes-in-support-detail support-detail :triple triple))
 	      (get-support-details triple :ignore-constraintsp ignore-constraintsp :ignore-added-at-explanations ignore-added-at-explanations))))
-
-(defun classes-in-support-detail (support-detail &key triple)
+	      
+(defun classes-in-support-detail (support-detail &key triple)	   
   (cond ((not (listp support-detail))
-	 (report-error 'program-error
-		       "get-supports: (get-support-details ~a) returned a non-list element ~a~%"
+	 (report-error 'program-error 
+		       "get-supports: (get-support-details ~a) returned a non-list element ~a~%" 
 		       triple support-detail))
 	((eq (first support-detail) '#$every) (list (second support-detail)))
 	((eq (first support-detail) '|<location unknown>|) nil)
@@ -12510,28 +12510,28 @@ ALGORITHM for (get-supports <triple>):
 	((triplep support-detail)
 	 (let ((prototype-root (in-prototype support-detail)))
 	   (cond (prototype-root (prototype-classes prototype-root))
-		 (t (report-error 'program-error
+		 (t (report-error 'program-error 
 				  "get-supports: support ~a for ~a returned by get-support-details doesn't seem to be part of a prototype!~%"
 				  support-detail triple)))))
-	(t (report-error 'program-error
-			 "get-supports: Unrecognized structure ~a returned by (get-support-details ~a)~%"
+	(t (report-error 'program-error 
+			 "get-supports: Unrecognized structure ~a returned by (get-support-details ~a)~%" 
 			 support-detail triple))))
 
 #|
 RETURNS: three types of explanation:
-	(i) a triple (for prototypes)
+	(i) a triple (for prototypes) 
 	(ii) a (every ...) expression (for original KM)
 	     In principle, might also return (|<location unknown>| <expr>) if can't work out the originating class
 	(iii) a (added-at <class> <comment) expression (for manually added links)
   eg: ((_Drive3 object _Car4) (every Control has (object ((a Device)))))
 [1] Returns just the ORIGINAL supports: Suppose triple t1 is cloned to t2 is cloned to t3. Now we want to delete t1 and
-     its deletable dependents. So when checking deletability, we need to see that t3 is supported by just t1 (rather
+     its deletable dependents. So when checking deletability, we need to see that t3 is supported by just t1 (rather 
      than t1 and t2) in order to confirm that t3 is indeed deletable.
 [2] If all nodes leading to triple are deleted, remove it.
      Method: find all the (cloned-from PN N) supports for triple. If the originating triple is in PN, ensure N exists.
 
 [3] Sometimes a prototype C will have an "orphan" triple T which doesn't point back
-    to anything. Thus (get-supports T) -> NIL, but (get-supports (clone T)) -> C, = bad.
+    to anything. Thus (get-supports T) -> NIL, but (get-supports (clone T)) -> C, = bad. 
     Either we need to add C as a support in (get-supports T), or remove C as a support in (get-supports (clone T))
 
 [4] In principle, if a triple T in P traces back to T' in P', then there *must* be an explanation E = (T cloned-from P')
@@ -12545,16 +12545,16 @@ RETURNS: three types of explanation:
 	 (v (third triple))
 	 (explanations (append (get-explanations1 f s v) (get-explanations1 v (invert-slot s) f)))
 	 (originating-triples (triple-cloned-from-originally triple ; [1]  See kr/get-supports/test-get-supports3.lisp
-							     :ignore-added-at-explanations ignore-added-at-explanations))
+							     :ignore-added-at-explanations ignore-added-at-explanations)) 
 	 (originating-triples+prototypes (mapcar #'(lambda (originating-triple)
 						    (list originating-triple (in-prototype originating-triple)))
 						 originating-triples))
 	 (still-valid-originating-triples ; [2]
 	  (my-mapcan #'(lambda (originating-triple+prototype)
-		       (let*
+		       (let* 
 			((originating-triple (first originating-triple+prototype)) ; (_Drive3 object _Car4)
 			 (prototype (second originating-triple+prototype)) ; _Drive3
-			 (expanded-from (remove nil			   ; = another node in the prototype containing triple. (typically an element of triple, but not always)
+			 (expanded-from (remove nil			   ; = another node in the prototype containing triple. (typically an element of triple, but not always) 
 					 (mapcar #'(lambda (explanation) ; (cloned-from _Drive3 _Drive1) -> _Drive1
 						    (cond ((and (eq (explanation-type explanation) '#$cloned-from)
 								(eq (second explanation) prototype)) ; protoroot node
@@ -12572,7 +12572,7 @@ RETURNS: three types of explanation:
 		     originating-triples+prototypes)) ;    (_Drive3 object _Car4)
 
 ;;; Note: copied constraints in (every X has (slot ((a Y with ((must-be-a Z)))))) WILL be collected by the
-;;; normal access to the explanation database, just like normal values.
+;;; normal access to the explanation database, just like normal values.	 
 ;;; The below ADDITIONALLY captures non-copied constraints
 	 (constraints-on-classes ; special case for constraints on "every" expressions: These are NOT copied, so look up
 	  (cond ((constraint-exprp v)
@@ -12594,7 +12594,7 @@ RETURNS: three types of explanation:
 		      (remove-cloned-from-explns explanations)))) ; leaving traditional (every X has ...) supports
 	 )
 ;    (km-format t "explanations = ~a~%" explanations)
-    (remove-duplicates
+    (remove-duplicates					 
      (append still-valid-originating-triples
 	     extra-support-details
 	     constraints-on-classes)
@@ -12604,7 +12604,7 @@ RETURNS: three types of explanation:
   (let ((f (dereference (first triple)))
 	(s (second triple))
 	(v (dereference (third triple))))
-    (cond
+    (cond 
      ((minimatch support '#$(added-at ?x ?y))
       (record-explanation-for `#$(the ,S of ,F) V support :situation situation)) ; which situation should we use?
      (t (report-error 'user-error
@@ -12628,7 +12628,7 @@ RETURNS: three types of explanation:
 
 (defun remove-cloned-from-explns (explanations)
   (remove-if #'(lambda (x) (and (listp x) (eq (explanation-type x) '#$cloned-from))) explanations))
-
+     
 ;;; Copy explanations for (i s v) to a new triple (i' s v'), where renaming-alist
 ;;; provides bindings for renaming i, v, and all variables in the explanations.
 (defun copy-explanations-for (triple &key (from-situation (curr-situation)) (to-situation *global-situation*)
@@ -12657,18 +12657,18 @@ RETURNS: three types of explanation:
 			(eq (second explanation) protoroot))))
 	     isv-explanations))
 
-;;; ======================================================================
+;;; ======================================================================  
 #|
 (class-inferred-by-classificationp <instance> <class>) -> non-NIL / NIL
 (class-inferred-by-classificationp '#$_Animal-Plasma-Membrane22951 '#$Semipermeable-Entity)
 
 <class> must be a class of <instance>. Returns a non-NIL value if <class> was
-inferred by automatic classification (use of a has-definition expression),
-NIL otherwise.
-NOTES:
+inferred by automatic classification (use of a has-definition expression), 
+NIL otherwise. 
+NOTES: 
  - This function only finds classes inferred through automatic classification.
    If will NOT detect cases where <class> was inferred through unification.
- - The function uses the explanation database, thus if *record-explanations*
+ - The function uses the explanation database, thus if *record-explanations* 
    = NIL during inference time, it will not find any records of automatic
    classification having been applied.
 
@@ -12677,14 +12677,14 @@ Example Usage:
 KM(13): (ask "What is the relationship between cholesterol and animal plasma membrane?")
  -> _Animal-Plasma-Membrane22951 ("semipermeable entity and animal plasma membrane")
 
-;;; All immediate classes of an instance. In this case, one was given in the question, one
+;;; All immediate classes of an instance. In this case, one was given in the question, one 
 ;;; was inferred through automatic classification
 KM(16): (immediate-classes '#$_Animal-Plasma-Membrane22951)
 (|Semipermeable-Entity| |Animal-Plasma-Membrane|)
 
 ;;; Find the subset that were NOT inferred through automatic classification
-KM(19): (remove-if #'(lambda (class)
-	          	    (class-inferred-by-classificationp '#$_Animal-Plasma-Membrane22951 class))
+KM(19): (remove-if #'(lambda (class) 
+	          	    (class-inferred-by-classificationp '#$_Animal-Plasma-Membrane22951 class)) 
    	               (immediate-classes '#$_Animal-Plasma-Membrane22951))
 (|Animal-Plasma-Membrane|)
 |#
@@ -12717,11 +12717,11 @@ An explanation is recorded for cloned triples such as:
 	(explanation (:triple <clone-node> <slot> <val>) ((cloned-from <prototype-root> <clone-root> <prototype-node>)))
 	(explanation (:triple _Entity23 agent-of _Foo22) ((cloned-from _ProtoFoo7 _Foo22 _ProtoEntity10)))
 
-where <prototype-root> was cloned onto <clone-root>, resulting in <prototype-node> cloning to <clone-node>.
+where <prototype-root> was cloned onto <clone-root>, resulting in <prototype-node> cloning to <clone-node>.	
 
 NOTES:
 If B is cloned from ProtoA, then raised to a prototype ProtoB, then ProtoB cloned to C:
-Normally (if *record-explanations-for-clones* is t), triples in C will have explanations
+Normally (if *record-explanations-for-clones* is t), triples in C will have explanations 
 		(cloned-from ProtoB) (cloned-from ProtoA)
 But with *record-explanations-for-clones-selectively* set to t (and *record-explanations-for-clones* t),
 		triples in C will just retain the ORIGINAL source explanation (cloned-from ProtoA).
@@ -12730,7 +12730,7 @@ But with *record-explanations-for-clones-selectively* set to t (and *record-expl
 		would be recorded.
 |#
 ;(defparameter *record-explanations-for-clones-selectively* t) ; NO! Need nil for some fns, e.g., triple-expanded-from
-;(defparameter *record-explanations-for-clones-selectively* nil)
+;(defparameter *record-explanations-for-clones-selectively* nil) 
 
 (defparameter *clone-built-from-slot* '#$clone-built-from)
 (defparameter *add-cloned-from-links* t)
@@ -12742,23 +12742,23 @@ But with *record-explanations-for-clones-selectively* set to t (and *record-expl
 ;;; Used for cloning itself: Don't clone these slots' values when cloning the prototype graph.
 ;;; cloned-from and clone-built-from NOT in this list, to allow clones to be added into prototypes
 ;;; Make this a parameter (not constant), so user can change it
-(defparameter *unclonable-slots*
-    '#$(prototype-participant-of prototype-participants
+(defparameter *unclonable-slots* 
+    '#$(prototype-participant-of prototype-participants 
 	prototype-of prototypes
 	prototype-scope locked-instance-of
-	has-clones
+	has-clones 
 	has-built-clones))
 
 ;;; The above parameter might change, but this one won't. This is used:
 ;;; - in save-prototype and trim-prototype to bypass the check that a slot's values are all participants
-;;;	(and remove the non-participants). These special slots are allowed to have non-participant values.
-;;; - in build-clone, to take care of an obscure case: In obscure circumstances, a non-root might be
+;;;	(and remove the non-participants). These special slots are allowed to have non-participant values.		
+;;; - in build-clone, to take care of an obscure case: In obscure circumstances, a non-root might be 
 ;;;	cloned-from its own root. During cloning, we do NOT want these particular cloned-from values to
 ;;;	be copied to the clone.
-(defparameter *slots-with-nonparticipant-skolems*
+(defparameter *slots-with-nonparticipant-skolems* 
     '#$(cloned-from
 	clone-built-from
-	has-clones
+	has-clones 
 	has-built-clones))
 
 ;;; We don't want to save the run-time clones in a prototype to disk (see writer.lisp), as the clones don't persist.
@@ -12766,7 +12766,7 @@ But with *record-explanations-for-clones-selectively* set to t (and *record-expl
 							;; clean-instance-of clean-instances  - no, application-specific. Moved to application code.
 							has-clones has-built-clones ))
 
-;;; Added by MW, 2011-06-24: we don't want to save explanations for slots like clean-instance
+;;; Added by MW, 2011-06-24: we don't want to save explanations for slots like clean-instance 
 ;;; PEC moved to loadkb.lisp where it's used, also set to NIL as the values here are application-dependent
 ; (defparameter *exclude-explanations-for-prototype-slots* '#$(clean-instance-of clean-instances))
 
@@ -12776,8 +12776,8 @@ But with *record-explanations-for-clones-selectively* set to t (and *record-expl
 ; Now hard-wired into writer.lisp
 
 ;;; We can tell if it's cloned or not like this
-(defun isa-clone (instance)
-  (and (kb-objectp instance)
+(defun isa-clone (instance) 
+  (and (kb-objectp instance) 
        (get-vals instance '#$cloned-from :situation *global-situation*)))
 
 ;;; ----------
@@ -12786,26 +12786,26 @@ But with *record-explanations-for-clones-selectively* set to t (and *record-expl
 (defun am-in-prototype-mode () *curr-prototype*)
 (defun curr-prototype () *curr-prototype*)
 
-(defun protoinstancep  (concept)
+(defun protoinstancep  (concept) 
   (and (kb-objectp concept) (get-vals concept '#$prototype-participant-of :situation *global-situation*)))
-(defun prototypep (concept)
+(defun prototypep (concept) 
   (and (kb-objectp concept) (get-vals concept '#$prototype-of :situation *global-situation*)))
 ;; Synonym
 (defun protorootp (concept) (prototypep concept))
 
-(defun protoclass (protoinstance)
+(defun protoclass (protoinstance) 
   (let ((protoroot (get-unique-val protoinstance '#$prototype-participant-of)))
     (when protoroot (delistify (get-vals protoroot '#$prototype-of)))))
 
 ;;; Returns: The prototype root (an instance)
-;;; Updated by Sunil Mishra:
+;;; Updated by Sunil Mishra: 
 ;;; Subject: [JIRA] Commented: (HLO-1755) triple-cloned-from doesn't work forcomplex values
 ;;; Triples claims the triple doesn't exist in the KB. Below is an updated version that I think does what you'd intended.
 (defun in-prototype (triple)
   (let* ((f (dereference (first triple)))
 	 (s (second triple))
 	 (v (dereference (third triple))))
-    (cond
+    (cond 
       ((not (member v (get-vals f s :situation *global-situation*) :test #'equal))
        (report-error 'user-error "~a does not exist as part of a prototype in the KB!" triple triple))
       (t (let* ((prototype-roots0
@@ -12823,7 +12823,7 @@ But with *record-explanations-for-clones-selectively* set to t (and *record-expl
 	   (cond ((null prototype-roots)
 		  (report-error 'user-error "~a is not part of a prototype!" triple triple))
 		 ((not (singletonp prototype-roots))
-		  (report-error 'user-error
+		  (report-error 'user-error 
 				"~a appears to incoherently be part of multiple prototypes!"
 				triple triple))
 		 (t (first prototype-roots))))))))
@@ -12856,12 +12856,12 @@ But with *record-explanations-for-clones-selectively* set to t (and *record-expl
 ;;;	      instance will be clone-built-from* protoroot2 also, i.e., already include prototype2 within it).
 (defun unify-in-prototypes (instance0 &optional slot)
 ;    (let* ((*are-some-prototypes* nil)		; [1] local scope change, prevents recursive prototype cloning
-; (let* ((*are-some-prototypes* *recursive-prototypes*) ; [1] local scope change, prevents recursive prototype cloning
-  (let* ((*use-prototypes* *recursive-prototypes*) ; [1] local scope change, prevents recursive prototype cloning
+; (let* ((*are-some-prototypes* *recursive-prototypes*) ; [1] local scope change, prevents recursive prototype cloning 
+  (let* ((*use-prototypes* *recursive-prototypes*) ; [1] local scope change, prevents recursive prototype cloning 
 ;	 (*unifying-in-prototype* t)		   ; Additional flag, for lazy-unify-vals - no, not needed
 	 (instance (dereference instance0)) 		; NEW: Allow that prevention to be toggleable
 	 (all-applicable-prototypes (all-applicable-prototypes instance slot)))
-    (mapc #'(lambda (prototype)
+    (mapc #'(lambda (prototype) 
 	      (cond ((not (member prototype (clone-built-from* instance)))	; [2]
 		     (unify-in-prototype instance prototype slot))))
 	  all-applicable-prototypes)
@@ -12871,7 +12871,7 @@ But with *record-explanations-for-clones-selectively* set to t (and *record-expl
 [3] NOTE: defined-prototypes includes ALL prototypes, i.e., is a superset of (<class> has (prototypes (<x>))) values.
     That is, if we simply have (_Car1 has (prototype-of (Car)) (prototype-scope (Car)))  then  (get '#$Car '#$defined-prototypes) *will* include _Car1
 Note: the fact _Euk-cell14 below has a definition on it will be logged on Cell (property 'defined-prototypes):
-(_Euk-cell14 has
+(_Euk-cell14 has 
   (instance-of (Euk-cell))
   (prototype-of (Euk-cell))
   (prototype-scope (Euk-cell
@@ -12883,15 +12883,15 @@ Note: the fact _Euk-cell14 below has a definition on it will be logged on Cell (
 (defun all-applicable-prototypes (instance &optional slot)
   (remove-if-not #'(lambda (prototype) 				; NEW [2]
 		     (suitable-for-cloning instance slot prototype))
-		 (my-mapcan #'(lambda (class)
-;				(get-vals class '#$prototypes :situation *global-situation*)
+		 (my-mapcan #'(lambda (class) 
+;				(get-vals class '#$prototypes :situation *global-situation*) 
 ;				(km-format t "(get ~a 'defined-prototypes) = ~a~%" class (get class 'defined-prototypes))
 				(get class 'defined-prototypes))   ; [3]
 			    (all-classes instance))))
 
 ;;; ------------------------------
 
-;;; with eager unification, we can end up in an infinite loop with big KBs (e.g. aeronet.km)
+;;; with eager unification, we can end up in an infinite loop with big KBs (e.g. aeronet.km) 
 ;;; So make this toggleable
 (defvar *trace-unify-in-prototype* nil)
 
@@ -12905,26 +12905,26 @@ In particular, we want any CONSTRAINTS to be passed down to instances in EVERY s
 RETURNS: Irrelevant
 [6] We cannibalize the stack to make sure we don't unify a prototype as part of unifying the same prototype. The stack is
     searched in applicable-prototypes to check on this.
-[7] If cloned-from is a non-fluent, so we only ever clone once, then we better unify in Global so any local values and
+[7] If cloned-from is a non-fluent, so we only ever clone once, then we better unify in Global so any local values and 
     constraints are universally applicable
-[8] If cloned-from is a non-fluent, then we only ever clone once. So we better put all the clone results in *Global, so
+[8] If cloned-from is a non-fluent, then we only ever clone once. So we better put all the clone results in *Global, so 
     that any constraints are universally applicable.
-|#
+|#    
 (defun unify-in-prototype (instance prototype &optional slot)	; slot is purely for tracing purposes
-  (cond (*trace-unify-in-prototype*
+  (cond (*trace-unify-in-prototype* 
 	 (km-format t "UNIFYING IN PROTOTYPE ~a for ~a~%" prototype instance))) ; just for Shaken use
   (push-to-goal-stack `#$(unify-with-clone-of ,PROTOTYPE))			; [6]
   (let ((*use-prototypes* *recursive-prototypes*)      ; Double-check this is correctly set (prevents recursive prototype cloning), in case it's called directly rather than via unify-in-prototypes
 	(clone (km-unique-int `#$(clone ,PROTOTYPE)))) ; [3] route through query interpreter for tracing
 
-    (cond ((null slot) (make-comment "Cloned ~a~28T  -> ~a~%~10Tto find all info about ~a.~%~10t(~a is/satisfies definition of ~a)" prototype clone instance instance
+    (cond ((null slot) (make-comment "Cloned ~a~28T  -> ~a~%~10Tto find all info about ~a.~%~10t(~a is/satisfies definition of ~a)" prototype clone instance instance 
 				     (delistify (get-vals prototype '#$prototype-of))))
 	  (t (make-comment "Cloned ~a~28T  -> ~a~%~10Tto find (the ~a of ~a).~%~10t(~a is/satisfies definition of ~a)" prototype clone slot instance instance
 			   (delistify (get-vals prototype '#$prototype-of)))))
 
 ;    In theory, this should be redundant as we already have (instance has (cloned-from (prototype))) created during
-;    the cloning operation. Anyway, leave it here.
-; JUNE 2007 - No let's try removing it
+;    the cloning operation. Anyway, leave it here.    
+; JUNE 2007 - No let's try removing it     
 ;   (add-val instance *clone-built-from-slot* prototype) ; restating default extra args unnecessary
 
 #|
@@ -12936,12 +12936,12 @@ the prototype-scope. The example is:
 	(get-explanation-data '#$_Animal1) ->
 	    (_Animal1 instance-of Person (_Animal1 isa (the-class Animal with (parts ((a Big-Brain))))))
 |#
-#| 10/29/11 -
+#| 10/29/11 - 
    record-explanation-for stopped working, as the actual assertion (instance instance-of new-class) has not been made yet (and hence
 	is filtered out by record-explanation-for).
    To repair, this is now done as part of classify-as-prototype0 in satisfies-prototype-definition, where classify-as-prototype0 actually
    	does the assertion.
-     (cond (*record-explanations*
+     (cond (*record-explanations* 
 ;	    (km-format t "START: recording explanations for (clone ~a) onto ~a...~%" prototype instance)
 	    (let ((old-classes (immediate-classes instance))	; Animal
 		  (new-classes (immediate-classes prototype)))	; Person (the-class Animal with (parts (a Big-Brain)))
@@ -12963,12 +12963,12 @@ the prototype-scope. The example is:
 ;	    (break)
 	    ))
 |#
-; [10] If instance is already cloned-from prototype (but is necessarily not clone-built-from prototype, else we
-;      wouldn't be unifying in the prototype in the first place), then instance's graph may already contain *part*
-;      of the prototype. This is the condition for considering &&! for combine-values-by-appending slots, to
+; [10] If instance is already cloned-from prototype (but is necessarily not clone-built-from prototype, else we 
+;      wouldn't be unifying in the prototype in the first place), then instance's graph may already contain *part* 
+;      of the prototype. This is the condition for considering &&! for combine-values-by-appending slots, to 
 ;      stop the values growing endlessly.
 ; [11] Suppose X cloned-from, but not clone-built-from, Y, i.e., X is partially clone from Y.
-;      Now we have A, we unify in a clone of X  (-> A cloned-from X), now we consider unifying in a clone of Y.
+;      Now we have A, we unify in a clone of X  (-> A cloned-from X), now we consider unifying in a clone of Y.    
 ;      We need to register that Y is already partially included in A, hence we need to use cloned-from*, not cloned-from.
 ;    (cond ((member prototype (get-vals instance '#$cloned-from)) ; [11]
 
@@ -13001,8 +13001,8 @@ the prototype-scope. The example is:
 ;(defun first-applicable-prototype (instance &optional slot) ; NEW [2]
 ;  (find-if #'(lambda (prototype) 				; NEW [2]
 ;	       (suitable-for-cloning instance slot prototype))
-;	   (my-mapcan #'(lambda (class)
-;			  (get-vals class '#$prototypes :situation *global-situation*))
+;	   (my-mapcan #'(lambda (class) 
+;			  (get-vals class '#$prototypes :situation *global-situation*)) 
 ;		      (all-classes instance))))
 
 ; No longer used
@@ -13013,7 +13013,7 @@ the prototype-scope. The example is:
 ;								     (find-vals class '#$instances))
 ;								 all-classes)))
 ;	  (qualified-prototypes (remove-if-not #'(lambda (prototype)
-;						   (find-vals prototype slot))
+;						   (find-vals prototype slot))		
 ;					       all-prototypes)) )
 ;    qualified-prototypes))
 
@@ -13035,10 +13035,10 @@ the prototype-scope. The example is:
 ;       (not (member prototype (get-vals instance *clone-built-from-slot*)))
 	; No, clone-built-from is transitive!!! So do the below for significant efficiency improvements!
        (not (member prototype (clone-built-from* instance)))
-
+       
 ;      (not (looping-on `#$(unify-with-clone-of ,PROTOTYPE)))	; See note [6] in unify-in-prototype, and above
 			        ; 5. do subsumption check, to make sure instance satisfies prototype's qualifications
-       (progn
+       (progn 
 	 (km-trace 'comment "Seeing if prototype ~a is applicable to ~a..." prototype instance)
 
 	 (satisfies-prototype-definition instance prototype)
@@ -13051,7 +13051,7 @@ the prototype-scope. The example is:
 (defun satisfies-prototype-definition (instance prototype)
 ;  (km-int `(,(get-unique-val prototype '#$prototype-scope :situation *global-situation*) #$covers ,instance)))
   (some #'(lambda (prototype-scope)
-	    (cond ((or *prototype-classification-enabled*
+	    (cond ((or *prototype-classification-enabled* 
 		       (not (second (class-descriptionp prototype-scope)))); Cat, (the-class Cat) ok, but no "with" allowed
 		   (km-int `(,instance #$isa ,prototype-scope)))))
 	(subst '#$Self prototype (get-vals prototype '#$prototype-scope :situation *global-situation*)))) ; [1]
@@ -13076,22 +13076,22 @@ instances, which can be both:
 Cloning involves building a copy of this network, with prototype instances
 replaced with new anonymous instances.
 
-Note that cloning DOESN'T do any evaluation of expressions, they are just
+Note that cloning DOESN'T do any evaluation of expressions, they are just 
 cloned as is.
 
 :including-extra-slots has been added so that AURA can control when coordinate information is cloned or not.
-This is done by:
+This is done by: 
   (i) AURA modifying *unclonable-slots* to include the slots containing coordinate info (so for KM's reasoning,
 		by default it's not cloned)
 		(ii) adding those slots back in using this keyword, when cloning for knowledge editing.
 
-:without-bookkeeping changes the cloning behavior to create an IDENTICAL COPY of the original. The
+:without-bookkeeping changes the cloning behavior to create an IDENTICAL COPY of the original. The 
    difference (cf normal cloning) is purely in which explanations are created and cloned:
    (1) KM does NOT record cloned-from links from the prototype nodes to the clones
    (2) KM copies the ENTIRE explanation database from the prototype verbatim (renaming Skolems, of course)
    	(cf. with normal cloning, added-at explanations *aren't* copied)
-   Note that cloned-from links from the clone to the prototype ARE still asserted in the KB (HLO-1423), just not
-   explanations for them. Sunil then manually removes these cloned-from links when the clone is promoted up
+   Note that cloned-from links from the clone to the prototype ARE still asserted in the KB (HLO-1423), just not   
+   explanations for them. Sunil then manually removes these cloned-from links when the clone is promoted up 
    to replace the original prototype (HLO-1802).
 
 RETURNS: two values: the clone name, and also the mappings from proto-instances to the cloned instances
@@ -13111,7 +13111,7 @@ is asserted into memory and the inverses are automatically installed.
 (i) will assert both _ProtoCar1 and the inverse link (_ProtoEngine1 parts-of _ProtoCar1)
 Then at (ii), because _ProtoEngine1 already has some slotsvals, KM will merge in rather than just assert the
 given slotsvals. And this merging can be computationally complex (?) [though I think my optimizations filters these out]?
-But worse: If we load a prototype while in prototype mode, (<i> has <slotsvals>) will be followed by an (evaluate-paths),
+But worse: If we load a prototype while in prototype mode, (<i> has <slotsvals>) will be followed by an (evaluate-paths), 
 which is killingly expensive and unnecessary!
 
 A put-slotsvals will work fine here, it will clober any old values (eg. any earlier-installed inverses), but that's
@@ -13119,7 +13119,7 @@ fine as the new values should necessarily include those old values.
 
 [3] It's not clear that we really need to keep these prototype-participant links, (they could be recomputed by a search algorithm if really
 necessary). I'll leave them for now, as I went to all the trouble!.
-[4] knowledge-revision/add-triple-asif-cloned/test-clones-of-clones.lisp fails otherwise, as
+[4] knowledge-revision/add-triple-asif-cloned/test-clones-of-clones.lisp fails otherwise, as 
 	USER: (get-all-explanations |_Finger5| |parts-of| :situation |*Global| :ignore-clone-cycles nil)
 	((|_Finger5| |instance-of| |Finger| (|cloned-from| |_Arm1| |_Arm3| |_Finger1|))
 	 (|_Finger5| |parts-of| |_Hand4| (|cloned-from| |_Arm1| |_Arm3| |_Finger1|)))
@@ -13130,10 +13130,10 @@ necessary). I'll leave them for now, as I went to all the trouble!.
 	old-isv-explanations = ((_Hand10 parts _Finger11 (cloned-from _Body1 _Body8 _Hand4))
 	                        (_Hand10 instance-of Hand (cloned-from _Body1 _Body8 _Hand4))
 	                        (_Hand10 parts-of _Arm9 (cloned-from _Body1 _Body8 _Hand4)))
-	isv-explanations = ((_Hand4 parts _Finger5 (cloned-from _Arm1 _Arm3 _Hand1))
+	isv-explanations = ((_Hand4 parts _Finger5 (cloned-from _Arm1 _Arm3 _Hand1)) 
 			    (_Hand4 instance-of Hand (cloned-from _Arm1 _Arm3 _Hand1))
 	                    (_Hand4 parts-of _Arm3 (cloned-from _Arm1 _Arm3 _Hand1)))
-    We are counting on the sublis at [5] replacing _Arm2 with _Arm9, but as _Arm3 has not been dereferenced to _Arm2 this doesn't happen.
+    We are counting on the sublis at [5] replacing _Arm2 with _Arm9, but as _Arm3 has not been dereferenced to _Arm2 this doesn't happen.	
 |#
 (defun clone-without-bookkeeping (prototype &key including-extra-slots)
   (clone prototype :including-extra-slots including-extra-slots :without-bookkeeping t))
@@ -13141,15 +13141,15 @@ necessary). I'll leave them for now, as I went to all the trouble!.
 (defun clone (prototype0 &key including-extra-slots without-bookkeeping)
 ;  (km-format t "Cloning ~a...~%" prototype0)
 ;  (break)
-  (let (; (*classification-enabled* nil)	; New - disable classification, of course!
+  (let (; (*classification-enabled* nil)	; New - disable classification, of course! 
 	; NEW: Moved it later inside the mapc iteration
 	; classification afterwards on the clone. (It's possible a clone instance might satisfy a new definition)
 	(*trace* nil)
-	(*dereferencing-on* nil)	; Inefficient and not necessary to do dereferencing
+	(*dereferencing-on* nil)	; Inefficient and not necessary to do dereferencing 
 	(*am-reasoning* t)		; In case (clone ...) called directly from the Lisp prompt
 ;	NOTE: ***is** needed (critical) for dereferencing the *explanations* later in this function in get-all-explanations [4]
 	(prototype (dereference prototype0)))
-  (cond
+  (cond 
    ((not (prototypep prototype))
     (report-error 'user-error "Attempt to clone a non-prototype ~a!~%" prototype))
    ((and (am-in-situations-mode)
@@ -13161,17 +13161,17 @@ necessary). I'll leave them for now, as I went to all the trouble!.
     (multiple-value-bind
      (clones mapping-alist)  ; clones = list of (<clone> <slotsvals>) pairs. mappings = alist (<orig-object>.<clone>) pairs
      (build-clones prototype :including-extra-slots including-extra-slots)	; compute what clones would look like
-     (let ((clone-of-prototype (rest (assoc prototype mapping-alist)))) ; find the clone of the ROOT instance
+     (let ((clone-of-prototype (rest (assoc prototype mapping-alist)))) ; find the clone of the ROOT instance 
        (let ((*classification-enabled* nil)
 	     (*prototype-classification-enabled* nil)      ; temporarily disable classification, as we need to do ALL
 							   ; the assertions first before attempting classification!
-;	     (*dereferencing-on* nil)			  ; Slightly inefficient and not necessary to do dereferencing
+;	     (*dereferencing-on* nil)			  ; Slightly inefficient and not necessary to do dereferencing 
 	     )
 ;	 (format t "add-slotsvals...~%")
 
          (mapc #'(lambda (clone+slotsvals) ; expr = (<clone> <slotsvals>)		; NEW drop <situation>
 		 (let* ((clone (first clone+slotsvals))
-			(slotsvals (second clone+slotsvals))
+			(slotsvals (second clone+slotsvals)) 
 			(cloned-from (first (rassoc clone mapping-alist))))
 		   (add-slotsvals clone slotsvals) ; install-inversesp = t; eg. (I instance-of C), we *do* need
 
@@ -13179,7 +13179,7 @@ necessary). I'll leave them for now, as I went to all the trouble!.
 ;		   (cache-explanation-for clone `#$(cloned-from ,PROTOTYPE (,CLONE-OF-PROTOTYPE)))
 
 ; Neah again...well (1/8/02) let's make it switchable...
-		   (cond
+		   (cond 
 		    ((and (or *record-explanations* *record-explanations-for-clones*)
 			  (not without-bookkeeping))
 		     (mapc #'(lambda (slotvals)
@@ -13196,20 +13196,20 @@ necessary). I'll leave them for now, as I went to all the trouble!.
 				   nil)	; See knowledge-revision/instance-of-support/
 				  (t (mapc #'(lambda (val)
 					       (record-explanation-for target val ; [2]
-						       `#$(cloned-from ,PROTOTYPE ,CLONE-OF-PROTOTYPE
+						       `#$(cloned-from ,PROTOTYPE ,CLONE-OF-PROTOTYPE 
 								       ,CLONED-FROM ; ,CLONE-OPERATION-ID
 								       )))
-					   (vals-in slotvals))))))
+					   (vals-in slotvals))))))				  
 ; This would be a better solution, rather than storing explanations in both directions.
 ;				  (t (mapc #'(lambda (val)
 ;					       (let* ((val-cloned-from 				       ; May be nil
 ;						       (listify (first (rassoc val mapping-alist))))   ; Listified for ,@
-;						      (explanation `#$(cloned-from ,PROTOTYPE ,CLONE-OF-PROTOTYPE
+;						      (explanation `#$(cloned-from ,PROTOTYPE ,CLONE-OF-PROTOTYPE 
 ;										   ,CLONED-FROM ,@VAL-CLONED-FROM)))
 ;						 (cond
 ;						  ;; NB inverse may have already been recorded, in which case don't
 ;						  ;; redundantly record it in the other direction
-;						  ((not (member explanation (get-explanations clone slot val)
+;						  ((not (member explanation (get-explanations clone slot val) 
 ;								:test #'equal))
 ;						   (record-explanation-for target val explanation)))))
 ;					   (vals-in slotvals))))))
@@ -13220,30 +13220,30 @@ necessary). I'll leave them for now, as I went to all the trouble!.
 	     clones))			; inverse (C instances I) installed
 
 #|
-New: 1/10/02 - copy *all* explanations over. **NOTE** These will be deposited in the *GLOBAL* situation,
-QUESTION: Why do we do this?
+New: 1/10/02 - copy *all* explanations over. **NOTE** These will be deposited in the *GLOBAL* situation, 
+QUESTION: Why do we do this? 
 For AURA, the only purpose of explanations is to note the source node(s).
 Suppose		Arm1-parts->Hand1-parts->Finger2
 		Body2-parts->Arm2-parts->Hand2-parts->Finger2
 					 (cloned-from Arm1 Arm2)
 	 Now    Person3-parts->Body3-parts->Arm3-parts->Hand3-parts->Finger3
-							(cloned-from Body2 Body3)
+							(cloned-from Body2 Body3)					 
 The question is, do we also need to clone the expln:    (cloned-from Arm1 Arm3)		? [1]
 Note we *do* clone cloned-from links, so we have:    Arm3 cloned-from (Arm2 Arm1)
 						     Hand3 cloned-from (Hand2 Hand1)
 	triple-expanded-from will say Body3, and Arm3 if [1] is done.
 	get-supports will say Arm, Body, but the check to remove Body if Body3 is deleted will be lost.
 	get-support-details will say Hand1-parts->Finger2 -- it only shows the ORIGINAL source, not the intermediate
-
-because, cloning is necessarily done in the global situation ONLY (see (in-situation *Global ...) in unify-in-prototype
+	
+because, cloning is necessarily done in the global situation ONLY (see (in-situation *Global ...) in unify-in-prototype 
 earlier)
-10/25/07 -
+10/25/07 - 
 However, if we *don't* record the cloned-from explanations, will KM re-apply the prototype Arm1 onto Arm3,
-which will recreate them? e.g., that (Arm3 parts Hand3) is cloned-from Arm1? The answer is no (which is bad),
-because Arm3 is already noted as (clone-built-from Arm1) which blocks re-cloning. It's bad as we'll have lost
-additional information in the explanation database (that Arm1 was cloned onto Arm3), needed for
+which will recreate them? e.g., that (Arm3 parts Hand3) is cloned-from Arm1? The answer is no (which is bad), 
+because Arm3 is already noted as (clone-built-from Arm1) which blocks re-cloning. It's bad as we'll have lost 
+additional information in the explanation database (that Arm1 was cloned onto Arm3), needed for 
 triple-expanded-from.
-Thus, we need to either copy the clone-built-from info AND the explanations (as we do now), OR not copy either.
+Thus, we need to either copy the clone-built-from info AND the explanations (as we do now), OR not copy either. 
 But we can't do one without the other.
 Note we also need to record explanations attached to "traditional" structures, e.g., build with (a-prototype ...)
 form. However, we can ignore these if they were inherited [4], as they will be reinherited when recomputed. LATER:
@@ -13252,11 +13252,11 @@ No, let's copy them all and not rely on recomputation.
     the purposes of editing in AURA. As a result, in this special situation, we *do* need to copy the WHOLE
     explanation database over. In particular, we need to preserve the added-at links.
 [6] 3/2/08: I appear to have decided NOT to propogate the added-at explanations to clones after all in KM 2.1.7
-    back in October 2007. I guess the rationale is that if the SME does added-at (x y z), then (x y z) is
+    back in October 2007. I guess the rationale is that if the SME does added-at (x y z), then (x y z) is  
     cloned to (a b c), (a b c) really should just be explained by (x y z) (it's not really true the SME added-at
     (a b c) directly). Of course, if we clone-without-bookkeeping (which DOES copy added-at) then save the
     new graph as a subclass of the original, then we will have kept some added-at links from the original.
-    I guess that's ok.
+    I guess that's ok. 
     HLO-2362 - actually it is ok, and we can always copy the added-at links. Just because a clone has an added-at
     explanation doesn't mean the link was added-at that clone; rather the source class is in the added-at structure.
 [7] There's an issue of whether we copy the explanations in *Global or not during cloning. Here it looks like we *don't*;
@@ -13264,13 +13264,13 @@ No, let's copy them all and not rely on recomputation.
 
 |#
 ;      (km-format t "mapping-alist = ~a~%" mapping-alist)
-    (cond
+    (cond 
      ((and (or *record-explanations* *record-explanations-for-clones*)
 	   *propogate-explanations-to-clones*)
-;      (format t "put-explanations...~%")
+;      (format t "put-explanations...~%")      
       (let ((*dereferencing-on* *dereference-explanations-during-cloning*))		; [4]
        (mapc #'(lambda (participant-dot-clone)
-		(let* ((participant (first participant-dot-clone))
+		(let* ((participant (first participant-dot-clone)) 
 		       (clone0 (rest participant-dot-clone))
 		       (isv-explanations (get-all-explanations participant nil)) ; slot=nil   ; [7] - Combines both local and global explanations
 ; OLD		       (filtered-isv-explanations
@@ -13280,7 +13280,7 @@ No, let's copy them all and not rely on recomputation.
 ;					    isv-explanations))))
 ; NEW		       (filtered-isv-explanations isv-explanations) ; NEW - HLO-2362 and HLO-1802 we need added-at copied
 		       (filtered-isv-explanations
-			(cond (without-bookkeeping isv-explanations)
+			(cond (without-bookkeeping isv-explanations) 
 			      (t (remove-if #'(lambda (isv-explanation)
 						(let* ((triple (triple-in isv-explanation))
 						       (slot (second triple)))
@@ -13304,11 +13304,11 @@ No, let's copy them all and not rely on recomputation.
 ;			 (km-format t "isv-explanations = ~a~%" isv-explanations)
 ;			 (km-format t "filtered-isv-explanations = ~a~%" filtered-isv-explanations)
 
-		  (cond (filtered-isv-explanations
-			 (put-explanations clone0 nil
-			  (append old-isv-explanations
+		  (cond (filtered-isv-explanations 
+			 (put-explanations clone0 nil 
+			  (append old-isv-explanations 
 ;			   (remove-clone-cycles (sublis  mapping-alist filtered-isv-explanations)))))))) ; [5] ... and assert in local...
-		           (remove-clone-cycles (sublis* mapping-alist filtered-isv-explanations)))))))) ;smh 2012-06-9
+		           (remove-clone-cycles (sublis* mapping-alist filtered-isv-explanations)))))))) ;smh 2012-06-9				  
 	     mapping-alist))))
 
 ;      (add-val clone-of-prototype '#$cloned-from prototype nil *global-situation*) ; install-inverses = nil [1]
@@ -13323,13 +13323,13 @@ No, let's copy them all and not rely on recomputation.
 	       mapping-alist)))
        (add-val clone-of-prototype *clone-built-from-slot* prototype) ; restating default extra args unnecessary
 
-       ;;; NOW classify the nodes
+       ;;; NOW classify the nodes 
 ;      (km-format t "*classification-enabled* = ~a~%" *prototype-classification-enabled*)
 ;      (km-format t "Now classifying the clones ~a...~%" (mapcar #'first clones))
 
 ;       (format t "classify...~%")
 ;;; This is a bit drastic, as it calls arbitrary classification reasoning on every prototype node after every
-;;; cloning operation :-(. Maybe we can tone it down a bit (?):
+;;; cloning operation :-(. Maybe we can tone it down a bit (?):       
       (let ((*use-inheritance* nil)	; new - tone it down a bit
 	    (*use-prototypes* nil)	; new - tone it down a bit
 	    (*recursive-classification* t) ; Note: We *do* need to allow this as a subgoal of classification, else an unclassified clone slips through.
@@ -13342,13 +13342,13 @@ No, let's copy them all and not rely on recomputation.
 #| ======================================================================
 build-clones: Redefined: rather than walking the clone graph,
 we know all the proto-instances already as they're stored on the prototype-participants slot of the
-clone root!
+clone root! 
 RETURNS TWO VALUES:
 	- a list of (<clone> <slotsvals>) pairs
 	- the clone-instance mapping, a list of (<protoname> . <clone>) acons's.
-======================================================================
+====================================================================== 
 
-This was originally meant to allow prototypes to include some situation-specific components, but this generates errors
+This was originally meant to allow prototypes to include some situation-specific components, but this generates errors 
 when cloning!
 [1] NO!!!!! You are *not* allowed to do any reasoning on PROTOTYPES! Bad!!!!
     In fact we get away with it because classification is disabled during cloning, but still let's change it!
@@ -13368,7 +13368,7 @@ when cloning!
 	   (t
 	    (values (remove nil (mapcar #'(lambda (prototype-participant) ; ((_ProtoCar1 . _Car3) (_ProtoWheel2 . _Wheel4))
 				    (build-clone prototype-participant mapping-alist ; nil: some prototype-participants need no assertions
-						 :including-extra-slots including-extra-slots))
+						 :including-extra-slots including-extra-slots)) 
 				prototype-participants))
 		    mapping-alist)))))
 
@@ -13384,11 +13384,11 @@ RETURNS: (<clone-root> <clone-slotsvals>)
 
 For these links it's critical we *don't* copy the cloned-from link, as it results in an inverse has-clones link
 on the (non-prototype) instance clone. The test [1] removes such pointers, but leaves the rest preserved.
-|#
+|#	    
 (defun build-clone (prototype mapping-alist &key including-extra-slots)
-  (cond
+  (cond 
    ((anonymous-instancep prototype)    ;;; NEW: Important that slotvals on *named* instances are NOT cloned
-    (let* ((clone (rest (assoc prototype mapping-alist)))
+    (let* ((clone (rest (assoc prototype mapping-alist)))  
 	   (slotsvals (get-slotsvals prototype :situation *global-situation*)) ; now prototypes are *only* in Global
 	   (new-slotsvals (remove nil
 			   (mapcar #'(lambda (slotvals)
@@ -13397,11 +13397,11 @@ on the (non-prototype) instance clone. The test [1] removes such pointers, but l
 						     (not (member slot including-extra-slots))) nil)
 ;					       ((member slot '#$(cloned-from clone-built-from))
 					       ((member slot *slots-with-nonparticipant-skolems*)	; more general 1/7/11
-						(let ((vals-outside-prototype
-						       (remove-if #'(lambda (val)
+						(let ((vals-outside-prototype 
+						       (remove-if #'(lambda (val) 
 								      (assoc val mapping-alist))  ; [1]
 								  (vals-in slotvals))))
-						  (cond (vals-outside-prototype
+						  (cond (vals-outside-prototype 
 							 (make-slotvals slot vals-outside-prototype)))))
 					       (t slotvals))))
 				   slotsvals))))
@@ -13429,20 +13429,20 @@ on the (non-prototype) instance clone. The test [1] removes such pointers, but l
 ;;; ======================================================================
 #|
 If nodes is a pair, it returns a list of pairs of corresponding clones
-e.g., (nodes-cloned-to '#$(_N1 _N2)) -> ((_n3 _n4) (_n6 _n7))
+e.g., (nodes-cloned-to '#$(_N1 _N2)) -> ((_n3 _n4) (_n6 _n7))	       
 where _n1 _n2 are in prototype 1, _n3 _n4 are in prototype 2, and _n6 _n7 are in prototype 3.
 
-Revised algorithm:
+Revised algorithm: 
    (i) find all the clones (_CNodes) of nodes (_PNodes)
    (ii) Find all the explanations for all the clones (i.e., <expn> for ALL triples (:triple _CNode ?any ?any) <expn>
-  (iii) Find the signatures of all the different "cloning operations". If the explanation is
+  (iii) Find the signatures of all the different "cloning operations". If the explanation is 
 	  (cloned-from _PRoot _CRoot _CNode) then the signature is (_PRoot _CRoot)
   (iv) Step through and see the mappings
 I extended the explanation DB to include the necessary information to support this
 
 Consider: Prototype _Foo1, containing (_Foo1 _Bar1), is cloned *twice* onto_Foo2 and _Foo3 respectively
 USER: (nodes-cloned-to '(_Foo1 _Bar1))
-isv-explanations =
+isv-explanations = 
    (_Foo2 parts _Bar5 (cloned-from _Foo1 _Foo2 _Foo1))
    (_Foo3 parts _Bar7 (cloned-from _Foo1 _Foo3 _Foo1))
    (_Bar5 instance-of Bar (cloned-from _Foo1 _Foo2 _Bar1))
@@ -13453,7 +13453,7 @@ RETURNS:
 '((_Foo2 _Bar5) (_Foo3 _Bar7))
 |#
 
-;;; ------------------------------ STANDARD CACHING WRAPPER
+;;; ------------------------------ STANDARD CACHING WRAPPER 
 
 (defvar *nodes-cloned-to-keys* nil)
 (defvar *nodes-cloned-to-caching* nil)
@@ -13463,22 +13463,22 @@ RETURNS:
    (prog1
        (cond
 	((or clones-of-interest		; cache only the full (unrestricted) answer
-	     (not *nodes-cloned-to-caching*))
+	     (not *nodes-cloned-to-caching*)) 
 	 (nodes-cloned-to0 nodes0 :clones-of-interest clones-of-interest))
 	(t (let* ((key (intern (format nil "~a" nodes0) *km-package*))
 		  (cached-answer (get key 'nodes-cloned-to)))
-	     (cond (cached-answer
+	     (cond (cached-answer 
 		    (cond ((neq cached-answer 'no) cached-answer)))
 		   (t (let* ((answer (nodes-cloned-to0 nodes0)))
 ;			(km-format t "Retrieve from cache: (nodes-cloned-to0 ~a) -> ~a~%" nodes0 answer)
 			(setf (get key 'nodes-cloned-to) (or answer 'no))
 			(push key *nodes-cloned-to-keys*)
 			answer))))))
-;     (km-format t "[~,2f sec for (nodes-cloned-to ~a)~%"
+;     (km-format t "[~,2f sec for (nodes-cloned-to ~a)~%" 
 ;		(/ (- (get-internal-run-time) start-time) internal-time-units-per-second)
 ;		nodes0))
    ))
-
+  
 (defun clear-nodes-cloned-to-cache ()
   (mapc #'(lambda (key) (setf (get key 'nodes-cloned-to) nil)) *nodes-cloned-to-keys*)
   (setq *nodes-cloned-to-keys* nil)
@@ -13493,19 +13493,19 @@ RETURNS:
    (report-error 'user-error "ERROR! nodes-cloned-to: ~a is/are not instances in a prototype!~%"
 		  (remove-if #'protoinstancep nodes)))
    ((not (= (length (remove-duplicates nodes)) (length nodes0)))
-    (report-error 'user-error
+    (report-error 'user-error 
 	  "nodes-cloned-to: ~a are not all distinct nodes (some are bound; they dereference to ~a)~%"
 	  nodes0 nodes))
    (t (let* ((original-prototypes (gets-vals nodes '#$prototype-participant-of))
 	     (original-prototype (first original-prototypes)) ; original-prototypes must be a singleton (checked below)
 ;	    (original-prototypes (km-int `#$(the prototype-participant-of of ,(VALS-TO-VAL NODES))))
 	    )
-	(cond
+	(cond 
 	 ((not (singletonp original-prototypes))
 	  (report-error 'user-error "nodes-cloned-to: ~a should belong to the same prototype, but belong to multiple ones ~a!~%" nodes original-prototypes))
 	 (t (let* ((clones0 (gets-vals nodes '#$has-clones))
 		   (clones (cond (clones-of-interest (intersection clones0 clones-of-interest)) (t clones0)))
-		   (isv-explanations (dereference
+		   (isv-explanations (dereference 
 				      (remove-if-not #'(lambda (isv-explanation)
 							 (let ((explanation (explanation-in isv-explanation)))
 							   (and (eq (explanation-type explanation) '#$cloned-from)
@@ -13513,7 +13513,7 @@ RETURNS:
 								    (and (null (fourth explanation)) ; backwards compat.
 									 (eq (second explanation) original-prototype))))))
 						     (my-mapcan #'get-explanation-data clones))))
-		   (clone-operation-ids
+		   (clone-operation-ids 
 		    (remove-duplicates
 		     (remove nil
 		      (mapcar #'(lambda (isv-explanation)
@@ -13535,10 +13535,10 @@ RETURNS:
 ;;; Returns a set of (Clone1...CloneN) matching (Node1...NodeN) created under CLONE-OPERATION-ID
 (defun collect-clonesets (nodes isv-explanations clone-operation-id)
 ;  (km-format t ".")
-  (let ((clonesets  	; a list of N elements (<Clones of Node1>...<Clones of NodeN>) under CLONE-OPERATION-ID
+  (let ((clonesets  	; a list of N elements (<Clones of Node1>...<Clones of NodeN>) under CLONE-OPERATION-ID 
 	 (mapcar #'(lambda (node)
-		     (remove-duplicates
-		      (remove nil (mapcar #'(lambda (isv-explanation)
+		     (remove-duplicates 
+		      (remove nil (mapcar #'(lambda (isv-explanation)	    
 					       (find-clone-of-node node isv-explanation clone-operation-id))
 					  isv-explanations))))
 		 nodes)))
@@ -13550,7 +13550,7 @@ RETURNS:
   (let ((cloned-from (first clone-operation-id))
 	(expanded-from (second clone-operation-id)))
     (case (length (explanation-in isv-explanation)) ; returns the CLONE of NODE under CLONE-OPERATION-ID
-; Awaiting implementation following modification to get-explanations
+; Awaiting implementation following modification to get-explanations 		 
 ;		         (5 (or (minimatch1 isv-explanation
 ;				     `(?clone ?any ?any (#$cloned-from ,cloned-from ,expanded-from ,node ?any)))
 ;				(minimatch1 isv-explanation
@@ -13600,7 +13600,7 @@ RETURNS:
   (cond ((endp sets) (list nil))
 	(t (let ((set (first sets)))
 	     (mapcan #'(lambda (set-el)
-			 (mapcar #'(lambda (rest-set)
+			 (mapcar #'(lambda (rest-set) 
 				     (cons set-el rest-set))
 				 (permute-clonesets (rest sets))))
 		     (or set '(nil)))))))
@@ -13613,17 +13613,17 @@ RETURNS:
 ;;; added by MW, 2011-08-08: this is very inefficient...
 ;;; calls frequently need more than 40 secs, and some
 ;;; don't terminate at all. I have replaced that with a
-;;; (hopefully correct) more efficient version. Confirmed
-;;; by PEC, mail from 2011-08-06.
+;;; (hopefully correct) more efficient version. Confirmed 
+;;; by PEC, mail from 2011-08-06. 
 #+:ignore
-(defun node-cloned-from* (f &key done)
+(defun node-cloned-from* (f &key done) 
   (let ((sources (get-vals f '#$cloned-from)))
-    (remove-duplicates
-     (append sources
-	     (my-mapcan #'(lambda (x)
+    (remove-duplicates 
+     (append sources 
+	     (my-mapcan #'(lambda (x) 
 			    (cond ((member x done)
-; Seems that loops can occur for obscure reasons
-;			   (km-format t "ERROR! node-cloned-from*: Looping on cloned-from for ~a ~a; stopping...~%"
+; Seems that loops can occur for obscure reasons				   
+;			   (km-format t "ERROR! node-cloned-from*: Looping on cloned-from for ~a ~a; stopping...~%" 
 ;					      x (cons x done))
 				   )
 				  (t (node-cloned-from* x :done (cons x done)))))
@@ -13636,24 +13636,24 @@ RETURNS:
 ;;; added by MW, 2011-08-08
 (defvar *node-result-hash* (make-hash-table))
 
-;;; added by MW, 2011-08-08: more efficient version,
+;;; added by MW, 2011-08-08: more efficient version, 
 ;;; see comments above
 (defun compute-transitive-closure-of-slot (rel f &key done)
-
+  
   (clrhash *cloned-hash*)
   (clrhash *node-visited-hash*)
   (clrhash *node-result-hash*)
-
+  
   (let ((agenda (list f)))
-    (loop
+    (loop 
       (let ((node (pop agenda)))
 	(cond ((not node)
-	       (return-from compute-transitive-closure-of-slot
-		 ;; weird - if I reverse the result before returning it,
-		 ;; then this speeds up MTS test suite by two thirds!
+	       (return-from compute-transitive-closure-of-slot 
+		 ;; weird - if I reverse the result before returning it, 
+		 ;; then this speeds up MTS test suite by two thirds! 
 		 ;; so, lets do it:
 		 (reverse done)))
-
+	
 	      ((not (gethash node *node-visited-hash*))
 	       (setf (gethash node *node-visited-hash*) t)
 	       (let ((sources (or (gethash node *cloned-hash*)
@@ -13662,8 +13662,8 @@ RETURNS:
 				  ;; and stored once in the hash table (note
 				  ;; that usually one would use the second
 				  ;; value returned by gethash, whether the
-				  ;; key was found or not - it may be the
-				  ;; case that the node has no cloned-from vals?)
+				  ;; key was found or not - it may be the 
+				  ;; case that the node has no cloned-from vals?) 
 				  (setf (gethash node *cloned-hash*)
 				    (get-vals node rel)))))
 		 ;;(pprint (list node sources))
@@ -13681,14 +13681,14 @@ RETURNS:
 (defun cloned-from* (f &key done) (node-cloned-from* f :done done))
 
 ;;; Transitive closure of #$clone-built-from
-;;; added / ignored by MW, 2011-08-08: see comments for node-cloned-from*,
-;;; analogous change here
+;;; added / ignored by MW, 2011-08-08: see comments for node-cloned-from*, 
+;;; analogous change here 
 #+:ignore
-(defun clone-built-from* (f &key done)
+(defun clone-built-from* (f &key done) 
   (let ((sources (get-vals f '#$clone-built-from)))
-    (remove-duplicates
-     (append sources
-	     (my-mapcan #'(lambda (x)
+    (remove-duplicates 
+     (append sources 
+	     (my-mapcan #'(lambda (x) 
 			    (cond ((member x done))
 				  (t (clone-built-from* x :done (cons x done)))))
 			sources)))))
@@ -13708,17 +13708,17 @@ RETURNS:
 ;	 (v-protos (node-cloned-from v)))
 ;    (mapcan #'(lambda (f-proto)
 ;		(let ((vals (get-vals f-proto s :situation *global-situation*)))
-;		  (mapcar #'(lambda (val)
-;			      (list f-proto s val))
+;		  (mapcar #'(lambda (val) 
+;			      (list f-proto s val)) 
 ;			  (intersection vals (cons v v-protos))))) ; allow for v to be named instances also
 ;	    f-protos)))
 
 #|
 Rewritten by Sunil Mishra 2/29/08:
 triple-cloned-from fails on inputs such as (_Equation-Set90 equation-symbol (:pair 'x_1 _Speed-Value91)).
-In fact, if the value is non-atomic, with error reporting turned on, triple-cloned-from will always given an error.
-The following code replaces the existing triple-cloned-from. For list values containing anonymous instances,
-triple-cloned-from-complex* carefully considers each possible filler for that value in a prototype, then filters
+In fact, if the value is non-atomic, with error reporting turned on, triple-cloned-from will always given an error. 
+The following code replaces the existing triple-cloned-from. For list values containing anonymous instances, 
+triple-cloned-from-complex* carefully considers each possible filler for that value in a prototype, then filters 
 out all non-existent triples. Other cases are handled through triple-cloned-from-simple*.
 
 ALGORITHM for (triple-cloned-from (<x> <r> <y>):
@@ -13755,7 +13755,7 @@ ALGORITHM for (triple-cloned-from (<x> <r> <y>):
 				     (mapcar (lambda (v-node-proto) (cons v-node v-node-proto))
 					     (node-cloned-from v-node)))
 				   v-content))
-	 (v-content-permutations
+	 (v-content-permutations 
 	  (cond ((or (<= (length v-content) 5) ; quick lookahead
 		     (let ((n-permutations (apply #'* (mapcar #'length v-content-substs))))
 		       (cond ((<= n-permutations 30000) t)
@@ -13790,12 +13790,12 @@ ALGORITHM for (triple-cloned-from (<x> <r> <y>):
 ;	 (v (dereference (third triple)))
 ;	 (f-clones (node-cloned-to f))
 ;	 (v-clones (node-cloned-to v)))
-;    (cond
+;    (cond 
 ;     ((in-prototype triple)		; includes checks the triple exists and is part of a prototype
 ;      (mapcan #'(lambda (f-clone)
-;	        (let ((vals (get-vals f-clone s)))		; is this ok?
-;		  (mapcar #'(lambda (val)
-;			      (list f-clone s val))
+;	        (let ((vals (get-vals f-clone s)))		; is this ok? 
+;		  (mapcar #'(lambda (val) 
+;			      (list f-clone s val)) 
 ;			  (intersection vals (cons v v-clones)))))	; allow for v to be named instances also
 ;	      f-clones)))))
 
@@ -13822,7 +13822,7 @@ ALGORITHM for (triple-cloned-from (<x> <r> <y>):
 				     (mapcar (lambda (v-node-clone) (cons v-node v-node-clone))
 					     (node-cloned-to v-node)))
 				   v-content))
-	 (v-content-permutations
+	 (v-content-permutations 
 	  (cond ((or (<= (length v-content) 5) ; quick lookahead
 		     (let ((n-permutations (apply #'* (mapcar #'length v-content-substs))))
 		       (cond ((<= n-permutations 30000) t)
@@ -13848,18 +13848,18 @@ We find the triples Ts that <triple> was triple-cloned-from, and remove all the 
 ALGORITHM for (triple-cloned-from-originally <triple>):
  1. Find all the (triple-cloned-from <triple>) -> (<t1> <t2> ...). (<t1> etc. is an originating triple for <triple>)
  2. If <t1> was itself triple-cloned-from <t2>, then drop <t1> (providing <t1> wasn't also locally added-at in its containing prototype).
-    Check this for all the <t1> ... <tn>.
+    Check this for all the <t1> ... <tn>. 
     As a result, we are left with:
         a. just the "root" triples of the triple-cloned-from tree, PLUS
 	b. any intermediate triples that were locally asserted (added-at)
-
+ 
 [1] If A clones to B clones to C, then (triple-cloned-from-originally C) -> (A), as B is an intermediate triple
 SUPPOSE: (f s v) -clone-> (f1 s1 v1) -clone-> (f2 s2 v2)
-THUS: (triple-cloned-from (f2 s2 v2)) -> (f s v) (f1 s1 v1)
+THUS: (triple-cloned-from (f2 s2 v2)) -> (f s v) (f1 s1 v1)	
       (triple-cloned-from (f1 s1 v1)) -> (f s v)
 
-[2] - This doesn't work if there's a cycle in the KB (as can easily arise - see
-	my notes in directory km/knowledge-revision/triple-expanded-from/). It also doesn't
+[2] - This doesn't work if there's a cycle in the KB (as can easily arise - see 
+	my notes in directory km/knowledge-revision/triple-expanded-from/). It also doesn't 
 	take account of triples which may be clones of clones, but are also supported by a SME add action,
 	or a unification, or from the base KB. For now let's ignore all these "intermediate supports".
 [4]	8/25/08 - No, got bitten directly by this HLO-2362 - so fix it!!!
@@ -13868,9 +13868,9 @@ THUS: (triple-cloned-from (f2 s2 v2)) -> (f s v) (f1 s1 v1)
        explanation stored. In this latter case, we don't want Bar to be labelled as an origination of <triple>,
        so we skip it and instead use the earlier ancestor (also collected in this function) in Foo.
 
-[3]	If there's a cycle then include all the triples (except self).
+[3]	If there's a cycle then include all the triples (except self). 
 SUPPOSE: (a b c) -clone-> (a1 b1 c1) -clone-> (a2 b2 c2) -clone-> (a b c)
-THUS: (triple-cloned-from (a2 b2 c2)) -> (a b c) (a1 b1 c1)
+THUS: (triple-cloned-from (a2 b2 c2)) -> (a b c) (a1 b1 c1)	
       (triple-cloned-from (a1 b1 c1)) -> (a b c) (a2 b2 c2)
       (triple-cloned-from (a b c)) -> (a1 b1 c1) (a2 b2 c2)
 RESOLUTION: Ignore source triples IF they're themselves cloned from something else AND they are not part of a cycle.
@@ -13883,11 +13883,11 @@ This occurred in AURA for some bizarre combination of cloning and inheritance. I
 	t3 cloned from t4 t5
 	t5 cloned from t1
 	t4 cloned from t1 t2
-The result is that [4] is not sufficient to find a "source" triple, so the fallback [6] collects more.
+The result is that [4] is not sufficient to find a "source" triple, so the fallback [6] collects more.	
 
 [7] There is a special case to consider:
     t1 in Cell: Cell has-part Plasma-membrane
-    t2 in Animal-Cell: Animal-Cell has-part Animal-Plasma-membrane
+    t2 in Animal-Cell: Animal-Cell has-part Animal-Plasma-membrane	
 t2 is triple-cloned-from t1. Question: Should (get-supports <t2>) -> Cell or not?
 (a) From the official documentation of get-supports - return classes which prevent deletion of t2 - then
     we should return Cell
@@ -13918,10 +13918,10 @@ Discarding (_Eukaryotic-cell2547 has-part _Cytoplasm77704) (has sources-source-t
 
 (defun triple-cloned-from-originally (triple &key (ignore-added-at-explanations *default-ignore-added-at-explanations*) (silentp t))
   (let ((source-triples (cond (*new-triple-cloned-from-originally* (triple-cloned-from* triple)) ; [1]	; purely for backwards compatibility testing
-			      (t (triple-cloned-from triple))))) ; [1]
-    (cond ((and (member triple source-triples :test #'equal)
+			      (t (triple-cloned-from triple))))) ; [1]    
+    (cond ((and (member triple source-triples :test #'equal) 
 		(not *new-triple-cloned-from-originally*))		; disable this for new version
-	   (cond ((not silentp)
+	   (cond ((not silentp) 
 		  (km-format t "Cycle! ~a depends on itself! Returning all supporting triples (except self)...~%" triple)
 		  (let* ((numbers (counts-to (length source-triples)))
 			 (numbered-triples (transpose (list numbers source-triples))))
@@ -13949,7 +13949,7 @@ Discarding (_Eukaryotic-cell2547 has-part _Cytoplasm77704) (has sources-source-t
 					      (let* ((f (first source-triple))
 						     (s (second source-triple))
 						     (v (third source-triple))
-						     (explanations (append (get-explanations1 f s v)
+						     (explanations (append (get-explanations1 f s v) 
 									   (get-explanations1 v (invert-slot s) f))))
 						(notany #'(lambda (explanation) ; (c) not explicitly (re-)added at this prototype
 							    (and (eq (explanation-type explanation) '#$added-at)
@@ -13961,7 +13961,7 @@ Discarding (_Eukaryotic-cell2547 has-part _Cytoplasm77704) (has sources-source-t
 				      (t (cond ((not silentp) (km-format t "Keeping ~a [in ~a] (has sources-source-triple but ALSO has local added-at info)~%" source-triple
 									 (protoclass (first source-triple)))))))))
 			       source-triples)))
-#|[6]|#	       (cond ((null reduced-source-triples)
+#|[6]|#	       (cond ((null reduced-source-triples) 
 ;		      (km-format t "source-triples = ~a, but no reduced source triples!~%" source-triples)
 		      (let ((supported-source-triples
 			     (cond (ignore-added-at-explanations source-triples)		; return the lot in this pathological case
@@ -13969,7 +13969,7 @@ Discarding (_Eukaryotic-cell2547 has-part _Cytoplasm77704) (has sources-source-t
 						     (let* ((f (first source-triple))
 							    (s (second source-triple))
 							    (v (third source-triple))
-							    (explanations (append (get-explanations1 f s v)
+							    (explanations (append (get-explanations1 f s v) 
 										  (get-explanations1 v (invert-slot s) f))))
 						       (notany #'(lambda (explanation) ; (b) not explicitly (re-)added at this prototype
 								   (and (eq (explanation-type explanation) '#$added-at)
@@ -13978,7 +13978,7 @@ Discarding (_Eukaryotic-cell2547 has-part _Cytoplasm77704) (has sources-source-t
 							       explanations)))
 						 source-triples)))))
 ;			   (km-format t "supported-source-triples = ~a~%" supported-source-triples)
-			(cond ((not silentp)
+			(cond ((not silentp) 
 			       (cond (supported-source-triples (km-format t "Yikes! All supporting triples are themselves supported! Just returning those that have local added-at info...~%"))
 				     (t (km-format t "Yikes! All supporting triples are themselves supported and none have local added-at info! Returning the lot...~%")))))
 			(or supported-source-triples ; if looping, but >= 1 of the supported-source-triples are added-at, return those.
@@ -14021,14 +14021,14 @@ Discarding (_Eukaryotic-cell2547 has-part _Cytoplasm77704) (has sources-source-t
 ;;; Strictly we should look at prototype-scope rather than instance-of links, but instance-of is ok.
 ;;; In any case, they should be the same, except when the prototype-scope is a structured class, .e.g,
 ;;     (instance-of (Car)) (prototype-scope ((the-class Car with (speed (*fast)))))
-(defun prototype-classes (node-or-triple0)
+(defun prototype-classes (node-or-triple0) 
   (let ((node-or-triple (dereference node-or-triple0)))
     (cond ((triplep node-or-triple) (prototype-classes (in-prototype node-or-triple))) ; includes error checking
 	  ((not (prototypep node-or-triple))
 	   (report-error 'user-error "(prototype-classes ~a): argument should be a prototype root node or a prototype triple but was not!~%" node-or-triple))
 	  (t
 	;  (get-vals node-or-triple '#$prototype-scope)
-	;  (immediate-classes node-or-triple)
+	;  (immediate-classes node-or-triple) 
 	; NO: immediate-classes may contain redundant classes in AURA as *built-in-remove-subsumers-slots* = nil
 	   (get-vals node-or-triple '#$prototype-of)))))
 #|
@@ -14058,8 +14058,8 @@ Discarding (_Eukaryotic-cell2547 has-part _Cytoplasm77704) (has sources-source-t
 ;    (km-format t "v-protoinstances = ~a~%" v-protoinstances)
     (mapcan #'(lambda (f-protoinstance)
 		(let ((vals (get-vals f-protoinstance s :situation *global-situation*)))
-		  (mapcar #'(lambda (val)
-			      (list f-protoinstance s val))
+		  (mapcar #'(lambda (val) 
+			      (list f-protoinstance s val)) 
 			  (intersection vals (cons v v-protoinstances))))) ; allow for v to be named instances also
 	    f-protoinstances)))
 |#
@@ -14080,33 +14080,33 @@ SIDE EFFECTS: None (the KB in memory is *not* changed - use trim-prototype to ch
 
 [1] The (cons ... (remove ...)) is to ensure that prototype is at the front of the list
 
-NOTE:
+NOTE: 
 For "normal" slots: only slot values which are also prototype-participant instances are written out.
-For *prototype-bookkeeping-slots*, only values which are ALSO prototype participants (of some prototype, not
+For *prototype-bookkeeping-slots*, only values which are ALSO prototype participants (of some prototype, not 
       necessarily this one) are written out (HLO-1690); Skolem instances (simple clones) are not.
 (write-slotvals in writer.lisp implements the response to vals-to-show and *prototype-bookkeeping-slots*)
 
 Example with essentials:
 (save-prototype '#$_Car1 :essential-participants '#$(_Car1 _Engine1 _Cylinder1))
-(save-prototype '#$_Cell161 :essential-participants
+(save-prototype '#$_Cell161 :essential-participants 
 	'#$(_Cell161 _Ribosome195 _Cytoplasm193 _Chromosome186 _Organism185 _Plasma-membrane184))
 
 [2] Are there any non-essential individuals cloned-from a prototype?
-    If so, drop the clone-built-from link for that prototype to allow re-cloning. Otherwise, keep the
+    If so, drop the clone-built-from link for that prototype to allow re-cloning. Otherwise, keep the 
     clone-built-from link.
 |#
 (defvar *prototype-explanation-types-to-save* nil)
 
 (defun save-prototype (prototype0 &key stream (file t) extra-assertions essential-participants (include-explanationsp t))
   (let ((prototype (dereference prototype0)))
-  (cond
+  (cond 
    ((not (prototypep prototype))
     (report-error 'user-error "(save-prototype ~a): ~a is not a prototype!~%" prototype prototype)
     (values nil (km-format nil "(save-prototype ~a): ~a is not a prototype!" prototype prototype)))
    ((and essential-participants (not (member prototype essential-participants)))
     (report-error 'user-error "(save-prototype ~a :essential-participants ...):~%   The root ~a must be a member of the essential-participants list, but wasn't!~%" prototype prototype)
     (values nil (km-format nil "(save-prototype ~a :essential-participants ...):~%   The root ~a must be a member of the essential-participants list, but wasn't!" prototype prototype)))
-   (t (let*
+   (t (let* 
         ((stream0 (or stream (tell file)))
 ;	 (classes (km `#$(the classes of ,PROTOTYPE)))
 ;	 (scope (km `#$(the prototype-scope of ,PROTOTYPE)))
@@ -14114,20 +14114,20 @@ Example with essentials:
 	 (participants0 (get-vals prototype '#$prototype-participants))
 ;	 (participants0 (km `#$(the prototype-participants of ,PROTOTYPE))))
 ;;; NEW: Add warning and error recovery if this procedure is passed some invalid essentials
-	(essential-participants0
+	(essential-participants0 
 	 (cond ((not (set-difference essential-participants participants0)) ; good! all essentials are participants
 		essential-participants)
 	       (t (report-error 'user-warning
 			"(save-prototype ~a :essential-participants ~a):~%   ~a is/are not prototype-participant(s) of ~a, but should be!~%   Continuing, dropping those non-participants...~%"
 			prototype0 essential-participants prototype
-			(delistify (set-difference essential-participants participants0)) prototype)
+			(delistify (set-difference essential-participants participants0)) prototype) 
 		  (intersection essential-participants participants0)))))
 ;;; end NEW (except for 3 essential-participants -> essential-participants0 later)
 	(multiple-value-bind
 	 (new-essentials error-message)	; nil, if essential participants not given
-	    (cond (essential-participants0 (find-essentials essential-participants0 :protoroot prototype
+	    (cond (essential-participants0 (find-essentials essential-participants0 :protoroot prototype 
 							   :participants participants0)))
-	  (cond
+	  (cond 
 	   (error-message (values nil (concat "Doing save-prototype: " error-message)))
 	   (t (let*
 		  ((participants (get-vals prototype '#$prototype-participants))
@@ -14135,9 +14135,9 @@ Example with essentials:
 		   (participants-to-write-out ; [1] put prototype root first
 		    (cons prototype (remove prototype (or new-essentials participants)))) ; write out either essentials or all
 		   (non-essentials (ordered-set-difference participants new-essentials))
-		   (partially-cloned-from ; nil if no essential participants given.
+		   (partially-cloned-from ; nil if no essential participants given. 
        ; partially-cloned-from = roots of prototypes cloned into prototype0 which are now only partially cloned in.
-		    (cond (essential-participants0
+		    (cond (essential-participants0	
 ;			   (km `#$(the prototype-participant-of of (the cloned-from of ,(VALS-TO-VAL NON-ESSENTIALS))))))) ; [2]
 			   (remove-duplicates ; -> protoroots
 			    (my-mapcan #'(lambda (prototype-participant)
@@ -14146,7 +14146,7 @@ Example with essentials:
 						      (get-vals non-essential '#$cloned-from))
 						  non-essentials)))))) ; [2]
 	   ; partial-clone-roots = nodes that need to be re-expanded (participants built from partially cloned prototypes)
-		   (partial-clone-roots
+		   (partial-clone-roots 
 		    (remove-if-not #'(lambda (participant)
 				       (intersection (get-vals participant '#$clone-built-from) partially-cloned-from))
 				   new-essentials))
@@ -14155,31 +14155,31 @@ Example with essentials:
 		   ; NOTE: These were added per HLO-2608
 		   (trimmed-expanded-from (remove-duplicates
 					   (intersection (remove-duplicates (my-mapcan #'node-expanded-from non-essentials))
-							 new-essentials)))
-		   )
+							 new-essentials)))		   
+		   )			
 ;		(km-format t "non-essentials = ~a~%" non-essentials)
 		(cond
 		 (essential-participants0 ; the below messages are meaningless if no essentials are given (= all nodes are treated as essential)
 		  (cond (partially-cloned-from
-			 (km-format t "save-prototype: This save includes only partial clones of the following prototypes,
-   so the clone-built-from links to these prototypes will NOT be saved (to allow re-cloning):~%   ~a~%"
+			 (km-format t "save-prototype: This save includes only partial clones of the following prototypes, 
+   so the clone-built-from links to these prototypes will NOT be saved (to allow re-cloning):~%   ~a~%" 
 				    partially-cloned-from))
 			(t (km-format t "save-prototype: This trimmed prototype includes only full clones.~%")))
 		  (cond (partial-clone-roots
-			 (km-format t "save-prototype: These nodes need to be re-expanded (have the above prototypes re-cloned onto):~%   ~a~%"
+			 (km-format t "save-prototype: These nodes need to be re-expanded (have the above prototypes re-cloned onto):~%   ~a~%" 
 				    partial-clone-roots)))
 		  (cond ((set-difference trimmed-expanded-from partial-clone-roots)
-			 (km-format t "save-prototype: Also, these nodes need to be re-expanded (have BaseKb assertions re-applied to):~%   ~a~%"
+			 (km-format t "save-prototype: Also, these nodes need to be re-expanded (have BaseKb assertions re-applied to):~%   ~a~%" 
 				    (set-difference trimmed-expanded-from partial-clone-roots))))
 		  (cond ((and (null trimmed-expanded-from) (null partial-clone-roots))
 			 (km-format t "save-prototype: No nodes need to be re-expanded.~%")))))
-
+		
 		(km-format stream0 "~%;;; ---------- Definition of prototype for ~a ----------~%~%" (delistify scope))
 ;    (mapc #'(lambda (class)
 ;	      (km-format stream0 "(~a has (superclasses ~a))~%~%" class (immediate-superclasses class)))
 ;	  (remove '#$Thing classes))
 		(mapc #'(lambda (participant)
-			  (save-frame participant :stream stream0
+			  (save-frame participant :stream stream0 
 				      :situations `(,*global-situation*) :save-prototypep t
 				      :essentials participants-to-write-out :partially-cloned-from partially-cloned-from))
 		      participants-to-write-out)
@@ -14202,14 +14202,14 @@ Example with essentials:
 		       (km-format t "WARNING: Not a problem but this shouldn't happen!~%")))
 ;		(km-format t "partial-clone-roots = ~a~%" partial-clone-roots)
 ;		(km-format t "trimmed-expanded-from = ~a~%" trimmed-expanded-from)
-		(cond
+		(cond 
 		 (essential-participants0   ; trimming only happens if essential participants was given
 		  (cond ((null non-essentials) (km-format t "~a: Prototype size unchanged at ~a nodes.~%" prototype (length participants)))
 			(t (km-format t "~a: Prototype size reduced from ~a to ~a nodes.~%" prototype (length participants) (length new-essentials)))))
 		 (t (km-format t "Prototype ~a (~a nodes) saved.~%" prototype (length participants))))
 		(remove-duplicates
 		 (append partial-clone-roots ; may be NIL of course
-			trimmed-expanded-from)) ; this should be a superset of partial-clone-roots, unless
+			trimmed-expanded-from)) ; this should be a superset of partial-clone-roots, unless 
 					; explanations are missing for some reason, hence do intersection
 		)))))))))
 
@@ -14229,29 +14229,29 @@ Example with essentials:
 (defun trim-prototype (prototype0 &key essential-participants)
   (let* ((prototype (dereference prototype0))
 	 (prototype-classes (remove-subsumers (get-vals prototype '#$prototype-of))))
-  (cond
+  (cond 
    ((not (prototypep prototype))
     (report-error 'user-error "(trim-prototype ~a): ~a is not a prototype!~%" prototype prototype)
     (values nil (km-format nil "(trim-prototype ~a): ~a is not a prototype!" prototype prototype)))
    ((null essential-participants)
-    (report-error 'user-error
-		  "(trim-prototype ~a :essential-participants nil): You must provide some essential participants!~%"
+    (report-error 'user-error 
+		  "(trim-prototype ~a :essential-participants nil): You must provide some essential participants!~%" 
 		  prototype)
-    (values nil (km-format nil
-		   "(trim-prototype ~a :essential-participants nil): You must provide some essential participants!"
+    (values nil (km-format nil 
+		   "(trim-prototype ~a :essential-participants nil): You must provide some essential participants!" 
 		  prototype)))
    ((not (member prototype essential-participants))
     (report-error 'user-error "(trim-prototype ~a :essential-participants ...):~%   The root ~a must be a member of the essential-participants list, but wasn't!~%" prototype prototype)
     (values nil (km-format nil "(trim-prototype ~a :essential-participants ...):~%   The root ~a must be a member of the essential-participants list, but wasn't!" prototype prototype)))
    (t (let* ((participants0 (get-vals prototype '#$prototype-participants))
 ;;; NEW: Add warning and error recovery if this procedure is passed some invalid essentials
-	    (essential-participants0
+	    (essential-participants0 
 	     (cond ((not (set-difference essential-participants participants0)) ; good! all essentials are participants
 		    essential-participants)
 		   (t (report-error 'user-error
 		        "(trim-prototype ~a :essential-participants ~a):~%   ~a is/are not prototype-participant(s) of ~a, but should be!~%   Continuing, dropping those non-participants...~%"
 			prototype0 essential-participants prototype
-			(delistify (set-difference essential-participants participants0)) prototype)
+			(delistify (set-difference essential-participants participants0)) prototype) 
 		      (intersection essential-participants participants0)))))
 ;;; end NEW (except for 1 essential-participants -> essential-participants0 later)
 	(multiple-value-bind
@@ -14262,7 +14262,7 @@ Example with essentials:
 	   (t (let*
 	       ((participants (get-vals prototype '#$prototype-participants)) ; redo incase find-essentials patched buggy file
 		(non-essentials (ordered-set-difference participants new-essentials))
-; partially-cloned-from = roots of prototypes cloned into prototype0 which are now only partially cloned in.
+; partially-cloned-from = roots of prototypes cloned into prototype0 which are now only partially cloned in.	 
 		(partially-cloned-from
 ;		 (km `#$(the prototype-participant-of of (the cloned-from of ,(VALS-TO-VAL NON-ESSENTIALS))))) ; [2]
 ;		 This returns the ROOTS of prototypes cloned into the current one. If the root is non-essential,
@@ -14274,30 +14274,30 @@ Example with essentials:
 						      (get-vals non-essential '#$cloned-from))			; these are the sources of the participants to be completely deleted
 						  non-essentials)))) ; [2]
 ; partial-clone-roots = the nodes that the above partially-cloned prototypes were cloned onto
-; Sunil wants these to change their expansion status (HLO-2250)
-		(partial-clone-roots
+; Sunil wants these to change their expansion status (HLO-2250)	 
+		(partial-clone-roots 
 		 (remove-if-not #'(lambda (participant)
 				    (intersection (get-vals participant '#$clone-built-from) partially-cloned-from))
 				new-essentials))
 	        (trimmed-expanded-from (remove-duplicates
 					(intersection (remove-duplicates (my-mapcan #'node-expanded-from non-essentials))
 						      new-essentials))))
-
+	       
 	       (cond (partially-cloned-from
-		      (km-format t "trim-prototype: This trimmed prototype includes partial clones of the following prototypes,~%
-   so the clone-built-from links to these prototypes will be removed (to allow re-cloning):~%   ~a~%"
+		      (km-format t "trim-prototype: This trimmed prototype includes partial clones of the following prototypes,~% 
+   so the clone-built-from links to these prototypes will be removed (to allow re-cloning):~%   ~a~%" 
 				 partially-cloned-from))
 		     (t (km-format t "trim-prototype: This trimmed prototype includes only full clones.~%")))
 
 	       (cond (partial-clone-roots
-		      (km-format t "trim-prototype: These nodes need to be re-expanded (have the above prototypes re-cloned onto):~%   ~a~%"
+		      (km-format t "trim-prototype: These nodes need to be re-expanded (have the above prototypes re-cloned onto):~%   ~a~%" 
 				 partial-clone-roots)))
 		(cond ((set-difference trimmed-expanded-from partial-clone-roots)
-		       (km-format t "trim-prototype: Also, these nodes need to be re-expanded (have BaseKb assertions re-applied to):~%   ~a~%"
+		       (km-format t "trim-prototype: Also, these nodes need to be re-expanded (have BaseKb assertions re-applied to):~%   ~a~%" 
 				  (set-difference trimmed-expanded-from partial-clone-roots))))
 		(cond ((and (null trimmed-expanded-from) (null partial-clone-roots))
 		       (km-format t "trim-prototype: No nodes need to be re-expanded.~%")))
-
+	       
 	       (km-format t "Trimming ~a essential frames in memory..." (length new-essentials))
 	       (let
 		 ((modified-participants
@@ -14313,7 +14313,7 @@ Example with essentials:
 			       ((eq slot '#$clone-built-from) ; DROP clone-built-from flags for prototypes whose clones
 				(let ((clone-built-from-to-drop		; are only being partially saved
 				       (intersection vals partially-cloned-from)))
-				  (mapc #'(lambda (val)
+				  (mapc #'(lambda (val) 
 					    (let ((*trace-prototype-assertions* nil)) ; ok to update prototypes
 					      (delete-val participant '#$clone-built-from val :situation *global-situation*)))
 					clone-built-from-to-drop))
@@ -14322,20 +14322,20 @@ Example with essentials:
 
 ; REVISED: Still may trim non-local constraints, even if all the vals are essential, hence we can't skip this step.
 ;			       ((not (set-difference skolem-vals new-essentials)) nil) ; all vals are essential, so keep them!
-
+				
 			       (vals (cond
 				      ((set-difference skolem-vals participants)
 				       (report-error 'user-warning "(the ~a of ~a) includes~%   ~a in prototype ~a,~%   but ~a isn't/aren't declared as prototype-participants)!~% I will drop these values on this slot."
-						     slot participant
-						     (remove-if-not #'(lambda (val)
+						     slot participant 
+						     (remove-if-not #'(lambda (val) 
 									(set-difference
 									 (remove-if-not #'anonymous-instancep (flatten val))
 									 participants))
 								    vals)
-						     prototype
+						     prototype 
 						     (set-difference skolem-vals participants))))
-
-				     (let* ((deletions-p
+				     
+				     (let* ((deletions-p 
 					     (mapcar #'(lambda (val)
 							 (let* ((*trace-prototype-assertions* nil) ; ok to update prototypes
 								(val-skolems (remove-if-not #'anonymous-instancep (flatten val)))) ; flatten is probably unnecssary
@@ -14372,13 +14372,13 @@ Example with essentials:
 			    (get-slotsvals participant :situation *global-situation*)))
 		       new-essentials))))
 ;		 (km-format t "DEBUG: modified-participants = ~a~%" modified-participants)
-		 (km-format t "~a were modified, ~a remain unchanged...~%" (length modified-participants)
+		 (km-format t "~a were modified, ~a remain unchanged...~%" (length modified-participants) 
 			   (- (length new-essentials) (length modified-participants)))
 		(km-format t "Deleting ~a non-essential frames from memory...~%" (length non-essentials))
-		(let ((*trace-prototype-assertions* nil)) ; ok to update prototypes
+		(let ((*trace-prototype-assertions* nil)) ; ok to update prototypes		
 		  (mapc #'delete-frame non-essentials))
-
-		(let ((n-deleted
+		
+		(let ((n-deleted 
 		       (apply #'+ (mapcar #'(lambda (essential)
 					     (delete-nonessential-explanations essential :essentials new-essentials))
 					 new-essentials))))
@@ -14400,7 +14400,7 @@ Example with essentials:
 
 ;;; Returns the number of deletions done
 (defun delete-nonessential-explanations (concept &key essentials)
-  (length (remove nil (mapcar #'(lambda (isv-explanation)
+  (length (remove nil (mapcar #'(lambda (isv-explanation) 
 				  (delete-nonessential-explanation isv-explanation :essentials essentials))
 			      (get-all-explanations concept nil)))))
 
@@ -14425,8 +14425,8 @@ Example with essentials:
 #|
 ----------------------------------------
 find-essentials: Given an initial list of essential participants, iteratively expand the list
-so that each slot's values are either ALL essential or NONE are. Then (in save-prototype) just
-write out the slots where ALL the slot's values are essential.
+so that each slot's values are either ALL essential or NONE are. Then (in save-prototype) just 
+write out the slots where ALL the slot's values are essential. 
 
 RETURNS: TWO values
  - The list of essential participants, or NIL if an error occurred
@@ -14452,7 +14452,7 @@ ITERATE until the list of essential participants is stable
     (report-error 'system-error "find-essentials for ~a seems stuck in a loop (iterated 30 times)!~%" protoroot)
     (values nil (km-format "find-essentials for ~a seems stuck in a loop (iterated 30 times)!" protoroot)))
    ((set-difference essentials participants)  ; bad! Some essentials aren't participants...
-    (cond ((not (set-difference essentials ; ...but false alarm; participants doesn't reflect the (up to date)
+    (cond ((not (set-difference essentials ; ...but false alarm; participants doesn't reflect the (up to date) 
 					   ; list of participants (they were augmented), so recompute and retry:
 				(get-vals protoroot '#$prototype-participants)))
 	   (find-essentials essentials :protoroot protoroot :n n))   ; no :participants -> will be recomputed (defun above)
@@ -14460,21 +14460,21 @@ ITERATE until the list of essential participants is stable
 ;	  (t (report-error 'user-error
 ;		  "(find-essentials ~a :protoroot ~a):~%   ~a is/are not prototype-participant(s) of ~a, but should be!~%"
 ;		  essentials protoroot (delistify (set-difference essentials participants)) protoroot)
-;	     (values nil
-;	      (km-format nil
+;	     (values nil 
+;	      (km-format nil 
 ;		"(find-essentials ~a :protoroot ~a):~%   ~a is/are not prototype-participant(s) of ~a, but should be!"
 ;		essentials protoroot (delistify (set-difference essentials participants)) protoroot)))))
 	  (t (report-error 'user-warning
-		  "(find-essentials ~a :protoroot ~a):~%   ~a is/are not prototype-participant(s) of ~a, but should be!~%   Continuing, dropping those non-participants...~%"
+		  "(find-essentials ~a :protoroot ~a):~%   ~a is/are not prototype-participant(s) of ~a, but should be!~%   Continuing, dropping those non-participants...~%"			   
 		  essentials protoroot (delistify (set-difference essentials participants)) protoroot)
 	     (find-essentials (ordered-intersection essentials ; retry with just those essentials that are participants
 						    (get-vals protoroot '#$prototype-participants))
 			      :protoroot protoroot :n n))))
    (t (let ((new-essentials (find-essentials0 essentials :protoroot protoroot :participants participants)))
-	(cond ((set-equal essentials new-essentials)
-	       (km-format t
+	(cond ((set-equal essentials new-essentials) 
+	       (km-format t 
   "find-essentials: The following ~a of ~a participants are not essential to the prototype ~a:~%   ~a~%"
-  		(length (set-difference participants essentials)) (length participants) protoroot
+  		(length (set-difference participants essentials)) (length participants) protoroot 
 		(set-difference participants essentials))
 	       new-essentials)		; reached quiescence
 	      (t (find-essentials new-essentials :protoroot protoroot :participants participants :n (1+ n))))))))
@@ -14522,7 +14522,7 @@ When writing, if there are ever non-anonymous elements, write them out.
 ;				    (ordered-set-difference instances ; ...then ALL instances are essential
 ;							    essentials))))))))
 				    (ordered-set-difference good-instances ; ...then ALL (good) instances are essential
-						    essentials))))))))
+						    essentials))))))))			  
 			  slotsvals))))
 ;	(km-format t "extra-essentials = ~a~%" extra-essentials)
 	(find-essentials0 (append (rest essentials-to-check) extra-essentials)
@@ -14543,12 +14543,12 @@ When writing, if there are ever non-anonymous elements, write them out.
 ;;;	    the prototype.
 ;;; ======================================================================
 (defun delete-prototype-triple (triple)
-  (cond
+  (cond 
    ((or (and (anonymous-instancep (first triple)) (not (protoinstancep (first triple))))
 	(and (anonymous-instancep (third triple)) (not (protoinstancep (third triple))))
 	(and (not (anonymous-instancep (first triple))) (not (anonymous-instancep (third triple)))))
     (report-error 'user-error "ERROR! ~a is not part of a prototype!~%" triple))
-   (t (let*
+   (t (let* 
         ((classes (prototype-classes triple))
 	 (prototype-root (in-prototype triple))
 	 (supports (get-support-details triple))
@@ -14564,7 +14564,7 @@ When writing, if there are ever non-anonymous elements, write them out.
     (km-format t "(~a is part of the prototype for ~a)~%" triple (delistify classes))
     (cond (external-supports
 	   (km-format t "Can't delete this triple! It is supported by:~%")
-	   (mapc #'show-support external-supports)
+	   (mapc #'show-support external-supports) 
 	   nil)
 	  (t (cond (internal-supports
 		    (km-format t "Can delete this triple. It only has local supports as follows:~%")
@@ -14581,7 +14581,7 @@ When writing, if there are ever non-anonymous elements, write them out.
 										   (member (second triple) classes)))
 									  new-dependent-supports0)))
 				  (cond (new-dependent-supports ; [2]
-					 (km-format t "   ~a: not deletable: still supported by ~a (not deleted).~%"
+					 (km-format t "   ~a: not deletable: still supported by ~a (not deleted).~%" 
 						    dependent-triple new-dependent-supports)
 					 (delete-support-by-prototypes dependent-triple (list prototype-root)))
 					(t (km-format t "   ~a: deletable, so deleting it.~%" dependent-triple)
@@ -14598,9 +14598,9 @@ When writing, if there are ever non-anonymous elements, write them out.
 	(v (third triple)))
     (delete-val f s v)))
 
-(defun show-support (support)
+(defun show-support (support)		     
   (cond ((eq (first support) '#$every) (km-format t "   ~a~%" support))
-	((eq (first support) '#$added-at) (km-format t "   A user-added assertion at ~a (~a)~%"
+	((eq (first support) '#$added-at) (km-format t "   A user-added assertion at ~a (~a)~%" 
 						     (second support) (third support)))
 	((triplep support) (km-format t "   ~a, stored at ~a~%" support (delistify (prototype-classes support))))))
 
@@ -14635,7 +14635,7 @@ When writing, if there are ever non-anonymous elements, write them out.
 triple-expanded-from returns the node(s) in the CMap which led to <triple> being concluded.
 node-expanded-from does the same thing for a specific node. If <node> was part of a prototype whose root
   was cloned onto <root-clone>, then <root-clone> is returned.
-  Or more specifically, like triple-expanded-from, TWO values are returned:
+  Or more specifically, like triple-expanded-from, TWO values are returned: 
 	(i) a list of <root-clone> nodes
 	(ii) a list of (<root-clone> <source> <source-class>), as documented for triple-expanded-from.
 
@@ -14651,12 +14651,12 @@ directions anyway so strictly such reversing may not be necessary. However, we'l
 |#
 (defun node-expanded-from (node0 &key ignore-prototypes)
   (let* ((node (dereference node0))
-	 (incoming-triples
+	 (incoming-triples 
 	  (mapcan #'(lambda (slotvals)
 		      (let ((slot (slot-in slotvals))
 			    (vals (vals-in slotvals)))
 			(mapcan #'(lambda (val)
-				    (cond
+				    (cond 
 				     ((eq slot '#$cloned-from) nil)
 				     ((or (&-exprp val) (&&-exprp val))		; (x & y) or ((x) && (y))
 				      (mapcar #'(lambda (val0)
@@ -14671,8 +14671,8 @@ directions anyway so strictly such reversing may not be necessary. However, we'l
 ; Ug, why did I do :both-directions nil? It leads to errors (HLO-1617). Remove it!
 ;				       (multiple-value-list (triple-expanded-from triple :both-directions nil)))
 ; RETURNS: ((_Foo3) ((_Foo3 (cloned-from _ProtoFoo3) (Foo))))   for cloned nodes, NIL otherwise
-				       (multiple-value-list (triple-expanded-from triple
-										  :ignore-prototypes ignore-prototypes)))
+				       (multiple-value-list (triple-expanded-from triple 
+										  :ignore-prototypes ignore-prototypes))) 
 				   incoming-triples)
 			   :test #'equal))
 	 (nodes+rules (transpose node+rule-pairs))
@@ -14684,17 +14684,17 @@ directions anyway so strictly such reversing may not be necessary. However, we'l
 #|
 MAPCAN-SAFE
 (triple-expanded-from <triple>)
-(triple-expanded-from '#$(_Move5 agent _Person8))
-	-> (_Foo3)
+(triple-expanded-from '#$(_Move5 agent _Person8))  
+	-> (_Foo3)				
      AND   ((_Foo3 (cloned-from _ProtoFoo3) (Foo)))
 
 This function takes a triple in a CMap, and returns TWO values, namely TWO
 lists whose members are respectively:
  - the individual in the same CMap from which it was expanded
- - the (same) individual + source + classes
+ - the (same) individual + source + classes 
    where source is EITHER:
-   (cloned-from prototype-root), where prototype-root is the root of the
-         prototype which was cloned onto the individual to produce
+   (cloned-from prototype-root), where prototype-root is the root of the 
+         prototype which was cloned onto the individual to produce 
 	 (among other things) <triple>.
    (every class has ...), an expression which when evaluated resulted in
          _Foo3.
@@ -14710,7 +14710,7 @@ See aura-api.txt for further documentation
 (defun triple-expanded-from (triple &key ignore-prototypes)
   (cond
    ((not (triplep triple))
-    (report-error 'user-error
+    (report-error 'user-error 
 		  "expanded-from ~a: Need a triple as an argument, e.g., (expanded-from '#$(_Move5 agent _Person8))~%"
 		  triple))
    (t (let* ((expln-struct1 (get-explanations0 (first triple) (second triple) (third triple)))
@@ -14732,7 +14732,7 @@ See aura-api.txt for further documentation
 					       (list (third explanation) 		; clone-root
 						     `(#$cloned-from ,(second explanation)) ; prototype-root
 						     (prototype-classes (second explanation)))) ; prototype-classes
-					      ((and (listp explanation)
+					      ((and (listp explanation) 
 						    (let* ((source (first (sources explanation)))) ; should never be > 1
 ;						      (km-format t "source = ~a~%" source)  ; e.g., (@ _Cell1 Cell has-part)
 						      (cond (source
@@ -14746,7 +14746,7 @@ See aura-api.txt for further documentation
 ;    (km-format t "instance+root/rule+classes-list = ~a~%" instance+root/rule+classes-list)
 ;    (km-format t "triple-expanded-from: explanations = ~a~%" explanations)
     (values instances instance+root/rule+classes-list)))
-
+	    
 ;;; ======================================================================
 
 (defun add-triple (triple)
@@ -14757,14 +14757,14 @@ See aura-api.txt for further documentation
 
 #|
 (add-triple-asif-cloned <triple> <n> <source-triple> <source-root>)
-(add-triple-asif-cloned
+(add-triple-asif-cloned 
      '#$(_Hand2 parts _Finger2) '#$_Arm2 '#$(_Hand1 parts _Finger1) '#$_Arm1)
 
-Assert <triple>, but make it LOOK as if <triple> was cloned from
-<source-triple> in the prototype rooted at <source-root>.
+Assert <triple>, but make it LOOK as if <triple> was cloned from 
+<source-triple> in the prototype rooted at <source-root>. 
 
 Imagine the prototype rooted at <source-root> was cloned onto the node <n>,
-resulting in, among other things, <triple> being asserted as a clone
+resulting in, among other things, <triple> being asserted as a clone 
 of <source-triple>. add-triple-asif-cloned makes it *look* as if this
 is what happened, although in practice it asserts <triple> explicitly.
 
@@ -14772,29 +14772,29 @@ For example, given:
 
   Prototype of Arm: [Arm1]-parts->[Hand1]
 
-  Prototype of Body: [Body2]-parts->[Arm2]-parts->[Hand2]
-        where [Arm2]-parts->[Hand2] was cloned from [Arm1]-parts->[Hand1]
+  Prototype of Body: [Body2]-parts->[Arm2]-parts->[Hand2]	
+        where [Arm2]-parts->[Hand2] was cloned from [Arm1]-parts->[Hand1]	
 
 Suppose we now extend Arm's prototype to be:
 
   Prototype of Arm: [Arm1]-parts->[Hand1]-parts->[Finger1]
 
-If we want to add the equivalent triple to the Body prototype AS IF IT
+If we want to add the equivalent triple to the Body prototype AS IF IT 
 WAS CLONED from Arm, do:
 
   ;;; Create a finger
   (km '#$(a Finger)) -> [Finger2]
 
   ;;; Now do:
-  (add-triple-asif-cloned
+  (add-triple-asif-cloned 
         '(Hand2 parts Finger2) 'Arm2 '(Hand1 parts Finger1) 'Arm1)
 
 This also works for adding onto a CLONE of a prototype (e.g., of Body)
 as well as to a prototype itself (as above).
-
+  
 Footnotes below:
 [1] Normally this will be a redundant call if Arm is already cloned into Body.
-[2] To tolerate (add-triple-asif-cloned '(_Vic1 subevent (must-be-a OtherEvent)) '_Vic1
+[2] To tolerate (add-triple-asif-cloned '(_Vic1 subevent (must-be-a OtherEvent)) '_Vic1 
 					'(_Vic168 subevent (must-be-a OtherEvent)) '_Vic168)
 |#
 (defun add-triple-asif-cloned (triple n source-triple source-root)
@@ -14819,7 +14819,7 @@ Footnotes below:
   (cond ((endp explanation-structs) nil)
 	(t (let* ((explanation-struct (first explanation-structs)) ; (f s v explns)
 		  (explanation (fourth explanation-struct)))
-	     (cond ((clone-cycle explanation)
+	     (cond ((clone-cycle explanation) 
 ;		    (km-format t "CLONE CYCLE DETECTED! Removing explanation...~%  ~a~%" explanation-struct)
 		    (remove-clone-cycles (rest explanation-structs)))
 		   (t (cons explanation-struct (remove-clone-cycles (rest explanation-structs)))))))))
@@ -14847,7 +14847,7 @@ which then becomes
 	[[Cell]] -similar-to-> [Dividing-Cell] -similar-to-> [Dividing-Cell']
 	     \-has-part-> [Amino-Acid]        \-has-part-> [Amino-Acid']
 
-here we'll have
+here we'll have 
     (explanation (:triple Dividing-Cell has-part Amino-Acid' ((cloned-from [Cell] [Dividing-Cell]))))
 |#
 ;;; (cloned-from _Car1 _Car1)
@@ -14889,8 +14889,8 @@ here we'll have
    (t (let* ((vals (remove-duplicates
 		    (my-mapcan #'(lambda (instance)
 				   (let* ((source-protoinstances2 (get-vals instance '#$cloned-from))
-					  (source-protoroots2 (remove-duplicates (my-mapcan #'(lambda (i)
-												(get-vals i '#$prototype-participant-of))
+					  (source-protoroots2 (remove-duplicates (my-mapcan #'(lambda (i) 
+												(get-vals i '#$prototype-participant-of)) 
 											    source-protoinstances2))))
 				      (cond ((member protoroot source-protoroots2) ; cloned from same prototype
 					     (let ((slotsvals (append (get-slotsvals instance :situation *global-situation*)
@@ -14929,7 +14929,7 @@ here we'll have
 |#
 
 
-
+       
 ;;; FILE: lazy-unify.lisp
 
 ;;; File: lazy-unify.lisp
@@ -14971,7 +14971,7 @@ lazy-unify-&-expr:
   Note, lazy-unify-&-expr *MUST* succeed, otherwise it's an error, except for &+ which is allowed
 	to quietly return NIL (bit horrible but ok)
 
-NOTE: & and &! *must* succeed, and will generate an error if it fails.
+NOTE: & and &! *must* succeed, and will generate an error if it fails.   
 HOWEVER: &+ and &+! are *allowed* to fail. If they does so, it has no side-effects.
 	 [ To avoid side-effects for &+!, the handler in interpreter.lisp does &+? then &! ]
 
@@ -14987,12 +14987,12 @@ so that IF there's a single-valued slot AND there's a value on each instance
 AND those values are atomic AND they are unifiable THEN the unification fails.
 
 In addition, we add a classes-subsumep mode:
-  If it's T (used for &&) then the classes of one instance must *subsume* the classes of another.
+  If it's T (used for &&) then the classes of one instance must *subsume* the classes of another. 
 	Thus cat & dog won't unify.
   If it's NIL (used for &) then the classes are assumed mergable, eg. pet & fish will unify
 	to (superclasses (pet fish)).
 
-eagerlyp: if true, then do eager rather than lazy unification, ie. don't leave any & or && residues on frames,
+eagerlyp: if true, then do eager rather than lazy unification, ie. don't leave any & or && residues on frames, 
 	  just atomic values.
 	  HOWEVER: If lazy-unify fails and :eagerlyp = t, then there may be bad sub-unifications left :-(
 |#
@@ -15007,48 +15007,48 @@ eagerlyp: if true, then do eager rather than lazy unification, ie. don't leave a
 	(instance2 (dereference instancename2))
 	(unification (lazy-unify0 instance1 instance2 :classes-subsumep classes-subsumep :eagerlyp eagerlyp :check-constraintsp check-constraintsp
 				  :fail-mode fail-mode)) )
-    (cond ((and unification
+    (cond ((and unification 
 ;		*see-unifications*
 		(not (equal instance1 instance2))
 		(not (null instance1))
 		(not (null instance2)))
 ;		(not (is-most-recent-deferred-unification instance1 instance2)))
-	   (make-comment "(~a ~a ~a) unified to be ~a" instancename1
+	   (make-comment "(~a ~a ~a) unified to be ~a" instancename1 
 			 (cond ((and eagerlyp classes-subsumep) '&+!)
-			       (eagerlyp '&!) (classes-subsumep '&+) (t '&))
+			       (eagerlyp '&!) (classes-subsumep '&+) (t '&))			       
 		       instancename2 unification)
 	   ))
     (cond ((and (kb-objectp instancename1) (not (known-frame instancename1))) (km-add-to-kb-object-list instancename1)))  ; [1]
     (cond ((and (kb-objectp instancename2) (not (known-frame instancename2))) (km-add-to-kb-object-list instancename2)))
     (cond ((and (null unification)
 		(eq fail-mode 'error))
-	   (report-error 'user-error "Unification (~a ~a ~a) failed!~%" instance1
+	   (report-error 'user-error "Unification (~a ~a ~a) failed!~%" instance1 
 			 (cond ((and eagerlyp classes-subsumep) '&+!)
 			       (eagerlyp '&!) (classes-subsumep '&+) (t '&)) instance2)))
     unification))
-
+	   
 ;;; [1] NOTE failure to unify an element means the whole unification should fail
 (defun lazy-unify0 (instancename1 instancename2 &key classes-subsumep eagerlyp (check-constraintsp t) (fail-mode 'fail))
 ; (let ( (instance1 (dereference instancename1))		; Might be redundant to deref, but just in case!
 ;	(instance2 (dereference instancename2)) )		; DONE EARLIER NOW
   (let ( (instance1 instancename1)
 	 (instance2 instancename2) )
-  (cond
+  (cond 
    ((equal instance1 instance2) instance1)	; already unified
    ((null instance1) instance2)
    ((null instance2) instance1)
 #|
    ((need-to-defer-unification instance1 instance2 :skip-last-item-in-goal-stack t) ; avoid reflexively seeing yourself
-;    (km-trace 'comment "(~a ~a ~a): Deferring unification: ~a is already undergoing unification higher up in the goal stack!" instance1
+;    (km-trace 'comment "(~a ~a ~a): Deferring unification: ~a is already undergoing unification higher up in the goal stack!" instance1 
     (let* ((instance+goal (need-to-defer-unification instance1 instance2 :skip-last-item-in-goal-stack t))
 	   (instance (first instance+goal))
 	   (goal (second instance+goal))
 	   (unification (first goal))
 	   (i1+i2 (list (first unification) (third unification)))
 	   (other-instance (delistify (remove instance i1+i2))))
-      (km-format t "(~a ~a ~a): Deferring unification: ~a is already undergoing unification with ~a higher up in the goal stack!~%" instance1
+      (km-format t "(~a ~a ~a): Deferring unification: ~a is already undergoing unification with ~a higher up in the goal stack!~%" instance1 	      
 		 (cond ((and eagerlyp classes-subsumep) '&+!)
-		       (eagerlyp '&!) (classes-subsumep '&+) (t '&))
+		       (eagerlyp '&!) (classes-subsumep '&+) (t '&))			      
 		 instance2 instance other-instance))
 ;    (show-goal-stack)
 ;    (break)
@@ -15114,14 +15114,14 @@ We can probably make it do that though with a (very) special purpose line of cod
 (defun lazy-unify2 (instance1 instance2 &key classes-subsumep eagerlyp (check-constraintsp t) (fail-mode 'fail))
   (multiple-value-bind
       (unified-name sitn+svs-pairs binding-list) ; binding-list is just a singleton e.g., ((i1 . i2)), from unify-names
-      (try-lazy-unify2 instance1 instance2 :classes-subsumep classes-subsumep :eagerlyp eagerlyp :check-constraintsp check-constraintsp
+      (try-lazy-unify2 instance1 instance2 :classes-subsumep classes-subsumep :eagerlyp eagerlyp :check-constraintsp check-constraintsp 
 		       :fail-mode fail-mode) ; (1) TRY IT...
   (let ( (change-made nil) )
    (cond (unified-name			; (2) DO IT!
-;	  (cond (*deferred-unifications*
+;	  (cond (*deferred-unifications* 
 ;		 (km-format t "Doing (~a & ~a), with *deferred-unifications* = ~a~%" instance1 instance2 *deferred-unifications*)))
 	  (mapc #'(lambda (binding)				; 1.4.00 Try this here (rather than later, see below)
-		    (km-bind (first binding) (second binding)))
+		    (km-bind (first binding) (second binding))) 
 		binding-list)
 	  (cond ((kb-objectp unified-name)   ; don't do stuff for numbers & strings!
 		 (let ( (curr-situation (curr-situation)) )
@@ -15131,7 +15131,7 @@ We can probably make it do that though with a (very) special purpose line of cod
 					(equal (second sitn+svs) (get-slotsvals unified-name))
 					(and (prev-situation (curr-situation) unified-name)
 					     (null (get-slotsvals unified-name))
-					     (subsetp (second sitn+svs)
+					     (subsetp (second sitn+svs) 
 						      (get-slotsvals unified-name :situation (prev-situation (curr-situation) unified-name))
 						      :test #'equal))))
 				   (t (setq change-made t)))
@@ -15183,7 +15183,7 @@ after the unification test. I've disabled this keyword even as an option.
 (defun try-lazy-unify (instancename1 instancename2 &key classes-subsumep #|eagerlyp|# (check-constraintsp t))
  (let ((instance1 (dereference instancename1))		; Might be redundant to deref, but just in case!
        (instance2 (dereference instancename2)))
-  (cond
+  (cond 
    ((km-equal instance1 instance2) instance1)	; already unified
    ((null instance1) instance2)
    ((null instance2) instance1)
@@ -15206,11 +15206,11 @@ after the unification test. I've disabled this keyword even as an option.
 		 (not (km-structured-list-valp d-instance2)))
 	     (unify-names d-instance1 d-instance2 :classes-subsumep classes-subsumep :fail-mode 'fail)) ; failure allowed for try-lazy-unify of course
 
-;            ((not (km-structured-list-valp d-instance1))
+;            ((not (km-structured-list-valp d-instance1)) 
 ;	     (report-error 'user-error "Attempt to unify an atomic object ~a with a sequence-like object ~a!" instance1 instance2)
 ;	     (try-lazy-unify (list (first d-instance2) d-instance1) d-instance2 ; x & (:args x y)
 ;			   :classes-subsumep classes-subsumep :eagerlyp eagerlyp :check-constraintsp check-constraintsp))
-;	    ((not (km-structured-list-valp d-instance2))
+;	    ((not (km-structured-list-valp d-instance2)) 
 ;	     (report-error 'user-error "Attempt to unify a sequence-like object ~a with an atomic object ~a!" instance1 instance2)
 ;	     (try-lazy-unify d-instance1 (list (first d-instance1) d-instance2) ; (:args x y) & x
 ;			     :classes-subsumep classes-subsumep :eagerlyp eagerlyp :check-constraintsp check-constraintsp))
@@ -15218,7 +15218,7 @@ after the unification test. I've disabled this keyword even as an option.
 	    ((and (eq (first d-instance1) (first d-instance2))
 		  (neq (first d-instance1) '#$:triple))			;; Why did I exclude :triples??? Similarly above at [*]
 	   (every #'(lambda (pair)
-		      (try-lazy-unify (first pair) (second pair)
+		      (try-lazy-unify (first pair) (second pair) 
 				      :classes-subsumep classes-subsumep #|:eagerlyp eagerlyp|# :check-constraintsp check-constraintsp))
 		  (rest (transpose (list d-instance1 d-instance2))))))))	; ((:seq :seq) (i1 e1) (i2 e2) ... )
    (t (try-lazy-unify2 instance1 instance2 :classes-subsumep classes-subsumep #|:eagerlyp eagerlyp|# :check-constraintsp check-constraintsp :fail-mode 'fail)))))
@@ -15229,7 +15229,7 @@ Returns three values:
 	1. the instancename of the unification
 	2. a list of (situation slotsvals) pairs, of the unified structure for each situation
 	3. a list of (instance1 instance2) variable binding pairs
-OR nil if the unification fails.
+OR nil if the unification fails. 
 
 [1] HLO-3916 - (cml::abox-get-individual '|Synthesis-Of-mRNA-In-Eukaryote|)
     unify-names (which checks incompatible-instances) succeeds, but then through the process of
@@ -15243,14 +15243,14 @@ OR nil if the unification fails.
       (unify-names instance1 instance2 :classes-subsumep classes-subsumep :eagerlyp eagerlyp :fail-mode fail-mode)
     (cond (unified-name
 ;	   (km-format t "computing sitn-svs-pairs...")
-	   (let ( (sitn-svs-pairs (unified-svs instance1 instance2
+	   (let ( (sitn-svs-pairs (unified-svs instance1 instance2 
 					       :classes-subsumep classes-subsumep :eagerlyp eagerlyp :check-constraintsp check-constraintsp :fail-mode fail-mode)) )
 ;	     (km-format t "..done!~%")
-	     (cond ((and (neq sitn-svs-pairs 'fail)
+	     (cond ((and (neq sitn-svs-pairs 'fail) 
 			 (unify-names instance1 instance2 :classes-subsumep classes-subsumep :eagerlyp eagerlyp :fail-mode fail-mode))  ; [1]
 		    (setq *statistics-unifications* (1+ *statistics-unifications*))
 		    (values unified-name sitn-svs-pairs bindings))))))))
-
+		     
 ;;; ----------------------------------------
 
 ;;; Returns a list of (situation unified-svs) pairs for unifying i1 and i2
@@ -15268,10 +15268,10 @@ OR nil if the unification fails.
 ;;; NEW VERSION - abort immediately a 'fail is encountered
 (defun unified-svs (i1 i2 &key (situations (all-situations-and-theories)) classes-subsumep eagerlyp (check-constraintsp t) (fail-mode 'fail))
   (cond ((endp situations) nil)
-	(t (let ( (sitn-svs-pair (unified-svs-in-situation i1 i2 (first situations)
+	(t (let ( (sitn-svs-pair (unified-svs-in-situation i1 i2 (first situations) 
 							   :classes-subsumep classes-subsumep :eagerlyp eagerlyp :check-constraintsp check-constraintsp :fail-mode fail-mode)) )
 	     (cond ((eq sitn-svs-pair 'fail) 'fail)
-		   (t (let ( (sitn-svs-pairs (unified-svs i1 i2 :situations (rest situations)
+		   (t (let ( (sitn-svs-pairs (unified-svs i1 i2 :situations (rest situations) 
 							  :classes-subsumep classes-subsumep :eagerlyp eagerlyp :check-constraintsp check-constraintsp :fail-mode fail-mode)) )
 			(cond ((eq sitn-svs-pairs 'fail) 'fail)
 			      (sitn-svs-pair (cons sitn-svs-pair sitn-svs-pairs))	; NEW: May be nil
@@ -15279,10 +15279,10 @@ OR nil if the unification fails.
 
 ;;; [1] This is critical, as lazy-unify-slotsvals drags in constraints from whatever the current situation is!
 ;;; [2] change-to-situation doesn't make-comments.
-;;; [3] There must be *some* data on both objects. Note, we still check slot values if only ONE instance has values providing the OTHER
+;;; [3] There must be *some* data on both objects. Note, we still check slot values if only ONE instance has values providing the OTHER 
 ;;;		instance has at least some slot-values somewhere (including other slots).
 (defun unified-svs-in-situation (i1 i2 situation &key classes-subsumep eagerlyp (check-constraintsp t) (fail-mode 'fail))
-  (let ( (curr-situation (curr-situation))
+  (let ( (curr-situation (curr-situation)) 
 	 (slotsvals1 (get-slotsvals i1 :situation situation))    ; (don't need bind-self as frames are instances
 	 (slotsvals2 (get-slotsvals i2 :situation situation))    ; (don't need bind-self as frames are instances
 	 )
@@ -15296,8 +15296,8 @@ OR nil if the unification fails.
 	   (cond ((neq situation curr-situation) (change-to-situation situation)))			; [1], [2]
 	   (multiple-value-bind
 	    (successp unified-svs)
-	    (lazy-unify-slotsvals i1 i2
-				  slotsvals1 slotsvals2
+	    (lazy-unify-slotsvals i1 i2 
+				  slotsvals1 slotsvals2 
 				  :classes-subsumep classes-subsumep :eagerlyp eagerlyp :check-constraintsp check-constraintsp :fail-mode fail-mode)
 	    (cond ((neq situation curr-situation) (change-to-situation curr-situation)))		; [1]
 	    (cond (successp (list situation unified-svs))
@@ -15308,13 +15308,13 @@ OR nil if the unification fails.
 ;;; Returns (i) unified value (ii) extra binding list elements
 ;;; In the case of two anonymous instances A and B, then B points to A, ie. get B->A,
 ;;; not A->B. Three items of code depend on this ordering:
-;;;    1. (load-kb ...), so that a statement like (_X2 == _X1) binds _X1
+;;;    1. (load-kb ...), so that a statement like (_X2 == _X1) binds _X1 
 ;;;       to point to _X2, and not vice-versa. (The writer prints the master
-;;;	  object first, then the bound synonym second).
+;;;	  object first, then the bound synonym second). 
 ;;;	  Apr 01: Redundant now, the writer does dereferencing and no "==" writing.
 ;;;    2. [overall-expr-for-slot, global-expr-for-slot, and local-expr-for-slot] now called
 ;;;	  inherited-rule-sets, local-rule-sets,
-;;;	  in frame-io.lisp assumes this binding order (see that
+;;;	  in frame-io.lisp assumes this binding order (see that 
 ;;;	  file for notes), putting *Global instances before situation-specific
 ;;;	  ones.
 ;;;    3. get-unified-all puts local instances before inherited expressions,
@@ -15325,11 +15325,11 @@ OR nil if the unification fails.
 ;;; [7] Michael Wessel only wants to check locked classes for heuristic unification (when :classes-subsumep t), not for forced unification.
 (defun unify-names (instance1 instance2 &key classes-subsumep eagerlyp (fail-mode 'fail))
 ; (let ((fail-mode (cond (eagerlyp 'error) (t 'fail))))
-  (cond
+  (cond 
    ((eq  instance1 instance2) (values instance1 nil)) 			; (*car2 & *car2)
    ((incompatible-instances instance1 instance2)
     (cond ((eq fail-mode 'error)
-	   (report-error 'user-error "Unification (~a ~a ~a) failed!~%       Problem was: ~a~%" instance1
+	   (report-error 'user-error "Unification (~a ~a ~a) failed!~%       Problem was: ~a~%" instance1 
 			 (cond ((and eagerlyp classes-subsumep) '&+!)
 			       (eagerlyp '&!) (classes-subsumep '&+) (t '&)) instance2
 			       (incompatible-instances instance1 instance2))))	; returns description of problem
@@ -15342,14 +15342,14 @@ OR nil if the unification fails.
 	 (anonymous-instancep instance1))
     (cond ((immediate-classes-subsume-immediate-classes instance1 instance2)
 	   (values instance2 (list (list instance1 instance2))))))
-					    ;;; else, if it's not of the above special
+					    ;;; else, if it's not of the above special 
 					    ;;; cases, check they are unifiable (based on classes)
 ; Now in incompatible instances check below
 ;  ((and (named-instancep instance1) (named-instancep instance2)) nil)	; (*f & *g), ("a" & "b") FAILS
    (t (multiple-value-bind
 	  (compatiblep violated-partitions locked-violations)
-	  (compatible-classes :instance1 instance1 :instance2 instance2 :classes-subsumep classes-subsumep
-			      :check-locked-classes-p classes-subsumep) ; [7]
+	  (compatible-classes :instance1 instance1 :instance2 instance2 :classes-subsumep classes-subsumep 
+			      :check-locked-classes-p classes-subsumep) ; [7]			      
 					; two KB objects, >= 1 anonymous
 					; then create binding list as needed.
 	(cond				; (X & Y): special cases where Y takes precidence:
@@ -15360,7 +15360,7 @@ OR nil if the unification fails.
 		     (and (not (named-instancep instance1)) ; EXCLUDE  *Fred & _Person3 -> _Person3
 			  (immediate-classes-subsume-immediate-classes instance1 instance2 :properp t))) ; 4/17/01: daring!!!!!
 		 (values instance2 (list (list instance1 instance2))))
-		(t (values instance1 (list (list instance2 instance1)))))) ; ELSE (X & Y) return X
+		(t (values instance1 (list (list instance2 instance1)))))) ; ELSE (X & Y) return X 
 	 ((eq fail-mode 'error)
 	  (cond (violated-partitions
 		 (report-error 'user-error "Unification (~a ~a ~a) failed! The classes were found to be incompatible.~%Partition(s) ~a was violated:~%~{~a~}"
@@ -15379,7 +15379,7 @@ OR nil if the unification fails.
 			       (first locked-violations)
 			       (second locked-violations)))
 		(t (report-error 'user-error "Unification (~a ~a ~a) failed! The classes were found to be incompatible.~%"
-				 instance1
+				 instance1 
 				 (cond ((and eagerlyp classes-subsumep) '&+!)
 				       (eagerlyp '&!) (classes-subsumep '&+) (t '&))
 				 instance2)))))))))
@@ -15389,7 +15389,7 @@ OR nil if the unification fails.
 ;;; [1] tests equality but only works if there are no redundant classes in the class lists.
 ;;; [2] is a little bit less efficient but WILL handle redundant classes in the class lists.
 (defun immediate-classes-subsume-immediate-classes (instance1 instance2 &key properp)
-  (let ( (immediate-classes1 (immediate-classes instance1))
+  (let ( (immediate-classes1 (immediate-classes instance1)) 
 	 (immediate-classes2 (immediate-classes instance2)) )
     (and (classes-subsume-classes immediate-classes1 immediate-classes2)
 	 (or (not properp)
@@ -15401,10 +15401,10 @@ OR nil if the unification fails.
 Check /== constraints. Note does *NOT* check Partitions, use compatible-classes for that.
 RETURNS: A string describing the problem
  [1] :test #'equal, to allow for  "cat" and _Animal-Name1 where (_Animal-Name1 (/== ("cat")))
- [2] IF there is some equality constraints, AND the check-slotvals-constraints FAILS for them,
+ [2] IF there is some equality constraints, AND the check-slotvals-constraints FAILS for them, 
 	THEN the instances are incompatible
  [3] I guess I'm assuming people will assert inequalities via KM> (x /== y), rather than such
-     statements being put on frames themselves. But really, we should do (km-int `#$(the /== of ,INSTANCE1)) to
+     statements being put on frames themselves. But really, we should do (km-int `#$(the /== of ,INSTANCE1)) to 
      be safe (/== is also assumed to be an atomic values only slot).
      Let's leave it as a direct get-vals, for efficiency for now!
 |#
@@ -15412,16 +15412,16 @@ RETURNS: A string describing the problem
   (cond ; ((not (atomp instance1))
 	;  (report-error 'program-error "non-atom ~a passed to incompatible-instances!~%" instance1))
         ((equal instance1 instance2) nil)
-        ((and (named-instancep instance1)
+        ((and (named-instancep instance1) 
 	      (named-instancep instance2)	; (*f & *g) FAILS
 	      (neq instance1 instance2)
 	      (cond ((and (stringp instance1) (stringp instance2)) "These are different strings!")
 		    ((and (numberp instance1) (numberp instance2)) "These are different numbers!")
 		    (t "These are different objects!"))
 	      ))
-	((classp instance1)
+	((classp instance1) 
 	 (cond ((not (isa instance2 '#$Class)) (km-format nil "~a is a class, but ~a isn't" instance1 instance2))))
-	((classp instance2)
+	((classp instance2) 
 	 (cond ((not (isa instance1 '#$Class)) (km-format nil "~a is a class, but ~a isn't" instance2 instance1))))
 	(*are-some-constraints*
 	 (let* ((instance1-neqs0 (cond ((and (kb-objectp instance1)
@@ -15429,7 +15429,7 @@ RETURNS: A string describing the problem
 				      (my-mapcan #'(lambda (neq-slot) (km-int `#$(the ,NEQ-SLOT of ,INSTANCE1))) *neq-slots*))))
 	       (instance2-neqs0 (cond ((and (kb-objectp instance2)
 					  (some #'(lambda (neq-slot) (get-vals instance2 neq-slot)) *neq-slots*))
-				      (my-mapcan #'(lambda (neq-slot) (km-int `#$(the ,NEQ-SLOT of ,INSTANCE2))) *neq-slots*))))
+				      (my-mapcan #'(lambda (neq-slot) (km-int `#$(the ,NEQ-SLOT of ,INSTANCE2))) *neq-slots*))))	       
 	       (instance1-neqs (cond ((member instance1 instance1-neqs0)
 				      (report-error 'user-warning "Error in the KB: ~a declared as not equal to ~a. Ignoring that declaration...~%" instance1 instance1)
 				      (remove instance1 instance1-neqs0))
@@ -15444,14 +15444,14 @@ RETURNS: A string describing the problem
 	     (km-format nil "~a has a constraint /== ~a on it." instance1 instance2))
 	    ((some #'(lambda (instance1-neq) (pending-equality instance2 instance1-neq)) instance1-neqs)	; HLO-4132
 	     (let ((instance1-neq (find-if #'(lambda (instance1-neq) (pending-equality instance2 instance1-neq)) instance1-neqs)))
-	       (km-format nil "~a has a constraint /== ~a on it, and (~a & ~a) is pending (higher up the goal stack)"
-			  instance1 instance1-neq instance1-neq instance2)))
+	       (km-format nil "~a has a constraint /== ~a on it, and (~a & ~a) is pending (higher up the goal stack)" 
+			  instance1 instance1-neq instance1-neq instance2)))	   
 	    ((member instance1 instance2-neqs :test #'equal)
 	     (km-format nil "~a has a constraint /== ~a on it." instance2 instance1))
 	    ((some #'(lambda (instance2-neq) (pending-equality instance1 instance2-neq)) instance2-neqs)	; HLO-4132
 	     (let ((instance2-neq (find-if #'(lambda (instance2-neq) (pending-equality instance1 instance2-neq)) instance2-neqs)))
-	       (km-format nil "~a has a constraint /== ~a on it, and (~a & ~a) is pending (higher up the goal stack)"
-			  instance2 instance2-neq instance2-neq instance1)))
+	       (km-format nil "~a has a constraint /== ~a on it, and (~a & ~a) is pending (higher up the goal stack)" 
+			  instance2 instance2-neq instance2-neq instance1)))	   
 	    ((and (numberp instance1)
 		  (kb-objectp instance2)
 		  (some #'(lambda (n) (and (numberp n) (<= instance1 n)))  (km-int `#$(the > of ,INSTANCE2))))
@@ -15465,9 +15465,9 @@ RETURNS: A string describing the problem
 		  (some #'(lambda (n) (and (numberp n) (<= instance2 n)))  (km-int `#$(the > of ,INSTANCE1))))
 	     (km-format nil "~a has a constraint > ~a on it." instance1 (km-int `#$(the > of ,INSTANCE1))))
 	    ((and (numberp instance2)
-		  (kb-objectp instance1)
+		  (kb-objectp instance1)		  
 		  (some #'(lambda (n) (and (numberp n) (>= instance2 n)))  (km-int `#$(the < of ,INSTANCE1))))
-	     (km-format nil "~a has a constraint < ~a on it." instance1 (km-int `#$(the < of ,INSTANCE1))))
+	     (km-format nil "~a has a constraint < ~a on it." instance1 (km-int `#$(the < of ,INSTANCE1))))	     
 	    ((let ((instance1-eq (cond ((kb-objectp instance1)
 					(get-vals instance1 '== :situation *global-situation*))))
 		   (instance2-eq (cond ((kb-objectp instance2)
@@ -15492,16 +15492,16 @@ _Person1			_Person2
 
 &&: Must check the first-level slots, that the values satisfy the
     constraints. The search for constraints is global, and if any are found
-    then the search for values is global also.
-    If there are no constraints, then && is guaranteed to succeed and so
+    then the search for values is global also. 
+    If there are no constraints, then && is guaranteed to succeed and so 
     doesn't need to be computed.
 
 &: As well as checking the first-level slot constraints, lazy-unify-vals does a
    &? check, which recursively checks that the second-level slot constraints
-   are satisfied (eg. if color is single-valued, that Red and Blue are
+   are satisfied (eg. if color is single-valued, that Red and Blue are 
    unifiable). Note that a second-level check isn't needed with &&.
 
-[1] As well as explicit constraints, there are also partition constraints which
+[1] As well as explicit constraints, there are also partition constraints which 
     must be checked for &, which means we must do an aggressive (the slot of X)
     for & operations, regardless of whether constraints are found or not.
 
@@ -15520,11 +15520,11 @@ a slot value).
 
 [1] It's only with eagerlyp that lazy-unify-vals will evaluate the unification and squish out the constraints (thus they need to be reinstalled)
 
-If :fail-mode is 'fail, then the calling procedure is *TESTING* unification, not actually *DOING* it.
+If :fail-mode is 'fail, then the calling procedure is *TESTING* unification, not actually *DOING* it. 
 
 eagerlyp   fail-mode
   nil        fail 	    test, no side effects. When used for &+, unification will follow if successful.
-[  t         fail  ]        not allowed (will leave side effects)
+[  t         fail  ]        not allowed (will leave side effects) 	
   nil        error 	    Used for &.  No side effects; forced unification will follow anyway in the calling procedure if *on-error* = 'continue
    t         error	    side effects; forced unification will follow anyway in the calling procedure if *on-error* = 'continue
 
@@ -15536,7 +15536,7 @@ If :eagerlyp = t, then there are side effects down in the details when unifying 
 	 (endp svs2)))	; ie. return (values t nil)
    (t (let* ( (test-p (eq fail-mode 'fail))     ; if :fail-mode 'fail, then it's just a test so it's ok to not complete it
 	      (sv1  (first svs1))
-	      (slot (or (slot-in sv1) 		; work through svs1 first. When done,
+	      (slot (or (slot-in sv1) 		; work through svs1 first. When done, 
 			(slot-in (first svs2))))	; work through remaining svs2.
 	      (exprs1 (vals-in sv1))
 	      (sv2 (assoc slot svs2))
@@ -15548,42 +15548,42 @@ If :eagerlyp = t, then there are side effects down in the details when unifying 
 	       (lazy-unify-slotsvals i1 i2 (rest svs1) rest-svs2 :cs1 cs1 :cs2 cs2 :classes-subsumep classes-subsumep :eagerlyp eagerlyp
 				     :check-constraintsp check-constraintsp :fail-mode fail-mode))
 	      ((or (not check-constraintsp)
-
-;;; SPECIAL CASE FOR UNIFYING PROTOTYPES:
+		   
+;;; SPECIAL CASE FOR UNIFYING PROTOTYPES: 
 ;;; If unifying prototypes (signified by eagerlyp) AND inherit-with-overrides AND no anonymous instances
-;;; THEN existing value (= from more specific prototype clone) takes precedence
+;;; THEN existing value (= from more specific prototype clone) takes precedence		   
 ;;; See test-suite/prototypes4.km and RELEASE-NOTES for KM 2.1.10.
 ;;; The goal of the below is to SKIP the constraint check, and have lazy-unify-vals handle any conflicting values
 ;;; there instead.
 ;;; [10] with looping, eagerly unifying prototypes may still leave a residual & structure in the result, even though
-;;;      KM is evaluating eagerly.
-;;; [11] We *could* add this as an extra constraint in, but seems like we don't need it.
+;;;      KM is evaluating eagerly.		   
+;;; [11] We *could* add this as an extra constraint in, but seems like we don't need it.		   
 		   (and ; eagerlyp [10]
 			*overriding-in-prototypes*
 			(inherit-with-overrides-slotp slot)
 ;			(not (format t "exprs1 = ~a, exprs2 = ~a~%" exprs1 exprs2))
 ;			(notany #'kb-objectp exprs1)
-;			(notany #'kb-objectp exprs2)
+;			(notany #'kb-objectp exprs2)		   
 			(notany #'anonymous-instancep exprs1)	; 2/12/13
-			(notany #'anonymous-instancep exprs2)
-;			(every #'fully-evaluatedp vs1) ; [11] DON'T drop expr2 for eg. (_Val22 & (if <..> then ...))
-;			(every #'fully-evaluatedp vs2)
+			(notany #'anonymous-instancep exprs2)		   			
+;			(every #'fully-evaluatedp vs1) ; [11] DON'T drop expr2 for eg. (_Val22 & (if <..> then ...)) 
+;			(every #'fully-evaluatedp vs2)	      		   
 			)
-		   (check-slotvals-constraints slot i1 i2 exprs1 exprs2 :cs1 cs1 :cs2 cs2
+		   (check-slotvals-constraints slot i1 i2 exprs1 exprs2 :cs1 cs1 :cs2 cs2 
 					       :classes-subsumep classes-subsumep :eagerlyp eagerlyp :fail-mode fail-mode)
 		   (not test-p)		; if constraints violated, but it's a forced unification, then keep going regardless
 		   )
 	       (multiple-value-bind
 		   (unified-vals successp1)
-		   (lazy-unify-vals slot i1 i2 exprs1 exprs2
+		   (lazy-unify-vals slot i1 i2 exprs1 exprs2 
 				    :cs1 cs1 :cs2 cs2 :classes-subsumep classes-subsumep :eagerlyp eagerlyp)
 		 (cond (successp1			;; else fail (return NIL)
 			(multiple-value-bind
 			 (successp unified-rest)
-			 (lazy-unify-slotsvals i1 i2 (rest svs1) rest-svs2 :cs1 cs1 :cs2 cs2
+			 (lazy-unify-slotsvals i1 i2 (rest svs1) rest-svs2 :cs1 cs1 :cs2 cs2 
 					       :classes-subsumep classes-subsumep :eagerlyp eagerlyp :check-constraintsp check-constraintsp
 					       :fail-mode fail-mode)
-			 (values successp (cond (unified-vals
+			 (values successp (cond (unified-vals 
 						 (cons (list slot unified-vals) unified-rest))
 						(t unified-rest)))))))))))))
 
@@ -15605,8 +15605,8 @@ unification is nil.
     IF WE DO THIS, THOUGH, then we *must* supply the class for the missing instance,
     so we can still gather the inherited constraints for the structure. This is done
     via cs1 and cs2.
-BUT: we also have a problem. If we are dealing with a structure (i2 = nil), then we don't just
-     need the inherited constraints, we also need the inherited slot-values, as these may
+BUT: we also have a problem. If we are dealing with a structure (i2 = nil), then we don't just 
+     need the inherited constraints, we also need the inherited slot-values, as these may 
      clash with constraints on/inherited by i1.
      And suppose these inherited expressions refer to Self? We've no Self to evaluate them for!
 
@@ -15628,7 +15628,7 @@ expensive thing to do inheritance as part of unification computation.
     be constraints on i1 in a supersituation.
 [8] exprs1, exprs2 are dereferenced, but the rule sets may not be.
 [9] (_Color3 has 					(*Green)
-	(== ((possible-values *Red *Blue))))
+	(== ((possible-values *Red *Blue))))		
 [10] Darn, need to keep these in so that:
    (a Partition with (members (Thymine Adenine Guanine Cytosine)))
    ((a Bond with (holds ((a Guanine)))) &? (a Bond with (holds ((exactly 2 Thing) (a Adenine) (a Thymine))))) <- should fail
@@ -15639,7 +15639,7 @@ expensive thing to do inheritance as part of unification computation.
      in the parent classes in general should not be a problem (although one can imagine pathological cases where they are)
      [13] 7/24/08 - No, skipping a full call to KM fails with prototypes. For HLO-2225, we end up with
 
-9          (_HI-Substance2474 &? _Bronsted-Lowry-Acid2578): Checking constraints on the electrolyte-status slot...
+9          (_HI-Substance2474 &? _Bronsted-Lowry-Acid2578): Checking constraints on the electrolyte-status slot...     
 10         -> (the electrolyte-status of _HI-Substance2474)
 10         <- FAIL!                      "(the electrolyte-status of _HI-Substance2474)"
 10         -> (the electrolyte-status of _Bronsted-Lowry-Acid2578)
@@ -15664,7 +15664,7 @@ status.
 (defun check-slotvals-constraints (slot i1 i2 exprs1 exprs2 &key cs1 cs2 classes-subsumep eagerlyp (fail-mode 'fail))
   (cond ((eq (dereference i1) (dereference i2)) 	; note, a subcall might unify these, including making some
 	 t)						; note-dones, which will mess up if we continue
-	(t (check-slotvals-constraints0 slot i1 i2 exprs1 exprs2 :cs1 cs1 :cs2 cs2
+	(t (check-slotvals-constraints0 slot i1 i2 exprs1 exprs2 :cs1 cs1 :cs2 cs2 
 					:classes-subsumep classes-subsumep :eagerlyp eagerlyp :fail-mode fail-mode))))
 
 ;;; NOTE: :eagerlyp argument used solely for formatting error messages (write &+!/&! rather than &+/&)
@@ -15673,27 +15673,27 @@ status.
   (cond ((and eagerlyp (eq fail-mode 'fail))
 	 (report-error 'program-error "Calling check-slotvals-constraints0 with :eagerlyp t and :fail-mode 'fail (not allowed!)~%")))
 ;(let ((fail-mode (cond (eagerlyp 'error) (t 'fail))))
- (or
+ (or 
 ; (eq slot '/==)			; don't check constraints on /== slot, it's done earlier in unify-names
-  (member slot *neq-slots*)		; don't check constraints on /== slot, it's done earlier in unify-names
+  (member slot *neq-slots*)		; don't check constraints on /== slot, it's done earlier in unify-names  
 ; (eq slot '#$instance-of)
   (ignore-slot-due-to-situations-mode slot)
   (and i1 (null i2) (null exprs2) (every #'(lambda (c2) (isa i1 c2)) cs2))	; [11]
   (and i2 (null i1) (null exprs1) (every #'(lambda (c1) (isa i2 c1)) cs1))	; [11]
-  (let*
+  (let* 
     ((no-inheritance-flagp (or (and i1 (member '#$(no-inheritance) (find-constraints-in-exprs exprs1) :test #'equal))
 			       (and i2 (member '#$(no-inheritance) (find-constraints-in-exprs exprs2) :test #'equal))))
-     (use-inheritance (and (use-inheritance)
-			   (not no-inheritance-flagp)
+     (use-inheritance (and (use-inheritance) 
+			   (not no-inheritance-flagp) 
 			   (not (inherit-with-overrides-slotp slot)))) ; [12]
-     (cs1-expr-sets
+     (cs1-expr-sets 
       (cond (cs1 (remove-if #'contains-self-keyword ; [6]
 			    (cons exprs1 (cond (use-inheritance
 						(inherited-rule-sets-on-classes cs1 slot :retain-commentsp t))))))
 	    (t (cons exprs1 (append (supersituation-own-rule-sets i1 slot :retain-commentsp t)
 				    (cond (use-inheritance
 					   (inherited-rule-sets i1 slot :retain-commentsp t)))))))) ; NB deref already done
-     (cs2-expr-sets
+     (cs2-expr-sets 
       (cond (cs2 (remove-if #'contains-self-keyword
 			    (cons exprs2 (cond (use-inheritance
 						(inherited-rule-sets-on-classes cs2 slot :retain-commentsp t))))))
@@ -15702,7 +15702,7 @@ status.
 					   (inherited-rule-sets i2 slot :retain-commentsp t))))))))
 
 ;;; cs1-expr-sets-all is SOLELY for the purpose of finding constraints. These *are* inherited, even for
-;;; inherits-with-overrides slots.
+;;; inherits-with-overrides slots.     
      (cs1-expr-sets-all
       (cond (use-inheritance cs1-expr-sets)
 	    (cs1 (remove-if #'contains-self-keyword ; [6]
@@ -15721,7 +15721,7 @@ status.
      							 :ignore-inherit-with-overrides-restriction t))))))
 
 #|
-OLD    (constraints (remove-duplicates
+OLD    (constraints (remove-duplicates 
 		    (append (cond (i1 (collect-constraints-on-instance i1 slot)) ; [3], [7]
 				  (cs1 (mapcan #'find-constraints-in-exprs cs1-expr-sets))
 				  (t (report-error 'program-error "Missing both instance1 and class1 in lazy-unify-slotsvals!~%")))
@@ -15730,14 +15730,14 @@ OLD    (constraints (remove-duplicates
 				  (t (report-error 'program-error "Missing both instance2 and class2 in lazy-unify-slotsvals!~%"))))
 		    :test #'equal)) )
 |#
-; 1/22/10 Note: desource, otherwise two functionally identical constraints will look different (sources now include the
+; 1/22/10 Note: desource, otherwise two functionally identical constraints will look different (sources now include the 
 ; destination instance, as well as the originating class)
 #|NEW|# (constraints1 (desource (mapcan #'find-constraints-in-exprs cs1-expr-sets-all)))
 	(constraints2 (desource (mapcan #'find-constraints-in-exprs cs2-expr-sets-all)))
 
 ;;; These are to TEST
         (constraints (cond ((and ; (am-in-local-situation) NOT ANY MORE! -> ; in global situation, lazy-unify-vals will catch this. For locals,
-				 (single-valued-slotp slot))		; need to do a bit more work, see age (23) age (24) example
+				 (single-valued-slotp slot))		; need to do a bit more work, see age (23) age (24) example 
 			    (remove-duplicates (cons '#$(exactly 1 Thing) ; in test-suite/constraints.km for a case where we need this work.
 						     (append constraints1 constraints2)) :test #'equal :from-end t))
 			   (t (remove-duplicates (append constraints1 constraints2) :test #'equal :from-end t)))))
@@ -15747,8 +15747,8 @@ OLD    (constraints (remove-duplicates
 ;    (km-format t "constraints1 = ~a~%constraints2 = ~a~%constraints = ~a~%" constraints1 constraints2 constraints)
 
 ;   (cond ((and (not constraints0)				; no constraints...
-;		(or (multivalued-slotp slot)
-;		    (null exprs1)   ; [1] for single-valued, may be partition constraints
+;		(or (multivalued-slotp slot)		
+;		    (null exprs1)   ; [1] for single-valued, may be partition constraints 
 ;		    (null exprs2)  ;  to check if there are *both* exprs1 and exprs2. Here I'm
 ;				    ; not looking for & checking inferred values (incompleteness)
 ;		(not eagerlyp)))
@@ -15758,18 +15758,18 @@ OLD    (constraints (remove-duplicates
 		))
 	  (t (cond ((am-in-local-situation-or-theory)		; RATHER VERBOSE SET OF CHOSING TRACING INFO!
 		    (cond ((and i1 i2) (km-trace 'comment "(~a &? ~a): Checking constraints on the ~a slot in ~a..." i1 i2 slot (curr-situation))) ; [4]
-			  (i1 (km-trace 'comment "(~a &? (a ~a with (~a ~a) ...): Checking constraints on the ~a slot in ~a..."
+			  (i1 (km-trace 'comment "(~a &? (a ~a with (~a ~a) ...): Checking constraints on the ~a slot in ~a..." 
 					i1 (delistify cs2) slot exprs2 slot (curr-situation))) ; [4]
-			  (i2 (km-trace 'comment "(~a &? (a ~a with (~a ~a) ...): Checking constraints on the ~a slot in ~a..."
+			  (i2 (km-trace 'comment "(~a &? (a ~a with (~a ~a) ...): Checking constraints on the ~a slot in ~a..." 
 					i2 (delistify cs1) slot exprs1 slot (curr-situation)))	; [4]
-			  (t (km-trace 'comment "((a ~a with (~a ~a) ...) &? (a ~a with (~a ~a) ...):~%     Checking constraints on the ~a slot in ~a..."
+			  (t (km-trace 'comment "((a ~a with (~a ~a) ...) &? (a ~a with (~a ~a) ...):~%     Checking constraints on the ~a slot in ~a..." 
 				       (delistify cs1) slot exprs1 (delistify cs2) slot exprs2 slot (curr-situation)))))
 		   (t (cond ((and i1 i2) (km-trace 'comment "(~a &? ~a): Checking constraints on the ~a slot..." i1 i2 slot))	; [4]
-			    (i1 (km-trace 'comment "(~a &? (a ~a with (~a ~a) ...): Checking constraints on the ~a slot..."
+			    (i1 (km-trace 'comment "(~a &? (a ~a with (~a ~a) ...): Checking constraints on the ~a slot..." 
 					  i1 (delistify cs2) slot exprs2 slot)) ; [4]
-			    (i2 (km-trace 'comment "(~a &? (a ~a with (~a ~a) ...): Checking constraints on the ~a slot..."
+			    (i2 (km-trace 'comment "(~a &? (a ~a with (~a ~a) ...): Checking constraints on the ~a slot..." 
 					  i2 (delistify cs1) slot exprs1 slot))	; [4]
-			    (t (km-trace 'comment "((a ~a with (~a ~a) ...) &? (a ~a with (~a ~a) ...):~%     Checking constraints on the ~a slot..."
+			    (t (km-trace 'comment "((a ~a with (~a ~a) ...) &? (a ~a with (~a ~a) ...):~%     Checking constraints on the ~a slot..." 
 					 (delistify cs1) slot exprs1 (delistify cs2) slot exprs2 slot)))))
 ;	     (km-format t "i1 = ~a, slot = ~a, cs1-expr-sets = ~a~%" i1 slot cs1-expr-sets)
 ;	     (km-format t "i2 = ~a, slot = ~a, cs2-expr-sets = ~a~%" i2 slot cs2-expr-sets)
@@ -15782,7 +15782,7 @@ OLD    (constraints (remove-duplicates
 
 
 	     (let* ( (vs1 (cond ((member slot '(== < >)) (cond (i1 (list i1))))		; [9]
-				(i1 (cond (*less-aggressive-constraint-checking* (remove-if-not #'fully-evaluatedp
+				(i1 (cond (*less-aggressive-constraint-checking* (remove-if-not #'fully-evaluatedp 
 								 (get-vals i1 slot :situation (target-situation (curr-situation) i1 slot))))
 				          ((already-done i1 slot)
 					   (remove-constraints (get-vals i1 slot :situation (target-situation (curr-situation) i1 slot))))
@@ -15791,7 +15791,7 @@ OLD    (constraints (remove-duplicates
 					       (km-int `#$(the ,SLOT of ,I1) :target `#$(the ,SLOT of ,I1)))))) ; [13]
 				(*less-aggressive-constraint-checking* (remove-if-not #'fully-evaluatedp exprs1))
 				;;; No, this gives a very confusing trace:
-				;;; (km-int-with-trace '#$(the holds of (a Bond with (holds ((a Adenine) (a Thymine))))) NIL)
+				;;; (km-int-with-trace '#$(the holds of (a Bond with (holds ((a Adenine) (a Thymine))))) NIL) 
 				;;;      2  -> (the holds of (a Bond with (holds ((exactly 2 Thing) (a Adenine) (a Thymine)))))
 				;;;	 2  <- NIL
 ;				(t (km-int-with-trace `#$(the ,SLOT of (a ,(VALS-TO-VAL CS1) with (,SLOT ,EXPRS1)))
@@ -15801,12 +15801,12 @@ OLD    (constraints (remove-duplicates
 										 (val-sets-to-expr exprs-to-evaluate))))
 				      ))))
 		     (vs2 (cond ((member slot '(== < >)) (cond (i2 (list i2))))		; [9]
-				(i2 (cond (*less-aggressive-constraint-checking* (remove-if-not #'fully-evaluatedp
+				(i2 (cond (*less-aggressive-constraint-checking* (remove-if-not #'fully-evaluatedp 
 								 (get-vals i2 slot :situation (target-situation (curr-situation) i2 slot))))
 				          ((already-done i2 slot)
 					   (remove-constraints (get-vals i2 slot :situation (target-situation (curr-situation) i2 slot))))
 					  (cs2-expr-sets (km-int-with-trace `#$(the ,SLOT of ,I2) (val-sets-to-expr cs2-expr-sets))) ; [11]
-					  (t (let ((*am-classifying* nil)) ; or else it'll be chaos?
+					  (t (let ((*am-classifying* nil)) ; or else it'll be chaos?  
 					       (km-int `#$(the ,SLOT of ,I2) :target `#$(the ,SLOT of ,I2)))))) ; [13]
 				(*less-aggressive-constraint-checking* (remove-if-not #'fully-evaluatedp exprs2))
 ;				(t (km-int-with-trace `#$(the ,SLOT of (a ,(VALS-TO-VAL CS2) with (,SLOT ,EXPRS2)))
@@ -15836,14 +15836,14 @@ OLD    (constraints (remove-duplicates
 ;		     )
 ;;; ---------- Y-END ----------
 
-;;; -- start --
+;;; -- start -- 
 
 ;;;	       (cond ((and i1 vs1) (add-vals i1 slot vs1)))		; put the answers back
 ;;;	       (cond ((and i2 vs2) (add-vals i2 slot vs2)))
 ;;;
-;;; Above, No! This is a disasterous typo'/conceputual error in the patch -
+;;; Above, No! This is a disasterous typo'/conceputual error in the patch - 
 ;;; Originally, in some circumstances, I did (km-int `#$(the ,SLOT of ,I1)) to compute vs1. But this was
-;;; overly agressive, invoking projection, inheritance etc.
+;;; overly agressive, invoking projection, inheritance etc. 
 ;;; To tame this down, I just evaluate the expressions on the slot. But I should put-vals, not add-vals
 ;;; back, and if I do that, I need to make sure I do all the book-keeping necessary (in particular
 ;;; deleting the old expressions, and folding constraints back in. Any other things I've forgotten??
@@ -15863,14 +15863,14 @@ KM> (a Car with (parts ((a Foosball))))
 KM> (_Car1 & _Car2)
 (_Car1)
 KM> (showme _Car1)
-(_Car1 has
+(_Car1 has 
   (instance-of (Car))
   (parts ((a Foosball))))		; the evaluated Foosball has been overwritten...
 KM> (showme Foosball)
-(Foosball has
+(Foosball has 
   (instances (_Foosball4)))		; but the Skolem instance is still lying around!
 KM> (showme _Foosball4)
-(_Foosball4 has
+(_Foosball4 has 
   (instance-of (Foosball))
   (parts-of (_Car1)))			; part-of of _Car1...
 KM> (the parts of _Car1)
@@ -15880,27 +15880,27 @@ KM> (the parts of _Car1)
 ;;; OLD (pre-caching) version - revert back to doing this
 ;	       (format t "i1=~a, vs1=~a~%" i1 vs1)
 	       (cond ((and i1 vs1 (not (dont-cache-values-slotp slot)))
-		      (let*
+		      (let* 
 ; BUG!			  ( (constraints1 (find-constraints-in-exprs cs1-expr-sets))
 ; unnecessarily many	  ( (constraints1 (my-mapcan #'find-constraints-in-exprs cs1-expr-sets))
 ; done earlier		  ( (constraints1 (find-constraints-in-exprs exprs1))
 			  ( (constraints1-to-put (find-constraints-in-exprs exprs1))
 			    (vs1+constraints1 (cond (constraints1-to-put
-						     (cond ((single-valued-slotp slot)
+						     (cond ((single-valued-slotp slot) 
 							    (val-to-vals (vals-to-&-expr (append vs1 constraints1-to-put))))
 							   (t (append vs1 constraints1-to-put))))
 						    (t vs1))) )
 ;			(km-format t "constraints1-to-put = ~a~%" constraints1-to-put)
 			(put-vals i1 slot vs1+constraints1))))	; NB no note-done, as didn't use inheritance
 ;	       (format t "i2=~a, vs2=~a~%" i2 vs2)
-	       (cond ((and i2 vs2 (not (dont-cache-values-slotp slot)))
-		      (let*
+	       (cond ((and i2 vs2 (not (dont-cache-values-slotp slot))) 
+		      (let* 
 ; BUG!			  ( (constraints2 (find-constraints-in-exprs cs2-expr-sets))
 ; unnecessarily many	  ( (constraints2 (my-mapcan #'find-constraints-in-exprs cs2-expr-sets))
 ; done earlier		  ( (constraints2 (find-constraints-in-exprs exprs2))
 			  ( (constraints2-to-put (find-constraints-in-exprs exprs2))
 			    (vs2+constraints2 (cond (constraints2-to-put
-						    (cond ((single-valued-slotp slot)
+						    (cond ((single-valued-slotp slot) 
 							   (val-to-vals (vals-to-&-expr (append vs2 constraints2-to-put))))
 							  (t (append vs2 constraints2-to-put))))
 						    (t vs2))) )
@@ -15908,34 +15908,34 @@ KM> (the parts of _Car1)
 			(put-vals i2 slot vs2+constraints2))))	; NB no note-done, as didn't use inheritance
 |#
 
-;;; REVISED 11/29/00
+;;; REVISED 11/29/00 
 ;;; REMOVED 5/10/01 - cache no longer used - return to old version above.
 ;	       (cond ((and i1 vs1) (put-vals-in-cache i1 slot vs1)))	; constraints left in the non-cache
 ;	       (cond ((and i2 vs2) (put-vals-in-cache i2 slot vs2)))	; constraints left in the non-cache
 
-;;; -- end --
+;;; -- end -- 
 
 ;	       (km-format t "constraints1 = ~a~%" constraints1)
 ;	       (km-format t "constraints2 = ~a~%" constraints2)
 ;	       (km-format t "constraints = ~a~%" constraints)
-;	       (cond
+;	       (cond 
 ;	        ((and (are-consistent-with-constraints vs1 (set-difference constraints2 constraints1 :test #'equal) slot)
 ;		      (are-consistent-with-constraints vs2 (set-difference constraints1 constraints2 :test #'equal) slot)
-;		      (test-set-constraints vs1 vs2
+;		      (test-set-constraints vs1 vs2 
 ;	       (km-format t "vs1 = ~a~%" vs1)
 ;	       (km-format t "vs2 = ~a~%" vs2)
 ;	       (km-format t "cs1-expr-sets = ~a~%" cs1-expr-sets)
 ;              (km-format t "cs2-expr-sets = ~a~%" cs2-expr-sets)
 	       (let* ((expr-sets (remove nil
 			          `(,vs1 ,vs2 ,@(cond ((not i1) cs1-expr-sets))     ; to get the existentials in cs1-expr-sets if ignored earlier at [5]
-				  	      ,@(cond ((not i2) cs2-expr-sets)))))  ; to get the existentials in cs1-expr-sets if ignored earlier at [5]
+				  	      ,@(cond ((not i2) cs2-expr-sets)))))  ; to get the existentials in cs1-expr-sets if ignored earlier at [5]			  
 		      (constraint-violation		; (constraint+vals)
 	       	       (or (violated-constraints vs1 (set-difference constraints2 constraints1 :test #'equal) slot :mode 'consistent)
 		           (violated-constraints vs2 (set-difference constraints1 constraints2 :test #'equal) slot :mode 'consistent)
 			   (violated-set-constraints expr-sets constraints))))
 ;		(km-format t "expr-sets = ~a~%" expr-sets)
 	        (cond
-		 ((not constraint-violation))	; continue
+		 ((not constraint-violation))	; continue				    
                  (t (let* ((i1-str (or i1 `(#$a ,@cs1 #$with (,slot ,exprs1))))
 			   (i2-str (or i2 `(#$a ,@cs2 #$with (,slot ,exprs2))))
 			   (violated-constraint (first constraint-violation)) ; e.g., (at-most 1 Cell)
@@ -15944,28 +15944,28 @@ KM> (the parts of _Car1)
 			   				 (violated-set-constraints (remove nil `(,vs1 ,@(cond ((not i1) cs1-expr-sets))))
 										   constraints1))))
 			   (i2-self-inconsistency (cond ((set-constraint-exprp violated-constraint)
-							 (violated-set-constraints (remove nil `(,vs2 ,@(cond ((not i2) cs2-expr-sets))))
+							 (violated-set-constraints (remove nil `(,vs2 ,@(cond ((not i2) cs2-expr-sets)))) 
 							                           constraints2))))
 			   )
 		      (cond
-		       (i1-self-inconsistency
+		       (i1-self-inconsistency 
 			(cond (i1 (report-error 'user-warning "Self-inconsistent instance encountered! (found when testing the unifiability of ~a and ~a)!
       (~a has (~a ~a))~%" i1 i2-str i1 slot (append (remove nil vs1) (list violated-constraint)))))
 			(cond (i1 (km-trace 'comment "Instances ~a and ~a won't unify:
    ~a is a self-inconsistent object, so won't unify with anything!
-   Self-inconsistency is:
+   Self-inconsistency is: 
       (~a has (~a ~a))~%" i1 i2-str i1 i1 slot (append (remove nil vs1) (list violated-constraint))))
 			      (t (km-trace 'comment "Instances ~a and ~a won't unify:
    ~a is a self-inconsistent object, so won't unify with anything!~%"
 					   `(#$a ,@cs1 #$with (,slot (,@exprs1 ,violated-constraint)))
 					   i2-str
 					   `(#$a ,@cs1 #$with (,slot (,@exprs1 ,violated-constraint)))))))
-		       (i2-self-inconsistency
+		       (i2-self-inconsistency 
 			(cond (i2 (report-error 'user-warning "Self-inconsistent instance encountered! (found when testing the unifiability of ~a and ~a)!
       (~a has (~a ~a))~%" i1-str i2 i2 slot (append (remove nil vs2) (list violated-constraint)))))
 			(cond (i2 (km-trace 'comment "Instances ~a and ~a won't unify:
    ~a is a self-inconsistent object, so won't unify with anything!
-   Self-inconsistency is:
+   Self-inconsistency is: 
       (~a has (~a ~a))~%" i1-str i2 i2 i2 slot (append (remove nil vs2) (list violated-constraint))))
 			      (t (km-trace 'comment "Instances ~a and ~a won't unify:
    ~a is a self-inconsistent object, so won't unify with anything!~%"
@@ -15973,14 +15973,14 @@ KM> (the parts of _Car1)
 					   `(#$a ,@cs2 #$with (,slot (,@exprs2 ,violated-constraint)))
 					   `(#$a ,@cs2 #$with (,slot (,@exprs1 ,violated-constraint)))))))
 		       (t (case fail-mode
-		     ;;; Note: :fail-mode fail does *not* imply a KB error, this is just a tracing message
+		     ;;; Note: :fail-mode fail does *not* imply a KB error, this is just a tracing message	  
 			    (fail (km-trace 'comment "Instances ~a and ~a won't unify~%   Constraint ~a violated by value(s) ~a on slot '~a'.~%"
 					    i1-str i2-str violated-constraint violating-vals slot))
 			    (error (report-error 'user-error "Unification (~a ~a ~a) failed!~%  Constraint ~a violated by value(s) ~a on slot '~a'.
-  To debug: Do (showme ~a) and (showme ~a) and check the values on the '~a' slot.~%"
-					   i1-str
+  To debug: Do (showme ~a) and (showme ~a) and check the values on the '~a' slot.~%"		     
+					   i1-str 
 					   (cond ((and eagerlyp classes-subsumep) '&+!)
-						 (eagerlyp '&!) (classes-subsumep '&+) (t '&))
+						 (eagerlyp '&!) (classes-subsumep '&+) (t '&)) 
 					   i2-str
 					   violated-constraint violating-vals slot i1-str i2-str slot))))))
 			)))))))))
@@ -16001,7 +16001,7 @@ RETURNS TWO values
 
 **NOTE** If eagerlyp = t, then the unification *must* succeed. But if not, it is allowed to fail.
 	i.e., (i1 &+? i2), (i1 &? i2), and (i1 & i2) all use this (for failure in the last case, it's reported after this procedure exits)
-        but   (i1 &+! i2) is never called here, as the interpreter calls (i1 &+? i2) followed by (i1 &! i2).
+        but   (i1 &+! i2) is never called here, as the interpreter calls (i1 &+? i2) followed by (i1 &! i2). 
 
 11/17/00: This *doesn't* catch single-valued slot constraints, when v1 is local and given, but v2 is
 	  to be inherited and clashes with v1.
@@ -16029,7 +16029,7 @@ RETURNS TWO values
 	        (((1 2) && (2)))
      This causes structures to grow every time unification happens - urgh! Do a subbagp test (below).
 [8] Ignore worrying about values from multiple prototypes, for now!
-[9]
+[9] 
   -> (the Plasma-membrane has-part of (the Diploid-cell object of (a Nuclear-Division))) [called in *Global]
    -> (the has-part of (the Diploid-cell object of (a Nuclear-Division))) [called in *Global]
     -> (the has-part of _Diploid-cell4237)             [called in *Global]
@@ -16042,12 +16042,12 @@ RETURNS TWO values
                         (|_Diploid-cell4237| |_Living-Entity4355| |_Living-Entity4354| |_Living-Entity4353| |_Living-Entity4352|)
          :classes-subsumep t
          :eagerlyp nil)
- *Note* Here that although we are unifying in a clone, the recursion has left :eagerlyp nil. However, here we *do* want
+ *Note* Here that although we are unifying in a clone, the recursion has left :eagerlyp nil. However, here we *do* want 
  to heuristically unify the Living-Entities, as they both originated from the same prototype.
 |#
 (defun lazy-unify-vals (slot i1 i2 vs1 vs2 &key cs1 cs2 classes-subsumep eagerlyp)
  ; (declare (ignore cs1 cs2))
-  (cond  ((null vs2) (values vs1 t))	; NB With more aggressive constraint checking, we won't just deal with local values but
+  (cond  ((null vs2) (values vs1 t))	; NB With more aggressive constraint checking, we won't just deal with local values but 
 	((null vs1) (values vs2 t))	;    compute global values, to check there's no constraint violation. = too expensive??
 	((km-equal vs1 vs2) (values vs1 t))
 	((subbagp vs1 vs2 :test #'equal) (values vs2 t))
@@ -16058,7 +16058,7 @@ RETURNS TWO values
 ; BELOW: But with prototype instances we DO want unification (HLO-2366 - problem!) (see test-suite/hlo2366.km)
 ; 	((combine-values-by-appending-slotp slot) (values (remove-dup-instances (append vs1 vs2)) t))
 ; We can restrict this so that only if vs2 are (non-cloned) atomic instances -- vs2 are the things being ADDED
-; to vs1, hence the asymmetry -- then we append, otherwise we DO unification so that protoinstances ARE unified
+; to vs1, hence the asymmetry -- then we append, otherwise we DO unification so that protoinstances ARE unified 
 ; (HLO-2366)
  	((or (member slot *built-in-combine-values-by-appending-slots*) ;*built-in-atomic-vals-only-slots* MUSTN'T be &&ed
 					; AND same for the other built-in-combine-values-by-appending-slots* too, namely
@@ -16073,8 +16073,8 @@ RETURNS TWO values
 ;;;
 ;;; BELOW:
 ;;; IF   the thing being unified in is completely a prototype [i.e., all Skolems are clones]
-;;; THEN SKIP the append, and do a normal unification
-;;; 11/2/09 - NO, this causes an error!!! See test-suite/combine-values-by-appending2.km for a description
+;;; THEN SKIP the append, and do a normal unification		  
+;;; 11/2/09 - NO, this causes an error!!! See test-suite/combine-values-by-appending2.km for a description		  
 ;		  (let ((skolems (remove-if-not #'anonymous-instancep (flatten vs2))))
 ;		    (or (null skolems)			 ; not prototype if no Skolems
 ;			(notevery #'isa-clone skolems))) ; not prototype if some non-clone Skolem exists
@@ -16093,11 +16093,11 @@ RETURNS TWO values
 						    (get-unique-val protoinstance '#$prototype-participant-of))
 						(append (get-vals i1 '#$cloned-from)
 						(get-vals i2 '#$cloned-from)))))
-|#
+|#						
 	 (let ((new-vals (cond  ; [8] No, still doesn't work. See comments at merge-prototype-vals below
 			  ((and eagerlyp ; doing prototype unification
 			        i1 i2
-				; [10] if unifying in a (clone of a) prototype that is already partially included
+				; [10] if unifying in a (clone of a) prototype that is already partially included 
 				;      in the instance graph, then consider &&'ing the prototype vals
 				*partially-included-prototype*
 				(member *partially-included-prototype*  ; [10]
@@ -16111,15 +16111,15 @@ RETURNS TWO values
 				)
 			   (remove-dup-instances (merge-prototype-vals slot i1 i2 vs1 vs2)))
 			  (t (remove-dup-instances (append vs1 vs2))))))
-	   (values new-vals t)))		; optimized access methods assume atomic values only.
-
-;;; SPECIAL CASE FOR UNIFYING PROTOTYPES:
+	   (values new-vals t)))		; optimized access methods assume atomic values only.	
+	
+;;; SPECIAL CASE FOR UNIFYING PROTOTYPES: 
 ;;; If unifying prototypes (signified by eagerlyp) [ AND clash (check-slotvals-constraints failed) <- NO! See below ]
 ;;; AND inherit-with-overrides AND no anonymous instances, THEN existing value (= from more specific prototype clone)
 ;;; takes precedence.
 ;;; [10] with looping, eagerly unifying prototypes may still leave a residual & structure in the result, even though
-;;;      KM is evaluating eagerly.
-;;; [11] We *could* add this as an extra constraint in, but seems like we don't need it.
+;;;      KM is evaluating eagerly.		   
+;;; [11] We *could* add this as an extra constraint in, but seems like we don't need it.		   
 	((and				; eagerlyp  [10]
 	      *overriding-in-prototypes*
 ;	      (not (format t "vs1 = ~a, vs2 = ~a~%" vs1 vs2))
@@ -16128,9 +16128,9 @@ RETURNS TWO values
 ;	      (notany #'kb-objectp vs2)
 	      (notany #'anonymous-instancep vs1)	; 2/12/13
 	      (notany #'anonymous-instancep vs2)
-
-;	      (every #'fully-evaluatedp vs1)   ; [11] DON'T drop expr2 for eg. (_Val22 & (if <..> then ...))
-;	      (every #'fully-evaluatedp vs2)
+	      
+;	      (every #'fully-evaluatedp vs1)   ; [11] DON'T drop expr2 for eg. (_Val22 & (if <..> then ...)) 
+;	      (every #'fully-evaluatedp vs2)	      
 ; No, let vs1 ALWAYS take precedence, even if no clash
 ;	      (not (check-slotvals-constraints slot i1 i2 vs1 vs2 :cs1 cs1 :cs2 cs2 :eagerlyp eagerlyp))
 	      )
@@ -16138,10 +16138,10 @@ RETURNS TWO values
 	       (vs2-vals (remove-constraints vs2))
 	       (vs1-constraints (find-constraints-in-exprs vs1)))
 	   (make-comment "Prototype unification: Dropping value ~a on slot ~a (~a overrides it)"
-			 (delistify vs2-vals) slot (delistify vs1-vals))
-	   (values (append (km-int (vals-to-val vs1)) vs1-constraints)
+			 (delistify vs2-vals) slot (delistify vs1-vals)) 
+	   (values (append (km-int (vals-to-val vs1)) vs1-constraints)	   
 		   t)))
-
+	       	
 	((single-valued-slotp slot)
 	 (cond ((or (not (singletonp vs1))
 		    (not (singletonp vs2)))
@@ -16153,7 +16153,7 @@ Continuing, assuming all these values should be unified together...~%" vs1 vs2))
 			    (not (and (atom (first vs1))
 				      (atom (first vs2))))))
 		      (*less-aggressive-constraint-checking* t)
-		      (classes-subsumep
+		      (classes-subsumep 
 		       (km-trace 'comment "Checking unifiability of values on the ~a slot of ~a and ~a" slot i1 i2)
 		       (km-int `(,(first vs1) &+? ,(first vs2)) ; [2], [6]
 ; Neah, not really a target for &? tests
@@ -16162,23 +16162,23 @@ Continuing, assuming all these values should be unified together...~%" vs1 vs2))
 					     ))
 		      (t (km-trace 'comment "Checking unifiability of values on the ~a slot of ~a and ~a" slot i1 i2)
 			 (km-int `(,(first vs1) &? ,(first vs2)) ; [2], [6]
-; Neah, not really a target for &? tests
+; Neah, not really a target for &? tests				 
 				 :target (cond (i2 `(#$the ,slot #$of (,i1 &/&? ,i2)))
 					       (t `(#$the ,slot #$of ,i1)))
 					       )))))
 	   (cond
 	    (unifiablep
-	     (cond (eagerlyp
+	     (cond (eagerlyp 
 		       (km-trace 'comment "Eagerly unifying values on the ~a slot of ~a and ~a" slot i1 i2)
-		       (let ((new-vals
-			      (km-int (vals-to-val
+		       (let ((new-vals 
+			      (km-int (vals-to-val 
 				       (and-append (list (first vs1)) '&! (list (first vs2)))) ; eagerly -> do it!  [1],[3]
 				      :target (cond (i2 `(#$the ,slot #$of (,i1 &! ,i2)))
 						    (t `(#$the ,slot #$of ,i1))
 						    )))) ; [4]
 			 (values
 			  (val-to-vals (vals-to-&-expr (remove-duplicates (append new-vals
-										  (find-constraints-in-exprs vs1)
+										  (find-constraints-in-exprs vs1) 
 										  (find-constraints-in-exprs vs2))
 									  :test #'equal)))
 			  t)))
@@ -16187,12 +16187,12 @@ Continuing, assuming all these values should be unified together...~%" vs1 vs2))
 			  t)))))))
 					; THEN lazy unify them
 ;;	(eagerlyp (and-append vs1 '&&! vs2))						; [5]
-#|NEW|#	(eagerlyp	; NOTE: if :eagerlyp = t, then it's a FORCED unification
+#|NEW|#	(eagerlyp	; NOTE: if :eagerlyp = t, then it's a FORCED unification 
  	   	  (let* ((vs1-vals (remove-constraints vs1)) ; see note [7] under lazy-unify-expr-sets
 			 (vs2-vals (remove-constraints vs2))
 			 (local-vs1-constraints (find-constraints-in-exprs vs1))
-			 (local-vs2-constraints (find-constraints-in-exprs vs2)))
-
+			 (local-vs2-constraints (find-constraints-in-exprs vs2))) 
+			
 		    (cond ((null vs1-vals) (values (append vs2-vals local-vs1-constraints local-vs2-constraints) t))
 			  ((null vs2-vals) (values (append vs1-vals local-vs1-constraints local-vs2-constraints) t))
 #| Now redundant [inaccessible] because of test earlier, see HLO-2366 notes above.
@@ -16207,10 +16207,10 @@ Continuing, assuming all these values should be unified together...~%" vs1 vs2))
 			   		local-vs1-constraints local-vs2-constraints)
 				   t))
 |#			  (t ; Else if we are merging values we better APPLY the constraints now (as eagerlyp = t)
-			   (let* ((inherited-vs1-expr-sets
+			   (let* ((inherited-vs1-expr-sets 
 				   (cond (i1 (inherited-rule-sets i1 slot :retain-commentsp t
 								  :ignore-inherit-with-overrides-restriction t))))
-				  (inherited-vs2-expr-sets
+				  (inherited-vs2-expr-sets 
 				   (cond (i2 (inherited-rule-sets i2 slot :retain-commentsp t
 								  :ignore-inherit-with-overrides-restriction t))))
 				  (inherited-vs1-constraints (mapcan #'find-constraints-in-exprs inherited-vs1-expr-sets))
@@ -16220,18 +16220,18 @@ Continuing, assuming all these values should be unified together...~%" vs1 vs2))
 				  (all-constraints (remove-duplicates (append all-vs1-constraints all-vs2-constraints)
 								      :test #'equal)))
 			     (km-trace 'comment "Eagerly unifying values on the ~a slot of ~a and ~a" slot i1 i2)
-			     (let ((vs12 (km-int (vals-to-val (and-append vs1 '&&! vs2))
+			     (let ((vs12 (km-int (vals-to-val (and-append vs1 '&&! vs2)) 
 						 :target (cond (i2 `(#$the ,slot #$of (,i1 &! ,i2)))
 							       (t `(#$the ,slot #$of ,i1))
 							       )))) ; [4]
 			       (cond
 				((not all-constraints) (values vs12 t))
 				((are-consistent-with-constraints vs12 all-constraints slot)
-				 (let ((post-constraint-enforcement-values
+				 (let ((post-constraint-enforcement-values 
 					(enforce-constraints vs12 all-constraints
 							     :target `#$(the ,SLOT of ,I1)))) ; I1 not used in enf-c
-				   (values (append post-constraint-enforcement-values
-						   (remove-duplicates
+				   (values (append post-constraint-enforcement-values 
+						   (remove-duplicates 
 						    (append local-vs1-constraints local-vs2-constraints)
 						    :test #'equal))
 					   t)))
@@ -16239,7 +16239,7 @@ Continuing, assuming all these values should be unified together...~%" vs1 vs2))
 				 (let ((violated-constraint
 					(violated-constraints vs12 all-constraints slot :mode 'consistent)))
 				   (report-error 'user-error
-						 "Unification (~a ~a ~a) failed on slot ~a with combined values
+						 "Unification (~a ~a ~a) failed on slot ~a with combined values 
 ~a:
 Constraint ~a was violated by value(s) ~a.~%"
 						 (or i1 `(#$a ,@cs1 #$with (,slot ,vs1)))
@@ -16269,7 +16269,7 @@ Constraint ~a was violated by value(s) ~a.~%"
 	    (intersection vs2-classes *classes-to-never-heuristically-merge*)))))
 
 #|
-See test-suite/combine-values-by-appending2.km, combine-values-by-appending3.km,
+See test-suite/combine-values-by-appending2.km, combine-values-by-appending3.km, 
 
 This is for the special case of merging cloned values on a combine-values-by-appending slot.
 For this special case we *do*, sometimes, need to &! the values. ;-(
@@ -16294,27 +16294,27 @@ This is really hacky, but I don't know what else to do!!
 	RESULT: combine-values-by-appending4.km - gets further now, but STILL has a problem.
 	I give up! Is it really such a problem with trimming prototypes?
 
-[4/23/12]:
+[4/23/12]: 
 Recap: I had said: (merge-prototype-vals (a b) (c d)) -> (a (b &! c) d)   if b and c have intersecting cloned-from tags AND are same classes.
 However, this causes failure when c has been specialized (HLO-4228):
 	[[Vesicle]] -is-part-of-> [Cell]
-	    |				   \
+	    |				   \	
 	[[Synaptic-Vesicle]] -is-part-of-> [Nerve-Cell]
 
-Now when KM does ((clone Vesicle) &! (clone Synaptic-Vesicle)), then (merge-prototype-vals i1 i2 (clone Cell) (clone Nerve-Cell))
+Now when KM does ((clone Vesicle) &! (clone Synaptic-Vesicle)), then (merge-prototype-vals i1 i2 (clone Cell) (clone Nerve-Cell)) 
 returns ((clone Cell) (clone Nerve-Cell)) rather than &!'ing them. So change this from (intersection <classes1> <classes2>) to (classes-subsume-classes <classes1> <classes2>)
-
+	
 Cell and Nerve-Cell satisfy all the other conditions for unifiability: cloned from same node.
 |#
 (defun merge-prototype-vals (slot i1 i2 vs1 vs2)
   (let* (
-;	 (i1-source-protoinstances (get-vals i1 '#$cloned-from))
+;	 (i1-source-protoinstances (get-vals i1 '#$cloned-from))	       
 	 (i1-source-protoinstances (node-cloned-from* i1))
 	 (i1-source-protoroots (my-mapcan #'(lambda (i)
 					      (get-vals i '#$prototype-participant-of))
 					  i1-source-protoinstances))
-;	 (i2-source-protoinstances (get-vals i2 '#$cloned-from))
-	 (i2-source-protoinstances (node-cloned-from* i2))
+;	 (i2-source-protoinstances (get-vals i2 '#$cloned-from))	       
+	 (i2-source-protoinstances (node-cloned-from* i2))	 
 	 (i2-source-protoroots (my-mapcan #'(lambda (i)
 					      (get-vals i '#$prototype-participant-of))
 					  i2-source-protoinstances))
@@ -16333,7 +16333,7 @@ Cell and Nerve-Cell satisfy all the other conditions for unifiability: cloned fr
 	   (km-format t "intersection = ~a~%" i12-source-protoroots)
 	   (km-format t "i1-source-protoinstances-in-protoroots = ~a~%" i1-source-protoinstances-in-protoroots)
 	   (km-format t "i2-source-protoinstances-in-protoroots = ~a~%" i2-source-protoinstances-in-protoroots)
-	   (km-format t "intersection = ~a~%" (intersection i1-source-protoinstances-in-protoroots
+	   (km-format t "intersection = ~a~%" (intersection i1-source-protoinstances-in-protoroots 
 							    i2-source-protoinstances-in-protoroots))))
     (cond
      ((and i12-source-protoroots		; i1 and i2 were cloned from the same prototype..
@@ -16346,40 +16346,40 @@ Cell and Nerve-Cell satisfy all the other conditions for unifiability: cloned fr
 ======================================================================
  Find any &! equalities that should be applied, representing duplicated (non-trimmed) parts of the prototype
  =====================================================================
-
-ALGORITHM for pairing up vs1 and vs2, e.g.,   (a b c (a Foo)) (c d a e (a Bar))
-1. [remove-equal-items]
-   Remove items that equal, or pending equal, each other, and also non-kb-objects
-			(b) (d e)
+ 
+ALGORITHM for pairing up vs1 and vs2, e.g.,   (a b c (a Foo)) (c d a e (a Bar))  
+1. [remove-equal-items] 
+   Remove items that equal, or pending equal, each other, and also non-kb-objects 
+			(b) (d e)   
 2. [within prototype-merge-expr1]
-   Find, score, and order (best to worst) all possible permutations  -> possible-unifications
+   Find, score, and order (best to worst) all possible permutations  -> possible-unifications 
 									((b e 4)
 									 (b d 3))
 3. [prototype-merge-expr2]
-   Walk through the original vs1 list again. For each v1 in turn:
+   Walk through the original vs1 list again. For each v1 in turn: 
      a. If the v1 item is a non-kb-object, add v1 to the new-vs1.
      b. If the v1 item is equal/pending-equal to a v2 item, remove the v2 item from vs2. Add v1 to the new-vs1.
      c. If (v1 &! ?v2) is in the possible-unifications, and v2 is still in vs2,
         then add the first (v1 &! v2) (= the best) to new-vs1, and remove v2 from vs2.
      d. Else add v1 to new-vs1.
-4. Append any remaining vs2 to the list.
+4. Append any remaining vs2 to the list.	
 
 In this example, the result will be: (a (b &! d) c (a Foo) e (a Bar))	[ or same, with b and d switched ]
 |#
-;;; (prototype-merge-expr1 '#$(a b c (a Foo)) '#$(c d a e (a Bar)))
+;;; (prototype-merge-expr1 '#$(a b c (a Foo)) '#$(c d a e (a Bar))) 
 ;;; -> (a (b &! d) c (a Foo) e (a Bar))
 (defun prototype-merge-expr1 (slot i1 i2 vs1 vs2 &key source-protoroots)
   (multiple-value-bind
       (uneq-vs1 uneq-vs2)
       (remove-equal-items vs1 vs2)
     (let* ((all-pairs (permute (list uneq-vs1 uneq-vs2))) ;(permute '((a b c) (d e)))->((a d) (a e) (b d) (b e) (c d) (c e))
-	   (scored-pairs (remove nil
-			  (mapcar #'(lambda (pair)
-				      (score-pair (first pair) (second pair) :source-protoroots source-protoroots))
+	   (scored-pairs (remove nil 
+			  (mapcar #'(lambda (pair) 
+				      (score-pair (first pair) (second pair) :source-protoroots source-protoroots)) 
 				  all-pairs)))
 	   (ordered-scored-pairs (sort scored-pairs #'> :key #'third))
 	   (unifications (prototype-merge-expr2 ordered-scored-pairs vs1 vs2 i1 i2 slot)))
-      (cond (unifications
+      (cond (unifications 
 	     (let ((expr (append (mapcar #'(lambda (v1)
 					     (or (assoc v1 unifications) ; assoc returns (v1 &! v2)
 						 v1))
@@ -16401,7 +16401,7 @@ In this example, the result will be: (a (b &! d) c (a Foo) e (a Bar))	[ or same,
 		 (km-int (vals-to-val expr) :target `(#$the ,slot #$of (,i1 &! ,i2)))))
 	    (t (append vs1 vs2))))))
 
-;;; Returns just the unifications (v1 &! v2) in no particular order. The ununified elements are NOT returned -- we do
+;;; Returns just the unifications (v1 &! v2) in no particular order. The ununified elements are NOT returned -- we do 
 ;;; postprocessing above to reorder the unifications and put the unused elements back in.
 (defun prototype-merge-expr2 (ordered-scored-pairs vs1 vs2 i1 i2 slot)
   (cond
@@ -16415,7 +16415,7 @@ In this example, the result will be: (a (b &! d) c (a Foo) e (a Bar))	[ or same,
 	       (cond ((or (get-vals v1 '#$locked-instance-of)   ; (v1 &? v2) is still essentially a heuristic unification, leading to (v1 &! v2) if successful. So
 			  (get-vals v2 '#$locked-instance-of)   ; we need to prohibit this heuristic combination if locked-instance-of prevents it.
 			  (get-vals v1 '#$locked-instances-of)  ; Backwards-compatibility with KM invert-slot error
-			  (get-vals v2 '#$locked-instances-of)) ;
+			  (get-vals v2 '#$locked-instances-of)) ; 
 		      (compatible-classes :instance1 v1 :instance2 v2 :check-locked-classes-p t))
 		     (t))
 	       (km-int `(,v1 &? ,v2) :target `(#$the ,slot #$of (,i1 &! ,i2)))) ; check it's actually possiblep
@@ -16425,18 +16425,18 @@ In this example, the result will be: (a (b &! d) c (a Foo) e (a Bar))	[ or same,
 
 #|
 (remove-equal-items '#$(a b c (a Foo)) '#$(c d a e (a Bar))) -> (b) (d e)
-RETURNS: TWO values
+RETURNS: TWO values 
   - vs1 with equalities and non-kb-objects removed
   - vs2 with equalities and non-kb-objects removed
 Note that there may be duplicates in vs1 and vs2 which should be removed too :-(
 (REMOVE-EQUAL-ITEMS '#$(_Redox-Reaction161 _Redox-Reaction161) '#$(_Oxidation206 _Redox-Reaction210))
 |#
-(defun remove-equal-items (vs1 vs2)
+(defun remove-equal-items (vs1 vs2) 
   (remove-equal-items0 (remove-if-not #'kb-objectp vs1) (remove-if-not #'kb-objectp vs2)))
 
 (defun remove-equal-items0 (vs1 vs2 &key rev-new-vs1 equal-vs2-so-far)
   (let ((v1 (first vs1)))
-    (cond
+    (cond 
      ((endp vs1) (values (reverse rev-new-vs1) (remove-if #'(lambda (v2) (member v2 equal-vs2-so-far :test #'equal)) vs2)))
      (t (let ((equal-vs2 (remove-if-not #'(lambda (v2)
 					    (or (equal v1 v2)
@@ -16449,7 +16449,7 @@ Note that there may be duplicates in vs1 and vs2 which should be removed too :-(
 #|
 (defun remove-equal-items (vs1 vs2 &key rev-new-vs1)
   (let ((v1 (first vs1)))
-    (cond
+    (cond 
      ((endp vs1) (values (reverse rev-new-vs1) (remove-if-not #'kb-objectp vs2)))
      ((not (kb-objectp v1)) (remove-equal-items (rest vs1) vs2 :rev-new-vs1 rev-new-vs1))
      (t (let ((v2 (find-equal-element v1 vs2)))
@@ -16475,9 +16475,9 @@ Suppose we have [[_ProtoX]] -s-> [_ProtoY]
 		   _CloneX  -s->    V1
 
 v1-source-protoinstances = _ProtoY
-v1-source-protoinstances = _ProtoX
+v1-source-protoinstances = _ProtoX		   
 
-vs1 =
+vs1 = 
 _Living-Entity5068 -cloned-from*-> (_Living-Entity3351 _Living-Entity4321 _Living-Entity150)
 _Living-Entity5069 -cloned-from*-> (_Living-Entity3350 _Living-Entity4322 _Living-Entity85)
 _Living-Entity5073 -cloned-from*-> (_Living-Entity3349 _Living-Entity4323 _Living-Entity402 _Living-Entity85)
@@ -16488,7 +16488,7 @@ _Living-Entity5139 -cloned-from*-> (_Living-Entity3096 _Living-Entity4323 _Livin
 _Living-Entity5140 -cloned-from*-> (_Living-Entity3097 _Living-Entity4322 _Living-Entity85)
 _Living-Entity5141 -cloned-from*-> (_Living-Entity3098 _Living-Entity4321 _Living-Entity150)
 
-vs2 =
+vs2 = 
 _Diploid-cell5093 -cloned-from*-> (_Diploid-cell3268 _Diploid-cell5227 _Diploid-cell159 _Diploid-cell270 _Eukaryotic-cell26 _Cell140)
 _Living-Entity5267 -cloned-from*-> (_Living-Entity4321 _Living-Entity150)
 _Living-Entity5266 -cloned-from*-> (_Living-Entity4322 _Living-Entity85)
@@ -16528,44 +16528,44 @@ Given a v1, pair it with the v2 with the greatest (and > 0) overlap in the clone
 	       (let ((v1-all-classes (remove-duplicates (my-mapcan #'all-superclasses (remove-subsumers v1-classes))))
 		     (v2-all-classes (remove-duplicates (my-mapcan #'all-superclasses (remove-subsumers v2-classes)))))
 		 (cond ((or (is-subset-of v1-all-classes v2-all-classes)
-			    (is-subset-of v2-all-classes v1-all-classes))
+			    (is-subset-of v2-all-classes v1-all-classes))		
 			(let* ((shared-source-protoinstances (intersection v1-source-protoinstances v2-source-protoinstances))
 			       (shared-slotsvals (shared-slotsvals v1 v2))
 			       (score (+ (* (length shared-source-protoinstances) 100) (length shared-slotsvals))))
-			(cond ((not silentp)
+			(cond ((not silentp) 
 			       (let ((*print-right-margin* 9999))
 			       (km-format t "(score-pair ~a ~a :source-protoroots ~a)~%" v1 v2 source-protoroots)
 			       (km-format t "   v1-classes = ~a~%" v1-classes)
-			       (km-format t "   v2-classes = ~a~%" v2-classes)
+			       (km-format t "   v2-classes = ~a~%" v2-classes)			       
 			       (km-format t "   v1-source-protoroots = ~a~%" v1-source-protoroots)
 			       (km-format t "   v2-source-protoroots = ~a~%" v2-source-protoroots)
 			       (km-format t "   v1-source-protoinstances = ~a~%" v1-source-protoinstances)
 			       (km-format t "   v2-source-protoinstances = ~a~%" v2-source-protoinstances)
-			       (km-format t "  (intersection v1-source-protoinstances v2-source-protoinstances) = ~a~%"
+			       (km-format t "  (intersection v1-source-protoinstances v2-source-protoinstances) = ~a~%" 
 					  shared-source-protoinstances)
 			       (km-format t "  (shared-slotsvals ~a ~a) = ~a~%" v1 v2 shared-slotsvals)
-			       (km-format t "  SCORE = (* 100 ~a) + ~a = ~a~%"
+			       (km-format t "  SCORE = (* 100 ~a) + ~a = ~a~%" 
 					  (length shared-source-protoinstances) (length shared-slotsvals) score))))
 			(list v1 v2 score))))))))))))
 
 #|
 This is a 2nd order correction to scoring: If the two instances have identical cloned-from scores,
 prefer the pair that have the highest number of shared values on (all) their slots. There was a case of this
-in HLO-4335:
+in HLO-4335: 
 
-      HT1  HT2           HT
+      HT1  HT2           HT      
       /  ||obj\          | \
-    DB   ||   SB      obj| CB
+    DB   ||   SB      obj| CB  
    /  \  ||  /  \        |/  \
   O    Phosph    O       A1   A2
 
-Here, (DB &! CB) -> (Phosph &! A1).
+Here, (DB &! CB) -> (Phosph &! A1). 
 Now (the object-of of (Phosph &! A1)) has ambiguity: Does HT unify with HT1 or HT2?
 The scores were equal and so it makes a bad guess and picks HT2, resulting in (DB &! SB),
-which is inconsistent but there was no constraint in the KB.
+which is inconsistent but there was no constraint in the KB. 
 With the refinement, as HT1 and HT share DB/CB as a slot-value, HT1 is preferred.
-|#
-(defun shared-slotsvals (i1 i2)
+|#	
+(defun shared-slotsvals (i1 i2) 
   (let ((vs1 (remove-duplicates (my-mapcan #'vals-in (get-slotsvals i1))))
 	(vs2 (remove-duplicates (my-mapcan #'vals-in (get-slotsvals i2)))))
     (intersection vs1 vs2 :test #'(lambda (v1 v2)
@@ -16577,26 +16577,26 @@ The unexpanded KB has:
 
 Synthesis-Of-ATP-By-Oxidative-Phosphorylation
   agent: ATP-Synthase[1]
-  subevent: Oxidative-Phosphorylation
+  subevent: Oxidative-Phosphorylation 
   	       agent: ATP-Synthase[1]
 
 
-Oxidative-Phosphorylation
+Oxidative-Phosphorylation 
   agent: ATP-Synthase[1]
   subevent: Chemiosmosis
  	      agent: ATP-Synthase[1]
 
 These should be assembled into:
-
+	      
 Synthesis-Of-ATP-By-Oxidative-Phosphorylation
   agent: ATP-Synthase[1]
-  subevent: Oxidative-Phosphorylation
+  subevent: Oxidative-Phosphorylation 
   	       agent: ATP-Synthase[1]
   	       subevent: Chemiosmosis
 	       		    agent: ATP-Synthase[1]
 
 Note that ATP-Synthase is the agent of *three* events in the taxonomy.
-merge-prototype-vals causes
+merge-prototype-vals causes 
   Synthesis-Of-ATP-By-Oxidative-Phosphorylation &? Chemiosmosis to be unified,
 as it passes the test for being cloned from the same node.
 a result, the sub-sub-event is unified with the event, and we end up with
@@ -16658,7 +16658,7 @@ v2-classes = (Chemiosmosis Event Facilitated-Diffusion Passive-Transport-Across-
 ordered-scored-pairs were:
     (_Synthesis-Of-ATP-By-Oxidative-Phosphorylation544 _Chemiosmosis619 2)
 
-Note that as both _Synthesis-Of-ATP-By-Oxidative-Phosphorylation544 and _Chemiosmosis619 were cloned from
+Note that as both _Synthesis-Of-ATP-By-Oxidative-Phosphorylation544 and _Chemiosmosis619 were cloned from 
 _Cellular-Process22803, it looks like they are equal. But that can't be the case as their classes aren't
 subset/superset of each other, so v2 isn't just a recloning of v1. I'm not completely sure this test
 is foolproof but seeks ok :-)
@@ -16670,12 +16670,12 @@ is foolproof but seeks ok :-)
 ;;; ======================================================================
 
 ;;; Must be an & expr, ie. either (a & b), or ((a b) && (c d))
-;;; The arguments to &/&& may themselves be &/&& expressions,
-;;; 	eg. ((a & b) & c),
+;;; The arguments to &/&& may themselves be &/&& expressions, 
+;;; 	eg. ((a & b) & c),  
 ;;;	    ( (((a b) && (c d))) && (e f) )
 ;;; [ Note  (  ((a b) && (c d))  && (e f) ) is illegal, as the args to && must be a *list* of expressions ]
 ;;; ALWAYS returns a list of values (necessarily singleton, for '&)
-;;; **NOTE** No point in doing any classification *DURING* unification (?). Better to wait until finished, and THEN do
+;;; **NOTE** No point in doing any classification *DURING* unification (?). Better to wait until finished, and THEN do 
 ;;; unification. But...might be incomplete? Better leave it in.
 (defun lazy-unify-&-expr (expr &key (joiner '&) (fail-mode 'fail) target)
   (let* ( ; (constraints (find-constraints expr))		OLD
@@ -16683,7 +16683,7 @@ is foolproof but seeks ok :-)
 	  (unified0 (lazy-unify-&-expr0 expr :joiner joiner :fail-mode fail-mode :target target))
 	  (unified (cond ((val-unification-operator joiner) (list unified0)) 	; must listify for &
 			 (t unified0)))
-	  (checked (cond (constraints (enforce-constraints unified constraints :target target))
+	  (checked (cond (constraints (enforce-constraints unified constraints :target target)) 
 			 (t unified))) )
     (remove nil checked)))
 
@@ -16711,17 +16711,17 @@ is foolproof but seeks ok :-)
 				       `(((,(first expr) ,joiner ,(third expr)))   ,joiner ,@(rest (rest (rest (rest expr)))))))) )
 		  (lazy-unify-&-expr1 revised-expr :joiner joiner :fail-mode fail-mode :target target)))
 	       ((val-unification-operator joiner)
-		(lazy-unify-exprs (lazy-unify-&-expr1 (first expr) :joiner joiner :fail-mode fail-mode :target target)
+		(lazy-unify-exprs (lazy-unify-&-expr1 (first expr) :joiner joiner :fail-mode fail-mode :target target) 
 				  (lazy-unify-&-expr1 (third expr) :joiner joiner :fail-mode fail-mode :target target)
 				  :eagerlyp (eq joiner '&!) :fail-mode fail-mode :target target))				; [1]
 	       ((set-unification-operator joiner)
-		(lazy-unify-expr-sets (lazy-unify-&-expr1 (first expr) :joiner joiner :fail-mode fail-mode :target target)
+		(lazy-unify-expr-sets (lazy-unify-&-expr1 (first expr) :joiner joiner :fail-mode fail-mode :target target) 
 				      (lazy-unify-&-expr1 (third expr) :joiner joiner :fail-mode fail-mode :target target)
 				      :eagerlyp (eq joiner '&&!) :fail-mode fail-mode :target target))))
-	((and (singletonp expr)				; special case: (((a b) && (c d))) [NB double parentheses] -> (a b c d)
+	((and (singletonp expr)				; special case: (((a b) && (c d))) [NB double parentheses] -> (a b c d) 
 	      (listp (first expr))			; This comes if I do (((set1 && set2)) && set3)
 	      (set-unification-operator joiner)		; Note: ((set1 && set2) && set3) is badly formed! (&& takes a *set* of expressions)
-	      (eq (second (first expr)) joiner))
+	      (eq (second (first expr)) joiner))		
 	 (lazy-unify-&-expr1 (first expr) :joiner joiner :fail-mode fail-mode :target target))
 	(t expr)))
 
@@ -16743,13 +16743,13 @@ is foolproof but seeks ok :-)
   (cond ((and (or (protoinstancep x)
 		  (protoinstancep y))
 	      (not (am-in-prototype-mode)))
-	 (report-error 'user-error
+	 (report-error 'user-error 
 			"Attempted unification with protoinstance(s) ~a when not in prototype mode!~%         Doing (~a ~a ~a)~%"
 			(delistify (remove nil `(,(cond ((protoinstancep x) x))
 						 ,(cond ((protoinstancep y) y)))))
 			x
 			(cond ((and eagerlyp classes-subsumep) '&+!)
-			      (eagerlyp '&!) (classes-subsumep '&+) (t '&))
+			      (eagerlyp '&!) (classes-subsumep '&+) (t '&))			       		       
 			y)))
   (cond ((and (null x) (null y)) nil)
 	((null x) (km-unique-int y :target target))		; [2]
@@ -16773,19 +16773,19 @@ is foolproof but seeks ok :-)
 		     (not (km-structured-list-valp dx)))
 		(let ( (edx (km-unique-int dx)) )
 		  (cond ((not (km-structured-list-valp edx))
-			 (cond ((null edx) (km-unique-int dy))		; dy is the structured item, edx is the evaluated
+			 (cond ((null edx) (km-unique-int dy))		; dy is the structured item, edx is the evaluated 
 			       ((anonymous-instancep edx)
 				(let ((ans (lazy-unify edx (km-unique-int dy) :fail-mode fail-mode)))
 				  (cond (ans)
 					((eq fail-mode 'error)
-					 (report-error 'user-error "Unification (~a ~a ~a) failed!~%" x
+					 (report-error 'user-error "Unification (~a ~a ~a) failed!~%" x 
 						       (cond ((and eagerlyp classes-subsumep) '&+!)
 							     (eagerlyp '&!) (classes-subsumep '&+) (t '&)) y)
 					 nil))))
 			       ((km-argsp dy)
 				(lazy-unify-exprs (list (first dy) edx) dy :fail-mode fail-mode))  			; dx & (:args dx dy)
 			       ((eq fail-mode 'error)
-				(report-error 'user-error "Unification (~a ~a ~a) failed!~%" x
+				(report-error 'user-error "Unification (~a ~a ~a) failed!~%" x 
 					      (cond ((and eagerlyp classes-subsumep) '&+!)
 						    (eagerlyp '&!) (classes-subsumep '&+) (t '&)) y)
 				nil)))
@@ -16801,14 +16801,14 @@ is foolproof but seeks ok :-)
 				(let ((ans (lazy-unify (km-unique-int dx) edy :fail-mode fail-mode)))
 				  (cond (ans)
 					((eq fail-mode 'error)
-					 (report-error 'user-error "Unification (~a ~a ~a) failed!~%" x
+					 (report-error 'user-error "Unification (~a ~a ~a) failed!~%" x 
 						       (cond ((and eagerlyp classes-subsumep) '&+!)
 							     (eagerlyp '&!) (classes-subsumep '&+) (t '&)) y)
 					 nil))))
-			       ((km-argsp dx)
+			       ((km-argsp dx)			
 				(lazy-unify-exprs dx (list (first dx) edy) :fail-mode fail-mode))  			; dx & (:args dx dy)
 			       ((eq fail-mode 'error)
-				(report-error 'user-error "Unification (~a ~a ~a) failed!~%" x
+				(report-error 'user-error "Unification (~a ~a ~a) failed!~%" x 
 					      (cond ((and eagerlyp classes-subsumep) '&+!)
 						    (eagerlyp '&!) (classes-subsumep '&+) (t '&)) y)
 				nil)))
@@ -16818,7 +16818,7 @@ is foolproof but seeks ok :-)
 		     (neq (first dx) '#$:triple)	; [3]
 		     (unify-structured-list-vals dx dy :classes-subsumep classes-subsumep :eagerlyp eagerlyp :fail-mode fail-mode)))
 	       ((eq fail-mode 'error)
-		(report-error 'user-error "Unification (~a ~a ~a) failed!~%" x
+		(report-error 'user-error "Unification (~a ~a ~a) failed!~%" x 
 			      (cond ((and eagerlyp classes-subsumep) '&+!)
 				    (eagerlyp '&!) (classes-subsumep '&+) (t '&)) y)
 		nil))))
@@ -16833,12 +16833,12 @@ is foolproof but seeks ok :-)
 		 (t (unify-with-existential-expr yf x :classes-subsumep classes-subsumep :eagerlyp eagerlyp
 						 :fail-mode fail-mode :target target)))))
 	((and (kb-objectp x)
-	      (explained-by x y target))
+	      (explained-by x y target)) 
 	 (km-trace 'comment "[ ~a was originally derived from ~a, so must unify with it! ]" x y)
 	 x)				; NEW
 	(t (let ( (xf (km-unique-int x :target target))
 		  (yf (km-unique-int y :target target)) )
-	     (cond
+	     (cond 
 	      ((null xf) yf)
 	      ((null yf) xf)
 	      ((or (km-structured-list-valp xf)
@@ -16848,13 +16848,13 @@ is foolproof but seeks ok :-)
 	      ((and (is-km-term xf) (is-km-term yf))
 	       (cond ((lazy-unify xf yf :eagerlyp eagerlyp :classes-subsumep classes-subsumep :fail-mode fail-mode))
 		     ((eq fail-mode 'error)
-		      (report-error 'user-error "Unification (~a ~a ~a) failed!~%" xf
+		      (report-error 'user-error "Unification (~a ~a ~a) failed!~%" xf 
 				    (cond ((and eagerlyp classes-subsumep) '&+!)
 					  (eagerlyp '&!) (classes-subsumep '&+) (t '&)) yf)
-#| NEW - give up [1] |#		   nil)))
+#| NEW - give up [1] |#		   nil)))		
 	      ((eq fail-mode 'error)
-	       (report-error 'user-error
-			     "Arguments in a unification expression should be unique KM objects!~%Doing (~a ~a ~a) [ie. (~a ~a ~a)]~%"
+	       (report-error 'user-error 
+			     "Arguments in a unification expression should be unique KM objects!~%Doing (~a ~a ~a) [ie. (~a ~a ~a)]~%" 
 			     x (cond ((and eagerlyp classes-subsumep) '&+!)
 				     (eagerlyp '&!) (classes-subsumep '&+) (t '&)) y
 			     xf (cond ((and eagerlyp classes-subsumep) '&+!)
@@ -16894,7 +16894,7 @@ is foolproof but seeks ok :-)
 	 (let ( (unification (unify-structured-list-vals2 (rest instance1) (rest instance2) :classes-subsumep classes-subsumep :eagerlyp eagerlyp
 							  :fail-mode fail-mode)) )
 	   (cond ((eq unification 'fail)
-		  (report-error 'nodebugger-error
+		  (report-error 'nodebugger-error 
 				"Yikes! I partly unified two sequences ~a and ~a but then found they couldn't be unified!~%I'll continue and hope for the best (sorry!)...~%" instance1 instance2))
 		 (t (cons (first instance1) unification))))))))
 
@@ -16904,7 +16904,7 @@ is foolproof but seeks ok :-)
 	((or (km-setp (first elements1))
 	     (km-setp (first elements2)))
 	 (let* ( (set-element1 (cond ((km-setp (first elements1)) (set-to-list (first elements1))) (t (list (first elements1)))))
-		 (set-element2 (cond ((km-setp (first elements2)) (set-to-list (first elements2))) (t (list (first elements2)))))
+		 (set-element2 (cond ((km-setp (first elements2)) (set-to-list (first elements2))) (t (list (first elements2))))) 
 		 (unification (lazy-unify-expr-sets set-element1 set-element2 #|:classes-subsumep classes-subsumep|# :eagerlyp eagerlyp
 						   )) )
 	   (cond (unification (let ( (unifications (unify-structured-list-vals2 (rest elements1) (rest elements2)
@@ -16913,13 +16913,13 @@ is foolproof but seeks ok :-)
 				(cond ((neq unifications 'fail) (cons (vals-to-val unification) unifications))
 				      (t 'fail))))
 		 (t 'fail))))
-	(t (let* (
+	(t (let* ( 
 ;		   (e1 (km-unique-int (first elements1)))	; - not necc to evaluate!
 ;		   (e2 (km-unique-int (first elements2)))
 		   (e1 (first elements1))
 		   (e2 (first elements2))
 		   (unification (lazy-unify-exprs e1 e2 :classes-subsumep classes-subsumep :eagerlyp eagerlyp :fail-mode fail-mode)) )
-	     (cond ((or unification
+	     (cond ((or unification 
 			(km-null e1)				; if e1 or e2 is NIL, or evaluates to NIL, then the
 			(km-null e2)				; unification necessarily MUST succeed (inc. nil & nil -> nil)
 			(and (not (existential-exprp e1)) (null (km-unique-int e1)))   ; efficiency: existentials can never be nil
@@ -16943,7 +16943,7 @@ is foolproof but seeks ok :-)
 (defparameter *no-heuristic-unification* nil)
 
 #|
-						((_Door178 _Door179 _Cat23 _Bumper176) && ((a Cat) (MyCar has-door) (a Door) (a Door))
+						((_Door178 _Door179 _Cat23 _Bumper176) && ((a Cat) (MyCar has-door) (a Door) (a Door))  
   [1] evaluate any non-existential exprs		((_Door178 _Door179 _Cat23 _Bumper176) && ((a Cat) _Door178 (a Door) (a Door)))
   [2] remove duplicates				(_Door178) APPEND ((_Door179 _Cat23 _Bumper176) && ((a Cat) (a Door) (a Door))
   [3] remove subsuming elements  		(_Door178 _Door179 _Cat23) APPEND ((_Bumper176) && ((a Door)))
@@ -16954,7 +16954,7 @@ is foolproof but seeks ok :-)
 
 [7] Eager set unification: previous error:
 	(_Move3 _Enter4) &&! (_Enter5)
-     With :eagerlyp passed to lazy-unify-sets, thus to lazy-unify-vals, I *force* _Enter5 and _Move3 to unify, even if there's a
+     With :eagerlyp passed to lazy-unify-sets, thus to lazy-unify-vals, I *force* _Enter5 and _Move3 to unify, even if there's a 
 	constraint violation. Urgh!
     Really I need a two-pass implementation:
 	  (i) Do a &&
@@ -16973,14 +16973,14 @@ QUESTION: GIVEN: ((the parts of _Engine13)) && ((the parts of _Engine13) _Distri
 
 (defun lazy-unify-expr-sets (exprs1 exprs2 &key eagerlyp (fail-mode 'fail) target)
   (declare (ignore fail-mode))		; [6]
-  (cond
+  (cond 
    ((or (not (listp exprs1)) (not (listp exprs2)))
     (report-error 'user-error "(~a && ~a): Arguments should be *sets* of values, but just found a single value!~%"
 		  exprs1 exprs2))
    (t (cond ((and (or (some #'protoinstancep exprs1)
 		      (some #'protoinstancep exprs2))
 		  (not (am-in-prototype-mode)))
-	     (report-error 'user-error
+	     (report-error 'user-error 
 			   "Attempt to unify protoinstance(s) ~a when not in prototype mode!~%         Doing (~a ~a ~a)~%"
 			   (delistify `(,@(remove-if-not #'protoinstancep exprs1)
 					,@(remove-if-not #'protoinstancep exprs2)))
@@ -16990,10 +16990,10 @@ QUESTION: GIVEN: ((the parts of _Engine13)) && ((the parts of _Engine13) _Distri
       (cond
        ((subbagp exprs2 exprs1 :test #'equal) (km-int (vals-to-val exprs1) :target target))
        (t (let ( (set1 (km-int (vals-to-val exprs1) :target target)) )
-	    (cond
-	      ((null set1)
+	    (cond 
+	      ((null set1) 
 	       (km-int (vals-to-val exprs2) :target target))	; i.e. evaluated exprs1 is a subbag of exprs2
-	      (t
+	      (t 
 	       (multiple-value-bind
 		(unexplained-set1 unexplaining-exprs2)
 		(remove-explained-vals set1 (dereference exprs2) :target target)
@@ -17008,7 +17008,7 @@ QUESTION: GIVEN: ((the parts of _Engine13)) && ((the parts of _Engine13) _Distri
 ;	                (_dummy (km-format t "set1 = ~a, exprs2 = ~a, explained-set1 = ~a, unexplained-set1 = ~a, unexplaining-exprs2 = ~a~%"
 ;					 set1 exprs2 explained-set1 unexplained-set1 unexplaining-exprs2))
 ;	                (shared-elements (ordered-intersection unexplained-set1 set2 :test #'equal))		; [2]
-;	                (reduced-set1 (ordered-set-difference unexplained-set1 shared-elements :test #'equal))
+;	                (reduced-set1 (ordered-set-difference unexplained-set1 shared-elements :test #'equal))	
 ;	                (reduced-set2 (ordered-set-difference set2 shared-elements :test #'equal)) )
 ;		  (km-format t "unexplaining-exprs2 = ~a, set2 = ~a~%" unexplaining-exprs2 set2)
 	          (multiple-value-bind
@@ -17025,7 +17025,7 @@ QUESTION: GIVEN: ((the parts of _Engine13)) && ((the parts of _Engine13) _Distri
 		     (remainder-set2 remainder-set1 subsumed-set1)			; [3]
 ; PC	             (remove-subsuming-exprs more-reduced-set2 more-reduced-set1)	; (expects exprs first, instances next)
 ; PC - Can I get away with :allow-coeercion t?? What will the effect be?
-#|PC|#	             (remove-subsuming-exprs more-reduced-set2 more-reduced-set1
+#|PC|#	             (remove-subsuming-exprs more-reduced-set2 more-reduced-set1 
 			     :allow-coercion t :target target :eagerlyp eagerlyp) ; more-reduced-set1 is already eval'd
 #|[9]|#	             (declare (ignore subsumed-set1))
 
@@ -17039,12 +17039,12 @@ QUESTION: GIVEN: ((the parts of _Engine13)) && ((the parts of _Engine13) _Distri
 ; [9] preserve ordering as best as possible:
 ; NOTE: unified contains (possibly reordered) set1 elements followed by ununified and STILL ORDERED remaining set2 elements
 ; Doing (dereference set1) is a clever way of preserving the original set1 orderings after doing the unifications.
-;                            (final-result (remove-dup-instances (append (dereference set1)
+;                            (final-result (remove-dup-instances (append (dereference set1) 
 ;									(ordered-set-difference (dereference unified) (dereference set1))))) )
 ; [9] preserve ordering as best as possible:
 ; NEW: unified contains (possibly reordered) UNIFIED set1 & set2 elements *ONLY* (no ununified elements)
 ; Doing (dereference set1) is a clever way of preserving the original set1 orderings after doing the unifications.
-                            (final-result (remove-dup-instances (append (dereference set1)
+                            (final-result (remove-dup-instances (append (dereference set1) 
 									(ordered-set-difference (dereference new-set2) (dereference unified))))))
 		       (cond (eagerlyp (mapc #'eagerly-evaluate-exprs final-result)))
 		       final-result)))))))))))))))
@@ -17087,7 +17087,7 @@ the case when they're also not below, even though it never currently can happen.
 Problem before:
  (_Car1 _Car2)  ((a Car with (color (Red))) (a Car))
 and suppose _Car1 is explained by (a Car)
-This causes the ordering to be violated:
+This causes the ordering to be violated: 
 	_Car1 matches (a Car)
 	_Car2 matches (a Car with (color (Red)))
 and this is bad for the Shaken system!
@@ -17125,7 +17125,7 @@ Hmm... but doesn't seem to speed things up much, particularly because there are 
 (defun remove-explained-vals (vals exprs &key target)
   (cond ((null vals) (values nil exprs))
 	(t (let* ( (val (first vals))
-		   (expr (first exprs))
+		   (expr (first exprs)) 
 		   (cached-explanations (cached-explanations-for val)) )
 	     (cond ((member (desource expr) cached-explanations :test #'equal)		; first val explained by first expr...
 		    (cond (target (record-explanation-for target val expr)))		; [3]
@@ -17138,8 +17138,8 @@ Hmm... but doesn't seem to speed things up much, particularly because there are 
 
 ;		   (t (values vals exprs)))))))						; [5]
 ; NEW: *do* continue recursively -- preserve order, but allow gaps [6]
-		   (t
-		    (multiple-value-bind
+		   (t 
+		    (multiple-value-bind 
 		     (unexplained-vals unexplaining-exprs)
 		     (remove-explained-vals (rest vals) exprs :target target)
 		     (values (cons val unexplained-vals) unexplaining-exprs))))))))
@@ -17152,7 +17152,7 @@ Hmm... but doesn't seem to speed things up much, particularly because there are 
 
 ; Temp - need to remove these for backward library compatibility...
 ;		   (cached-explanations (desource (cached-explanations-for val)))	; desource to be removed shortly...
-		   (cached-explanations (cached-explanations-for val))
+		   (cached-explanations (cached-explanations-for val))	
 		   (explanations (remove-if-not #'(lambda (expr) (member (desource expr) cached-explanations :test #'equal)) exprs)) ; [2]
 		   (path-explanations (remove-if #'existential-exprp explanations))
 		   (existential-explanation (find-if #'existential-exprp explanations)) 		; find just first...
@@ -17164,12 +17164,12 @@ Hmm... but doesn't seem to speed things up much, particularly because there are 
 		    (cond (target (mapc #'(lambda (explanation)
 					    (record-explanation-for target val explanation))			; [3]
 					all-explanations)))
-		    (multiple-value-bind
+		    (multiple-value-bind 
 		     (unexplained-vals unexplaining-exprs)
 		     (remove-explained-vals (rest vals) (remove existential-explanation exprs :test #'equal :count 1) :target target)  ; [4a]
 		     (values unexplained-vals (ordered-set-difference unexplaining-exprs path-explanations :test #'equal))))	       ; [4b]
-		   (t
-		    (multiple-value-bind
+		   (t 
+		    (multiple-value-bind 
 		     (unexplained-vals unexplaining-exprs)
 		     (remove-explained-vals (rest vals) exprs :target target)
 		     (values (cons val unexplained-vals) unexplaining-exprs))))))))
@@ -17192,9 +17192,9 @@ Hmm... but doesn't seem to speed things up much, particularly because there are 
 do-forced-unifications originally combined testing cloned-from/called tags and pending-equalities.
 However, I've had to split this into two passes: (i) pending-equalities (ii) cloned-from/called tags.
 The reason is as follows: We had a rare case of:
-  (do-forced-unifications '(A B) '(X Y))
+  (do-forced-unifications '(A B) '(X Y)) 
 WHERE tags on A and B each suggests forced unifications with either X or Y, i.e., tags suggested all permutations of forcing.
-  BUT there was also a pending equality of (B & X)
+  BUT there was also a pending equality of (B & X)  
 The problem with the old code was that, working left to right, A ambiguously is a forced unification with X or Y,
 so KM takes the first (A & X), ignoring that there's a later pending equality, (B & X), which contradicts this. So
 to fix this we need to make two passes:
@@ -17210,7 +17210,7 @@ to fix this we need to make two passes:
 						   (pending-equality val1 val2)))
 					  exprs2))
 		  (val2 (first matches)))
-	     (cond
+	     (cond 
 	      ((null matches)
 	       (multiple-value-bind
 		   (reduced-set1 reduced-exprs2 unifications)
@@ -17223,25 +17223,25 @@ to fix this we need to make two passes:
 		     (do-pending-equalities (rest set1) (remove val2 exprs2 :test #'equal) :eagerlyp eagerlyp :target target)
 		   (values reduced-set1 reduced-exprs2 (cons val1 unifications)))))))))
 
-#|
+#|	      
 Old, copied from do-forced-unifications
 	      (t ;;; New: allow continuation if *on-error* = 'continue
-    	         (cond ((and (>= (length matches) 2)
+    	         (cond ((and (>= (length matches) 2) 
 			(report-error 'user-error "KB error! There are multiple, different pending equalities ~a <-> ~a trying to unify ~a and ~a!~%" val1 matches set1 exprs2)
   	 	        ;;; If *on-error* = 'continue
 			(report-error 'user-error "Will attempt to continue, taking the first value (~a <-> ~a)...~%" val1 val2))))
 		    (let ( (unification (cond ((existential-exprp val2)							; UNIFY! Result = val1
-					       (unify-with-existential-expr val1 val2
-						    :eagerlyp eagerlyp
+					       (unify-with-existential-expr val1 val2 
+						    :eagerlyp eagerlyp 
 						    :classes-subsumep t ; NEW: Feb 07 - allow for failure
 						    :fail-mode 'fail
 						    ; :check-constraintsp nil   ; NEW: commented out Feb 07
 						    :target target)) ; allow :fail-mode 'fail so error is caught below
 					; otherwise we do unify them
-					      (eagerlyp (km-int `(,val1 &+! ,val2) :target target)) ; Route through query interpreter for &!, so pending unifications seen.
+					      (eagerlyp (km-int `(,val1 &+! ,val2) :target target)) ; Route through query interpreter for &!, so pending unifications seen. 
 					     							    ; Note &+! *is* allowed to quietly fail.
-					      (t (lazy-unify val1 val2
-						     :eagerlyp eagerlyp
+					      (t (lazy-unify val1 val2 
+						     :eagerlyp eagerlyp 
 						     :classes-subsumep t ; NEW: Feb 07 - allow for failure
 						     :fail-mode 'fail
 						     ; :check-constraintsp nil  ; NEW: commented out Feb 07
@@ -17285,18 +17285,18 @@ Then we do ((Chemical1 Chemical2) && (Chemical3 Water4))
      So we end up unifying Solvent and Solute
 
 Looking at the tags we see the form:
-   Chemical1: A B C D
+   Chemical1: A B C D  
    Chemical2: E F G
 
    Chemical3: E F G H B I J
-   Water4: A B C D K L M
+   Water4: A B C D K L M 
 
 Chemical1 is forced with Chemical3 based on the "B" overlap causing it to be a "forced unification",
 although clearly counting the overlaps this is completely wrong.
 
 So we will switch this off now, and fall back on lazy-unify-sets which *does* look at maximizing the overlap.
 |#
-#|
+#| 
 INPUT: set1 set2
 RETURNS: three values:
 	- shorter set1
@@ -17339,34 +17339,34 @@ mike(friends->{_1(fred),_1(john))
 (defun do-forced-unifications (set1 exprs2 &key eagerlyp target)
   (cond ((endp set1) (values nil exprs2 nil))
 	((null exprs2) (values set1 nil nil))	; PEC 10/21/11 for efficiency of course!
-	((and (not *are-some-tags*)
+	((and (not *are-some-tags*) 
 ;	      (not *record-explanations-for-clones*)
 	      (or (not *are-some-prototypes*)
 		  (not *force-with-cloned-from*)))
 	 (values set1 exprs2 nil))	; optimization
 	(t (let* ((val1 (first set1))
-		  (val1-tags (cond ((kb-objectp val1)
-				    (append (cond (*force-with-cloned-from*
+		  (val1-tags (cond ((kb-objectp val1) 
+				    (append (cond (*force-with-cloned-from* 
 						   (ordered-set-difference (get-vals val1 '#$cloned-from) ; [1]
 									   (get-vals val1 '#$clone-built-from))))
-					    (cond (*called-forces-unification*
-						   (append (get-vals val1 '#$called)
+					    (cond (*called-forces-unification* 
+						   (append (get-vals val1 '#$called) 
 							   (get-vals val1 '#$uniquely-called))))))))
-		  (matches (or
-; NOW done separately in do-pending-equalities phase, see above
+		  (matches (or 
+; NOW done separately in do-pending-equalities phase, see above			    
 ;			       (remove-if-not #'(lambda (val2)
 ;						  (and (kb-objectp val2)
 ;						       (pending-equality val1 val2)))
 ;					      exprs2)
-			       (remove-if-not #'(lambda (expr)
-						  (intersection (tags-in-expr expr :use-cloned-from *force-with-cloned-from*)
+			       (remove-if-not #'(lambda (expr) 
+						  (intersection (tags-in-expr expr :use-cloned-from *force-with-cloned-from*) 
 								val1-tags :test #'equal))
 					      exprs2)
 			       ))
 		  (val2 (first matches))
 		  (val2-tags (cond (val2 (tags-in-expr val2 :use-cloned-from *force-with-cloned-from*)))) )
 ; 	     (km-format t "val1 = ~a, val1-tags = ~a, matches = ~a, val2 = ~a, val2-tags = ~a~%" val1 val1-tags matches val2 val2-tags)
-	     (cond
+	     (cond 
 	      ((null matches)
 	       (multiple-value-bind
 		   (reduced-set1 reduced-exprs2 unifications)
@@ -17385,7 +17385,7 @@ mike(friends->{_1(fred),_1(john))
     	         (cond ((and (>= (length matches) 2) 	    ; [2] This is an apparent inconsistency: val1 matches > 1 things
 					; BUT: We now allow > 1 matches if ONLY cloned-from tags (i.e., it's ok to have >1 match with cloned-from tags)
 			     *called-forces-unification*
-			     (let* ((reduced-val1-tags (cond ((kb-objectp val1)
+			     (let* ((reduced-val1-tags (cond ((kb-objectp val1) 
 							      (append (get-vals val1 '#$called)
 								      (get-vals val1 '#$uniquely-called)))))
 				    (reduced-matches (remove-if-not #'(lambda (expr)
@@ -17393,10 +17393,10 @@ mike(friends->{_1(fred),_1(john))
 										 reduced-val1-tags :test #'equal))
 								    exprs2)))
 			       (>= (length reduced-matches) 2)))
-			(report-error 'user-error "Tagging error! ~a's tags ~a imply it should unify with multiple, distinct values:~%       ~a!~%"
+			(report-error 'user-error "Tagging error! ~a's tags ~a imply it should unify with multiple, distinct values:~%       ~a!~%" 
 				  val1 val1-tags matches)
   	 	        ;;; If *on-error* = 'continue
-			(report-error 'user-error "Will attempt to continue, taking the first value (~a)...~%"
+			(report-error 'user-error "Will attempt to continue, taking the first value (~a)...~%" 
 				      (first matches))))
 ;		      (cond ((existential-exprp val2)							; UNIFY! Result = val1
 ;;; No, the is0 test is too expensive!
@@ -17405,21 +17405,21 @@ mike(friends->{_1(fred),_1(john))
 ;					   (cond (target (record-explanation-for target val1 val2)))
 ;					   (km-int `(,val1 #$has (,'#$called ,val2-tags)) :fail-mode 'error))))
 ;				   (t (lazy-unify val1 (km-unique-int val2 :fail-mode 'error :target target) :eagerlyp eagerlyp))))		; otherwise we do unify them
-; try 2			     (lazy-unify val1 (km-unique-int val2 :fail-mode 'error :target target)
+; try 2			     (lazy-unify val1 (km-unique-int val2 :fail-mode 'error :target target) 
 					;					 :eagerlyp eagerlyp :check-constraintsp nil))			; otherwise we do unify them
 ;		    (km-format t "DEBUG: Forced unification ~a with ~a~%" val1 val2)
 		    (let ( (unification (cond ((existential-exprp val2)							; UNIFY! Result = val1
-					       (unify-with-existential-expr val1 val2
-						    :eagerlyp eagerlyp
+					       (unify-with-existential-expr val1 val2 
+						    :eagerlyp eagerlyp 
 						    :classes-subsumep t ; NEW: Feb 07 - allow for failure
 						    :fail-mode 'fail
 						    ; :check-constraintsp nil   ; NEW: commented out Feb 07
 						    :target target)) ; allow :fail-mode 'fail so error is caught below
 					; otherwise we do unify them
-					      (eagerlyp (km-int `(,val1 &+! ,val2) :target target)) ; Route through query interpreter for &!, so pending unifications seen.
+					      (eagerlyp (km-int `(,val1 &+! ,val2) :target target)) ; Route through query interpreter for &!, so pending unifications seen. 
 					     							    ; Note &+! *is* allowed to quietly fail.
-					      (t (lazy-unify val1 val2
-						     :eagerlyp eagerlyp
+					      (t (lazy-unify val1 val2 
+						     :eagerlyp eagerlyp 
 						     :classes-subsumep t ; NEW: Feb 07 - allow for failure
 						     :fail-mode 'fail
 						     ; :check-constraintsp nil  ; NEW: commented out Feb 07
@@ -17429,7 +17429,7 @@ mike(friends->{_1(fred),_1(john))
 ; [2] NEW: We *allow* failure of unification of tagged items, for special cases described above.
 ; In other words, we now consider tags as preference heuristics (hence the :classes-subsumep t flag above), rather
 ; than a full forcing of unification.
-;			     (report-error 'user-error
+;			     (report-error 'user-error 
 ;					   "Tagging error! tags ~a (on ~a) and ~a (on ~a) imply (~a & ~a) must be unified, but this unification fails!"
 ;					   val1-tags val1 val2-tags val2 val1 val2)
 			     (multiple-value-bind		; NEW: Feb 07 - allow recovery if failure
@@ -17445,7 +17445,7 @@ mike(friends->{_1(fred),_1(john))
 
 ;;; expr is necessarily an *instance* or an *existential expr*
 (defun tags-in-expr (expr &key (use-cloned-from t))
-  (cond ((kb-objectp expr) (append (cond (use-cloned-from
+  (cond ((kb-objectp expr) (append (cond (use-cloned-from 
 					  (ordered-set-difference (get-vals expr '#$cloned-from)
 								  (get-vals expr '#$clone-built-from))))
 				   (cond (*called-forces-unification*
@@ -17490,7 +17490,7 @@ INPUT: The members of the sets must be FULLY EVALUATED - it's an error otherwise
 |#
 #|
 (defun lazy-unify-sets (set1 set2 &key eagerlyp target)
-  (cond
+  (cond 
    (*no-heuristic-unification* nil)
    (t ; (km-format t "----------~%(~a && ~a):~%" set1 set2)
       (let* ((shared-elements (ordered-intersection set1 set2))
@@ -17526,7 +17526,7 @@ RETURNS: THREE values
   Prefer unification if SAME immediate classes, so below the 2 Exert-Forces and the 2 ExertForceByEarth unify.
   ((_Exert-Force39_c11 _ExertForceByEarth40_c11) && (_ExertForceByEarth89 _Exert-Force88))
 
-[2] for HLO-2358:
+[2] for HLO-2358:  
 (_Move-It5 has  (object (_Device6 _Device7)))
 (_Device6 has   (has-part (_Artifact8)))
 (_Device7 has   (material (_Substance9)))
@@ -17545,10 +17545,10 @@ RETURNS: THREE values
 |#
 #|
 (defun lazy-unify-sets2 (set1 set2 &key eagerlyp heuristic target)
-  (cond
+  (cond 
    ((or (endp set1) (endp set2))
     (values nil set1 set2))
-   (t (let* ((unifier
+   (t (let* ((unifier 
 	      (case heuristic
 		(same-class-and-slots
 		 (find-if #'(lambda (set2el) ; [2]
@@ -17568,7 +17568,7 @@ RETURNS: THREE values
 ;				   (lazy-unify (first set1) set2el :classes-subsumep t :eagerlyp eagerlyp))
 				   (cond (eagerlyp (cond ((try-lazy-unify (first set1) set2el :classes-subsumep t) ; Test...
 							  (km-int `(,(first set1) &! ,set2el) :target target)))) ; then do...[4]
-					 (t (lazy-unify (first set1) set2el :classes-subsumep t :fail-mode 'fail))))) ; Test and do if test succeeds.
+					 (t (lazy-unify (first set1) set2el :classes-subsumep t :fail-mode 'fail))))) ; Test and do if test succeeds.			  
 			  set2))
 		(normal
 		 (find-if #'(lambda (set2el)
@@ -17576,14 +17576,14 @@ RETURNS: THREE values
 ;				   (lazy-unify (first set1) set2el :classes-subsumep t :eagerlyp eagerlyp))
 			      (cond (eagerlyp (cond ((try-lazy-unify (first set1) set2el :classes-subsumep t) ; Test...
 						     (km-int `(,(first set1) &! ,set2el) :target target)))) ; then do...[4]
-				    (t (lazy-unify (first set1) set2el :classes-subsumep t :fail-mode 'fail)))) ; Test and do if test succeeds.
+				    (t (lazy-unify (first set1) set2el :classes-subsumep t :fail-mode 'fail)))) ; Test and do if test succeeds.			  
 			  set2)))))
 					; back to original code...
 	     (cond ((and unifier eagerlyp) (simple-eval-instance unifier)))	; [4]
-	     (cond (unifier
+	     (cond (unifier 
 		    (multiple-value-bind
 			(unifieds restset1 restset2)
-			(lazy-unify-sets2 (rest set1)
+			(lazy-unify-sets2 (rest set1) 
 					 (remove unifier set2 :count 1)
 					 :eagerlyp eagerlyp :heuristic heuristic :target target) ; [1]
 		      (values (cons unifier unifieds) restset1 restset2)))
@@ -17602,14 +17602,14 @@ RETURNS: THREE values
    ((null set2) nil)
    (*no-heuristic-unification* nil)
    (t (let* ((all-pairs (permute (list set1 set2))) ;(permute '((a b c) (d e)))->((a d) (a e) (b d) (b e) (c d) (c e))
-	     (cloned-from-sources
-	      (cond (*are-some-prototypes*
-		     (remove nil (mapcar #'(lambda (i)
-					     (cond ((anonymous-instancep i) (list i (cloned-from* i)))))
+	     (cloned-from-sources 
+	      (cond (*are-some-prototypes* 
+		     (remove nil (mapcar #'(lambda (i) 
+					     (cond ((anonymous-instancep i) (list i (cloned-from* i))))) 
 					 (append set1 set2))))))
-	     (scored-pairs
+	     (scored-pairs 
 	      (cond ((singletonp all-pairs) `((,@(first all-pairs) 0)))
-		    (t (mapcar #'(lambda (pair)
+		    (t (mapcar #'(lambda (pair) 
 				   `(,@pair ,(rank-unification (first pair) (second pair) :cloned-from-sources cloned-from-sources)))
 			       all-pairs))))
 	     (ordered-scored-pairs (sort scored-pairs #'> :key #'third)))
@@ -17641,7 +17641,7 @@ RETURNS: THREE values
 	       (member v2 set2)
 	       (cond (eagerlyp (cond ((try-lazy-unify v1 v2 :classes-subsumep t)  ; try
 				      (km-int `(,v1 &! ,v2) :target target)))) ; then do...[4]
-		     (t (lazy-unify v1 v2 :classes-subsumep t :fail-mode 'fail)))) ; Test and do if test succeeds.
+		     (t (lazy-unify v1 v2 :classes-subsumep t :fail-mode 'fail)))) ; Test and do if test succeeds.			  
 	  `(,v1  ; the unified result
 	    ,@(lazy-unify-sets2 rest-ordered-scored-pairs (remove v1 set1) (remove v2 set2) :eagerlyp eagerlyp :target target)))
 	 (t (lazy-unify-sets2 rest-ordered-scored-pairs set1 set2 :eagerlyp eagerlyp :target target))))))))
@@ -17655,7 +17655,7 @@ KM> (the has-region of _Second-Electron-Shell47498)
 ... -> constraint violation with KB v1067-rec
 
 	Second-Electron-Shell.km                         Electron-Shell.km
-          Electron[1]	Electron[2]		  	    Electron
+          Electron[1]	Electron[2]		  	    Electron		
  	   |    ^          ^ |                     	    |^
   	   v     \has-part/ v is-inside           is-inside |  \ has-part
          2nd-Orb    Atom    2nd-Orb                    Orbital   Atom
@@ -17684,11 +17684,11 @@ is via no-of-pending-unifications that looks ahead and sees Electron[1] -> 2nd-O
 	     (t 0))
        (* 2 (no-of-pending-equalities i1 i2)) ; this is horribly heuristic but allows us a small bias towards pending equalities
        )))
-
+       
 ;;; Originally, we just picked the first element in ordered-scored-pairs.
 ;;; But HLO-4721 we can still get a tie. In this case, we use a tie-breaker based on the unification with more pending equalities
 ;;; 	This is basically the only thing which distinguishes the otherwise tied case in HLO-4721
-;;; List of (<i1> <i2> <score>)
+;;; List of (<i1> <i2> <score>)  
 (defun best-pair (ordered-scored-pairs)
   (cond
    (ordered-scored-pairs
@@ -17700,7 +17700,7 @@ is via no-of-pending-unifications that looks ahead and sees Electron[1] -> 2nd-O
 ;						(kb-objectp (second pair))))
 ;				       best-pairs)
 ;			     (first best-pairs))
-			    ((null best-pairs)
+			    ((null best-pairs) 
 			     (format t "ERROR! null best-pairs in best-pair! Continuing...~%")	; should never happen
 			     (first ordered-scored-pairs))
 			    (t (first (sort (copy-tree best-pairs) #'> :key #'(lambda (pair)
@@ -17709,8 +17709,8 @@ is via no-of-pending-unifications that looks ahead and sees Electron[1] -> 2nd-O
       (values best-pair rest-pairs)))))
 
 ; (pairs-with-rank '((a b 3) (c d 3) (e f 2)) 3) -> ((A B 3) (C D 3))
-(defun pairs-with-rank (pairs rank)
-  (cond
+(defun pairs-with-rank (pairs rank)	   
+  (cond 
    ((null pairs) nil)
    ((null rank) (format t "ERROR! Null rank to pairs with rank!~%"))
    ((= (third (first pairs)) rank)
@@ -17719,7 +17719,7 @@ is via no-of-pending-unifications that looks ahead and sees Electron[1] -> 2nd-O
 ;;; ----------------------------------------------------------------------
 ;;;	Count the pending equalities - this is the tie-breaker if the rank-unification is tied
 ;;; ----------------------------------------------------------------------
-
+     
 ;;; either one of x and y's slotvals are a pending-equality, or one the slotsvals of x and y's slotsvals are a pending-equality (i.e., look two-deep)
 (defun no-of-pending-equalities (x y)
   (cond
@@ -17739,7 +17739,7 @@ is via no-of-pending-unifications that looks ahead and sees Electron[1] -> 2nd-O
 					 (not (member x-slot *unclonable-slots*))
 					 (not (member x-slot '#$(instance-of)))
 					 (<= (length x-vals) 2)
-					 (<= (length y-vals) 2)) ; for efficiency
+					 (<= (length y-vals) 2)) ; for efficiency				
 				    (mapcan #'(lambda (x-val)
 					    (mapcar #'(lambda (y-val)
 						      (no-of-pending-equalities-between-slotsvals x-val y-val))
@@ -17775,7 +17775,7 @@ is via no-of-pending-unifications that looks ahead and sees Electron[1] -> 2nd-O
 					   (cond ((and (kb-objectp x-val)
 						       (kb-objectp y-val)
 						       (pending-equality x-val y-val))
-;						  (km-format t "((~a ~a ~a) &! (~a ~a ~a)) pending~%"
+;						  (km-format t "((~a ~a ~a) &! (~a ~a ~a)) pending~%" 
 ;							     x x-slot x-val y x-slot y-val)
 						  '(1))))
 				       y-vals))
@@ -17788,9 +17788,9 @@ is via no-of-pending-unifications that looks ahead and sees Electron[1] -> 2nd-O
 ;;; ======================================================================
 
 #|
-and-append:
+and-append: 
  - Takes two *sets* of values. For &, those sets will necessarily be singletons.
- - Returns a *set* containing a *single* value, = the unification of those
+ - Returns a *set* containing a *single* value, = the unification of those 
 	two sets (either using & or && as specified in the call).
 
 This simple task ends up being surprisingly tricky to implement correctly...
@@ -17825,7 +17825,7 @@ Inputs get converted to call and-append2 as follows:
   (cond ((equal xs ys) xs)
 	((and (singletonp xs) 			; (((a b) && (c d)))    (((a b) && (e f))) [1a]
 	      (and-listp (first xs) and-symbol) ; ((a & b))		((a & c))	   [1b]
-	      (singletonp ys)
+	      (singletonp ys) 
 	      (and-listp (first ys) and-symbol))
 	 (list (and-append2 (first xs) and-symbol (first ys))))
 	((and (singletonp xs) 			; (((a b) && (c d)))    (a b)		   [2a]
@@ -17843,7 +17843,7 @@ Inputs get converted to call and-append2 as follows:
 (defun do-setify (set and-symbol)
   (cond ((set-unification-operator and-symbol) (list set))
 	(t set)))
-
+				
 ;;; Here x and y are lists of conjoined values. Note how non-and-lists have been ()'ed
 ;;; (and-append2 '(a)   '& '(a & b))
 ;;; (and-append2 '((a)) '&& '((a) && (b)))
@@ -17857,12 +17857,12 @@ Inputs get converted to call and-append2 as follows:
 	((and-member (first x) y and-symbol)
 	 (and-append2 (rest (rest x)) and-symbol y))
 	(t (cons (first x)
-		 (cons and-symbol
+		 (cons and-symbol 
 		       (and-append2 (rest (rest x)) and-symbol y))))))
 
 ; (and-listp '(a & b) '&)  -->   t
 ; (and-listp '((a) && (b)) '&&)  -->   t
-(defun and-listp (list and-symbol)
+(defun and-listp (list and-symbol) 
   (and (listp list)
        (> (length list) 2)
        (eq (second list) and-symbol)))
@@ -17873,7 +17873,7 @@ Inputs get converted to call and-append2 as follows:
 	((and (> (length list) 2)
 	      (eq (second list) and-symbol))
 	 (and-member el (rest (rest list)) and-symbol))
-	(t (report-error 'program-error
+	(t (report-error 'program-error 
 			 "and-member given a badly formed list (not an and-list!)~%Doing (and-member ~a ~a ~a)~%" el list and-symbol))))
 
 ;;; ======================================================================
@@ -17891,7 +17891,7 @@ their situational contents.
 	 (report-error 'user-error "Can't copy ~a's contents to target situation ~a, as ~a isn't a KB object!~%"
 		       source-sitn target-sitn target-sitn))
 	(t (let ( (curr-situation (curr-situation))
-		  (objects-to-copy (remove-if-not #'(lambda (instance)
+		  (objects-to-copy (remove-if-not #'(lambda (instance) 
 						      (has-situation-specific-info instance source-sitn))
 						  (get-all-concepts))) )
 ;	     (km-format t "Changing to the target-sitn = ~a...~%" target-sitn)
@@ -17913,20 +17913,20 @@ their situational contents.
 (defun merge-slotsvals (instance source-sitn target-sitn &key classes-subsumep (facet 'own-properties))
   (let ( (source-svs (get-slotsvals instance :facet facet :situation source-sitn))
 	 (target-svs (get-slotsvals instance :facet facet :situation target-sitn)) )
-    (cond
+    (cond 
      (source-svs
       (multiple-value-bind
        (successp unified-svs)
        (lazy-unify-slotsvals nil nil source-svs target-svs 			; [2]
 			     :cs1 (immediate-classes instance :situation source-sitn)
 			     :cs2 (immediate-classes instance :situation target-sitn)
-			     :classes-subsumep classes-subsumep
+			     :classes-subsumep classes-subsumep 
 			     :check-constraintsp nil
 			     :fail-mode 'error)
-       (cond (successp
+       (cond (successp 
 	      (cond ((not (equal unified-svs target-svs))
 		     (put-slotsvals instance unified-svs :facet facet :situation target-sitn :install-inversesp nil))))	; install-inversesp = nil [1]
-	     (t (report-error 'user-error
+	     (t (report-error 'user-error 
 			      "Failed to unify ~a's slot-values of ~a in ~a~%with its slot-values ~a in ~a!~%Dropping these values...~%"
 			      instance source-svs source-sitn target-svs target-sitn))))))))
 
@@ -17938,9 +17938,9 @@ their situational contents.
 
 #|
 unifiable-with-existential-expr: This is like the &? operator, except its second argument is
-an expression rather than an instance. It uses the same comparison machinery
+an expression rather than an instance. It uses the same comparison machinery 
 (lazy-unify-slotsvals) as &?, except enters it a bit lower down (lazy-unify-slotsvals,
-rather than try-lazy-unify), and without actually creating a temporary Skolem
+rather than try-lazy-unify), and without actually creating a temporary Skolem 
 instance denoting expr.
 
 Unifiable - eventually should merge with subsumes.
@@ -17957,31 +17957,31 @@ EXPR = necessarily '(a Class with slotsvals)), for now
 [7] Michael Wessel only wants to check locked classes for heuristic unification (when :classes-subsumep t), not for forced unification.
 |#
 (defun unifiable-with-existential-expr (instance expr &key classes-subsumep)
- (cond
-  ((explained-by instance expr)
+ (cond 
+  ((explained-by instance expr) 
    (km-trace 'comment "[ ~a was originally derived from ~a, so must unify with it! ]" instance expr)
    instance)
-  (t
+  (t 
    (let ( (class+slotsvals (bind-self (breakup-existential-expr expr) instance)) )   ; [1]
     (cond (class+slotsvals				;;; 1. An INDEFINITE expression
 	   (let* ( (class (first class+slotsvals))		;;;    (so do subsumption)
-		   (slotsvals0 (second class+slotsvals))
+		   (slotsvals0 (second class+slotsvals)) 
 		   (classes (remove-duplicates (cons class (vals-in (assoc '#$instance-of slotsvals0)))))  ; [3]
 		   (slotsvals (update-assoc-list slotsvals0 `(#$instance-of ,classes))) )		   ; [3]
-	     (are-slotsvals slotsvals)						; inc. look for constraints in slots
-	     (cond
+	     (are-slotsvals slotsvals)						; inc. look for constraints in slots 
+	     (cond 
 	      ((and (null slotsvals)
 		    (isa instance class)) instance)	; [4]
 	      ((and ;(can-be-a instance class)
 		(compatible-classes :instance1 instance :classes2 (remove-constraints classes)	; incomplete [no constraint checking] lookahead
 				    :classes-subsumep classes-subsumep :check-locked-classes-p classes-subsumep) ; [7]
 		(cond ((am-in-local-situation-or-theory)
-			(let ( ; (local (remove-if-not #'(lambda (slotvals)
+			(let ( ; (local (remove-if-not #'(lambda (slotvals) 
 			       ;			 (fluentp (slot-in slotvals))) slotsvals))
 			       (global (remove-if #'(lambda (slotvals)
-						      (fluentp (slot-in slotvals))) slotsvals))
+						      (fluentp (slot-in slotvals))) slotsvals)) 
 			       (curr-situation (curr-situation)) )
-			  (and (lazy-unify-slotsvals instance nil (get-slotsvals instance) slotsvals	; was "local", not "slotsvals" [1]***
+			  (and (lazy-unify-slotsvals instance nil (get-slotsvals instance) slotsvals	; was "local", not "slotsvals" [1]*** 
 ;						     :cs2 (remove-constraints classes)
 						     :cs2 (remove-if-not #'kb-objectp classes)   ; [5]
 						     :classes-subsumep classes-subsumep :fail-mode 'fail)
@@ -17992,16 +17992,16 @@ EXPR = necessarily '(a Class with slotsvals)), for now
 						     :cs2 (remove-if-not #'kb-objectp classes)   ; [5]
 						     :classes-subsumep classes-subsumep :fail-mode 'fail)
 				 (change-to-situation curr-situation)))))
-		      (t (lazy-unify-slotsvals instance nil (get-slotsvals instance) slotsvals
+		      (t (lazy-unify-slotsvals instance nil (get-slotsvals instance) slotsvals 
 ;					       :cs2 (remove-constraints classes)
 					       :cs2 (remove-if-not #'kb-objectp classes)   ; [5]
 					       :classes-subsumep classes-subsumep :fail-mode 'fail))))))))	; only unify in curr sitn [1], [2]
 	  (t (report-error 'program-error "unifiable-with-existential-expr() in lazy-unify.lisp wasn't given an existential expr!~%   (was ~a instead)~%"
 			   expr)))))))
 
-;;; This unifies instance with an existential expr *without* creating then subsequently deleting a Skolem
+;;; This unifies instance with an existential expr *without* creating then subsequently deleting a Skolem 
 ;;; constant for that existential expr. It's rather a lot of code just to save extra instance creation,
-;;; but useful for must-be-a constraints.
+;;; but useful for must-be-a constraints. 
 ;;; IF successful returns INSTANCE, if not returns NIL. [Note: Failure is allowed]
 ;;; [1] creation routine is largely copied from create-named-instance in frame-io.lisp
 ;;; [2] this subsumption test is new, from remove-subsuming-exprs. It avoids creating
@@ -18015,48 +18015,48 @@ EXPR = necessarily '(a Class with slotsvals)), for now
 ;;; [5] Let's *try* and allow people to put expressions on instance-of slots
 ;;; [6] (u-w-e-e '#$_Fish1 '#$(a Pet (@ _Person3 Person owns)) - don't want to lose explanation for _Fish1 instance-of Pet
 ;;; [7] Michael Wessel only wants to check locked classes for heuristic unification (when :classes-subsumep t), not for forced unification.
-(defun unify-with-existential-expr (instance expr
+(defun unify-with-existential-expr (instance expr 
 				    &key eagerlyp classes-subsumep (fail-mode 'fail) target (check-constraintsp t))
-  (cond
+  (cond 
    ((explained-by instance expr target)
     (km-trace 'comment "[ ~a was originally derived from ~a, so must unify with it! ]" instance expr)
     instance)
    ((and (fluent-instancep instance)			; special case: (_SomePerson23 & (a Person)) -> _Person35, a definite object
 	 (neq (first expr) '#$some))
-    (let ((val (km-unique-int expr :target target))
+    (let ((val (km-unique-int expr :target target)) 
 	  (joiner (cond ((and eagerlyp classes-subsumep) '&+!)
 			(eagerlyp '&!) (classes-subsumep '&+) (t '&))))
       (km-unique-int `(,instance ,joiner ,val) :fail-mode fail-mode)))
 ;  ((km-int `#$(,INSTANCE is ',EXPR)) instance))   	; [2], [2b]
    (t (let ( (class+slotsvals (bind-self (breakup-existential-expr expr) instance)) )   ; [1]
-	(cond
+	(cond 
 	 (class+slotsvals				;;; 1. An INDEFINITE expression
 	  (let* ((class (first class+slotsvals))		;;;    (so do subsumption)
-		 (slotsvals0 (second class+slotsvals))
-		 (_dummy (are-slotsvals slotsvals0)) ; inc. look for constraints in slots
+		 (slotsvals0 (second class+slotsvals)) 
+		 (_dummy (are-slotsvals slotsvals0)) ; inc. look for constraints in slots 
 		 (extra-classes (vals-in (assoc '#$instance-of slotsvals0))) ; [1]
 		 (all-new-classes (cons class extra-classes))
 		 (unification
-		    (cond
+		    (cond 
 		       ((and (null slotsvals0)			      ; [4] - optional optimization (in practice doesn't
 			     (isa instance class)		      ; make much difference)
-			     (remove-subsumers-slotp '#$instance-of)) ; NOTE: Otherwise instance-of assertions *do* need
+			     (remove-subsumers-slotp '#$instance-of)) ; NOTE: Otherwise instance-of assertions *do* need 
 								      ; updating in the KB.
 			instance)
-		       (t (multiple-value-bind
-			      (compatiblep violated-partitions locked-violations)
-			      (compatible-classes :instance1 instance :classes2 (list class) ; incomplete [no constraint checking], quick lookahead
-						  :classes-subsumep classes-subsumep :check-locked-classes-p classes-subsumep) ; [7]
-			    (cond
-			     (compatiblep
+		       (t (multiple-value-bind 
+			      (compatiblep violated-partitions locked-violations)	  
+			      (compatible-classes :instance1 instance :classes2 (list class) ; incomplete [no constraint checking], quick lookahead 
+						  :classes-subsumep classes-subsumep :check-locked-classes-p classes-subsumep) ; [7]			      
+			    (cond 
+			     (compatiblep 
 			      (cond ((not (kb-objectp instance)) instance) ; e.g. (1 & (a Coordinate))
 				    (t (or (unify-with-slotsvals2 instance all-new-classes
 								  slotsvals0 :classes-subsumep classes-subsumep
 								  :eagerlyp eagerlyp :check-constraintsp check-constraintsp :fail-mode fail-mode)
 					   (cond ((eq fail-mode 'error)
-						  (report-error 'user-error
+						  (report-error 'user-error 
 								"Unification (~a ~a ~a) failed! (Some slot-values are incompatible)~%"
-								instance
+								instance 
 								(cond ((and eagerlyp classes-subsumep) '&+!)
 								      (eagerlyp '&!) (classes-subsumep '&+) (t '&))
 								expr)
@@ -18065,22 +18065,22 @@ EXPR = necessarily '(a Class with slotsvals)), for now
 			      (cond
 			       (violated-partitions
 				(report-error 'user-error "Unification (~a ~a ~a) failed! The classes were found to be incompatible.~%Partition(s) ~a was violated:~%~{~a~}"
-					      instance
+					      instance 
 					      (cond ((and eagerlyp classes-subsumep) '&+!)
 						    (eagerlyp '&!) (classes-subsumep '&+) (t '&))
 					      expr
 					      (delistify violated-partitions)
-					      (mapcar #'write-frame violated-partitions)))
+					      (mapcar #'write-frame violated-partitions)))			      
 			       (locked-violations
 				(report-error 'user-error "Unification (~a ~a ~a) failed! The unification would replace the locked class ~a with ~a. (not allowed!)~%"
-					      instance
+					      instance 
 					      (cond ((and eagerlyp classes-subsumep) '&+!)
 						    (eagerlyp '&!) (classes-subsumep '&+) (t '&))
 					      expr
 					      (first locked-violations)
 					      (second locked-violations)))
 			       (t (report-error 'user-error "Unification (~a ~a ~a) failed! The classes were found to be incompatible.~%"
-					      instance
+					      instance 
 					      (cond ((and eagerlyp classes-subsumep) '&+!)
 						    (eagerlyp '&!) (classes-subsumep '&+) (t '&))
 					      expr))))))))))
@@ -18096,18 +18096,18 @@ EXPR = necessarily '(a Class with slotsvals)), for now
 			       unification))))
 ; No, error reporting done earlier now
 ;		  ((eq fail-mode 'error)
-;		   (report-error 'user-error "Unification (~a ~a ~a) failed! (Some slot-values are incompatible)~%"
-;				 instance
+;		   (report-error 'user-error "Unification (~a ~a ~a) failed! (Some slot-values are incompatible)~%" 
+;				 instance 
 ;				 (cond ((and eagerlyp classes-subsumep) '&+!)
 ;				       (eagerlyp '&!) (classes-subsumep '&+) (t '&))
 ;				 expr))
 	 (t (report-error 'program-error "unify-with-existential-expr() in lazy-unify.lisp wasn't given an existential expr!~%   (was ~a instead)~%"
 			  expr)))))))
 
-(defun unify-with-slotsvals2 (instance classes slotsvals00
+(defun unify-with-slotsvals2 (instance classes slotsvals00 
 			      &key classes-subsumep eagerlyp (check-constraintsp t) (fail-mode 'fail))
  (let ((slotsvals (convert-comments-to-internal-form slotsvals00)))   ; new!
-  (cond
+  (cond 
    ((am-in-local-situation-or-theory)
     (let* ( (local0 (remove-if-not #'(lambda (slotvals) (fluentp (slot-in slotvals))) slotsvals))
 	    (global0 (remove-if #'(lambda (slotvals) (fluentp (slot-in slotvals))) slotsvals))
@@ -18127,7 +18127,7 @@ EXPR = necessarily '(a Class with slotsvals)), for now
 			     :eagerlyp eagerlyp
 			     :check-constraintsp check-constraintsp
 			     :fail-mode fail-mode)
-       (cond
+       (cond 
 	(successp1
 	 (change-to-situation *global-situation*)
 	 (multiple-value-bind
@@ -18139,33 +18139,33 @@ EXPR = necessarily '(a Class with slotsvals)), for now
 				:eagerlyp eagerlyp
 				:check-constraintsp check-constraintsp
 				:fail-mode fail-mode)
-	 (cond
+	 (cond 
 	  ((and successp1 successp2)
-	   (let ( (local-change-made nil)
+	   (let ( (local-change-made nil) 
 		  (global-change-made nil) )
 	    (cond ((not (equal unified-svs2 (get-slotsvals instance)))			; GLOBAL SITUATION
-		   (cond ((not global-change-made)
+		   (cond ((not global-change-made) 
 ;			  (km-format t "unified-svs2 = ~a~%" unified-svs2)
 ;			  (km-format t "(get-slotsvals ~a) = ~a~%" instance (get-slotsvals instance))
 			  (setq global-change-made t)))
 ;		   (km-format t "tracepoint 1: ~a~%" unified-svs2)
-		   (mapc #'(lambda (slotvals) (put-vals instance (slot-in slotvals)
-							(vals-in slotvals))) unified-svs2) ; [1]
+		   (mapc #'(lambda (slotvals) (put-vals instance (slot-in slotvals) 
+							(vals-in slotvals))) unified-svs2) ; [1]		   
 		   (cond ((some #'(lambda (class) (is-subclass-of class '#$Situation)) classes)
 			  (make-assertions instance unified-svs2)))))
 	    (change-to-situation curr-situation)
 	    (cond ((not (equal unified-svs1 (get-slotsvals instance)))			; LOCAL SITUATION
-		   (cond ((not local-change-made)
+		   (cond ((not local-change-made) 
 ;			  (km-format t "unified-svs1 = ~a~%" unified-svs1)
 ;			  (km-format t "(get-slotsvals ~a) = ~a~%" instance (get-slotsvals instance))
 			  (setq local-change-made t)))
 ;		   (km-format t "tracepoint 2: ~a~%" unified-svs1)
-		   (mapc #'(lambda (slotvals) (put-vals instance (slot-in slotvals)
+		   (mapc #'(lambda (slotvals) (put-vals instance (slot-in slotvals) 
 							(vals-in slotvals))) unified-svs1) ; [1]
 		   (cond ((some #'(lambda (class) (is-subclass-of class '#$Situation)) classes)
 			  (make-assertions instance unified-svs1)))))
 ;	    (un-done instance)
-; It looks like slotsvals are adequate, but no:
+; It looks like slotsvals are adequate, but no: 
 ; i1 & (a Move with (object (...))) may, as a side effect, include OTHER changes on OTHER slots on i1 too,
 ; inherited from Move or its superclasses. So we better undo all of these!
 ;	    (mapc #'(lambda (slot) (un-done instance :slot slot :situation (curr-situation))) (mapcar #'slot-in slotsvals))
@@ -18193,21 +18193,21 @@ EXPR = necessarily '(a Class with slotsvals)), for now
 			     :eagerlyp eagerlyp
 			     :check-constraintsp check-constraintsp
 			     :fail-mode fail-mode)
-      (cond (successp
+      (cond (successp 
 	     (let ( (change-made nil) )
 	      (cond ((not (equal unified-svs (get-slotsvals instance)))
-		     (mapc #'(lambda (slotvals)
-			       (cond ((not change-made)
+		     (mapc #'(lambda (slotvals) 
+			       (cond ((not change-made) 
 ;				      (km-format t "unified-svs = ~a~%" unified-svs)
 ;				      (km-format t "(get-slotsvals ~a) = ~a~%" instance (get-slotsvals instance))
 				      (setq change-made t)))
 					;			       (km-format t "tracepoint 3: ~a~%" slotvals)
-			       (put-vals instance (slot-in slotvals) (vals-in slotvals)))
+			       (put-vals instance (slot-in slotvals) (vals-in slotvals))) 
 			   unified-svs)	; [1]
 		     (cond ((some #'(lambda (class) (is-subclass-of class '#$Situation)) classes)
 			    (make-assertions instance unified-svs)))
 ;		     (un-done instance)
-; It looks like slotsvals are adequate, but no:
+; It looks like slotsvals are adequate, but no: 
 ; i1 & (a Move with (object (...))) may, as a side effect, include OTHER changes on OTHER slots on i1 too,
 ; inherited from Move or its superclasses. So we better undo all of these!
 		     (cond (change-made
@@ -18225,7 +18225,7 @@ RETURNS: TWO values
  - non-NIL if the classes are compatible, NIL if they are incompatible
  - A list of the partitions that were violated, if any.
 
-IN ADDITION: As we also allow negated class values, we must also check consistency here,
+IN ADDITION: As we also allow negated class values, we must also check consistency here, 
 	e.g. (instance-of (Car)) and (instance-of ((<> Car))) are incompatible.
 	Also, because instance-of is a *built-in-remove-subsumers-slots*, (instance-of (Car)) and (instance-of ((<> Vehicle))) are incompatible,
 			although (instance-of (Vehicle)) and (instance-of ((<> Car))) are not.
@@ -18238,11 +18238,11 @@ Note: The subsumption requirement isn't that the instance is subsumed by a class
 [3] New: classes-subsumep = 'exact-match, 't or nil. exact-match checks for identity.
 |#
 (defun compatible-classes (&key instance1 instance2 classes1 classes2 classes-subsumep check-locked-classes-p)
-  (let ( (immediate-classes1
+  (let ( (immediate-classes1 
 	  (or classes1
 	      (and instance1 (immediate-classes instance1))
 	      (report-error 'program-error "compatible-classes: missing instance/classes for instance1!~%")))
-	 (immediate-classes2
+	 (immediate-classes2 
 	  (or classes2
 	      (and instance2 (immediate-classes instance2))
 	      (report-error 'program-error "compatible-classes: missing instance/classes for instance2!~%"))) )
@@ -18284,7 +18284,7 @@ Note: The subsumption requirement isn't that the instance is subsumed by a class
 							       locked-classes2))
 						     immediate-classes1)))
 	     (values nil nil (list (delistify locked-classes2) (delistify violating-classes1)))))
-	  ((or classes-subsumep
+	  ((or classes-subsumep 
 ; 9/27/12 - I'll remove the below constraint, as sometimes we want to use Sequence in the KB also and avoid
 ;           KM> ((a Foo) & (a Sequence)) -> ERROR! Unification (_Foo2 & (a Sequence)) failed! The classes were found to be incompatible.
 ;           That is: There is not really any significant reason to insist that Sequence only refers to a (:seq ...) KM structure
@@ -18304,11 +18304,11 @@ Note: The subsumption requirement isn't that the instance is subsumed by a class
     HANDLING OF PARTITIONS - only used by the above function compatible-classes
 ======================================================================
 
-[1] all-superclasses0 is like all-superclasses, except it INCLUDES class, and MAY NOT
-     include Thing unless Thing is explicitly declared as a superclass. This is exactly
+[1] all-superclasses0 is like all-superclasses, except it INCLUDES class, and MAY NOT 
+     include Thing unless Thing is explicitly declared as a superclass. This is exactly 
      what we want here!
 RETURNS:
-  - A list of Partitions that an instance in both immediate-classes1 and immediate-classes2 violates
+  - A list of Partitions that an instance in both immediate-classes1 and immediate-classes2 violates      
     or NIL of no Partition is violated (i.e. the two class sets are NOT disjoint and can be combined.
 |#
 (defun disjoint-class-sets (immediate-classes1 immediate-classes2 &key instance1 instance2)
@@ -18340,7 +18340,7 @@ So we just need the UNIQUE elements of classes1, and see their partitions
    and the UNIQUE elements of classes2, and see their partitions
    and check for no overlap.
    Proof: UNIQUE means they are DIFFERENT values. And so they can't both belong to the same partition.
-|#
+|# 
 
 (defun disjoint-class-sets0 (classes1 classes2 &key instance1 instance2)
   (declare (ignore instance1 instance2))
@@ -18354,7 +18354,7 @@ So we just need the UNIQUE elements of classes1, and see their partitions
 
 #|
 (some #'(lambda (partition)
-		 (let* ( (partition-members (get-vals partition '#$members :situation *global-situation*))
+		 (let* ( (partition-members (get-vals partition '#$members :situation *global-situation*)) 
 			 (classes1-in-partition (intersection classes1 partition-members)) )
 
 ;;; Exhaustive partition check...
@@ -18397,11 +18397,11 @@ undefined slot.
 		  CONSTRAINT CHECKING / ENFORCEMENT
    ======================================================================
 
-SATISFIABILITY vs CONSISTENCY: Used for has-definition,
+SATISFIABILITY vs CONSISTENCY: Used for has-definition, 
 	e.g., (a Person) doesn't SATISFY (every House-Owner has-definition (instance-of (Person)) (owns ((at-least 1 House))))
 		       but is CONSISTENT with it.
 
-filter-using-constraints: remove vals which fail a constraint. Violations aren't an error.
+filter-using-constraints: remove vals which fail a constraint. Violations aren't an error. 
 	Used solely to remove inconsistent projected vals in km-slotvals-from-kb.
 
 (are-consistent-with-constraints vals constraints slot)		- lazy-unify
@@ -18417,7 +18417,7 @@ filter-using-constraints: remove vals which fail a constraint. Violations aren't
 enforce-constraints: Apply the constraints. Failure IS an error and will be reported.
 Used to process the values collected in km-slotvals-from-kb.
 
-test-constraints calls test-set-constraint:
+test-constraints calls test-set-constraint: 
 	used by is0 (subsumes.lisp), in mode SATISFIES
 	used by check-slotvals-constraints (lazy-unify.lisp), in mode CONSISTENT
 
@@ -18443,12 +18443,12 @@ test-set-constraints calls test-set-constraint0: This is used ONLY by check-slot
 ;;; THIS ASSUME VALS IS A LIST OF ATOMS, IE. ANY KM EVALUATION HAS ALREADY BEEN PERFORMED.
 (defun filter-using-constraints (vals constraints &optional slot)
   (cond ((null constraints) vals)
-	((and (tracep) (not (traceconstraintsp)))
+	((and (tracep) (not (traceconstraintsp))) 
 	 (let ((*trace* nil))
 	   (filter-using-constraints0 vals constraints slot)))
-;	 (prog2
-;	     (suspend-trace)
-;	     (filter-using-constraints0 vals constraints slot)
+;	 (prog2 
+;	     (suspend-trace) 
+;	     (filter-using-constraints0 vals constraints slot) 
 ;	   (unsuspend-trace)))
 	(t (km-trace 'comment "Testing constraints ~a" constraints)
 	   (filter-using-constraints0 vals constraints slot))))
@@ -18466,7 +18466,7 @@ This will *FAIL* if a constraint is violated. Returns T/NIL.
 	(are-consistent-with-constraints '#$(Car) '#$((<> Vehicle)) '#$instance-of)
    should FAIL, as #$instance-of is a remove-subsumers-slotp, but
 	(are-consistent-with-constraints '#$(Vehicle) '#$((<> Car)) '#$instance-of)
-   should SUCCEED. Similarly,
+   should SUCCEED. Similarly, 
 	(are-consistent-with-constraints '#$(Vehicle) '#$((<> Car)) '#$subclasses
    should FAIL, as #$subclasses is a remove-subsumees-slotp, but
 	(are-consistent-with-constraints '#$(Car) '#$((<> Vehicle)) '#$subclasses)
@@ -18483,7 +18483,7 @@ This will *FAIL* if a constraint is violated. Returns T/NIL.
   (cond ((null constraints0) nil)
 	(t (let ((vals (remove-dup-instances vals0)) 		; does dereferencing etc.
 		 (constraints (dereference (desource+decomment constraints0)))
-		 (special-slot-type (special-slot-type slot)))
+		 (special-slot-type (special-slot-type slot))) 
 	     (or (case mode
 		   (consistent (violated-set-constraints (list vals) constraints))
 		   (satisfies (some #'(lambda (constraint)
@@ -18491,7 +18491,7 @@ This will *FAIL* if a constraint is violated. Returns T/NIL.
 						    (not (set-constraint-satisfied vals constraint :incompletep incompletep))) ; [1]
 					       (list constraint vals))))
 				    constraints)))
-		 (some #'(lambda (val)
+		 (some #'(lambda (val) 
 			   (violated-val-constraints val constraints special-slot-type :mode mode))
 		       vals))))))
 
@@ -18504,7 +18504,7 @@ This will *FAIL* if a constraint is violated. Returns T/NIL.
   (not (violated-val-constraints val constraints special-slot-type :mode mode)))
 
 (defun violated-val-constraints (val constraints special-slot-type &key mode)
-  (some #'(lambda (constraint)
+  (some #'(lambda (constraint) 
 	    (cond ((and (val-constraint-exprp constraint)
 			(not (test-val-constraint val constraint special-slot-type :mode mode))) ; i.e., test fails
 		   (list constraint val))))
@@ -18512,7 +18512,7 @@ This will *FAIL* if a constraint is violated. Returns T/NIL.
 
 ;;; [1] ignore for now - could look for mutually inconsistent constraints later
 ;;; [2] Note we ASSUME for special-slot-types that the constraints are NECESSARILY of the form (<> ATOMIC-CLASS)
-;;; [3b] Technically, if there's no possible values this is a failure. HOWEVER, KM may fail to find possible values
+;;; [3b] Technically, if there's no possible values this is a failure. HOWEVER, KM may fail to find possible values 
 ;;; 	 if the system is looping, and so aborts the computation. See enforce-val-constraint also, for identical issue
 ;;; [4] Important not to abort if looping on constraints
 (defun test-val-constraint (val constraint special-slot-type &key mode)
@@ -18525,9 +18525,9 @@ This will *FAIL* if a constraint is violated. Returns T/NIL.
 							     (km-int `#$(the element-type of ,VAL))))) )
 				   (or (null element-type)
 					   (compatible-classes :classes1 element-type :classes2 (list (second constraint))))))
-													; ignore any "with ..." part, as
+													; ignore any "with ..." part, as 
 													; disjoint-class-sets can't handle it.
-;				     (every #'(lambda (element-type)
+;				     (every #'(lambda (element-type) 
 ;						(km-int `#$(,ELEMENT-TYPE is-subsumed-by (the-class ,@(REST CONSTRAINT)))))
 ;					    (km-int `#$(the element-type of ,VAL))))
 				    ((equal constraint '#$(must-be-a Thing)))		; t
@@ -18541,16 +18541,16 @@ This will *FAIL* if a constraint is violated. Returns T/NIL.
 				  (remove-subsumees-slot (not (is-subclass-of (second constraint) val)))
 				  (t (not (equal val (second constraint))))))
 			   (t (km-int `#$(,VAL /= ,(SECOND CONSTRAINT))))))	; [2]
-		 (#$excluded-values
+		 (#$excluded-values 
 		  (let ( (excluded-values (km-int (vals-to-val (rest constraint)))) )
-		    (cond
+		    (cond 
 		     ((null excluded-values))
 		     ((eq special-slot-type 'remove-subsumers-slot) ; #$instance-of	; val = Animal, excluded-values = (Tiger) OK
 		      (not (intersection (all-superclasses0 val) excluded-values)))	; val = Tiger, excluded-values = (Animal) NOT OK
 		     ((eq special-slot-type 'remove-subsumees-slot) ; #$subclasses	; val = Animal, excluded-values = (Tiger) NOT OK  [4]
 		      (not (intersection (all-subclasses0 val) excluded-values)))	; val = Tiger, excluded-values = (Animal) OK
 		     (t (not (member val excluded-values))))))			; test it
-		 (#$possible-values
+		 (#$possible-values 
 		  (let ( (possible-values (km-int (vals-to-val (rest constraint)))) )		; [3]
 ;		    (km-format t "possible-values = ~a~%" possible-values)
 		    (cond (possible-values
@@ -18562,8 +18562,8 @@ This will *FAIL* if a constraint is violated. Returns T/NIL.
 								 (km-int `(,val &? ,possible-value)))
 							     possible-values))
 					  (satisfies (member val possible-values :test #'equal))))))
-			  (t))))	; [3b] fail, not succeed -- may be no vals due to looping, not really values
-		 (#$constraint
+			  (t))))	; [3b] fail, not succeed -- may be no vals due to looping, not really values 
+		 (#$constraint 
 		  (let ((constraint-expr (subst val '#$TheValue (second constraint))))
 		    (cond ((looping-on constraint-expr) t) ; Don't abort if looping!
 			  (t (km-int constraint-expr)))))
@@ -18571,33 +18571,33 @@ This will *FAIL* if a constraint is violated. Returns T/NIL.
 		 (#$no-inheritance t)
 		 (t (report-error 'user-error "Unrecognized form of constraint ~a~%" constraint))))))
 
-;;; Test for SATISFIABILITY not CONSISTENCY. Used for has-definition,
+;;; Test for SATISFIABILITY not CONSISTENCY. Used for has-definition, 
 ;;;		e.g., (a Person) doesn't SATISFY (every House-Owner has-definition (owns ((at-least 1 House))))
 ;;;		       but is CONSISTENT with it.
 ;;; [1] this computation is seemingly (but insignificantly) inefficient here, and could be moved earlier.
 ;;; But: it is a place-holder, where we might later want to check for mutually inconsistent constraints later.
 ;;; [2] Efficiency - only do the length test if needed later
-;;  [3] Copy this special case from enforce-set-constraints: want to allow possible unifications for singleton values.
+;;  [3] Copy this special case from enforce-set-constraints: want to allow possible unifications for singleton values. 
 (defun set-constraint-satisfied (vals0 constraint &key incompletep)
   (cond
    ((eq constraint '#$:incomplete) t)
    (t (let*
 	 ((vals (remove-constraints vals0)) 	; [1]
 	  (n (second constraint))
-	  (class (third constraint))
+	  (class (third constraint)) 
 	  (nvals (cond ((member (first constraint) '#$(at-least exactly at-most))
-			(length (remove-if-not #'(lambda (val) (isa val class)) vals)))))
+			(length (remove-if-not #'(lambda (val) (isa val class)) vals))))) 
 	  (forced-class (or (minimatch1 constraint '#$(at-most 1 ?class)) 	 ; [3]
 			    (minimatch1 constraint '#$(exactly 1 ?class))))
 	  (vals-in-class (cond (forced-class (remove-if-not #'(lambda (val) (isa val forced-class)) vals)))))
-	(cond
+	(cond 
           ((> (length vals-in-class) 1)	; necc. 0 if no forced class
   	   (every #'(lambda (pair) (km-int `(,(first pair) &? ,(second pair)))) (all-adjacent-pairs vals-in-class)))
 	  (t (case (first constraint)
 	       (#$at-least (>= nvals n))
 	       (#$exactly  (and (not incompletep) (= nvals n)))  ; else more vals might be added later
 	       (#$at-most  (and (not incompletep) (<= nvals n))) ; else more vals might be added later
-	       (#$set-constraint (km-int (subst (vals-to-val vals) '#$TheValues (second constraint))))
+	       (#$set-constraint (km-int (subst (vals-to-val vals) '#$TheValues (second constraint))))	
 	       (#$sometimes t)
 	       (#$set-filter t)
 	       (t (report-error 'user-error "Unrecognized form of set constraint ~a~%" constraint)
@@ -18635,7 +18635,7 @@ This will *FAIL* if a constraint is violated. Returns T/NIL.
 ;;;    passability has already been tested via satisfies-constraints.
 (defun enforce-constraints (vals constraints &key target)
     (cond ((and (tracep) (not (traceconstraintsp)))
-	   (let ((*trace* nil))
+	   (let ((*trace* nil)) 
 	     (enforce-constraints0 vals constraints :target target)))
 ;	 (prog2 (suspend-trace) (enforce-constraints0 vals constraints instance slot) (unsuspend-trace)))
 	  (t (km-trace 'comment "Enforcing constraints ~a" constraints)
@@ -18663,7 +18663,7 @@ This will *FAIL* if a constraint is violated. Returns T/NIL.
 	 (vals-to-drop (set-difference vals2 vals-to-keep)))
     (cond
      (*remove-violating-instances*
-      (cond (target (mapc #'(lambda (val-to-drop)
+      (cond (target (mapc #'(lambda (val-to-drop) 
 			      (delete-val instance slot val-to-drop))
 			  vals-to-drop)))
       vals-to-keep)
@@ -18678,14 +18678,14 @@ This will *FAIL* if a constraint is violated. Returns T/NIL.
 ;				    newvals constraint))))
 ;	 constraints)
 ;   newvals))
-
+  
 (defun enforce-val-constraints (val constraints special-slot-type &key target)
   (let ((slot (second target))
 	(instance (fourth target)))
-    (and val (every #'(lambda (constraint)
+    (and val (every #'(lambda (constraint) 
 			(or (not (val-constraint-exprp constraint))
 			    (enforce-val-constraint val constraint instance slot special-slot-type)
-			    (report-error 'user-error
+			    (report-error 'user-error 
 					  `(|val-constraint| ,instance ,slot ,val ,constraint)
 					  "Constraint violation! Value ~a conflicts with ~a!~%"
 					  val constraint)))
@@ -18710,7 +18710,7 @@ This will *FAIL* if a constraint is violated. Returns T/NIL.
 						    (km-int `#$(the element-type of ,VAL))))) )
 			  (or (null element-type)
 			      (compatible-classes :classes1 element-type :classes2 (list (second constraint))))))
-										; ignore any "with ..." part, as
+										; ignore any "with ..." part, as 
 										; disjoint-class-sets can't handle it.
 		       ((equal constraint '#$(must-be-a Thing)) val)
 ;		       (t (km-int `#$(,VAL & (a ,@(REST CONSTRAINT))) :target `#$(the ,SLOT of ,INSTANCE)))))  ; [5]
@@ -18722,9 +18722,9 @@ This will *FAIL* if a constraint is violated. Returns T/NIL.
 ;	       (cond ((not (equal val (second constraint)))		; check constraint
 ;	      (t (km-int `#$(,VAL /= ,(SECOND CONSTRAINT))))))
     (<> (km-int `#$(,VAL /== ,(SECOND CONSTRAINT))))
-    (#$excluded-values
+    (#$excluded-values 
      (let ( (excluded-values (km-int (vals-to-val (rest constraint)))) )		; [1]
-       (cond
+       (cond 
 	((null excluded-values))
 	((eq special-slot-type 'remove-subsumers-slot)		; #$instance-of	;val=Animal, excluded-values=(Tiger) OK
 	 (not (intersection (all-superclasses0 val) excluded-values)))		;val=Tiger, excluded-values=(Animal) NOT OK
@@ -18734,9 +18734,9 @@ This will *FAIL* if a constraint is violated. Returns T/NIL.
 	(t (mapcar #'(lambda (excluded-value)			; assert it
 		       (add-val val '/== excluded-value))
 		   excluded-values)))))
-    (#$possible-values
+    (#$possible-values 
      (let ( (possible-values (km-int (vals-to-val (rest constraint)))) )		; [3]
-       (cond
+       (cond 
 	((null possible-values))				; [3] - Not necc. failure -- could fail due to looping!
 
 ;; The below is rather obtuse code to handle a special case something like:
@@ -18829,12 +18829,12 @@ This will *FAIL* if a constraint is violated. Returns T/NIL.
   (let* ((constraint (desource+decomment constraint0))
 	 (slot (second target))
 	 (instance (fourth target))
-	 (forced-class (or (minimatch1 constraint '#$(at-most 1 ?class))
+	 (forced-class (or (minimatch1 constraint '#$(at-most 1 ?class)) 	
 			   (minimatch1 constraint '#$(exactly 1 ?class))))
 	 (vals-in-class (cond (forced-class (remove-if-not #'(lambda (val) (isa val forced-class)) vals)))) )
     (cond ((eq constraint '#$:incomplete) vals)		; ignore this flag
           ((> (length vals-in-class) 1)	; necc. 0 if no forced class
-	   (cond
+	   (cond 
 	    ((every #'(lambda (pair) (km-int `(,(first pair) &? ,(second pair)))) (all-adjacent-pairs vals))
 	     (make-comment "Unifying values ~a (forced by constraint (at-most 1 ~a)"
 			   vals-in-class forced-class)
@@ -18842,7 +18842,7 @@ This will *FAIL* if a constraint is violated. Returns T/NIL.
 		   (ordered-set-difference vals vals-in-class)))
 	    (t (report-error 'user-error
 			     `(|set-constraint| ,instance ,slot ,vals-in-class ,constraint)
-;			     "set-constraint violation!~%Found ~a ~a(s), but should be (at-most 1 ~a) and they can't be unified!~%Values were: ~a. Ignoring extras...~%"
+;			     "set-constraint violation!~%Found ~a ~a(s), but should be (at-most 1 ~a) and they can't be unified!~%Values were: ~a. Ignoring extras...~%" 
 			     "set-constraint violation!~%Found ~a ~a(s), but should be (~a 1 ~a) and they can't be unified!~%Values were: ~a.~%"
 			     (length vals-in-class) forced-class (cond ((minimatch1 constraint '#$(at-most 1 ?class)) '#$at-most)
 								       ((minimatch1 constraint '#$(exactly 1 ?class)) '#$exactly)
@@ -18862,33 +18862,33 @@ This will *FAIL* if a constraint is violated. Returns T/NIL.
     (case (first constraint)
 	  (#$at-least (cond ((or (> n *max-padding-instances*)
 				 (>= count n)) vals)		; avoid (at-least 3455 Gene)
-			    (t (append vals (loop repeat (- n count)
+			    (t (append vals (loop repeat (- n count) 
 						collect (km-unique-int `#$(a ,CLASS) :fail-mode 'error)))))) ; classes missing so create them!!
 	  (#$exactly (cond ((= count n) vals)
 			   ((> count n)	;  no, you can always unify instances to get the desired # :-(
 			    (report-error 'user-error
 					  `(|set-constraint| ,instance ,slot ,vals ,constraint)
-			     "set-constraint violation!~%Found ~a ~a(s), but should be exactly ~a!~%Values were: ~a.~%"
+			     "set-constraint violation!~%Found ~a ~a(s), but should be exactly ~a!~%Values were: ~a.~%" 
 			       count class n vals)
 ; If *error-report-silent*, then this is the continuing behavior...
 			    (cond (*remove-violating-instances*
-				   (remove-if #'(lambda (val)
+				   (remove-if #'(lambda (val) 
 						  (cond ((isa val class)
 							 (cond (target (delete-val instance slot val))) ; Inverse may already
 							 t))) ; be asserted so must delete also
 					      vals))
 				  (t vals)))
 			   ((> n *max-padding-instances*) vals) ; avoid (at-least 3455 Gene) - (< count n) is necc. true
-			   (t (append vals (loop repeat (- n count)
+			   (t (append vals (loop repeat (- n count) 
 					       collect (km-unique-int `#$(a ,CLASS) :fail-mode 'error)))))) ; classes missing so create them!!
 	  (#$at-most (cond ((<= count n) vals)
-			   (t (report-error 'user-error
+			   (t (report-error 'user-error 
 					    `(|set-constraint| ,instance ,slot ,vals ,constraint)
 					    "set-constraint violation!~%Found ~a ~a(s), but should be at-most ~a!~%Values were: ~a.~%"
 					    count class n vals)
 			      (cond
 			       (*remove-violating-instances*
-				(remove-if #'(lambda (val)
+				(remove-if #'(lambda (val) 
 					       (cond ((isa val class)
 						      (cond (target (delete-val instance slot val))) ; Inverse may already
 						      t))) ; be asserted so must delete also
@@ -18896,9 +18896,9 @@ This will *FAIL* if a constraint is violated. Returns T/NIL.
 			       (t vals)))
 			   ))
 	  (#$set-constraint (cond ((km-int (subst (vals-to-val vals) '#$TheValues (second constraint))) vals)
-				  (t (report-error 'user-error
+				  (t (report-error 'user-error 
 						   `(|set-constraint| ,instance ,slot ,vals ,constraint)
-						   "set-constraint violation!~%~a failed test ~a.~%"
+						   "set-constraint violation!~%~a failed test ~a.~%" 
 						   vals (second constraint))
 				     vals)))
 	  (#$sometimes t)
@@ -18907,12 +18907,12 @@ This will *FAIL* if a constraint is violated. Returns T/NIL.
 			       (vals-to-drop (set-difference vals vals-to-keep)))
 			    (cond
 			     (*remove-violating-instances*
-			      (cond (target (mapc #'(lambda (val-to-drop)
+			      (cond (target (mapc #'(lambda (val-to-drop) 
 						      (delete-val instance slot val-to-drop))
 						  vals-to-drop)))
 			      vals-to-keep)
 			     (t vals))))
-
+			   
 	  (t (report-error 'user-error "Unrecognized form of set constraint ~a~%" constraint)
 	     vals))))
 
@@ -18935,7 +18935,7 @@ We want to estimate what (exprs1 && exprs2 && expr-set11 && expr-set12 && ... &&
 The system creates "unifications" which is a single list of unified elements from each sets.
 The result will be, say:
 	unifications = ((v11 & expr111) (v12) (v13 & expr112 & expr211 & expr221) (v21 & expr121) ....)
-But we drop the "&" sign from these lists for convenience, as we never actually compute the unification.
+But we drop the "&" sign from these lists for convenience, as we never actually compute the unification. 
  (We only care how many objects are in the final unification).
 
 (violated-set-constraints '#$((_Car1 _Car2) (_Car2) ( ((a Car)) ((a House) (a Dog)) ) )  '#$((at-most 1 Thing)))
@@ -18949,37 +18949,37 @@ unification = ((_Car1 _Car2 (a Car)) ((a House)) ((a Dog)))
 ;;; For now, we only work with the vs1 and vs2. These are necessarily atomic
 (defun violated-set-constraints (expr-sets constraints0)
   (let ((constraints (remove '#$:incomplete constraints0)))
-    (some #'(lambda (constraint)
+    (some #'(lambda (constraint) 
 	      (case (first constraint)
 		(#$at-least nil)
 		(#$(exactly at-most) (violated-cardinality-constraint expr-sets constraint))
-;		(#$set-constraint (not (km-int (subst (vals-to-val vals) '#$TheValues (second constraint)))))
+;		(#$set-constraint (not (km-int (subst (vals-to-val vals) '#$TheValues (second constraint)))))			
 		(#$set-constraint (cond ((not (km-int (subst (vals-to-val (valsets-to-&&-exprs expr-sets)) '#$TheValues (second constraint))))
 					 (list constraint (vals-to-val (valsets-to-&&-exprs expr-sets))))))
 		(#$sometimes nil)
-		(#$set-filter nil)
-; No, constraints might include value constraints also
+		(#$set-filter nil)		 
+; No, constraints might include value constraints also		
 ;		(t (report-error 'user-error "Unrecognized form of set constraint ~a~%" constraint) nil)
 		))
 	  constraints)))
 
-;;; [1] NOTE: There is a special case if N = 1, namely all the elements of all the expr-sets must be unifiable together.
+;;; [1] NOTE: There is a special case if N = 1, namely all the elements of all the expr-sets must be unifiable together.   
 ;;; RETURNS: (<constraint> <data>) pair
 (defun violated-cardinality-constraint (expr-sets constraint)
   (cond ((null expr-sets) nil)		; quick lookahead
 	((and (singletonp expr-sets)
 	      (<= (length (first expr-sets)) (second constraint))) nil) ; quick lookahead
 	((and (eq (third constraint) '#$Thing)
-	      (<= (length (remove-duplicates (remove-if #'constraint-exprp (append-lists expr-sets)))) (second constraint)))
+	      (<= (length (remove-duplicates (remove-if #'constraint-exprp (append-lists expr-sets)))) (second constraint))) 
 ;	 (km-format t "list = ~a~%" (remove-duplicates (remove-if #'constraint-exprp (append-lists expr-sets))))
 	 nil)		; lookahead
 	(t (let* ((n (second constraint))
-		  (class (third constraint)) ; Nucleus
+		  (class (third constraint)) ; Nucleus  
 		  (expr-sets-in-class (remove nil (mapcar #'(lambda (exprs) (extract-exprs-in-class exprs class)) expr-sets)))
 		  (exprs-in-class (remove-duplicates (append-lists expr-sets-in-class) :test #'equal)))	; #'equal ok? (a Atom) (a Atom) I think so
 	     (cond
 	      ((<= (length exprs-in-class) (second constraint)) nil)
-	      ((and (eq n 0) exprs-in-class) (list constraint exprs-in-class)) 		; NEW 8/1/11
+	      ((and (eq n 0) exprs-in-class) (list constraint exprs-in-class)) 		; NEW 8/1/11	      
 	      (t (let ((non-unifiable-pairs (non-unifiable-pairs exprs-in-class)))
 		   (cond ((< (length non-unifiable-pairs) n) nil)			; e.g., n = 2, so 1 bad pair is ok but 2 may not be
 			 ((eq n 1) (list constraint (remove-duplicates (append-lists non-unifiable-pairs) :test #'equal))) ; must all be unif if n = 1
@@ -18992,7 +18992,7 @@ unification = ((_Car1 _Car2 (a Car)) ((a House)) ((a Dog)))
 (defun group-vals-unifiably (vals non-unifiable-pairs)
   (group-vals-unifiably0 vals nil non-unifiable-pairs))
 
-(defun group-vals-unifiably0 (vals groups-so-far non-unifiable-pairs)
+(defun group-vals-unifiably0 (vals groups-so-far non-unifiable-pairs)    
   (cond
    ((endp vals) groups-so-far)
    (t (let* ((val (first vals))
@@ -19000,7 +19000,7 @@ unification = ((_Car1 _Car2 (a Car)) ((a House)) ((a Dog)))
 	(group-vals-unifiably0 (rest vals) new-groups non-unifiable-pairs)))))
 
 (defun add-val-to-group (val groups non-unifiable-pairs)
-  (cond
+  (cond 
    ((null groups) (list (list val)))
    (t (let ((group (first groups)))
 	(cond ((notany #'(lambda (group-val)
@@ -19026,17 +19026,17 @@ I think we need to relax the constraint check to allow unifiability.
 |#
 
 #|
-;;; [1] NOTE: There is a special case if N = 1, namely all the elements of all the expr-sets must be unifiable together.
+;;; [1] NOTE: There is a special case if N = 1, namely all the elements of all the expr-sets must be unifiable together.   
 (defun violated-cardinality-constraint (expr-sets constraint)
   (cond ((null expr-sets) nil)		; quick lookahead
 	((and (singletonp expr-sets)
 	      (<= (length (first expr-sets)) (second constraint))) nil) ; quick lookahead
 	((and (eq (third constraint) '#$Thing)
-	      (<= (length (remove-duplicates (remove-if #'constraint-exprp (append-lists expr-sets)))) (second constraint)))
+	      (<= (length (remove-duplicates (remove-if #'constraint-exprp (append-lists expr-sets)))) (second constraint))) 
 ;	 (km-format t "list = ~a~%" (remove-duplicates (remove-if #'constraint-exprp (append-lists expr-sets))))
 	 nil)		; lookahead
 	(t (let* ((n (second constraint))
-		  (class (third constraint)) ; Nucleus
+		  (class (third constraint)) ; Nucleus  
 		  (expr-sets-in-class (remove nil (mapcar #'(lambda (exprs) (extract-exprs-in-class exprs class)) expr-sets))))
 	     (cond
 	      ((<= (length (remove-duplicates (append-lists expr-sets-in-class))) (second constraint)) nil)
@@ -19063,7 +19063,7 @@ I think we need to relax the constraint check to allow unifiability.
   (remove-if #'(lambda (pair) (simple-unifiable (first pair) (second pair))) (all-pairs vals))) ; or (all-adjacent-pairs <vals>) for speed
 
 #|
-INPUTS:
+INPUTS: 
    constraint = (exactly N Class) or (at-most N Class)
    expr-sets = a set of sets that are to be unified together AND are all deemed to be in Class, e.g., ((_Atom1 _Atom2) (_Atom3) (_Atom4 _Atom5 _Atom6))
    combined: We gradually construct a representation of the && of the expr-sets, = a list where each element is a LIST of the unifiable entities, e.g.,
@@ -19071,7 +19071,7 @@ INPUTS:
    However, for simplicity we don't include the "&" and just represent the list:
    	((_Atom1 _Atom3) (_Atom2))
    The length of the list = the expected length of the unification of the elements.
-   Initially, combined = the listification of the FIRST entry in expr-sets, i.e.,
+   Initially, combined = the listification of the FIRST entry in expr-sets, i.e., 
    	((_Atom1) (_Atom2))
    We then add to it.
 RETURNS: (constraint vals) where vals is a subset of the values in expr-sets which violates constraint (and will then be reported to the user)
@@ -19084,8 +19084,8 @@ NOTE: There is a special case if N = 1, namely all the elements of all the expr-
 	  (expr-sets
 	   (let* ((exprs (first expr-sets))
 		  (all-pairs (permute (list combined exprs))) ;(permute '((a b c) (d e)))->((a d) (a e) (b d) (b e) (c d) (c e))
-		  (scored-pairs (remove nil
-					(mapcar #'(lambda (pair)
+		  (scored-pairs (remove nil 
+					(mapcar #'(lambda (pair) 
 						    (sc-score-pair (first pair) (second pair)))
 						all-pairs)))
 		  (ordered-scored-pairs (sort scored-pairs #'> :key #'third))
@@ -19109,7 +19109,7 @@ NOTE: There is a special case if N = 1, namely all the elements of all the expr-
 (defun simple-unifiable (x y)
   (cond ((equal x y) 100)
 	((and (atom y)
-	      (atom x)
+	      (atom x) 
 	      (incompatible-instances x y))
 	 nil)
 	(t (let* ((x-classes (cond ((kb-objectp x) (immediate-classes x))
@@ -19119,7 +19119,7 @@ NOTE: There is a special case if N = 1, namely all the elements of all the expr-
 	     (cond ((and x-classes y-classes (not (compatible-classes :classes1 x-classes :classes2 y-classes))) nil)
 		   ((set-equal x-classes y-classes) 60)
 		   ((intersection x-classes y-classes) 30)
-		   ((some #'(lambda (x-class)
+		   ((some #'(lambda (x-class) 
 			      (some #'(lambda (y-class)
 					(or (is-subclass-of x-class y-class)
 					    (is-subclass-of y-class x-class)))
@@ -19158,10 +19158,10 @@ NOTE: There is a special case if N = 1, namely all the elements of all the expr-
 	 (mapcan #'(lambda (expr)
 		     (cond ((km-defaultp expr)
 			    (let* ( (vals (km-int (second expr)))
-				    (new-vals (cond ((and single-valuedp curr-vals vals
+				    (new-vals (cond ((and single-valuedp curr-vals vals 
 							  (not (km-int `(,(first curr-vals) &? ,(first vals)))))
 						     nil)
-						    (t (remove-if-not #'(lambda (val)
+						    (t (remove-if-not #'(lambda (val) 
 									  (are-consistent-with-constraints (append curr-vals (list val))
 													   (dereference constraints)
 													   slot))
@@ -19178,13 +19178,13 @@ NOTE: There is a special case if N = 1, namely all the elements of all the expr-
 ;;;		TOGGLING THE CONSTRAINTS
 ;;; ======================================================================
 
-(defun sanity-checks ()
+(defun sanity-checks () 
   (cond (*sanity-checks* (format t "(Checking of `sanity-check' constraints is already switched on)~%"))
 	(t (format t "(Checking of `sanity-check' constraints switched on)~%")
 	   (km-setq '*sanity-checks* t)))
   '#$(t))
 
-(defun no-sanity-checks ()
+(defun no-sanity-checks () 
   (cond ((not *sanity-checks*) (format t "(Checking of `sanity-check' constraints is already switched off)~%"))
 	(t (format t "(Checking of `sanity-check' constraints switched off)~%")
 	   (km-setq '*sanity-checks* nil)))
@@ -19198,7 +19198,7 @@ NOTE: There is a special case if N = 1, namely all the elements of all the expr-
 ;;; Retain just first item
 (defun pair-filter (vals &optional selected-so-far)
   (cond ((endp vals) nil)
-	(t (let* ( (pair (first vals))
+	(t (let* ( (pair (first vals)) 
 		   (units (arg2of pair)) )
 	     (cond ((or (not (km-pairp pair))
 			(notany #'(lambda (selected-pair)		; not selected a pair in this unit yet
@@ -19221,19 +19221,19 @@ NOTE: There is a special case if N = 1, namely all the elements of all the expr-
 ;;; 		RECOGNITION OF INSTANCES
 ;;; ======================================================================
 
-(defun km-null (km-nil)
+(defun km-null (km-nil) 
   (or (null km-nil) (eq km-nil '#$nil)))
 
-;;; Only recognizes slots whose immediate class is Slot. I don't use this, the
+;;; Only recognizes slots whose immediate class is Slot. I don't use this, the 
 ;;; second is better.
-(defun simple-slotp (slot)
-  (and (symbolp slot)
+(defun simple-slotp (slot) 
+  (and (symbolp slot) 
        (member slot (get-vals '#$Slot '#$instances :situation *global-situation*))))
 
 ;;; (instance-of x '#$Slot) would climb up the whole taxonomy from x. I think I used the method
 ;;; below instead as it's more efficient to work down from Slot, given Slot typically has only one or two subclasses.
 (defun slotp (slot)
-  (and (symbolp slot)
+  (and (symbolp slot) 
        (or (intersection (cons '#$Slot (all-subclasses '#$Slot))
 			 (get-vals slot '#$instance-of :situation *global-situation*))
 	   (built-in-slot slot))))
@@ -19244,7 +19244,7 @@ NOTE: There is a special case if N = 1, namely all the elements of all the expr-
 ;;; Rather crude approximation of a test...
 (defun pathp (path) (listp path))
 
-;;; Anything which is considered to be fully evaluated in KM.
+;;; Anything which is considered to be fully evaluated in KM. 
 ;;; EXCEPT it ALSO includes constraints. Argh!
 ;;; 345, "a", pete, #'print, '(every Dog), (:triple Sue loves John), (<> 23)
 (defun is-km-term (concept)
@@ -19262,7 +19262,7 @@ NOTE: There is a special case if N = 1, namely all the elements of all the expr-
       (descriptionp concept)
       (functionp concept)))
 
-;;; Anything which is considered to be fully evaluated in KM.
+;;; Anything which is considered to be fully evaluated in KM. 
 ;;; Eventually, should get rid of is-km-term above
 (defun fully-evaluatedp (concept &key in-structured-exprp)
   (or (and (atom concept) (neq concept '*))		; includes: 1 'a "12" nil
@@ -19281,9 +19281,9 @@ NOTE: There is a special case if N = 1, namely all the elements of all the expr-
 ;; Proves that it's *definitely* a class; however, some other objects may also
 ;; be classes too (eg. if they haven't been declared).
 ;;; [1] This is optional, and here purely for efficiency. If we do find instance-of link, then it isn't
-;;;     a class [ignoring metaclasses for now], so we don't need to bother doing the tests for classp.
-;;;	If we don't find one, or we miss one because instance-of is a fluent and we don't look for
-;;;     situation-specific instance-of links, then that's okay, we just proceed on anyway to do the class
+;;;     a class [ignoring metaclasses for now], so we don't need to bother doing the tests for classp. 
+;;;	If we don't find one, or we miss one because instance-of is a fluent and we don't look for 
+;;;     situation-specific instance-of links, then that's okay, we just proceed on anyway to do the class 
 ;;;     tests. Non-classes will fail these tests.
 (defun classp (class)
   (or (member class *built-in-classes*)
@@ -19319,7 +19319,7 @@ NOTE: There is a special case if N = 1, namely all the elements of all the expr-
        (not (get-vals concept '#$subclasses))
        (not (get-vals concept '#$instances))
        (not (get-vals concept '#$instance-of))
-; No, these won't put the thing in the taxonomy - the slots are for indexing purposes only
+; No, these won't put the thing in the taxonomy - the slots are for indexing purposes only       
 ;      (not (get-vals concept '#$instance-of :facet 'member-definition))
 ;      (not (get-vals concept '#$instance-of :facet 'own-definition))
        (not (built-in-concept concept))))
@@ -19346,10 +19346,10 @@ NOTE: There is a special case if N = 1, namely all the elements of all the expr-
 ;;; (recursive-remove-fluent-instances '#$((_SomePerson813) && ((some Person))))
 ;;; -> ((nil) && ((|some| |Person|)))
 ;;; Dec00 Revised to be -> (() && ((|some| |Person|))) - yikes, but becomes (&& ((some Person)))!
-;;; Patched Jan01 - we simply splice out these things.
+;;; Patched Jan01 - we simply splice out these things. 
 ;;; BUT still a bug: (_Some23 & (a Car)) -> (& (a Car)), but should be just (a Car). Need to be more sophisticated.
 ;;; Fixed Feb01
-;;; Apr02: Still bug: (:args nil _Car1) -> (:args _Car1)
+;;; Apr02: Still bug: (:args nil _Car1) -> (:args _Car1) 
 ;(defun recursive-remove-fluent-instances (instances)
 ;  (cond ((&-exprp instances)
 ;	 (vals-to-&-expr (recursive-remove-fluent-instances (&-expr-to-vals instances))))
@@ -19367,10 +19367,10 @@ NOTE: There is a special case if N = 1, namely all the elements of all the expr-
 ;; frequently invoked predicate.  Since the list of test subjects is
 ;; small, we can inline the comparisons by rewriting MEMBER in terms
 ;; of CASE.
-(defun kb-objectp (instance)
+(defun kb-objectp (instance) 
   (declare (optimize (speed 3) (safety 0) (space 0) (debug 0)))	; optimization from Francis Leboutte
   (and instance
-       (symbolp instance)
+       (symbolp instance) 
        (not (user-commentp instance))
 ;OLD   (not (member instance '#$(nil NIL :seq :bag :args :triple :pair :function)))))	; later: allow stuff on 't'!
        (case instance
@@ -19385,7 +19385,7 @@ NOTE: There is a special case if N = 1, namely all the elements of all the expr-
 
 (defun km-functionp (val) (and (listp val) (eq (first val) '#$:function)))
 
-(defun km-triplep (triple)
+(defun km-triplep (triple) 
   (and (listp triple) (eq (first triple) #$:triple) (= (length (desource+decomment triple)) 4)))
 
 ;;; recognize sequences eg. (:seq a b c)
@@ -19464,9 +19464,9 @@ NOTE: There is a special case if N = 1, namely all the elements of all the expr-
 
 (defun arg2of (arg-structure) (third arg-structure))		; (:args a b) -> b
 (defun arg3of (arg-structure) (fourth arg-structure))
-(defun arg4of (arg-structure) (fifth arg-structure))
+(defun arg4of (arg-structure) (fifth arg-structure))	
 
-;;; [1] NOTE: avoids numeric and set testing
+;;; [1] NOTE: avoids numeric and set testing 
 ;;; 7/28/04: At some risk, replaced remove-duplicates with (destructive) delete-duplicates (which is 50% faster).
 ;;; This change relies on the fact that (dereference ...) will create a copy of instances, which is necessarily a list.
 ;;; 1/30/07: Need to modify to check dereference is actually applied, and if not copy the list.
@@ -19558,8 +19558,8 @@ Behavior: x = y if x = y +/- (0.0001 or 0.01% of max(x,y), whichever is smaller)
 	 (<= (abs (- i1 i2)) (min *tolerance*
 				  (* (max (abs i1) (abs i2)) *tolerance*))))	; [1]
 	((or (numberp i1) (numberp i2)) nil) ; [3]
-	((and (equal i1 i2)
-	      (not (existential-exprp i1))
+	((and (equal i1 i2) 
+	      (not (existential-exprp i1)) 
 	      (not (km-structured-list-valp i1))))  ; (:pair (a Move) 1) (:pair (a Move) 1) are NOT equal
 	((or (atom i1) (atom i2)) nil) ; [3]
 	((and (km-setp i1) (km-setp i2)) (km-set-equal i1 i2))
@@ -19576,7 +19576,7 @@ Behavior: x = y if x = y +/- (0.0001 or 0.01% of max(x,y), whichever is smaller)
 ;	((eq i1 i2))   				; [2]
 ;	((null i1) (eq i2 '#$nil))
 ;	((null i2) (eq i1 '#$nil))
-;	((and (numberp i1) (numberp i2) *tolerance*)
+;	((and (numberp i1) (numberp i2) *tolerance*) 
 ;	 (<= (abs (- i1 i2)) (min *tolerance*
 ;				  (* (max (abs i1) (abs i2)) *tolerance*))))	; [1]
 	;; The slow, aggregate type comparisons follow.
@@ -19614,12 +19614,12 @@ Behavior: x = y if x = y +/- (0.0001 or 0.01% of max(x,y), whichever is smaller)
 
 ; Old def -- definition??
 ;(defun km-equal (i1 i2)
-;  (and (equal i1 i2)
+;  (and (equal i1 i2) 
 ;       (or (symbolp i1)		; (kb-objectp i1)	ERROR! should remove dups for non-kb-objects t f!
 ;	   (km-structured-list-valp i1))))
 
 ;;; Only expressions of the form (a ... [with ...]) return a situation-invariant answer.
-;;; This is used to block passing these *expressions* between situations, to avoid redundant computation
+;;; This is used to block passing these *expressions* between situations, to avoid redundant computation 
 ;;;     of identities. The result of their evaluation *will* be passed between situations, still, of course.
 (defun situation-invariant-exprp (expr)
   (and (listp expr) (eq (first expr) '#$a)))
@@ -19633,18 +19633,18 @@ Behavior: x = y if x = y +/- (0.0001 or 0.01% of max(x,y), whichever is smaller)
 (defun non-constraint-exprp (expr) (not (constraint-exprp expr)))
 
 (defun val-constraint-exprp (expr)
-  (and (listp expr)
+  (and (listp expr) 
        (member (first expr) *val-constraint-keywords*)))
 
 (defun set-constraint-exprp (expr)
   (or (eq expr '#$:incomplete)
-      (and (listp expr)
+      (and (listp expr) 
 	   (member (first expr) *set-constraint-keywords*))))
 
 (defun km-boolean-exprp (expr)
   (and (listp expr)
        (or (member (first expr) '#$(is-true all-true some-true theoneof theoneof2 exists has-value))
-	   (member (second expr) '#$(&? &+? = /= > < >= <= and or not numberp is-subsumed-by subsumes
+	   (member (second expr) '#$(&? &+? = /= > < >= <= and or not numberp is-subsumed-by subsumes 
 					covers isa is includes is-superset-of))
 	   (member (third expr) '#$(must))
 	   (member (fifth expr) '#$(must)))))
@@ -19657,18 +19657,18 @@ Behavior: x = y if x = y +/- (0.0001 or 0.01% of max(x,y), whichever is smaller)
 (defun contains-some-existential-exprs (exprs)
   (contains-some exprs '#$(a an some)))
 
-;(defun existential-exprp (expr)
+;(defun existential-exprp (expr) 
 ;  (and (listp expr) (member (first expr) '#$(a some))))
 
 ;;; NB "an" is NOT considered an existential structure, it needs preprocessing by the interpreter.
-(defun existential-exprp (expr)
-  (and (listp expr)
+(defun existential-exprp (expr) 
+  (and (listp expr) 
        (or (member (first expr) '#$(a some))
 	   (and (comment-tagp (first expr)) 		; allow ([Car1] a Big Engine)
 		(existential-exprp (rest expr))))))
 
 ;;; (some <x>)
-(defun fluent-instance-exprp (expr)
+(defun fluent-instance-exprp (expr) 
   (and (listp expr) (eq (first expr) '#$some)))
 
 ;;; ======================================================================
@@ -19677,7 +19677,7 @@ Behavior: x = y if x = y +/- (0.0001 or 0.01% of max(x,y), whichever is smaller)
   (cond ((null val) nil)
 	((eq val '#$nil) nil)
 	((km-setp val) (set-to-list val))
-	(t (list val))))  ; val must be an atom (eg. _Car23) or a single expression, eg. (a Car)
+	(t (list val))))  ; val must be an atom (eg. _Car23) or a single expression, eg. (a Car) 
 			  ; so we simply wrap it in a list (_Car23), or ((a Car))
 
 (defun vals-to-val (vals)
@@ -19697,7 +19697,7 @@ Behavior: x = y if x = y +/- (0.0001 or 0.01% of max(x,y), whichever is smaller)
 ;;; single-valuedp = T:   (val-sets-to-expr '((a b) (c)) :single-valuedp t) -> ERROR! and (a & c)
 ;;; single-valuedp = NIL: (val-sets-to-expr '((a b) (b) (c d))) -> ((a b) && (b) && (c d))
 ;;; combine-values-by-appendingp = T: (val-sets-to-expr '((a b) (b) (c d))) -> (:set a b c d)
-(defun val-sets-to-expr (exprs0 &key single-valuedp combine-values-by-appendingp
+(defun val-sets-to-expr (exprs0 &key single-valuedp combine-values-by-appendingp 
 				     (joiner (cond (single-valuedp '&) (t '&&))))
   (let* ((exprs1 (remove-duplicates (remove nil exprs0) :test #'equal :from-end t))
 	 (exprs (cond ((some #'(lambda (x)
@@ -19712,15 +19712,15 @@ Behavior: x = y if x = y +/- (0.0001 or 0.01% of max(x,y), whichever is smaller)
 	  (t (val-sets-to-expr0 exprs :single-valuedp single-valuedp :joiner joiner)))))
 
 (defun val-sets-to-expr0 (exprs &key single-valuedp (joiner (cond (single-valuedp '&) (t '&&))))
-  (cond
+  (cond 
    ((endp exprs) nil)
    ((null (first exprs)) (val-sets-to-expr0 (rest exprs) :single-valuedp single-valuedp :joiner joiner))
 ; Now tested earlier in val-sets-to-expr
 ;   ((not (listp (first exprs)))
 ;    (report-error 'user-error "val-sets-to-expr0: Single value ~a found where list of values expected! Listifying it...~%" (first exprs))
 ;    (val-sets-to-expr0 (cons (list (first exprs)) (rest exprs)) :single-valuedp single-valuedp :joiner joiner))
-   (t (let ( (first-item (cond (single-valuedp
-				(cond ((not (singletonp (first exprs)))		; error! (a b) found
+   (t (let ( (first-item (cond (single-valuedp 
+				(cond ((not (singletonp (first exprs)))		; error! (a b) found 
 				       (km-trace 'comment
 						 "Multiple values ~a found for single-valued slot!~%Assuming they should be unified...~%"
 						 (first exprs))
@@ -19747,7 +19747,7 @@ Behavior: x = y if x = y +/- (0.0001 or 0.01% of max(x,y), whichever is smaller)
 ;;; (&-expr-to-vals '((a Car) & (a Dog))) -> ((a Car) (a Dog)))
 ;;; (&-expr-to-vals '(a Car)) -> ((a Car))	<- NB listify
 ;;; (&-expr-to-vals 'x) -> (x)			<- NB listify
-;;; (&-expr-to-vals '((a & (b & d)) & (e & (f & g)))) -> (a b c d e f g)    <- NB nested
+;;; (&-expr-to-vals '((a & (b & d)) & (e & (f & g)))) -> (a b c d e f g)    <- NB nested 
 ;;; (&-expr-to-vals '(x & y z))			<- ERROR!
 (defun &-expr-to-vals (expr)
   (cond ((null expr) nil)
@@ -19756,7 +19756,7 @@ Behavior: x = y if x = y +/- (0.0001 or 0.01% of max(x,y), whichever is smaller)
 		(val-unification-operator (fourth expr))
 		(&-expr-to-vals `(,(first expr) ,(fourth expr) ,(rest (rest expr)))))
 	       (t (cond ((not (= (length expr) 3))
-			 (report-error 'user-error "Illegally formed expression ~a encountered!~%Continuing with just ~a...~%"
+			 (report-error 'user-error "Illegally formed expression ~a encountered!~%Continuing with just ~a...~%" 
 				       expr (subseq expr 0 3))))
 		  (append (&-expr-to-vals (first expr)) (&-expr-to-vals (third expr))))))
 	(t (list expr))))
@@ -19764,8 +19764,8 @@ Behavior: x = y if x = y +/- (0.0001 or 0.01% of max(x,y), whichever is smaller)
 ;;; nil -> nil, (a) -> a, (a b c) -> (a & b & c)
 (defun vals-to-&-expr (vals &key (joiner '&) (first-time-through t))
   (cond ((null vals) nil)
-	((singletonp vals)
-	 (cond (first-time-through (first vals))
+	((singletonp vals) 
+	 (cond (first-time-through (first vals)) 
 	       (t vals)))
 	(t `(,(first vals) ,joiner ,@(vals-to-&-expr (rest vals) :joiner joiner :first-time-through nil)))))
 
@@ -19804,7 +19804,7 @@ Call with a SINGLE EXPRESSION. It will further call itself with either with
    or     (b) a list of values, with :joiner = &&
 RETURNS the constraints embedded in the expression.
 
-Shown below, where numbers denote things passing constraint-exprp test.
+Shown below, where numbers denote things passing constraint-exprp test. 
 A test procedure is in find-constraints.lisp, a multivalued version of the below.
 
 	EXPRESSION				==>	CONSTRAINTS
@@ -19824,7 +19824,7 @@ A test procedure is in find-constraints.lisp, a multivalued version of the below
 |#
 
 ;;; [1] aggressive decommenting of constraints
-(defun find-constraints-in-exprs (exprs)
+(defun find-constraints-in-exprs (exprs) 
 ; (find-constraints exprs 'plural))
 ; (desource+decomment 		; NEW: Remove desource+decomment, as we have comments on must-be-a
    (find-exprs exprs :expr-type 'constraint :plurality 'plural)) ; [1]
@@ -19849,7 +19849,7 @@ A test procedure is in find-constraints.lisp, a multivalued version of the below
 	 (cond ((>= (length expr) 4)
 		(cond ((not (unification-operator (fourth expr)))
 		       (report-error 'user-error "Badly formed unification expression ~a!~%" expr)))
-		(find-exprs `(,(first expr) ,(second expr) ,(rest (rest expr)))
+		(find-exprs `(,(first expr) ,(second expr) ,(rest (rest expr))) 
 			    :expr-type expr-type :plurality 'singular))    ; (a & b & c) -> (a & (b & c))
 	       (t (let ( (next-plurality (cond (; (eq (second expr) '&) 'singular)   ; & takes a value as arg, && takes a list of values
 						(val-unification-operator (second expr)) 'singular)
@@ -19885,7 +19885,7 @@ A test procedure is in find-constraints.lisp, a multivalued version of the below
   (cond ((not *are-some-constraints*) vals)
 	((null vals) nil)
 	((and (singletonp vals)
-	      (listp (first vals))
+	      (listp (first vals)) 
 ;	      (eq (second (first vals)) '&))					; single-valued-slot format ((a & (must-be b)))
 	      (val-unification-operator (second (first vals))))
 	 (remove-if #'constraint-exprp (&-expr-to-vals (first vals))))
@@ -19895,7 +19895,7 @@ A test procedure is in find-constraints.lisp, a multivalued version of the below
   (cond ((not *are-some-constraints*) nil)
 	((null vals) nil)
 	((and (singletonp vals)
-	      (listp (first vals))
+	      (listp (first vals)) 
 ;	      (eq (second (first vals)) '&))					; single-valued-slot format ((a & (must-be b)))
 	      (val-unification-operator (second (first vals))))
 	 (remove-if-not #'constraint-exprp (&-expr-to-vals (first vals))))
@@ -19907,7 +19907,7 @@ A test procedure is in find-constraints.lisp, a multivalued version of the below
 
 (defun quoted-expressionp (expr) (quotep expr))
 
-(defun quoted-descriptionp (expr)
+(defun quoted-descriptionp (expr) 
   (and (quotep expr)
        (listp (unquote expr))
        (eq (first (unquote expr)) '#$every)))
@@ -19919,16 +19919,16 @@ A test procedure is in find-constraints.lisp, a multivalued version of the below
 
 (defun the-class-exprp (expr) (and (listp expr) (eq (first expr) '#$the-class)))
 
-;;; '(a Cat) -> t
+;;; '(a Cat) -> t	   
 (defun instance-descriptionp (expr &key (fail-mode 'fail))
-  (cond
+  (cond 
    ((and (quoted-expressionp expr)
 	 (listp (unquote expr)))
-    (cond
+    (cond 
      ((existential-exprp (unquote expr)))
      ((km-triplep (unquote expr)))		; <--- Bit of a fudge here: subsumes also handles triples as if they were descriptions
      ((eq fail-mode 'error)
-      (cond
+      (cond 
        ((eq (first (unquote expr)) '#$every)	; '(every Cat) -> ERROR
 	(report-error 'user-error "Expecting an instance description '(a ...), but found a class~%description ~a instead!~%" expr))
        (t (report-error 'user-error "Expecting an instance description '(a ...), but found~%description ~a instead!~%" expr))))))
@@ -19937,7 +19937,7 @@ A test procedure is in find-constraints.lisp, a multivalued version of the below
 
 ;;; Returns the class + slotsvals (as a two-element list) , if expr is indeed a class description
 (defun class-descriptionp (expr &key (fail-mode 'fail))
-  (cond
+  (cond 
    ((quoted-descriptionp expr)
     (list (second (unquote expr)) (rest (rest (rest (unquote expr))))))
    ((the-class-exprp expr)		; (the-class X with Y)
@@ -19964,7 +19964,7 @@ A test procedure is in find-constraints.lisp, a multivalued version of the below
 (defun class-description-to-class+slotsvals (expr &key (fail-mode 'fail))
   (class-descriptionp expr :fail-mode fail-mode))
 
-;;; Name: a symbol denoting a function -- allows km-lisp-exprs* and *downcase-km-lisp-exprs* to be
+;;; Name: a symbol denoting a function -- allows km-lisp-exprs* and *downcase-km-lisp-exprs* to be 
 ;;; dynamically extended (thanks to Francis Leboutte)
 (defun add-lisp&KM-function (name)
   (pushnew name *km-lisp-exprs* :test #'eq)
@@ -19998,7 +19998,7 @@ The following KB has 4 axioms, one shown on each line:
 					      (mapc #'(lambda (val)
 							(cond ((kb-objectp val) (setq n (+ n 0.5))) ; [1]
 							      (t (let ((n-embedded-rules
-									(length (remove-if-not #'(lambda (x)
+									(length (remove-if-not #'(lambda (x) 
 												   (eq x '@)) ; [2]
 											       (flatten val)))))
 								   (setq n (+ n n-embedded-rules))))))
@@ -20030,7 +20030,7 @@ The following KB has 4 axioms, one shown on each line:
 ;;; ----------
 
 ;;; synonym
-(defun new-context ()
+(defun new-context () 
 ;  (km-setq '*all-active-situations* nil)		; New!
   (clear-obj-stack))
 
@@ -20043,9 +20043,9 @@ The following KB has 4 axioms, one shown on each line:
   (let ((item-to-stack (item-to-stack (desource+decomment expr) :target target)))
     (push item-to-stack *goal-stack*)))
 
-(defun pop-from-goal-stack ()
+(defun pop-from-goal-stack () 
   (pop *goal-stack*))
-|#
+|#	 
 
 ;;; [1] Tiny bit slower, but allows spotting looping earlier (net loss timewise, gain inference wise)
 ;;; ALSO: See looping-on later
@@ -20069,7 +20069,7 @@ The following KB has 4 axioms, one shown on each line:
     (push item-to-stack *goal-stack*)))
 ;  (setq *goal-stack* (cons (item-to-stack (desource+decomment expr) :target target) *goal-stack*)))	; [1]
 
-(defun pop-from-goal-stack ()
+(defun pop-from-goal-stack () 
   (let* ((item-from-stack (pop *goal-stack*))
 	 (original-expr (third item-from-stack)))
     (cond ((and *instances-being-unified*
@@ -20081,7 +20081,7 @@ The following KB has 4 axioms, one shown on each line:
 	     (cond ((and (kb-objectp instance1) (member instance1 *instances-being-unified*))
 		    (setq *instances-being-unified* (remove instance1 *instances-being-unified*))))
 	     (cond ((and (kb-objectp instance2) (member instance2 *instances-being-unified*))
-		    (setq *instances-being-unified* (remove instance2 *instances-being-unified*)))))))
+		    (setq *instances-being-unified* (remove instance2 *instances-being-unified*)))))))	     
     item-from-stack))
 
 ;  (prog1
@@ -20092,16 +20092,16 @@ The following KB has 4 axioms, one shown on each line:
 ;;; 		THE EXPRESSION STACK
 ;;; ======================================================================
 
-#|
+#| 
 Looping problem with disjuncts!!! I failed to fix this
   Suppose we ask X, and X <- Y or Z, and Y <- X.
   KM will give up on Y, even if Z can compute it. This is a problem, because then
   Y might be projected from the previous situation!
 
-The problem is that KM's triggers too easily. If, when calculating X, I hit a
-non-deterministic choice-point and take branch 1 of 2 (say), then hit a call to
-calculate X again, KM *should* continue, but this time take branch 2 of 2 at the
-same choice-point. Instead, KM just gives up. A fix would be to (i) identify
+The problem is that KM's triggers too easily. If, when calculating X, I hit a 
+non-deterministic choice-point and take branch 1 of 2 (say), then hit a call to 
+calculate X again, KM *should* continue, but this time take branch 2 of 2 at the 
+same choice-point. Instead, KM just gives up. A fix would be to (i) identify 
 non-deterministic choice-points (ii) mark them in the stack and (iii) steer as above.
 
 We can do this with a REVISED LOOPING CHECK:
@@ -20114,7 +20114,7 @@ UNLESS there is an "or" clause between C and C'.
 
 ;;; [1] Tiny bit slower, but allows spotting looping earlier (net loss timewise, gain inference wise)
 ;;; ALSO: See push-to-goal-stack, earlier
-(defun looping-on (expr) (on-goal-stackp (desource+decomment expr))) ; [1]
+(defun looping-on (expr) (on-goal-stackp (desource+decomment expr))) ; [1] 
 
 #|
 (pending-equality x y) - Returns t if x and y WILL be unified, so that deeper in the
@@ -20142,7 +20142,7 @@ t
 			       original-expr)))))
   (goal-stack))))
 
-(defun pending-equality-expr (original-expr x y)
+(defun pending-equality-expr (original-expr x y)		
   (and (listp original-expr)
        (= (length original-expr) 3)
        (equality-assertion-operator (second original-expr))
@@ -20165,11 +20165,11 @@ t
 	   (and (listp canonical1)
 		(listp canonical2)
 		(eq (second canonical1) '#$set-unified-with) ; Doing ((x) &&! (y)) for (x &! y)
-		(eq (second canonical2) '#$unified-with)
+		(eq (second canonical2) '#$unified-with)		
 		(or (and (equal (first canonical1) (list (first canonical2)))  ; (x) equals (list x)
 			 (equal (third canonical1) (list (third canonical2)))) ; (y) equals (list y)
 		    (and (equal (first canonical1) (list (third canonical2)))  ; Reverse: Doing ((y) &&! (x)) for (x &! y)
-			 (equal (third canonical1) (list (first canonical2)))) ;
+			 (equal (third canonical1) (list (first canonical2)))) ; 
 		)))
        (eql (second item1) (second item2))))) ; match situation
 
@@ -20181,12 +20181,12 @@ t
 Here we canonicalize the item for stacking.
 
 Must add a note of the current situation.
-[1] for &, the canonical form *isn't* situation-dependent as we unify in all situations,
+[1] for &, the canonical form *isn't* situation-dependent as we unify in all situations, 
     hence returns 2nd element = *global-situation* rather than (curr-situation)
 |#
 (defun item-to-stack (expr &key target)
 ;  (declare (ignore target))		; neah, not that helpful
-  `(,(km-canonicalize expr)
+  `(,(km-canonicalize expr) 
     ,(cond ((and (listp expr) (unification-operator (second expr))) '|all situations|)  ; better - trace is confusing otherwise!
 	   (t (curr-situation)))
     ,expr
@@ -20216,7 +20216,7 @@ Must add a note of the current situation.
 									; the same.
 	 ((and (triplep expr)		; fold &, &?, &! into a single canonical form
 	       (val-unification-operator (second expr))
-	       (neq (second expr) '&+!)	; This isn't really a primitive unification operator -- it is decomposed in
+	       (neq (second expr) '&+!)	; This isn't really a primitive unification operator -- it is decomposed in 
 					; interpreter.lisp to &+? plus &!. Thus we don't canonicalize it, as we don't
 	       				; want the subsequent &+? or &! to be taken as looping
 ;	       (neq (second expr) '&+)	; EXCEPT: These *is* a valid subgoal of &&, etc.
@@ -20232,7 +20232,7 @@ Must add a note of the current situation.
 ;	       (t `((,(first expr)) #$unified-with (,(third expr))))))
 	(t expr)))
 
-;;; (a && b) (a & b)
+;;; (a && b) (a & b) 
 
 ;;; ----------------------------------------
 ;;;	DISPLAY OF EXPRESSION STACK
@@ -20261,22 +20261,22 @@ Must add a note of the current situation.
 (defvar *show-inference-numbers* nil)
 
 (defun show-goal-stack2 (stack depth show-situationsp &optional (stream *standard-output*))
-  (cond
+  (cond 
    ((endp stack) nil)
-   (t (let* ((item (first stack))
+   (t (let* ((item (first stack)) 
 	     (expr (stacked-expr item))
 	     (situation (stacked-situation item))
 	     (inference-number (stacked-inference-number item))
 	     (target (stacked-target item))
 	     )
-	(cond (*show-inference-numbers*
+	(cond (*show-inference-numbers* 
 	       (km-format stream "~a~vT-> ~a" inference-number (+ depth 7) (desource expr)))
 	      (t (km-format stream "~vT-> ~a" depth (desource expr))))
 ; truncated version
 ;		 (format t (truncate-string (apply #'km-format `(nil "~vT -> ~a" ,depth ,(desource expr))) 80))
 	(cond ((and target show-situationsp) (km-format stream "~%~vT[for ~a, in ~a]~%" (+ depth 3) target situation))
 	      (show-situationsp (km-format stream "~vT[called in ~a]~%" 55 situation))
-	      (target (km-format stream "~%~vT[for ~a]~%" (+ depth 3) target))
+	      (target (km-format stream "~%~vT[for ~a]~%" (+ depth 3) target))	      
 	      (t (format stream "~%")))
 	(show-goal-stack2 (rest stack) (1+ depth) show-situationsp stream)))))
 
@@ -20286,7 +20286,7 @@ Must add a note of the current situation.
 
 (defun clear-obj-stack () (km-setq '*obj-stack* nil))
 
-;;; Note we filter out duplicates and classes at access time (obj-stack), rather than
+;;; Note we filter out duplicates and classes at access time (obj-stack), rather than 
 ;;; build-time (here), for efficiency.
 (defun push-to-obj-stack (instance)
   (cond ((and (not (member instance *obj-stack*))
@@ -20294,7 +20294,7 @@ Must add a note of the current situation.
 ;	  (make-transaction `(setq *obj-stack* ,(cons instance *obj-stack*))))))
 ;	  (setq *obj-stack* (cons instance *obj-stack*)))))		; don't need to unwind this
 	  (km-push instance '*obj-stack*))))
-
+	  
 (defparameter *unstackable-kb-instances* '#$(t))
 
 (defun stackable (instance)
@@ -20303,7 +20303,7 @@ Must add a note of the current situation.
        (not (slotp instance))
        (not (member instance *unstackable-kb-instances*))))
 
-;;; Only called by delete-frame, which is NOT part of the normal KM.
+;;; Only called by delete-frame, which is NOT part of the normal KM. 
 ;;; Note that this removal is *NOT* unwound by undo commands, to save memory.
 ;;; [1] Call to (obj-stack) is WAY too slow!
 (defun remove-from-stack (instance)
@@ -20313,7 +20313,7 @@ Must add a note of the current situation.
 ;;; ----------------------------------------
 
 ;;; Find the first instance on *obj-stack* in class
-(defun search-stack (class)
+(defun search-stack (class) 
    (find-if #'(lambda (instance) (isa instance class)) *obj-stack*))
 
 ;;; ----------
@@ -20330,24 +20330,24 @@ Must add a note of the current situation.
 
 (defun unfiltered-obj-stack () *obj-stack*)
 
-;(defun obj-stack ()
+;(defun obj-stack () 
 ;  (let ( (clean-stack (remove-dup-atomic-instances *obj-stack*)) )
-;    (cond ((not (equal clean-stack *obj-stack*))
+;    (cond ((not (equal clean-stack *obj-stack*)) 
 ;	   (setq *obj-stack* clean-stack)))
 ;    clean-stack))
 
 ; (defun obj-stack () (remove-dup-atomic-instances *obj-stack*)) ; new - too slow!!!
 
-(defun obj-stack ()
-  (let ((clean-stack			; (remove-dup-atomic-instances *obj-stack*)) )
+(defun obj-stack () 
+  (let ((clean-stack			; (remove-dup-atomic-instances *obj-stack*)) ) 
 	 (dereference *obj-stack*)))	; better
-    (cond ((not (equal clean-stack *obj-stack*))
+    (cond ((not (equal clean-stack *obj-stack*)) 
 	   (setq *obj-stack* clean-stack)))
     clean-stack))
 
 (defun showme-strings (km-expr &optional (situations (all-situations))
                        (theories (all-theories))
-					 ;; RVA 21Aug2006 fix km rep loop input output
+					 ;; RVA 21Aug2006 fix km rep loop input output 
 					 ;; stream defaulting to nil (*standard-input*) instead of t (*terminal-io*)
 					 ;; PEC 11/26/11 - no, NIL suppresses the important information message! Setting default back to t
                        (stream *standard-output*))
@@ -20364,7 +20364,7 @@ Must add a note of the current situation.
   (let* (;;(frames (km-int km-expr :fail-mode 'error))
          (frames (km km-expr))	; NEW: Might be called from within KM or as top-level call; need to account for both.
 	 			; (OLD: when was km-int, won't catch any throws that occur and won't reset trace depth)
-;        (frames (km-int km-expr))
+;        (frames (km-int km-expr))	 
          (frame (first frames))
          ;; FLE 04Aug2005
          (result nil))
@@ -20379,11 +20379,11 @@ Must add a note of the current situation.
            (setf result
                  (showme-frame frame situations theories stream)))
 	  (t (mapc #'(lambda (frame)
-                       (push
+                       (push 
                         (showme-frame frame situations theories stream)
                         result)
 		       (princ ";;; ----------" stream)
-		       (terpri stream)
+		       (terpri stream) 
 		       (terpri stream))
 		   frames)))
     (cond (return-strings-p result)
@@ -20410,7 +20410,7 @@ Must add a note of the current situation.
 		(is-km-term frame))	; eg. _Car23, or "MyCar"
 	   (km-format t ";;; (~a is bound to ~a)~%" km-expr frame)))
     (cond ((singletonp frames) (showme-all-frame frame situations))
-	  (t (mapc #'(lambda (frame)
+	  (t (mapc #'(lambda (frame) 
 		       (showme-all-frame frame situations)
 		       (princ ";;; ----------")
 		       (terpri)
@@ -20433,10 +20433,10 @@ Must add a note of the current situation.
   (let* ( (own-slots-to-show1 (mapcar #'used-slot-in (get-slotsvals instance :facet 'own-properties :situation situation)))		; [1]
 	  (own-slots-to-show2 (mapcar #'used-slot-in (get-slotsvals instance :facet 'own-definition :situation situation)))		; [1]
 	  (inherited-slots-to-show (my-mapcan #'(lambda (class)
-						  (mapcar #'used-slot-in
+						  (mapcar #'used-slot-in 
 							  (append (get-slotsvals class :facet 'member-properties :situation situation)
 								  (get-slotsvals class :facet 'member-definition :situation situation))))
-					      (all-classes instance)))
+					      (all-classes instance))) 
 	  (slots-to-show (remove-duplicates (append own-slots-to-show1 own-slots-to-show2 inherited-slots-to-show))) )
     (cond
      (slots-to-show
@@ -20448,7 +20448,7 @@ Must add a note of the current situation.
 						       (get-vals instance slot :facet 'own-definition :situation situation))))
 		      (all-rule-sets (desource
 				      (bind-self (remove-duplicates (append own-rule-sets inherited-rule-sets) :test #'equal :from-end t) instance)))
-		      (joiner (cond ((single-valued-slotp slot) '&)
+		      (joiner (cond ((single-valued-slotp slot) '&) 
 				    (t '&&))) )
 ;		(cond ((singletonp all-rule-sets) (km-format t "~%  (~a ~a)" slot (first all-rule-sets)))
 		(cond ((singletonp all-rule-sets) (km-format t "~%  (~a " slot) (format t (expr2string (first all-rule-sets))) (format t ")"))
@@ -20465,14 +20465,14 @@ Must add a note of the current situation.
 					 (mapcar #'used-slot-in (append (get-slotsvals class :facet 'member-properties :situation situation)
 									(get-slotsvals class :facet 'member-definition :situation situation))))
 				     all-classes))) )
-    (cond
+    (cond 
      (slots-to-show
       (cond ((eq situation *global-situation*) (km-format t "(every ~a has" class))
 	    (t (km-format t "(in-situation ~a~% (every ~a has" situation class)))
       (mapc #'(lambda (slot)
 	      (let* ( (all-rule-sets (desource
 				      (inherited-rule-sets2 slot all-classes (list situation))))	; find all rule sets in all classes in situation
-		      (joiner (cond ((single-valued-slotp slot) '&)
+		      (joiner (cond ((single-valued-slotp slot) '&) 
 				    (t '&&))) )
 		(cond ((singletonp all-rule-sets) (km-format t "~%  (~a " slot) (format t (expr2string (first all-rule-sets))) (format t ")"))
 		      (t (print-slot-exprs slot all-rule-sets joiner)))))
@@ -20514,7 +20514,7 @@ Must add a note of the current situation.
 		(is-km-term frame))	; eg. _Car23, or "MyCar"
 	   (km-format t ";;; (~a is bound to ~a)~%~%" km-expr frame)))
     (cond ((singletonp frames) (evaluate-all-frame frame situations))
-	  (t (mapc #'(lambda (frame)
+	  (t (mapc #'(lambda (frame) 
 		       (evaluate-all-frame frame situations)
 		       (princ ";;; ----------")
 		       (terpri)
@@ -20573,9 +20573,9 @@ Must add a note of the current situation.
 ;;; ----------
 
 (defun report-statistics ()
-  (let ( (cpu-time (- (get-internal-run-time) *statistics-cpu-time*))
+  (let ( (cpu-time (- (get-internal-run-time) *statistics-cpu-time*)) 
 	 (statistics-inferences (+ *statistics-classification-inferences* *statistics-query-directed-inferences*)) )
-      (concat
+      (concat 
        (format nil "(~a inferences and ~a KB accesses in ~,1F sec" statistics-inferences *statistics-kb-access*
 	       (/ cpu-time internal-time-units-per-second))  ; itups = a system constant
        (cond ((not (= cpu-time 0))
@@ -20585,10 +20585,10 @@ Must add a note of the current situation.
        (format nil ")~%"))))
 
 (defun report-statistics-long ()
-  (let ( (cpu-time (- (get-internal-run-time) *statistics-cpu-time*))
+  (let ( (cpu-time (- (get-internal-run-time) *statistics-cpu-time*)) 
 	 (statistics-inferences (+ *statistics-classification-inferences* *statistics-query-directed-inferences*)) )
-      (concat
-       (format nil "~a inferences (~a query-directed, ~a classification) and ~a KB accesses in ~,1F sec~%"
+      (concat 
+       (format nil "~a inferences (~a query-directed, ~a classification) and ~a KB accesses in ~,1F sec~%" 
 	       statistics-inferences *statistics-query-directed-inferences* *statistics-classification-inferences* *statistics-kb-access*
 	       (/ cpu-time internal-time-units-per-second))  ; itups = a system constant
        (cond ((not (= cpu-time 0))
@@ -20621,7 +20621,7 @@ Must add a note of the current situation.
 	    (number remainder)
 	    (floor (/ inferences *inference-report-frequency*))
 	    (declare (ignore number))
-	    (cond ((= remainder 0)
+	    (cond ((= remainder 0) 
 		   (format t "~a logical inferences done (spot speed: ~a lips)~%"
 			   inferences
 			   (floor (/ (* *inference-report-frequency* internal-time-units-per-second)
@@ -20704,7 +20704,7 @@ Must add a note of the current situation.
 (defun next-event (event)
   (let ( (next-events (km-int `#$(the next-event of ,EVENT)))
 	 (next-event-test (km-unique-int `#$(the next-event-test of ,EVENT))) )
-    (cond
+    (cond 
      ((and (not next-event-test)
 	   (some #'km-argsp next-events))
       (report-error 'user-error "Missing a next-event-test on ~a!~%(It is needed to select the appropriate next-event from options: ~a)~%" event next-events))
@@ -20716,7 +20716,7 @@ Must add a note of the current situation.
       (report-error 'user-error "Multiple next-events ~a specified for event ~a! (Don't know how to handle this)~%" event next-events))
      ((not next-event-test) (first next-events))
      (t 		; next-event-test necc. present
-      (let* ( (test-result (km-unique-int `#$(evaluate ,NEXT-EVENT-TEST)))
+      (let* ( (test-result (km-unique-int `#$(evaluate ,NEXT-EVENT-TEST))) 
 	      (actual-next-events
 	       (mapcar #'arg2of (remove-if-not #'(lambda (next-event)
 						   (equal (arg1of next-event) test-result))
@@ -20754,13 +20754,13 @@ Must add a note of the current situation.
 (defun flatten-aux (l &optional (acc nil))
   (cond ((null l) acc)
         ((atom l) (cons l acc))
-        ((atomic-aconsp l)
+        ((atomic-aconsp l)                         
          (cons (car l)
                (cons (cdr l)
                      acc)))
         (t (flatten-aux (first l)
                         (flatten-aux (rest l) acc)))))
-
+                        
 ;;; No :from-end keyword on (member ...), so create this!
 ;;; (last-member 'a '(a b a c a d)) -> (A D)
 (defun last-member (item list &key (test #'eql))
@@ -20778,7 +20778,7 @@ Must add a note of the current situation.
          (when (listp (car x))
            (error "flatten: not a KM atomic cons: ~s"  x))
          t)
-        (t nil)))
+        (t nil)))                        
 
 ;;; ----------
 ;;; (aconsp '(a . b)) -> t
@@ -20791,7 +20791,7 @@ Must add a note of the current situation.
 	 (t (list atom))))
 
 ;;; (append-list '((1 2) (3 4))) => (1 2 3 4)
-(defun append-list (list)
+(defun append-list (list) 
   (format t "append-list has been renamed as append-lists! Please change your code! Continuing...~%")
   (append-lists list))
 
@@ -20817,7 +20817,7 @@ Must add a note of the current situation.
 ;;; ((2 4 6 8) (1 3 5 7))
 (defun partition (sequence function)
   (cond ((endp sequence) nil)
-	(t (multiple-value-bind
+	(t (multiple-value-bind 
 	    (pass fail)
 	    (partition (rest sequence) function)
 	    (cond ((funcall function (first sequence))
@@ -20885,7 +20885,7 @@ Must add a note of the current situation.
 (defun recursive-find (item tree)
   (cond ((eql item tree))
 	((null tree) nil)
-	((listp tree)
+	((listp tree) 
 	 (some #'(lambda (subtree) (recursive-find item subtree)) tree))))
 
 ;;; ----------------------------------------
@@ -20915,7 +20915,7 @@ KM> (multiple-value-some #'demo '(-1 3 2))
 (defvar *see-stream* t)
 (defvar *append-stream* t)
 
-(defun file-exists (file) (open file :direction :probe))
+(defun km-file-exists (file) (open file :direction :probe))
 
 ;;; Check you don't close the stream "t"
 (defun close-stream (stream) (cond ((streamp stream) (close stream))))
@@ -20924,8 +20924,8 @@ KM> (multiple-value-some #'demo '(-1 3 2))
 ;;; They also cache the stream, just in case an error occurs during
 ;;; interpretation (otherwise you've lost the handle on the stream).
 ;;; t will send to std output, nil will output to nothing.
-(defun tell (file)
-  (cond ((null file) nil)
+(defun tell (file) 
+  (cond ((null file) nil) 
 	((eq file t) (format t "(Sending output to standard output)~%") t)
 	(t (setq *tell-stream* (open file
 			    :direction :output
@@ -20934,14 +20934,14 @@ KM> (multiple-value-some #'demo '(-1 3 2))
 
 (defun told () (close-stream *tell-stream*) (setq *tell-stream* t))
 
-(defun see (file)
+(defun see (file) 
   (cond ((eq file t) t)		; read from standard input
 	(t (setq *see-stream* (open file :direction :input)))))
 
 (defun seen () (close-stream *see-stream*) (setq *see-stream* t))
 
-(defun tell-append (file)
-  (cond ((null file) nil)
+(defun tell-append (file) 
+  (cond ((null file) nil) 
 	((eq file t) (format t "(Sending output to standard output)~%") t)
 	(t (setq *append-stream* (open file
 				    :direction :output
@@ -20991,9 +20991,9 @@ KM> (multiple-value-some #'demo '(-1 3 2))
 
 ;;; array -> byte-file
 (defun write-file-array (file array &key element-type)
-  (let ((stream (open file :element-type element-type :direction :output
+  (let ((stream (open file :element-type element-type :direction :output 
 		      :if-does-not-exist :create :if-exists :supersede)))
-    (loop for i from 0 to (1- (length array)) do
+    (loop for i from 0 to (1- (length array)) do 
 	  (write-byte (aref array i) stream))
     (cond ((streamp stream) (close stream)))))
 
@@ -21007,7 +21007,7 @@ KM> (multiple-value-some #'demo '(-1 3 2))
 ;;; read txt file as a single gigantic string
 (defun read-file-string (file) (implode (read-file-chars file)))
 
-(defun read-file-chars (file)
+(defun read-file-chars (file)  
   (let ((stream (open file :direction :input)))
     (prog1
 	(loop for item = (read-char stream nil 'eof-marker) until (eql item 'eof-marker) collect item)
@@ -21021,8 +21021,8 @@ KM> (multiple-value-some #'demo '(-1 3 2))
 (defun read-file-exprs (file) (read-file file 'sexpr))
 (defun case-sensitive-read-file-exprs (file) (read-file file 'case-sensitive-sexpr))
 
-(defun read-file (file &optional (type 'string))
-  (cond
+(defun read-file (file &optional (type 'string)) 
+  (cond 
    ((not (member type '(string sexpr case-sensitive-sexpr)))
     (format t "ERROR! Unrecognized unit-type ~s in read-file!~%" type))
    (t (let ((stream (see file)))
@@ -21109,7 +21109,7 @@ KM> (multiple-value-some #'demo '(-1 3 2))
 
 (defun transpose (list)
   (cond ((every #'null list) nil)
-	(t (cons (mapcar #'first list)
+	(t (cons (mapcar #'first list) 
 		 (transpose (mapcar #'rest list))))))
 
 ;;; (atranspose '((a b c) (c d e)))
@@ -21153,28 +21153,28 @@ KM> (multiple-value-some #'demo '(-1 3 2))
 
 ))					;locally
 
-#|
+#|	
 (defun apairp (list)	OLD
-  (declare (optimize (speed 3) (safety 0)))
+  (declare (optimize (speed 3) (safety 0)))  
   (and (listp list) list (not (listp (rest list)))))
 |#
 ;;; NEW smh 2012-06-18
 (defun apairp (list)
-  (declare (optimize (speed 3) (safety 0)))
+  (declare (optimize (speed 3) (safety 0)))  
   (and (consp list) (not (listp (rest list)))))
 
 ; -----Original Message-----
-;  From: Francis Leboutte [mailto:f.leboutte@algo.be]
+;  From: Francis Leboutte [mailto:f.leboutte@algo.be] 
 ; Sent: Thursday, June 26, 2008 8:41 AM
 ; Here is a version of the optimized pairp function that should work for any Lisp (I also get a bug with LispWorks 5.1):
 ; - the declaration is now correct.
 ; - the function works exactly like the original one.
-;;; thing: should be anything but a dotted list
+;;; thing: should be anything but a dotted list 
 ;;; return T if thing is 2 elements proper list (defun pairp (thing)
 (defun pairp (thing)
   (declare (optimize (speed 3) (safety 0)))
-  (and (consp thing)
-       (let ((thing-cdr (cdr thing)))
+  (and (consp thing)     
+       (let ((thing-cdr (cdr thing)))  
          (and (consp thing-cdr)
 	 (null (cdr thing-cdr))))))
 
@@ -21234,7 +21234,7 @@ KM> (multiple-value-some #'demo '(-1 3 2))
 
 ;;; (intersections '((a b) (a) (c a b))) -> (a)
 ;;; (intersections '(("a" "b") ("a") ("c" "a" "b")) :test #'string=) -> ("a")
-(defun intersections (list &key (test #'eql))
+(defun intersections (list &key (test #'eql)) 
   (cond (list (reduce #'(lambda (x y) (intersection x y :test test)) list)))) ; better implementation!
 
 ;;; (nreplace '(a b c d e) 2 'new)  -> (a b new d e)
@@ -21343,7 +21343,7 @@ KM> (multiple-value-some #'demo '(-1 3 2))
 	(ordered-gathers-by-key0 (rest pairs) :current-key key :current-data (list data) :remove-duplicates remove-duplicates)))))
 
 (defun ordered-gathers-by-key0 (pairs &key current-key current-data remove-duplicates)
-  (cond ((endp pairs)
+  (cond ((endp pairs) 
 	 (list (list current-key (reverse current-data))))
 	(t (let* ((pair (first pairs))
 		  (key (first pair))
@@ -21426,17 +21426,17 @@ KM> (multiple-value-some #'demo '(-1 3 2))
 		  (val (second entry))
 		  (dictentry (assoc key dict)))
 	     (cond (dictentry `((,@dictentry ,val)
-				,@(combine-attvals (rest list)
-						   (remove dictentry dict :test #'equal)
+				,@(combine-attvals (rest list) 
+						   (remove dictentry dict :test #'equal) 
 						   :n-entries n-entries :null-entry null-entry)))
-		   (t `((,key ,@(duplicate null-entry n-entries) ,val)
+		   (t `((,key ,@(duplicate null-entry n-entries) ,val) 
 			,@(combine-attvals (rest list) dict :n-entries n-entries :null-entry null-entry))))))))
 
 ;;; ----------
-
+				  
 (defun number-eq (n1 n2 &key (tolerance 0.00001))
-  (and (numberp n1)
-       (numberp n2)
+  (and (numberp n1) 
+       (numberp n2) 
        (< (abs (- n1 n2)) tolerance)))
 
 ;;; handle rounding errors
@@ -21448,9 +21448,10 @@ KM> (multiple-value-some #'demo '(-1 3 2))
 
 ;;; Note: added parameter test to facilitate intersection of string lists. The defualt value eql corresponds to the common lisp default for intersection.
 ;;; Modified by Rahul Katragadda
-(defun list-intersection (list &key (test 'user::eql))
-  (format t "WARNING: The function (list-intersection ...) has been renamed (intersections ...). Please update your code!~%")
-  (intersections list :test test))
+
+;;;(defun list-intersection (list &key (test 'user::eql)) 
+;;;  (format t "WARNING: The function (list-intersection ...) has been renamed (intersections ...). Please update your code!~%")
+;;;  (intersections list :test test))
 
 ;;; ----------
 
@@ -21461,7 +21462,7 @@ KM> (multiple-value-some #'demo '(-1 3 2))
 ;;; rank-sort is non-destructive on list.
 ;;; CL-USER> (rank-sort '("cat" "the" "elephant" "a") #'length)
 ;;; ("a" "cat" "the" "elephant")
-(defun rank-sort (list function)
+(defun rank-sort (list function) 
   (mapcar #'second (assoc-sort (transpose (list (mapcar function list) list)))))
 
 (defun assoc-sort (list) (sort list #'pair-less-than))
@@ -21476,9 +21477,9 @@ KM> (multiple-value-some #'demo '(-1 3 2))
 
 (defun reset-trace-at-iteration () (setq *tmp-counter* 0))
 
-(defun trace-at-iteration (n)
+(defun trace-at-iteration (n) 
   (setq *tmp-counter* (1+ *tmp-counter*))
-  (cond ((= (mod *tmp-counter* n) 0)
+  (cond ((= (mod *tmp-counter* n) 0) 
 	 (format t "~a..." *tmp-counter*))))
 
 (defun curr-iteration () *tmp-counter*)
@@ -21489,8 +21490,8 @@ KM> (multiple-value-some #'demo '(-1 3 2))
 
 ;;; Remove *all* properties on the property list
 (defun remprops (symbol)
-  (mapc #'(lambda (indicator)
-	    (remprop symbol indicator))
+  (mapc #'(lambda (indicator) 
+	    (remprop symbol indicator)) 
 	(odd-elements (symbol-plist symbol))))
 
 ;;; (odd-elements '(1 2 3 4 5)) -> (1 3 5)
@@ -21544,7 +21545,7 @@ KM> (multiple-value-some #'demo '(-1 3 2))
 ;;; (bag-difference '(a b a d) '(d a)) -> (b a)
 ;;; If (bag-difference bag1 bag2) = nil, then all members of bag2 are in bag1 (with at least the same frequency)
 (defun bag-difference (bag1 bag2 &key (test #'eql))
-  (cond
+  (cond 
    ((endp bag2) bag1)
    (t (bag-difference (remove (first bag2) bag1 :count 1 :test test) (rest bag2) :test test))))
 
@@ -21569,7 +21570,7 @@ KM> (multiple-value-some #'demo '(-1 3 2))
 
 ;;; ----------
 
-;;; removes ALL the assoc-list entries with key.
+;;; removes ALL the assoc-list entries with key. 
 (defun remove-assoc-entry (key assoc-list)
   (remove-if #'(lambda (entry) (eql (first entry) key)) assoc-list))
 
@@ -21587,7 +21588,7 @@ KM> (multiple-value-some #'demo '(-1 3 2))
 ;;; (contains-some '(a b (c d)) '(d e))  -> true
 (defun contains-some (expr symbols)
   (or (member expr symbols)
-      (and (listp expr)
+      (and (listp expr) 
 	   (some #'(lambda (el) (contains-some el symbols)) expr))))
 
 ;;; ----------
@@ -21595,7 +21596,7 @@ KM> (multiple-value-some #'demo '(-1 3 2))
 #|
 xor clashes with CLISP
 NOTE:: These have different side-effects to Lisp's or macro: Here ALL the arguments are evaluated THEN the results tested.
-  - (nor (setq *w* t) (setq *z* t)) and (not (or (setq *w* t) (setq *z* t))) both return NIL,
+  - (nor (setq *w* t) (setq *z* t)) and (not (or (setq *w* t) (setq *z* t))) both return NIL, 
     BUT the nor will setq *z* t, while (not (or...)) will not.
 |#
 (defun x-or (a b) (and (or a b) (not (and a b))))
@@ -21606,7 +21607,7 @@ NOTE:: These have different side-effects to Lisp's or macro: Here ALL the argume
 ;;; USER(60): (subbagp '(1 2 2) '(1 2 2 3)) -> t
 ;;; USER(61): (subbagp '(1 2 2 2) '(1 2 2 3)) -> NIL
 (defun subbagp (subbag bag &key (test #'eql))
-  (cond
+  (cond 
    ((null subbag))
    ((member (first subbag) bag :test test)
     (subbagp (rest subbag) (remove (first subbag) bag :test test :count 1)))))
@@ -21646,7 +21647,7 @@ NOTE:: These have different side-effects to Lisp's or macro: Here ALL the argume
 ;;; e.g. (port-to-package ... :old-package :sapir :new-package :user)
 ;;; REVISED: Dec 2003 - don't care what the old package was
 (defun port-to-package (tree &key package)
-  (cond
+  (cond 
    ((null tree) nil)
    ((listp tree) (cons (port-to-package (first tree) :package package)
 		       (port-to-package (rest tree) :package package)))
@@ -21659,7 +21660,7 @@ NOTE:: These have different side-effects to Lisp's or macro: Here ALL the argume
 ;;; CL-USER(30): (permute '((a b) (1 2) (X Y)))
 ;;; ((A 1 X) (A 1 Y) (A 2 X) (A 2 Y) (B 1 X) (B 1 Y) (B 2 X) (B 2 Y))
 (defun permute (list-of-lists)
-  (cond
+  (cond 
    ((endp list-of-lists) (list nil))
    (t (let ( (permutes (permute (rest list-of-lists))) )
 	(mapcan #'(lambda (e)
@@ -21689,20 +21690,20 @@ NOTE:: These have different side-effects to Lisp's or macro: Here ALL the argume
 (defun first-n (list n) (cond ((> (length list) n) (subseq list 0 n)) (t list)))
 
 ;;; (is-subset-of '(a b) '(a b c)) -> t
-(defun is-subset-of (list1 list2 &key (test #'eql))
+(defun is-subset-of (list1 list2 &key (test #'eql)) 
   (not (set-difference list1 list2 :test test)))
 
 ;; (replace-element 2 '(a b c) 'x) -> (A X C)
 ;; (replace-element 4 '(a b c) 'x) -> (A B C X)
 ;; (replace-element 5 '(a b c) 'x) -> (A B C NIL X)
 (defun replace-element (n list el)
-  (cond ((endp list)
+  (cond ((endp list) 
 	 (append (duplicate nil (1- n)) (list el)))
 	((= n 1) (cons el (rest list)))
 	(t (cons (first list) (replace-element (1- n) (rest list) el)))))
 
 ;(defun numeric-char-p (char) (member char '(#\0 #\1 #\2 #\3 #\4 #\5 #\6 #\7 #\8 #\9) :test #'char=))
-(defun numeric-char-p (char)
+(defun numeric-char-p (char) 
   (format t "WARNING: Call to numeric-char-p should be replaced by call to built-in digit-char-p; please update your code! Continuing for now...~%")
   (digit-char-p char))
 
@@ -21710,7 +21711,7 @@ NOTE:: These have different side-effects to Lisp's or macro: Here ALL the argume
 ;;; (permutations '(a b a)) -> ((B A) (A B))
 (defun permutations (list)
   (permutations0 (remove-duplicates list :test #'equal)))
-
+  
 (defun permutations0 (list)
   (cond ((endp list) nil)
 	((singletonp list) (list list))
@@ -21723,7 +21724,7 @@ NOTE:: These have different side-effects to Lisp's or macro: Here ALL the argume
 ;;; ======================================================================
 
 ;;; Utilities for handling binding alists
-;;; Really these should be defconstants, but for some reason defconstant causes an error under
+;;; Really these should be defconstants, but for some reason defconstant causes an error under 
 ;;; SBCL (Tim Menzies, March 2008), so replace with defvar.
 (defvar *null-binding* '(t . t))	; note, not NIL, so we can distinguish no bindings from failure
 (defvar *null-bindings* '((t . t)))
@@ -21732,7 +21733,7 @@ NOTE:: These have different side-effects to Lisp's or macro: Here ALL the argume
    (or (remove *null-binding* (remove-duplicates (append bindings1 bindings2) :test #'equal :from-end t) :test #'equal)
        *null-bindings*))		; if bindings1 AND bindings2 are all *null-bindings*)
 
-(defun add-binding (x y bindings)
+(defun add-binding (x y bindings) 
   (cond ((eql x y) bindings)
 	((member `(,x . ,y) bindings :test #'equal) bindings)
 	(t (combine-bindings bindings (list (bind x y))))))
@@ -21758,17 +21759,17 @@ NOTE:: These have different side-effects to Lisp's or macro: Here ALL the argume
   (cond ((> n nmax) nil)
 	(t (cons n (counts-to0 (1+ n) nmax)))))
 
-;;; (break-list <list> :test <test>)
+;;; (break-list <list> :test <test>) 
 ;;; Break <list> into sublists, breaking at (and removing) each element that passes <test>
-;;; RETURNS: A list of sublists.
+;;; RETURNS: A list of sublists. 
 ;;; NOTE: If the first element passes <test>, then the first sublist will be NIL
-;;; (break-list '("http" "a" "b" "http" "c" "d")
+;;; (break-list '("http" "a" "b" "http" "c" "d") 
 ;;;			:test #'(lambda (line) (starts-with (trim-whitespace line) "http"))))))
 ;;;  -> '(nil ("a" "b") ("c" "d"))
 (defun break-list (list &key test)
   (let ((element (first list)))
     (cond ((endp list) nil)
-	  ((apply test (list element))
+	  ((apply test (list element)) 
 	   (cons nil (break-list (rest list) :test test)))	; nil becomes the terminator of the prev para
 	  (t (let ((sublists (break-list (rest list) :test test)))
 	       `((,element ,@(first sublists)) ,@(rest sublists)))))))
@@ -21822,9 +21823,9 @@ NOTE:: These have different side-effects to Lisp's or macro: Here ALL the argume
 ;;; RETURNS: A string containing the printed form of the frame.
 (defun write-frame (frame &key (situations (all-situations)) (theories (all-theories)) htmlify nulls-okayp
 			       essentials partially-cloned-from slots-to-show save-prototypep)
-  (cond
+  (cond 
    ((and (kb-objectp frame) (bound frame)) (km-format nil ";;; (~a is bound to ~a)~%~%" frame (dereference frame)))
-   (t (let ( (frame-string (write-frame0 frame situations theories htmlify essentials
+   (t (let ( (frame-string (write-frame0 frame situations theories htmlify essentials 
 					 partially-cloned-from slots-to-show save-prototypep)) )
 	(cond ((string/= frame-string "") frame-string)
 	      ((built-in-concept-type frame)
@@ -21844,7 +21845,7 @@ NOTE:: These have different side-effects to Lisp's or macro: Here ALL the argume
 	       (km-format nil ";;; (Concept ~a is not declared in the situations ~a nor the theories ~a)~%~%" frame situations theories))
 	      (t ""))))))
 
-(defun write-frame0 (frame &optional (situations (all-situations))
+(defun write-frame0 (frame &optional (situations (all-situations)) 
 		     (theories (all-theories)) htmlify essentials partially-cloned-from slots-to-show save-prototypep)
   (cond ((stringp frame) (km-format nil ";;; (~a is a string)~%~%" frame))
 	((numberp frame) (km-format nil ";;; (~a is a number)~%~%" frame))
@@ -21853,14 +21854,14 @@ NOTE:: These have different side-effects to Lisp's or macro: Here ALL the argume
 	((km-setp frame) (km-format nil ";;; (~a is a set)~%~%" frame))
 	((km-argsp frame) (km-format nil ";;; (~a is an argument list)~%~%" frame))
 	((functionp frame) (km-format nil ";;; (~a is a Lisp function)~%~%" frame))
-	((kb-objectp frame)
-	 (concat-list
+	((kb-objectp frame) 
+	 (concat-list 
 	  (cons (cond ((member *global-situation* situations)		; do *Global first
 		       (write-frame-in-situation frame *global-situation* :htmlify htmlify :essentials essentials
 						 :partially-cloned-from partially-cloned-from :slots-to-show slots-to-show
 						 :save-prototypep save-prototypep))
 		      (t ""))
-		(append
+		(append 
 		 (let ( (prototypes (get-vals frame '#$prototypes :situation *global-situation*)) )
 		   (cond ((and prototypes (null slots-to-show))
 			  (append (list (km-format nil "#|"))
@@ -21874,29 +21875,29 @@ NOTE:: These have different side-effects to Lisp's or macro: Here ALL the argume
 				  (list (km-format nil "|#~%~%"))))))
 		 (mapcar #'(lambda (theory)
 			     (write-frame-in-situation frame theory :htmlify htmlify :theoryp t :essentials essentials
-						       :partially-cloned-from partially-cloned-from
+						       :partially-cloned-from partially-cloned-from 
 						       :slots-to-show slots-to-show :save-prototypep save-prototypep))
 			 theories)
 		 (append
 		  (flatten (write-situation-specific-assertions frame :htmlify htmlify))
-		  (mapcar #'(lambda (situation)
+		  (mapcar #'(lambda (situation) 
 			      (write-frame-in-situation frame situation :htmlify htmlify :essentials essentials
-							:partially-cloned-from partially-cloned-from
+							:partially-cloned-from partially-cloned-from 
 							:slots-to-show slots-to-show :save-prototypep save-prototypep))
 			  (remove *global-situation* situations)))))))
 	(t (report-error 'user-error "~a is not a KB object!~%" frame))))
 
 (defun write-situation-specific-assertions (situation-class &key htmlify)
-  (cond
+  (cond 
    ((is-subclass-of situation-class '#$Situation)
-    (let ( (assertions (second (assoc '#$assertions
+    (let ( (assertions (second (assoc '#$assertions 
 				      (desource-for-printing (get-slotsvals situation-class :facet 'member-properties :situation *global-situation*))))) )
       (cond (assertions
 	     (mapcar #'(lambda (assertion)
 			 (cond ((not (quotep assertion))
-				(report-error 'user-error "Unquoted assertion ~a in situation-class ~a! Ignoring it...~%"
+				(report-error 'user-error "Unquoted assertion ~a in situation-class ~a! Ignoring it...~%" 
 					      assertion situation-class) "")
-			       (t (let ( (modified-assertion (sublis '#$((SubSelf . Self) (#,Self . TheSituation)) (second assertion)
+			       (t (let ( (modified-assertion (sublis '#$((SubSelf . Self) (#,Self . TheSituation)) (second assertion) 
 								     :test #'equal)) )
 				    (list (km-format nil "(in-every-situation ")
 					  (objwrite situation-class htmlify)
@@ -21907,37 +21908,37 @@ NOTE:: These have different side-effects to Lisp's or macro: Here ALL the argume
 
 
 ;;; If no data, then returns ""
-(defun write-frame-in-situation (frame situation
+(defun write-frame-in-situation (frame situation 
 				 &key htmlify theoryp essentials partially-cloned-from slots-to-show save-prototypep)
   (let ( (own-props (desource-for-printing (get-slotsvals frame :facet 'own-properties    :situation situation)))
 	 (mbr-props (desource-for-printing (get-slotsvals frame :facet 'member-properties :situation situation)))
 	 (own-defn  (desource-for-printing (get-slotsvals frame :facet 'own-definition    :situation situation)))
 	 (mbr-defn  (desource-for-printing (get-slotsvals frame :facet 'member-definition :situation situation))) )
     (concat
-     (cond (own-defn
-	    (concat-list
-	     (flatten
-	      (write-frame2 frame situation own-defn  nil '#$has-definition :htmlify htmlify :theoryp theoryp
-			    :essentials essentials :partially-cloned-from partially-cloned-from
+     (cond (own-defn  
+	    (concat-list 
+	     (flatten 
+	      (write-frame2 frame situation own-defn  nil '#$has-definition :htmlify htmlify :theoryp theoryp 
+			    :essentials essentials :partially-cloned-from partially-cloned-from 
 			    :slots-to-show slots-to-show :save-prototypep save-prototypep)))))
-     (cond ((and own-props
+     (cond ((and own-props 
 		 (not (and (singletonp own-props) (eq (first (first own-props)) '#$assertions)))) ; filter out these!
-	    (concat-list (flatten (write-frame2 frame situation own-props nil '#$has :htmlify htmlify :theoryp theoryp
-						:essentials essentials :partially-cloned-from partially-cloned-from
+	    (concat-list (flatten (write-frame2 frame situation own-props nil '#$has :htmlify htmlify :theoryp theoryp 
+						:essentials essentials :partially-cloned-from partially-cloned-from 
 						:slots-to-show slots-to-show :save-prototypep save-prototypep)))))
-     (cond (mbr-defn  (concat-list (flatten (write-frame2 frame situation mbr-defn  '#$every '#$has-definition
-					  :htmlify htmlify :theoryp theoryp :essentials essentials
-					  :partially-cloned-from partially-cloned-from
+     (cond (mbr-defn  (concat-list (flatten (write-frame2 frame situation mbr-defn  '#$every '#$has-definition 
+					  :htmlify htmlify :theoryp theoryp :essentials essentials 
+					  :partially-cloned-from partially-cloned-from 
 					  :slots-to-show slots-to-show :save-prototypep save-prototypep)))))
-     (cond ((and mbr-props
+     (cond ((and mbr-props 
 		 (not (and (singletonp mbr-props) (eq (first (first mbr-props)) '#$assertions)))) ; filter out these!
-	    (concat-list (flatten (write-frame2 frame situation mbr-props '#$every '#$has :htmlify htmlify
-					:theoryp theoryp :essentials essentials
-					:partially-cloned-from partially-cloned-from
+	    (concat-list (flatten (write-frame2 frame situation mbr-props '#$every '#$has :htmlify htmlify 
+					:theoryp theoryp :essentials essentials 
+					:partially-cloned-from partially-cloned-from 
 					:slots-to-show slots-to-show :save-prototypep save-prototypep))))))))
 
 ;;; theoryp = 'ignore suppresses the (in-theory ... ) wrapper, but we ignore that for now
-(defun write-frame2 (frame situation slotsvals0 quantifier joiner
+(defun write-frame2 (frame situation slotsvals0 quantifier joiner 
 		     &key htmlify theoryp essentials partially-cloned-from slots-to-show save-prototypep (tab 0))
   (let ( (slotsvals (dereference slotsvals0))
 	 (tab2 (cond ((eq situation *global-situation*) tab)
@@ -21945,7 +21946,7 @@ NOTE:: These have different side-effects to Lisp's or macro: Here ALL the argume
     (cond
      ((or (null slots-to-show)
 	  (intersection slots-to-show (mapcar #'slot-in slotsvals)))
-      (list
+      (list 
           (cond ((and (neq situation *global-situation*) (neq theoryp 'ignore))
 		 (list (cond ((eq theoryp t) (km-format nil "(in-theory "))
 			     (t (km-format nil "(in-situation ")))
@@ -21987,7 +21988,7 @@ NOTE:: These have different side-effects to Lisp's or macro: Here ALL the argume
 			      (ordered-set-difference vals partially-cloned-from)) ; are only being partially saved
 			     ((eq slot '#$prototype-participants)
 			      (cond ((set-difference essentials vals)
-				     (report-error
+				     (report-error 
               "ERROR! saving prototype: some essential instances are not prototype-participants of the prototype!~%   ~a~%"
 	       (set-difference essentials vals)))
 ;				    (t essentials)	; (NB essentials is a subset of vals)
@@ -22009,7 +22010,7 @@ NOTE:: These have different side-effects to Lisp's or macro: Here ALL the argume
 ;	   (format t "slot = ~a, vals2 = ~a~%" slot vals2) (pause)
 	   (cond (vals2 (write-slotvals (make-slotvals (slot-in slotvals) vals2))))))
 	(t (list (format nil "~%~vT(" tab)
-		 (objwrite (slot-in slotvals) htmlify)
+		 (objwrite (slot-in slotvals) htmlify) 
 		 " "
 		 (write-vals (remove-dup-instances (vals-in slotvals))
 			     (+ tab 3 (length (km-format nil "~a" (slot-in slotvals))))
@@ -22038,7 +22039,7 @@ NOTE:: These have different side-effects to Lisp's or macro: Here ALL the argume
 ;;; excl::backquote
 (defun objwrite (expr &optional htmlify)
   (cond ((atom expr) (objwrite2 expr htmlify))
-	((and (pairp expr)
+	((and (pairp expr) 
 	      (symbolp (first expr))
 	      (assoc (first expr) *special-symbol-alist*))
 	 (let ( (special-symbol-str (second (assoc (first expr) *special-symbol-alist*))) )
@@ -22060,7 +22061,7 @@ NOTE:: These have different side-effects to Lisp's or macro: Here ALL the argume
 ;;; The primitive write operation
 ;;; [1] Include ||s: (symbol-name '|the dog|) -> "the dog", while (km-format nil "~a" '|the dog|) -> "|the dog|".
 (defun objwrite2 (expr htmlify &key (action *html-action*) (window *html-window*))
-  (cond ((and htmlify (kb-objectp expr) (known-frame expr)) 		; with KM only, htmlify is always nil
+  (cond ((and htmlify (kb-objectp expr) (known-frame expr)) 		; with KM only, htmlify is always nil 
 	 (htextify expr (km-format nil "~a" expr) :action action :window window)) ; [1]
 	((eq expr nil) "()")
 	(t (km-format nil "~a" expr))))
@@ -22079,7 +22080,7 @@ NOTE:: These have different side-effects to Lisp's or macro: Here ALL the argume
 (defun list-defined-subclasses (class)
   (let ((defined-subclasses (get class 'defined-subclasses))
 	(defined-prototypes (get class 'defined-prototypes)))
-    (append
+    (append 
      (mapcan #'(lambda (subclass) (list-definitions-for-class subclass class)) defined-subclasses)
      (mapcan #'(lambda (prototype) (list-definitions-for-prototype prototype class)) defined-prototypes)
     )))
@@ -22093,7 +22094,7 @@ NOTE:: These have different side-effects to Lisp's or macro: Here ALL the argume
 
 ;;; [1] (get Plant-cell 'defined-prototypes) -> (|_Plant-Cell-Inside-Hypotonic-Solution22322| |_Plant-cell5965|)
 ;;;	Note it includes Plant-cell itself, as Plant-cell has a definition on it (the-class Eukaryotic-cell with ...)
-;;;     Given a new Plant-cell instance, (classify ...) automatically ignores these as the Plant-cell instance is already necessarily
+;;;     Given a new Plant-cell instance, (classify ...) automatically ignores these as the Plant-cell instance is already necessarily 
 ;;;		an instance of a Plant-cell. However, we don't want to list it here.
 (defun list-definitions-for-prototype (prototype superclass)
   (let ((depth (depth-to-thing superclass))
@@ -22105,7 +22106,7 @@ NOTE:: These have different side-effects to Lisp's or macro: Here ALL the argume
 			(superclass2 (first superclass2+slotsvals))
 			(slotsvals (second superclass2+slotsvals)))
 ;			(classes (classes-in-description prototype-scope)))
-		   (cond ((and slotsvals
+		   (cond ((and slotsvals 
 			       (eq superclass superclass2))
 			  (list depth
 				(concat
@@ -22118,7 +22119,7 @@ NOTE:: These have different side-effects to Lisp's or macro: Here ALL the argume
 (defun depth-to-thing (class) (depth-to-thing1 (list class) 0))
 
 (defun depth-to-thing1 (classes depth-so-far)
-  (cond
+  (cond 
    ((member '#$Thing classes) depth-so-far)
    (t (depth-to-thing1 (my-mapcan #'immediate-superclasses classes) (1+ depth-so-far)))))
 
@@ -22147,7 +22148,7 @@ NOTE:: These have different side-effects to Lisp's or macro: Here ALL the argume
 ;;; (i) a list of strings, = the taxonomy
 ;;; (ii) a list of all the concepts processed (= all of them)
 (defun make-tax (&optional (current-node '#$Thing) (relation-to-descend '#$subclasses) htmlify)
-  (cond ((eq relation-to-descend '#$subclasses)
+  (cond ((eq relation-to-descend '#$subclasses) 
 	 (clean-taxonomy)))
   (cond ((and (eq current-node '#$Thing)
 	      (eq relation-to-descend '#$subclasses))
@@ -22155,9 +22156,9 @@ NOTE:: These have different side-effects to Lisp's or macro: Here ALL the argume
 		 (top-classes (immediate-subclasses '#$Thing)) )
 	   (multiple-value-bind
 	    (strings all-nodes-done)
-	    (make-taxes (sort (remove '#$Thing top-classes) #'string< :key #'symbol-name)
+	    (make-taxes (sort (remove '#$Thing top-classes) #'string< :key #'symbol-name) 
 			relation-to-descend htmlify nil *indent-increment*)
-	    (let ( (unplaceds (remove-if-not #'named-instancep
+	    (let ( (unplaceds (remove-if-not #'named-instancep 
 					     (set-difference all-objects (cons '#$Thing all-nodes-done)))) )
 	      (append (cons "Thing" strings)
 		      (mapcar #'(lambda (unplaced)
@@ -22169,25 +22170,25 @@ NOTE:: These have different side-effects to Lisp's or macro: Here ALL the argume
   (let ( (item-text (tax-obj-write current-node tab htmlify)) )
     (cond ((member current-node *ignore-items*)
 	   (values (list item-text
-			 (format nil "~vTignoring children..."
+			 (format nil "~vTignoring children..." 
 				 (+ tab *indent-increment*)))
 		   nodes-done))
 	  (t (let* ( (all-instances  (km-int `#$(the instances of ,CURRENT-NODE)))
 		     (named-instances (remove-if-not #'named-instancep all-instances))
 		     (instances-text (mapcar #'(lambda (instance)
-						 (tax-obj-write instance (+ tab *indent-increment*) htmlify :instancep t))
+						 (tax-obj-write instance (+ tab *indent-increment*) htmlify :instancep t)) 
 					     (sort named-instances #'string< :key #'symbol-name)))
 		     (specs (sort (km-int `#$(the ,RELATION-TO-DESCEND #$of ,CURRENT-NODE))
 				  #'string<
 				  :key #'symbol-name)) )			; alphabetical order
 	       (cond ((and specs (member current-node nodes-done))
 		      (values (list item-text
-				    (format nil "~vT..."
+				    (format nil "~vT..." 
 					    (+ tab *indent-increment*)))
 			      nodes-done))
 		     (t (multiple-value-bind
 			 (string new-nodes-done)
-			 (make-taxes specs relation-to-descend htmlify (cons current-node (append all-instances nodes-done))
+			 (make-taxes specs relation-to-descend htmlify (cons current-node (append all-instances nodes-done)) 
 				     (+ tab *indent-increment*))
 			 (values (cons item-text (cons instances-text string)) new-nodes-done)))))))))
 
@@ -22195,7 +22196,7 @@ NOTE:: These have different side-effects to Lisp's or macro: Here ALL the argume
   (cond ((not (listp current-nodes)) (values nil nodes-done))	; in case of a syntax error in the KB
 	((endp current-nodes) (values nil nodes-done))
 	((> (/ tab *indent-increment*) *maxdepth*)
-	 (values (list (format nil "~vT...more..."
+	 (values (list (format nil "~vT...more..." 
 			       (+ tab *indent-increment*)))
 		 nodes-done))
 	((not (atom (first current-nodes)))   			; in case of a syntax error in the KB
@@ -22211,9 +22212,9 @@ NOTE:: These have different side-effects to Lisp's or macro: Here ALL the argume
 	     (strings new-nodes-done)
 	     (make-taxes (rest current-nodes) relation-to-descend htmlify mid-nodes-done tab)
 	     (values (list string strings) new-nodes-done))))))
-
+     
 (defun tax-obj-write (concept tab htmlify &key instancep)
-  (concat
+  (concat 
    (cond ((= tab 0) "")
 	 ((eq instancep '?) (format nil "?~a" (spaces (1- tab))))  ; Unfortunately, (format nil "~vT" 0) = " " not ""
 	 ((eq instancep t) (format nil "I~a" (spaces (1- tab))))  ; Unfortunately, (format nil "~vT" 0) = " " not ""
@@ -22222,9 +22223,9 @@ NOTE:: These have different side-effects to Lisp's or macro: Here ALL the argume
 ;   (cond (htmlify (htextify concept (symbol-name concept) :action '"frame")) ; htmlify always nil for KM only
 ;	 (t (km-format nil "~a" concept)))))
 
+       
 
-
-
+	 
 
 ;;; FILE: subsumes.lisp
 
@@ -22243,7 +22244,7 @@ Note we want to distinguish between
 
 We could evaluate (a person) to create a Skolem, and then do unification
 with a subsumption flag in, but this doesn't work -- case a. and b. are
-indistinguishable, but we'd want unification with _person24 (say) to succeed
+indistinguishable, but we'd want unification with _person24 (say) to succeed 
 in case a. and fail in b.
 
 Handler for (the X with SVs) in interpreter.lisp:
@@ -22258,7 +22259,7 @@ The base algorithm:
 1. find an object O of type Class (person)
 2. for each slot S on person
     a. compute vals Vs of O.S
-      for each expr in the value of person.S
+      for each expr in the value of person.S     
 	 IF expr is of form "(a ?class)" or "(a ?class with &rest)"
 	 THEN foreach V in Vs
 		call (subsumes expr V) until success (removing V from Vs?)
@@ -22271,14 +22272,14 @@ The base algorithm:
 ;;; > (find-subsumees-on-object-stack '(a Car with (color (Red)))) -> list of instances
 (defun find-subsumees-on-object-stack (existential-expr)
   (let ((candidates (find-candidates existential-expr)))
-    (remove-if-not #'(lambda (candidate-instance)
+    (remove-if-not #'(lambda (candidate-instance) 
 		       (is0 candidate-instance existential-expr))
 		   candidates)))
 
 ;;; > (find-subsumees+bindings '(a Car with (color (Red)))) -> list of instances + bindings
 (defun find-subsumees+bindings (existential-expr candidates &key bindings)
-  (remove nil
-	  (mapcar #'(lambda (candidate-instance)
+  (remove nil 
+	  (mapcar #'(lambda (candidate-instance) 
 		      (let ((new-bindings (is0 candidate-instance existential-expr :bindings bindings)))
 			(cond (new-bindings (list candidate-instance new-bindings)))))
 		  candidates)))
@@ -22287,7 +22288,7 @@ The base algorithm:
 #|
 Finding all candidate instances which the existential expression might be referring to.
 There are two ways of doing this:
-	(a Car with
+	(a Car with 
 	   (owned-by (Porter))
 	   (color (Brown))
 	   (age (10))
@@ -22300,7 +22301,7 @@ There are two ways of doing this:
   2. The answer(s) must be in the intersection of the answers returned, subject to:
 	- we better also add (all-instance-of Car) to the set
 	- if no instances are returned by a particular inversing, then we'll
-		ignore it (assuming either it was a non-symbolic frame, or
+		ignore it (assuming either it was a non-symbolic frame, or 
 		the evaluator has somehow failed to cache the answer even though
 		it's there).
      INCOMPLETENESS: Suppose (Brown color-of) *does* return some values, but
@@ -22309,7 +22310,7 @@ There are two ways of doing this:
  Now we just do this simple version below:
 |#
 (defun find-candidates (existential-expr)
-  (let*
+  (let* 
     ( (class+slotsvals (breakup-existential-expr existential-expr :fail-mode 'error))  ; [1]
       (class (first class+slotsvals))
       (slotsvals (second class+slotsvals)) )
@@ -22330,7 +22331,7 @@ There are two ways of doing this:
 	  (vexprs (second slotvals)) )
      (mapc #'(lambda (vexpr)
 	       (cond ((existential-exprp vexpr)
-		      (mapc #'(lambda (val)
+		      (mapc #'(lambda (val) 
 				(cond ((kb-objectp val)
 				       (km-int `(#$the ,class ,invslot #$of ,val)))))	 ; [1]
 			    (find-subsumees-on-object-stack vexpr)))
@@ -22363,7 +22364,7 @@ IS:
 	(  I1   is   I2  )	 ==     (I1 = I2)
 
 We also have to be careful: With (Animal subsumes Dog), we must be sure that the
-set (Animal) is recognized as a class description, not a set of instances. To do
+set (Animal) is recognized as a class description, not a set of instances. To do 
 this, we convert (say) Dog to '(every Dog).
 |#
 
@@ -22372,7 +22373,7 @@ this, we convert (say) Dog to '(every Dog).
 	 (y-desc (vals-to-class-description ys)) )
     (cond ((and x-desc y-desc) 				        ; ('(every X) subsumes '(every Y)) == ('(a Y) is '(a X))
 	   (is (every-to-a y-desc) (every-to-a x-desc)))
-	  (x-desc 						; ('(every X) subsumes {I1,..,In}) == (allof {I1,..,In}
+	  (x-desc 						; ('(every X) subsumes {I1,..,In}) == (allof {I1,..,In} 
 	   (km-int `#$(allof ,(VALS-TO-VAL YS) must (,X-DESC covers It))))    ;           must ('(every X) covers It))
 	  (y-desc						; ({I1,..,In} subsumes '(every Y)) == ERROR
 	   (report-error 'user-error "Doing (~a subsumes ~a)~%Can't test if a set subsumes an expression!~%" xs ys))
@@ -22386,15 +22387,15 @@ this, we convert (say) Dog to '(every Dog).
 	   (km-int `#$(,Y-DESC is ,(EVERY-TO-A X-DESC))))
 	  (x-desc						; ('(every X) covers    I  )    ==    (I is '(a X))
 	   (km-int `#$(,Y is ,(EVERY-TO-A X-DESC))))
-	  (y-desc						; ({I1,..,In} covers '(a Y))    ==    (has-value (oneof {I1,..,In}
+	  (y-desc						; ({I1,..,In} covers '(a Y))    ==    (has-value (oneof {I1,..,In} 
 	   (km-int `#$(has-value (oneof ,(VALS-TO-VAL XS) where (It is ,Y-DESC)))))   ;  where (It is '(a Y)))
 	  (t 			       				; ({I1,..,In} covers    I  )    ==    ({I1,..,In} includes I)
 	   (km-int `#$(,(VALS-TO-VAL XS) includes ,Y))))))
 
-;;; [1]: Hmmm....We can't always guarantee KM will clean up after itself, as the computation [1a] may create additional
+;;; [1]: Hmmm....We can't always guarantee KM will clean up after itself, as the computation [1a] may create additional 
 ;;; instances which *aren't* deleted by the tidy-up [1b]. Could use a subsituation??
 (defun is (x y)
-  (cond
+  (cond 
    ((equal y ''#$(a Class))				; SPECIAL CASE - for metaclasses:  '(every Dog) is '(a Class)
     (cond ((or (class-descriptionp x) (symbolp x)))	; succeed
 	  (t (report-error 'user-error "Doing (~a is ~a)~%~a doesn't appear to be a class or class description.~%" x y x))))
@@ -22422,7 +22423,7 @@ this, we convert (say) Dog to '(every Dog).
 (defparameter *remove-temporary-via-backtracking* t)
 
 (defun description-subsumes-description (x-desc y-desc)
-  (cond
+  (cond 
    (*remove-temporary-via-backtracking*
     (let ( (old-internal-logging *internal-logging*)
 	   (checkpoint-id (gensym)) )
@@ -22440,7 +22441,7 @@ this, we convert (say) Dog to '(every Dog).
 
 ;;; ----------------------------------------
 
-; [1] Causes problems with metaclasses!
+; [1] Causes problems with metaclasses!	   
 (defun vals-to-class-description (classes)
   (cond ((and (singletonp classes)
 	      (kb-objectp (first classes)))
@@ -22453,13 +22454,13 @@ this, we convert (say) Dog to '(every Dog).
 			(class (first class+slotsvals))
 			(slotsvals (second class+slotsvals)) )
 		  `'(#$every ,class #$with ,@slotsvals)))
-	       (t (report-error 'user-error "Subsumption with ~a:~%Don't know how to do subsumption with this kind of expression!~%"
+	       (t (report-error 'user-error "Subsumption with ~a:~%Don't know how to do subsumption with this kind of expression!~%" 
 				(first classes)))))))
 
 ;;; '(every Cat) -> '(a Cat)
 ;(defun every-to-a (expr) `'(#$a ,@(rest (unquote expr))))
-(defun every-to-a (expr)
-  (let* ( (class+slotsvals (class-description-to-class+slotsvals expr))
+(defun every-to-a (expr) 
+  (let* ( (class+slotsvals (class-description-to-class+slotsvals expr)) 
 	  (class (first class+slotsvals))
 	  (slotsvals (second class+slotsvals)) )
     (cond (slotsvals `'(#$a ,class #$with ,@slotsvals))
@@ -22470,19 +22471,19 @@ this, we convert (say) Dog to '(every Dog).
 ;;; ======================================================================
 
 #|
-NEW: RETURNS: binding list
+NEW: RETURNS: binding list 
 [1] bind-self done for queries like:
 CL-USER> (is0 '#$_rectangle0
-	      '#$(a rectangle with (length ((Self width)))
+	      '#$(a rectangle with (length ((Self width))) 
 				   (width ((Self length)))))
 
 Later: CORRECTION! bind-self must be done *before* calling is0,
-	as expr may be an embedded expression (thus Self refers to the
+	as expr may be an embedded expression (thus Self refers to the 
 	embedding frame).
 [2] NB if no value in subsumer, then it *doesn't* subsume everything!!
 NOTE: expr is UNQUOTED here, to allow easy recursive calling of is0
 
-[3] del-list
+[3] del-list  
       expr     (:triple  Self   position (a Position))		    (a Position) is a single value
       instance (:triple _Light1 position (the position of _Light1)) is going to return a *list* of values for the third argument
 |#
@@ -22495,8 +22496,8 @@ NOTE: expr is UNQUOTED here, to allow easy recursive calling of is0
 		(d-expr (desource expr)) )
 	   (cond ((km-triplep d-instance)
 		  (let* ((bindings2 (is0  (second d-instance) (second d-expr) :bindings bindings))
-			 (bindings3 (cond
-				     (bindings2
+			 (bindings3 (cond 
+				     (bindings2 
 				      (is0 (third d-instance) (third d-expr) :bindings bindings2))))
 			 (bindings4 (cond
 				     (bindings3
@@ -22510,7 +22511,7 @@ NOTE: expr is UNQUOTED here, to allow easy recursive calling of is0
 ; Below [1], bind-self *may* appear redundant. However, expr
 ; *may* contain Self, if it came from a top-level query eg.
 ; 	KM> ((a Person with (owns (Self))) is (a Person with (owns (Self))))
-;     (cond
+;     (cond 
 ;      ((not (contains-self-keyword expr))
 ;	(km-format t "ERROR! Don't know how what `Self' refers to in the expression~%")
 ;	(km-format t "ERROR! ~a~%" expr))
@@ -22523,10 +22524,10 @@ NOTE: expr is UNQUOTED here, to allow easy recursive calling of is0
 			    (are-slotsvals slotsvals) ; syntax check
 			    (slotsvals-subsume slotsvals instance :bindings bindings))))
 		    ((constraint-exprp expr)
-		     (cond ((satisfies-constraints (list instance) (list expr) nil) ; nil = dummy slot name. This only
+		     (cond ((satisfies-constraints (list instance) (list expr) nil) ; nil = dummy slot name. This only 
 			    bindings)))                      ; occurs for things like (is0 (:seq 1 2) (:seq (<> 1) 2))
 ;;;		    (t (let ( (definite-val (km-unique-int expr :fail-mode 'error)) )  ;;; 2. a DEFINITE expression
-;;; Why 'error above??
+;;; Why 'error above?? 
 		    (t (let ( (definite-val (km-unique-int expr)) )  ;;; 2. a DEFINITE expression
 			 (cond ((null definite-val) nil)	; [2]		    ;;;    (so do equality)
 			       ((equal definite-val instance) bindings)))))))))
@@ -22536,7 +22537,7 @@ NOTE: expr is UNQUOTED here, to allow easy recursive calling of is0
 (defun contains-self-keyword (expr)
   (cond ((null expr) nil)
 	((eq expr '#$Self))
-	((and (listp expr)
+	((and (listp expr) 
 	      (not (sourcep expr)))		; NEW: May contain Self, but that's ok
 	 (some #'contains-self-keyword expr))))
 
@@ -22548,7 +22549,7 @@ NOTE: expr is UNQUOTED here, to allow easy recursive calling of is0
 		  (bindings2 (is0 (first pair) (second pair) :bindings bindings)))
 	     (cond (bindings2 (is0s (rest pairs) :bindings bindings2)))))))
 
-(defun slotsvals-subsume (slotsvals instance &key (bindings *null-bindings*))
+(defun slotsvals-subsume (slotsvals instance &key (bindings *null-bindings*)) 		    
   (cond ((endp slotsvals) bindings)
 	(t (let* ((slotvals (first slotsvals))
 		  (bindings2 (slotvals-subsume slotvals instance :bindings bindings)))
@@ -22566,31 +22567,31 @@ where the connects of _Car23 is exactly ((the Engine parts of _Car23)).
 	KM call at [4b]!
     But: Put it back. Reason is we want to stop this:
 	KM> (_Car23 is '(a Car with (color ((the favorite-color of (the owner of Self))))))
-
+	
 	KM> (every Nice-Car has-definition
 		  (instance-of (Car))
 		  (color ((the favorite-color of (the owner of Self)))))
 
 	KM> (a Car)
 	CLASSIFY: _Car23 is a Nice-Car!
-
+	
 	This slightly violates the semantics of the KB (strictly null attribute
-	values should be ignored), but we assume that the rule is there for a
-	reason and must return at least one value.
+	values should be ignored), but we assume that the rule is there for a 
+	reason and must return at least one value. 
     3/17/09: CHANGED to simple removal of constraints: remove-constraints is valid only for fully evaluated
-	expressions (see that function), but here we do NOT have fully evaluated expressions.
-	Specifically: (remove-constraints '#$((?x == (a Point)))) -> (?x (a Point)), has length 2, so
+	expressions (see that function), but here we do NOT have fully evaluated expressions.	
+	Specifically: (remove-constraints '#$((?x == (a Point)))) -> (?x (a Point)), has length 2, so 
            will thus (undesirably) fail to match (_Point23). Note that the error here is in the use of
 	   remove-constraints with this expression, as it is NOT fully evaluated.
-
+	
 [4a] Do a find-vals rather than a (km-int ...) call, as we *do* want to preserve constraints here in the
      special case of tags.
 [5] Why ignore situation-specific slots? I'm confused why I put this constraint in. Let's remove it.
 |#
 (defun slotvals-subsume (slotvals instance &key (bindings *null-bindings*))
-  (let* ( (slot (first slotvals))
+  (let* ( (slot (first slotvals)) 
           (ser-exprs (second slotvals)) )
-    (cond
+    (cond 
      ((some #'(lambda (situation)							; [1]
 		(equal ser-exprs (get-vals instance slot :situation situation)))
 	    (cons (curr-situation) (append (all-supersituations (curr-situation)) (visible-theories))))
@@ -22605,11 +22606,11 @@ where the connects of _Car23 is exactly ((the Engine parts of _Car23)).
 	    (cond ((<= (length (remove-if #'constraint-exprp ser-exprs)) (length see-vals)) ; quick look-ahead check [2]
 		   (cond ((eq slot '#$instance-of) ; special case
 			  (cond ((classes-subsume-classes ser-exprs see-vals) bindings))) ; assume no evaln needed
-			 (t (let ((constraints (find-constraints-in-exprs ser-exprs))
+			 (t (let ((constraints (find-constraints-in-exprs ser-exprs)) 
 				  (incompletep (or (member '#$:incomplete (get-vals instance slot))
 						   (member '#$:incomplete (get-vals instance slot :situation *global-situation*)))))
 			      (and (satisfies-constraints see-vals constraints slot :incompletep incompletep) ; [3]
-				   (vals-subsume (cond ((single-valued-slotp slot)
+				   (vals-subsume (cond ((single-valued-slotp slot) 
 							(&-expr-to-vals (first ser-exprs)))  ; eg. ((a Car) & (must-be-a Dog))
 						       (t ser-exprs))
 						 see-vals
@@ -22619,7 +22620,7 @@ where the connects of _Car23 is exactly ((the Engine parts of _Car23)).
 GIVEN: some expressions, and some values
 RETURN t if *every* expression subsumes some (different) value in values.
 Notes:
-[1]: if expr includes, say, (a car), then consider it to subsume the first
+[1]: if expr includes, say, (a car), then consider it to subsume the first 
 instance of car in the subsumee.
 [2]: Don't remove ser-vals from see-vals, as subsumer may have several
 exprs which evaluate to the *same* instance:
@@ -22632,7 +22633,7 @@ NOTE: (vals-subsume '(?x) '(_X1)), ?x unbound: -> bind ?x to _X1
       (vals-subsume '((?x == (a Car))) '(_X1)), ?x   bound: -> check ?x = _X1 AND _X1 is (a Car)
 |#
 (defun vals-subsume (ser-exprs see-vals &key (bindings *null-bindings*) current-var)
-  (cond
+  (cond 
    ((endp ser-exprs) bindings)			; success!!
    ((equal ser-exprs see-vals) bindings)		; quick success - don't need to recurse
    (t (let ( (ser-expr (first ser-exprs)) )
@@ -22641,17 +22642,17 @@ NOTE: (vals-subsume '(?x) '(_X1)), ?x unbound: -> bind ?x to _X1
 	       (let* ((see-val+new-bindings (first (find-subsumees+bindings ser-expr see-vals :bindings bindings))) ; [1]
 		      (see-val (first see-val+new-bindings))
 		      (new-bindings (second see-val+new-bindings)))
-		 (cond (see-val
-			(vals-subsume (rest ser-exprs)
+		 (cond (see-val 
+			(vals-subsume (rest ser-exprs) 
 				      (remove see-val see-vals :test #'equal)
 				      :bindings (cond (current-var (add-binding current-var see-val new-bindings))
 						      (t new-bindings)))))))
 	      ((km-varp ser-expr)
 	       (let ((binding (val-of ser-expr bindings)))
-		 (cond (binding
+		 (cond (binding 
 			(cond ((member binding see-vals :test #'equal)
 			       (vals-subsume (rest ser-exprs) (remove binding see-vals) :bindings bindings))))
-		       (see-vals
+		       (see-vals 
 			(vals-subsume (rest ser-exprs) (rest see-vals)  ; bind FIRST var only - no search :-(
 				      :bindings (add-binding ser-expr (first see-vals) bindings))))))
 	      ((and (listp ser-expr)
@@ -22664,15 +22665,15 @@ NOTE: (vals-subsume '(?x) '(_X1)), ?x unbound: -> bind ?x to _X1
 			       (and (member var-binding see-vals)
 				    (vals-subsume (list expr) (list var-binding))
 				    (vals-subsume (rest ser-exprs) (remove var-binding see-vals) :bindings bindings)))
-			      (t (vals-subsume (cons expr (rest ser-exprs)) see-vals
+			      (t (vals-subsume (cons expr (rest ser-exprs)) see-vals 
 					       :bindings bindings :current-var var)))))
 		     (t (report-error 'user-error
 			  "Bad use of a variable in subsumption expression ~a~%Expression must be of the form <var> or (<var> == <expr>)" ser-expr))))
 	      (t (let ( (ser-vals (km-int ser-expr)) )
 		   (cond ((subsetp ser-vals see-vals :test #'equal)
 			  (let ((new-bindings
-				 (cond
-				  (current-var
+				 (cond 
+				  (current-var 
 				   (cond ((null ser-vals)
 					  (report-error 'nodebugger-error
 						       "~a == ~a == NIL in subsumption expression; ignoring ~a...~%"
@@ -22684,7 +22685,7 @@ NOTE: (vals-subsume '(?x) '(_X1)), ?x unbound: -> bind ?x to _X1
 					    (add-binding current-var (first ser-vals) bindings))))
 				  (t bindings))))
 			  (vals-subsume (rest ser-exprs) see-vals :bindings new-bindings))))))))))) ; [2]
-
+   
 ;;; ======================================================================
 ;;;		UTILS
 ;;; ======================================================================
@@ -22715,7 +22716,7 @@ NOTE: (vals-subsume '(?x) '(_X1)), ?x unbound: -> bind ?x to _X1
   (second existential-expr))
 
 ;;; ======================================================================
-;;; Syntactic sugar:
+;;; Syntactic sugar: 
 ;;; Can say	(the (Self parts Wing parts Engine))	; the engine of a wing
 ;;; as well as (and equivalently)
 ;;;	        (the Engine with (parts-of ((a Wing with (parts-of (Self))))))
@@ -22740,7 +22741,7 @@ NOTE: (vals-subsume '(?x) '(_X1)), ?x unbound: -> bind ?x to _X1
 				 (t '#$Thing)))
 		    (rest-rest-path (rest (rest path)))
 		    (preposition (cond (rest-rest-path '#$a) (t prep)))
-		    (new-embedded-unit `(,preposition ,class with
+		    (new-embedded-unit `(,preposition ,class with 
 						      (,(invert-slot slot) (,embedded-unit)))) )
 	      (path-to-existential-expr2 (rest (rest path)) new-embedded-unit prep)))))
 
@@ -22750,11 +22751,11 @@ NOTE: (vals-subsume '(?x) '(_X1)), ?x unbound: -> bind ?x to _X1
 ;;; ======================================================================
 #|
 remove-subsuming-exprs:
-GIVEN:
+GIVEN: 
    "exprs"     - a set of existential exprs (plus some other exprs)
    "instances" - a set of instances (plus some other exprs)
 
- Returns three values:
+ Returns three values: 
 	   - the existential exprs (plus other exprs) not subsuming any instances
 	   - the instances (plus other exprs) not subsumed by any existential expr
 	   - the instances which were subsumed
@@ -22773,7 +22774,7 @@ NOTE!! This routine should have NO SIDE EFFECTS, beyond evaluating definite path
 Apr 99: What we'd also like is:
 CL-USER> (remove-subsuming-exprs '#$((a Cat) (a Door) (a Elephant))
 				 '#$(_Door178 (a Elephant with (size (Big))) _Bumper176))
-  CURRENT IMPLEMENTATION				DESIRED
+  CURRENT IMPLEMENTATION				DESIRED 
 ((a Cat) (a Elephant))			 	((a Cat))				  ; non-subsumers
 ((a Elephant with size (Big)) _Bumper176)	(_Bumper176)				  ; non-subsumed
 (_Door178)					((a Elephant with (size (Big))) _Door178) ; subsumed
@@ -22792,12 +22793,12 @@ CL-USER> (remove-subsuming-exprs '#$((a Cat) (a Door) (a Elephant))
 
 [5] Clean up the junk, so as not to pollute the object stack.
 
-[6] Incorrect behaviour:
+[6] Incorrect behaviour: 
  ('(a Car) is '(a Car with (age ((the foo of Self)))))  -> NIL	; correct
 but
  (every Car has (age ((a Thing))))
  ('(a Car) is '(a Car with (age ((the foo of Self)))))  -> t    ; incorrect!
-This is because KM treats this as equivalent to
+This is because KM treats this as equivalent to 
  ((a Car) is '(a Car with (age ((the foo of Self)))))
 which is wrong!!!
 
@@ -22808,45 +22809,45 @@ which is wrong!!!
 (defun remove-subsuming-exprs (exprs instances &key allow-coercion target eagerlyp)
  (cond ((and (tracep) (not (tracesubsumesp)))
 	(let ((*trace* nil))
-	  (remove-subsuming-exprs0 exprs instances :allow-coercion allow-coercion :target target :eagerlyp eagerlyp)))
+	  (remove-subsuming-exprs0 exprs instances :allow-coercion allow-coercion :target target :eagerlyp eagerlyp)))	  
        (t (remove-subsuming-exprs0 exprs instances :allow-coercion allow-coercion :target target :eagerlyp eagerlyp))))
 
 (defun remove-subsuming-exprs0 (exprs instances &key allow-coercion target eagerlyp)
-  (cond
+  (cond 
    ((or (null exprs) (null instances)) (values exprs instances nil))
-   (t (let*
-	  ( (subsumed-instance
+   (t (let* 
+	  ( (subsumed-instance 
 	     (cond ((or (existential-exprp (first exprs))
 ;			(km-triplep (first exprs)))
 			(km-structured-list-valp (first exprs)))
-		    (find-if #'(lambda (instance)
-				 (cond
+		    (find-if #'(lambda (instance) 
+				 (cond 
 				  ((is-an-instance instance)		; NB includes (:args foo) and (:triple a b c)
-				   (or
-;;; PC CAN I safely get rid of this expensive and
+				   (or 
+;;; PC CAN I safely get rid of this expensive and 
 ;;; PC confusing test? -> ...turns out for big KBs, it's actually cheaper to do this test!
 ;				       (km-int `#$(,INSTANCE is ',(FIRST EXPRS)))
 				       (and allow-coercion ; [4]
 #| hmm...|#				    (or (existential-exprp (first exprs))
 						(km-structured-list-valp (first exprs)))
 					    (not (contains-self-keyword (first exprs)))	; [4b]
-					    (km-int `(,instance ,(cond (eagerlyp '&+!) (t '&+)) ,(first exprs))
+					    (km-int `(,instance ,(cond (eagerlyp '&+!) (t '&+)) ,(first exprs)) 
 						    :target target)
-					; NOTE: no record-explanation here [7a]
+					; NOTE: no record-explanation here [7a] 
 					    )))
 
 				  ((and (existential-exprp instance)
 					(not (contains-self-keyword (first exprs))))		; [6]
 ;				   (km-format t "**HERE!!**~%")
 				   (km-int `#$(',INSTANCE is ',(FIRST EXPRS)))))) ; Test - if passed, can drop instance
-			     ; NOTE: no record-explanation here [7b]
+			     ; NOTE: no record-explanation here [7b] 
 			     instances))))
 	    (instances0 (cond (subsumed-instance (remove subsumed-instance instances :test #'equal :count 1))
 			      (t instances))) )
 	(multiple-value-bind
 	 (unused-exprs unused-instances subsumed-instances)
 	 (remove-subsuming-exprs0 (rest exprs) instances0 :allow-coercion allow-coercion :target target :eagerlyp eagerlyp)
-	 (cond (subsumed-instance
+	 (cond (subsumed-instance 
 		(cond ((and target *record-explanations*)
 		       (record-explanation-for target subsumed-instance (first exprs))))
 		(values unused-exprs unused-instances (cons subsumed-instance subsumed-instances)))
@@ -22856,7 +22857,7 @@ which is wrong!!!
 ;;; If this test fails, then we needn't proceed further.
 ;;; expr is necessarily of the form (a <class>), or (a <class> with ...)
 ;(defun classes-subsumep-test (instance expr)
-;  (let ( (i-classes (immediate-classes instance))
+;  (let ( (i-classes (immediate-classes instance)) 
 ;	 (e-classes (list (second expr))) )
 ;    (or (classes-subsume-classes e-classes i-classes)
 ;	(classes-subsume-classes i-classes e-classes))))
@@ -22878,7 +22879,7 @@ mgs returns the most general class(es) subsumed by that expression.
 The algorithm searches down the taxonomy (general-to-specific) from the
 class provided, until it hits candidates. Instances are not searched.
 
-The algorithm is similar to finding subsumed instances, except the
+The algorithm is similar to finding subsumed instances, except the 
 candidates are classes, and we instant-ify them.
 
 CL-USER> (mgs '#$(a Physobj with (produces (*Electricity))))
@@ -22886,8 +22887,8 @@ CL-USER> (mgs '#$(a Physobj with (produces (*Electricity))))
 
 ;;; Return most general class(es) subsumed by existential-expr.
 (defun mgs (existential-expr)
-  (let*
-    ( (class+slotsvals (breakup-existential-expr existential-expr :fail-mode 'error))
+  (let* 
+    ( (class+slotsvals (breakup-existential-expr existential-expr :fail-mode 'error)) 
       (class (first class+slotsvals)) )
     (cond (class (remove-duplicates (mgs2 existential-expr class))))))
 
@@ -22895,14 +22896,14 @@ CL-USER> (mgs '#$(a Physobj with (produces (*Electricity))))
 (defun mgs2 (existential-expr class)
   (mapcan #'(lambda (subclass)					; WAS my-mapcan - #'mapcan safe here!
 	      (cond ((is0 (km-unique-int `#$(a ,SUBCLASS) :fail-mode 'error) existential-expr) (list subclass))
-		    (t (mgs2 existential-expr subclass))))
+		    (t (mgs2 existential-expr subclass))))	
   (km-int `#$(the subclasses of ,CLASS))))
 |#
 
 ;;; ======================================================================
 
 (defun valset-subsumes-valset (valset1 valset2)
-  (cond
+  (cond 
    ((endp valset1))
    ((null valset2) nil)			; some valset2 without correlates in valset1
    (t (let ( (val1 (first valset1)) )
@@ -22919,10 +22920,10 @@ CL-USER> (mgs '#$(a Physobj with (produces (*Electricity))))
 ;;; More efficient but less thorough, expecting ordering to be preserved.
 ;;; val2 is more specific than val1
 (defun valset-subsumes-valset (valset1 valset2)
-  (cond
+  (cond 
    ((endp valset1))
    ((null valset2) nil)			; some valset2 without correlates in valset1
-   (t (let ( (val1 (first valset1))
+   (t (let ( (val1 (first valset1)) 
 	     (val2 (first valset2)) )
 	(cond ((equal val1 val2)
 	       (valset-subsumes-valset (rest valset1) (rest valset2)))
@@ -22942,7 +22943,7 @@ CL-USER> (mgs '#$(a Physobj with (produces (*Electricity))))
   (setq *readtable* *km-readtable*))	; So that the dispatch macro #$ is recognized
 
 ; If nil then 3 -> "3". If t then 3 -> "the value 3"
-(defparameter *verbose-number-to-text* nil)
+(defparameter *verbose-number-to-text* nil)	
 
 (defparameter *default-km-behavior-for-expand-text* t)
 
@@ -22963,20 +22964,20 @@ until (the name of <instance>) just returns <instance>. This typically happens w
 	  <- Dog
 	<- (:seq "a" Dog)
 
-NOTE: :htmlify flag isn't used by KM, but might be by the user if (i) he/she makes a top-level call to
+NOTE: :htmlify flag isn't used by KM, but might be by the user if (i) he/she makes a top-level call to 
 	make-phrase/make-sentence, and (ii) he/she redefines (make-name ...) to respond to a :htmlify t flag.
 |#
 (defun make-phrase (text &key htmlify)
   (make-sentence text :capitalize nil :terminator "" :htmlify htmlify))
 
 (defun make-sentence (text &key (capitalize t) (terminator ".") htmlify)
-  (let ( (new-string
+  (let ( (new-string 
 	            (trim-whitespace
-		     (concat-list
+		     (concat-list 
 		      (spacify
 		       (remove nil
 			(mapcar #'(lambda (i)
-				    (cond
+				    (cond 
 				     ((null i) nil)
 				     ((stringp i) i)
 				     ((numberp i) (princ-to-string i))
@@ -22997,7 +22998,7 @@ example of the expansion might be:
    (:seq _Engine23 "has purpose" _Purpose24)
 -> (:seq (:seq "a" Engine) "has purpose" ("a" Propelling "whose object is" _Airplane25))
 -> (:seq (:seq "a" Engine) "has purpose" ("a" Propelling "whose object is" (:seq "a" Airplane)))   [<= final result]
-
+   
 where (km-name _Engine23) -> (:seq "a" Engine)
       (km-name _Purpose24) -> ("a" Propelling "whose object is" _Airplane24)
       (km-name _Airplane25) -> (:seq "a" Airplane)
@@ -23019,13 +23020,13 @@ where (km-name _Engine23) -> (:seq "a" Engine)
 		(cond ((>= item 1.0) (format nil (concat "~," (princ-to-string *output-precision*) "f") item))
 		      ((>= item (expt 10 (- *output-precision*)))
 		       (let ((number
-			      (format nil (concat "~," (princ-to-string (- *output-precision* (floor (log item 10)))) "f")
+			      (format nil (concat "~," (princ-to-string (- *output-precision* (floor (log item 10)))) "f") 
 				      item)))
 			 (cond ((search "." number) (string-right-trim '(#\0) number))
 			       (t number))))
 		      (t (format nil (concat "~," (princ-to-string *output-precision*) "e") item))))
 	       (t item)))
-;	((null item) (list "??"))		; why did I put this in? Add developer-mode flag
+;	((null item) (list "??"))		; why did I put this in? Add developer-mode flag 
 	((and (null item) *developer-mode*) (list "??"))
 
 ; Modified by Sririam:
@@ -23039,7 +23040,7 @@ where (km-name _Engine23) -> (:seq "a" Engine)
 				     (expand-text0 i :htmlify htmlify :depth (1+ depth)))) item))))
 	((member item '#$(:seq :set :bag :pair)) item)
 	;((member item '#$(:seq :set :bag :pair)) "")
-	((or (kb-objectp item)
+	((or (kb-objectp item) 
 	     (km-triplep item))
 	 (let ( (name (km-name item)) )
 	   (cond ((equal name item) item)
@@ -23051,7 +23052,7 @@ where (km-name _Engine23) -> (:seq "a" Engine)
 (defun make-name (item &key htmlify)
   (declare (ignore htmlify))
   (let ( (names (km-int `#$(the name of ,ITEM))) )
-    (cond ((singletonp names)
+    (cond ((singletonp names) 
 	   (cond ((stringp (first names)) (first names))
 		 (t (report-error 'user-error "make-sentence/phrase: (the name of ~a) should return a string,~%but it returned ~a instead!~%"
 				  item (first names)))))
@@ -23074,8 +23075,8 @@ where (km-name _Engine23) -> (:seq "a" Engine)
 	((string= (first words) ".")
 	 (cond ((and (string= (second words) (string #\Newline))
 		     (not (null (third words))))
-		(cons (first words)
-		      (cons (second words)
+		(cons (first words) 
+		      (cons (second words) 
 			    (spacify (cons (capitalize (third words)) (rest (rest (rest words))))))))
 	       (t (cons ". " (spacify (cons (capitalize (second words))
 					    (rest (rest words))))))))
@@ -23086,7 +23087,7 @@ where (km-name _Engine23) -> (:seq "a" Engine)
 	((string= (first words) *nospace-string*)	; handle multiple "nospace"s in a line
 	 (spacify (rest words)))
 	((string= (second words) *nospace-string*)
-	 (cons (first words)
+	 (cons (first words) 
 	       (spacify (rest (rest words)))))
 	(t (cons (first words)
 		 (cons (a-space (first words) (second words))
@@ -23119,7 +23120,7 @@ Name returns a (possibly nested) list of fragments, which together produce a top
 for an object. name *doesn't* call itself recursively.
 
 To recursively expand the name for objects, use make-phrase or make-sentence. These two functions
-recursively convert symbols to their name structures, and then flatten, stringify, and concatenate
+recursively convert symbols to their name structures, and then flatten, stringify, and concatenate 
 the result.
 |#
 
@@ -23132,15 +23133,15 @@ the result.
 ;;; [2] Ken Barker doesn't want this.
 (defun km-name (concept &key htmlify)
   (let ((*trace* nil))
-    (cond
+    (cond 
         ((stringp concept) concept)
 	((numberp concept) (princ-to-string concept))
 ;[2]	((protoinstancep concept) (prototype-name concept :htmlify htmlify))			; <== new
 	((km-triplep concept) (triple-name concept))
 	((let ( (name (km-int `#$(the name of ,CONCEPT))) )
-	   (cond
+	   (cond 
 	    ((singletonp name) (first name))
-	    ((not (null name))
+	    ((not (null name)) 
 	     (make-comment "Warning! ~a has multiple name expressions ~a!~%     Continuing just using the first (~a)..."
 				      concept name (first name))
 	     (first name)))))
@@ -23174,7 +23175,7 @@ Not used any more
 	 (or (km-unique-int `#$(the name of ,CONCEPT))
 	     (let ( (parent (first (immediate-classes concept))) )
 	       `(#$:seq "a" ,(km-name parent)))))
-	(t `(#$:seq "the" ,(km-name (first (immediate-classes concept)))
+	(t `(#$:seq "the" ,(km-name (first (immediate-classes concept))) 
 		  "of" ,(prototype-name (km-unique-int `#$(the prototype-participant-of of ,CONCEPT) :fail-mode 'error))))))
 |#
 
@@ -23273,9 +23274,9 @@ produces.")
 load-kb Options:
    :verbose t	       		    - print out evaluation of expressions during load (useful for debugging a KB)
    :with-morphism <table> 	    - Experimental: table is a list of <old-symbol new-symbol> pairs.
-				      Occurences of old-symbol are syntactically changed to new-symbol before
+				      Occurences of old-symbol are syntactically changed to new-symbol before 
 				      evaluation. See note [1] below.
-   :eval-instances t		    - Force recursive evaluation of the slot-val expressions on the instances.
+   :eval-instances t		    - Force recursive evaluation of the slot-val expressions on the instances. 
 				      As a result, this creates the instance graph eagerly rather than lazily.
    :in-global t			    - Evaluate expressions in the global situation, not the current situation.
 
@@ -23292,21 +23293,21 @@ load-kb Options:
   (let ((*logging* nil)			; switch off logging
 	(*logging-creations* nil))
     (unwind-protect				; protect logging status in case syntax error in KB
-	(progn
-	  (let ((renaming-alist (cond (with-morphism (setq *current-renaming-alist*
+	(progn 
+	  (let ((renaming-alist (cond (with-morphism (setq *current-renaming-alist*	
 						       (triples-to-alist with-morphism))
 					*current-renaming-alist*)
 				      (t *current-renaming-alist*)))
 		(stream (open file :direction :input :if-does-not-exist nil)) )
-	    (cond
-	     ((null stream)
+	    (cond 
+	     ((null stream) 
 	      (cond (*am-reasoning* (report-error 'user-error (km-format nil "No such file ~a!~%" file)))
 		    (t #|load-kb called from USER: prompt|# (km-format t "No such file ~a!~%" file)
 		       (values nil (km-format nil "No such file ~a!~%" file)))))
 	     (t (global-situation)
 		(multiple-value-bind
 		    (result error)
-		    (load-exprs (case-sensitive-read-km stream nil nil) stream verbose renaming-alist
+		    (load-exprs (case-sensitive-read-km stream nil nil) stream verbose renaming-alist 
 				eval-instances load-patterns)
 		  (close stream)
 		  (reset-done)		; remove all `already computed' flags
@@ -23350,7 +23351,7 @@ load-kb Options:
      ((and (listp renamed-expr)
            (eq (first renamed-expr) '#$symbol-renaming-table))
       (format t "(Symbol renaming table encountered and will be conformed to)~%")
-      (load-expr (case-sensitive-read-km stream nil nil)
+      (load-expr (case-sensitive-read-km stream nil nil) 
                  stream verbose (triples-to-alist (second renamed-expr))
                  eval-instances load-patterns))
      ((and load-patterns
@@ -23359,9 +23360,9 @@ load-kb Options:
                    load-patterns))
       t)
      (verbose (print-km-prompt)
-              (km-format t " ~a~%" renamed-expr)
+              (km-format t " ~a~%" renamed-expr)		   
 	      (let ((*am-reasoning* nil))    ; was (reset-inference-engine), but *am-resoning* nil will trigger (r-i-e)
-              (multiple-value-bind
+              (multiple-value-bind 
                   (results error)
                   (km-eval-print renamed-expr :fail-mode *top-level-fail-mode*)
                 (cond ((or eval-instances (am-in-prototype-mode)) (eval-instances results)))
@@ -23371,14 +23372,14 @@ load-kb Options:
      (t ; (reset-inference-engine) - no, let's keep the counter running for the whole KB
       (setq *catch-explanations* nil)	; but DO need these bits below reset
       (setq *instances-being-unified* nil)
-      (setq *deferred-unifications* nil)
+      (setq *deferred-unifications* nil)      
       (setq *failed-unification-attempts* nil)
       (cond (*catch-next-explanations*
              (setq *explanations* nil)
              (setq *catch-explanations* t)
              (setq *catch-next-explanations* nil)))
       (let ((*am-reasoning* nil))	; so (km '#$(load-kb ...)) will still make load-kb a top-level call
-	(multiple-value-bind
+	(multiple-value-bind 
 	    (results error)
 ;           (km-eval renamed-expr :fail-mode *top-level-fail-mode*)
 	    (km renamed-expr :reset-statistics nil)
@@ -23394,9 +23395,9 @@ load-kb Options:
 
 ;;; '((1 -> a) (2 -> b)) -> ((1 . a) (2 . b))
 ;;;	                      ^   ^
-;;;		           local global
+;;;		           local global 
 ;;; We do this conversion so that we can use built-in sublis to do the symbol renaming.
-(defun triples-to-alist (triples)
+(defun triples-to-alist (triples) 
   (cond ((quotep triples) (triples-to-alist (unquote triples)))
 	((or (not (listp triples))
 	     (not (every #'(lambda (x) (and (triplep x)
@@ -23404,11 +23405,11 @@ load-kb Options:
 					    (eq (second x) '->)))
 ;					    (symbolp (third x))))
 			 triples)))
-	 (report-error 'nodebugger-error
+	 (report-error 'nodebugger-error 
 		       ":with-morphism: renaming table should be a list of triples of the form~% ((OldS1 -> NewS1) (OldS2 -> NewS2) ...)~%"))
-	(t (mapcar #'(lambda (triple)
+	(t (mapcar #'(lambda (triple) 
 	      (cond ((not (triplep triple))
-		     (report-error 'nodebugger-error
+		     (report-error 'nodebugger-error 
 				   "Non-triple found in the symbol renaming table!~%Non-triple was: ~a. Ignoring it...~%" triple))
 		    (t (cons (first triple) (third triple)))))
 		   triples))))
@@ -23417,15 +23418,15 @@ load-kb Options:
 ;; Useful macro, callable from top-level prompt.
 (defun reload-kb (file &key verbose with-morphism eval-instances load-patterns)
   (reset-kb)
-  (load-kb file :verbose verbose
-	     :with-morphism with-morphism
+  (load-kb file :verbose verbose 
+	     :with-morphism with-morphism 
 	     :eval-instances eval-instances :load-patterns load-patterns))
 
 ;;; Same, callable from within KM
 ;(defun reload-kb0 (file &key verbose with-morphism eval-instances load-patterns)
 ;  (reset-kb)
-;  (load-kb0 file :verbose verbose
-;	        :with-morphism with-morphism
+;  (load-kb0 file :verbose verbose 
+;	        :with-morphism with-morphism 
 ;		:eval-instances eval-instances :load-patterns load-patterns))
 
 ;;; ======================================================================
@@ -23441,20 +23442,20 @@ load-kb Options:
 	      (not (isa-situation-facet facet)))
 	 (report-error 'program-error "(getobj ~a ~a) Don't recognize facet ~a!~%(Should be one of ~a)~%"
 		       name facet facet *all-facets*))
-	((kb-objectp name)
+	((kb-objectp name)   
 	 (setq *statistics-kb-access* (1+ *statistics-kb-access*))
 	 (get name facet))	; new - add dereference
 	((is-km-term name) nil)		; Valid get, but no attributes. This includes 1 'a "12" (:seq a b c) #'+ (:set a b c)
 	((equal name name0)
 	 (report-error 'program-error "Accessing frame ~a - the frame name `~a' should be an atom!~%" name name))
-	(t (report-error 'program-error
-			 "Accessing frame ~a (dereferences to ~a) - the frame name `~a' should be an atom!~%"
+	(t (report-error 'program-error 
+			 "Accessing frame ~a (dereferences to ~a) - the frame name `~a' should be an atom!~%" 
 			 name0 name name)))))
 
 ;;; To DELETE an object, now use delete-frame (above).
 ;;; (putobj nil won't remove object from *kb-objects*)
 (defun putobj (fname slotsvals facet)
-  (cond ((and (not (member facet *all-facets*))
+  (cond ((and (not (member facet *all-facets*)) 
 	      (not (isa-situation-facet facet)))
 	 (report-error 'program-error "(putobj ~a ~a) Don't recognize facet ~a!~%(Should be one of ~a)~%" fname facet facet *all-facets*))
 	(slotsvals ; (setf (get fname facet) slotsvals)        ;put it on the p-list
@@ -23488,7 +23489,7 @@ load-kb Options:
 	 (start-creations-logging)))
   (cond ((not multiple-checkpoints) (reset-creations)))
   (push `(km-gensym-counter ,*km-gensym-counter*) *creations*)
-  (push checkpoint-id *creations*)
+  (push checkpoint-id *creations*) 
   (cond (with-comment (format t "Creations checkpoint is set~%")))
   t)
 
@@ -23499,17 +23500,17 @@ load-kb Options:
 ;;; [3] Need delete-frame rather than delete-frame-structure, as we want to delete inverse links too
 (defun undo-creations (&key (checkpoint-id *checkpoint*) (with-comment t) remove-checkpoint dont-delete)
 
-  ;; added by MW, 2012-04-26: we need more control over what gets deleted and what doesn't
+  ;; added by MW, 2012-04-26: we need more control over what gets deleted and what doesn't 
   (etypecase dont-delete
     (null t)
     (hash-table t)
-    (cons
+    (cons 
      (let ((hash (make-hash-table)))
        (dolist (item dont-delete)
 	 (setf (gethash item hash) t))
        (setf dont-delete hash))))
-
-  (cond
+      
+  (cond 
    ((not *logging-creations*)
     (format t "Unable to undo concept creations - concept creations not switched on! Do (start-creations-logging) first.~%"))
    (*logging*
@@ -23521,28 +23522,28 @@ load-kb Options:
 	       (format t "Unable to undo concept creations - can't find checkpoint ~a to undo back to.~%" checkpoint-id)
 	       (format t "Do (set-creations-checkpoint) to create a checkpoint.~%"))
 	      (t (let ((creations-to-delete (make-hash-table)))		; create a quickly accessible list of creations to delete
-		    (loop
+		    (loop 
 			for i = (pop *creations*)			; will pop the checkpoint off *creations*, so put it back later [4]
 			until (or (eq i checkpoint-id) (null i))
 			when (or (not dont-delete) (not (gethash i dont-delete)))
 			do (setf (gethash i creations-to-delete) t))
-		    (let ((undesirable-deletions
-			   (my-mapcan #'(lambda (retained-i)
+		    (let ((undesirable-deletions 
+			   (my-mapcan #'(lambda (retained-i) 
 					  (cond ((and ; (anonymous-instancep retained-i) - no, we can delete named instances too
 						      (not (gethash retained-i creations-to-delete)) ; not going to delete it
 						      (gethash (get-binding retained-i) creations-to-delete)) ; but it's bound to something to delete :-(
 						 (remove-if-not #'(lambda (x) (gethash x creations-to-delete)) (dereference-chain retained-i)))))
 				      (get-all-objects)))
 			  (*show-comments* nil))
-		      (cond (undesirable-deletions
+		      (cond (undesirable-deletions 
 			     (mapc #'(lambda (x)
 				       (km-format t "   ~a created since checkpoint, but won't delete it (pre-checkpoint instance is unified with it)~%" x)
-				       (remhash x creations-to-delete))
+				       (remhash x creations-to-delete)) 
 				   (remove-duplicates undesirable-deletions))))
 		      (maphash (lambda (i v)
 				 (declare (ignore v))
 				 (cond ((not (anonymous-instancep i)) nil)
-				       ((not (known-frame i))  nil) ; [1]
+				       ((not (known-frame i))  nil) ; [1] 
 				       ((bound i) nil) 		    ; [2]
 				       (t (delete-frame i :unintern t)))) ; [3]
 			       creations-to-delete)
@@ -23551,7 +23552,7 @@ load-kb Options:
 				 (cond ((bound i) (delete-frame-structure i :unintern t)))) ; [2]
 			       creations-to-delete)
 		      (let ((km-gensym-counter (first *creations*)))
-			(cond ((and (pairp km-gensym-counter)
+			(cond ((and (pairp km-gensym-counter) 
 				    (eq (first km-gensym-counter) 'km-gensym-counter)
 				    (integerp (second km-gensym-counter)))
 			       (setq *km-gensym-counter* (second km-gensym-counter))
@@ -23562,12 +23563,12 @@ load-kb Options:
 		 (cond (with-comment (format t "Undo creations: ~a concepts deleted in ~,2f sec~%" n-to-undo
 					     (/ (- (get-internal-run-time) cpu-start-time) internal-time-units-per-second))))
 		 t))))))
-
-;;; DOESN'T include i
+   
+;;; DOESN'T include i   
 (defun dereference-chain (i)
   (let ((i2 (get-binding i)))
     (cond (i2 (cons i2 (dereference-chain i2))))))
-
+  
 ;;; From Michael Wessel 5/8/12
 (defun get-km-creations (&key (checkpoint-id *checkpoint*))
    (cond
@@ -23585,14 +23586,14 @@ load-kb Options:
 		   until (or (eq i checkpoint-id) (null i))
 		   collect i)))))))
 
-;;; ======================================================================
+;;; ======================================================================  
 
 #|
 KM> (every man has (parts ((a Head))))
 KM> (Pete has (instance-of (Man)))
 KM> (undo)
 Undone (Pete has (instance-of (Man)))...
-KM>
+KM> 
 |#
 
 (defvar *history* nil)
@@ -23625,7 +23626,7 @@ KM>
   (cond ((undo-possible checkpoint-id)
 	 (cond ((not *internal-logging*) (reset-done)))		; [1] NB do BEFORE objects are forgotten! Also [2]
 	 (undo0 *history* checkpoint-id))))
-
+  
 (defun undo0 (history checkpoint-id)
   (cond ((null history) 		; should never be encountered
 	 (setq *history* nil)
@@ -23668,7 +23669,7 @@ Macro: Evaluate with no side-effects (Thanks to Francis Leboutte)
 e.g., (keeping-kb
 		(km '#$(a Car with (color (*red))))
 		(km '#$(the color of (thelast Car))))
-will remove the created Car after returning a result.
+will remove the created Car after returning a result.		
 |#
 (defmacro keeping-kb (&body body)
    `(let ((*logging* t))
@@ -23685,9 +23686,9 @@ will remove the created Car after returning a result.
 ;;; Could optimize this if eval is too slow
 (defun km-setq (variable value)
   (let ( (old-value (eval variable)) )
-    (cond
+    (cond 
      ((equal old-value value))
-     (t (log-undo-command `(setq ,variable ',old-value))
+     (t (log-undo-command `(setq ,variable ',old-value)) 
 	(eval `(setq ,variable ',value))))))		; need to unquote the variable
 
 ;;; (km-push 'a '*x*)
@@ -23703,7 +23704,7 @@ will remove the created Car after returning a result.
 
 (defun km-setf (symbol property value)
   (let ( (old-value (get symbol property)) )
-    (cond
+    (cond 
      ((equal old-value value))
      (t (cond (old-value (log-undo-command `(setf (get ',symbol ',property) ',old-value)))
 	      (t (log-undo-command `(remprop ',symbol ',property))))
@@ -23712,7 +23713,7 @@ will remove the created Car after returning a result.
 
 (defun km-remprop (symbol property)
   (let ( (old-value (get symbol property)) )
-    (cond
+    (cond 
 ;    ((null old-value))	- no!! even if value is nil, we still need to remprop to remove the symbol itself!
      (t (log-undo-command `(setf (get ',symbol ',property) ',old-value))
 	(remprop symbol property)))))
@@ -23765,7 +23766,7 @@ and using delete functions instead of remove
   (let ((results nil))
     (do-objects object
       (let ((frame (dereference object)))
-        (when (kb-objectp frame)			; NOTE: exclude user comments
+        (when (kb-objectp frame)			; NOTE: exclude user comments 
           (push frame results))))
     (remove-duplicates results)))	; dereference may cause duplicates
 
@@ -23782,7 +23783,7 @@ and using delete functions instead of remove
 ;;; NOTE: Be careful with :unintern t, because code references to fname will now reference fname in no package, rather than the KM package
 (defun delete-frame-structure (fname &key (remove-from-kb-object-list t) unintern)
   (cond
-   ((and *fast-delete-frame-structure* (not *logging*))
+   ((and *fast-delete-frame-structure* (not *logging*)) 
     (setf (symbol-plist fname) nil)
     (cond (unintern (km-unintern fname))
 	  (t fname)))
@@ -23793,7 +23794,7 @@ and using delete functions instead of remove
 
 ;;; Remove *all* properties on the property list
 (defun km-remprops (symbol)
-  (mapc #'(lambda (property)
+  (mapc #'(lambda (property) 
 	    (cond ((km-propertyp property) (km-remprop symbol property))))
 	(odd-elements (symbol-plist symbol))))
 
@@ -23804,7 +23805,7 @@ and using delete functions instead of remove
       (starts-with (symbol-name property) "MEMBER-")
       (starts-with (symbol-name property) "EXPLANATION")))
 
-;;; Rename this from "exists"; it really means fname is a known frame (Is an error to try this check for numbers and
+;;; Rename this from "exists"; it really means fname is a known frame (Is an error to try this check for numbers and 
 ;;; strings).
 (defun known-frame (fname)
   (cond ((kb-objectp fname)
@@ -23837,7 +23838,7 @@ and using delete functions instead of remove
               (second l))))
 
 ;;; to put a list of properties on symbol - this is UNDOABLE
-(defun km-put-list (symbol list)
+(defun km-put-list (symbol list)	
   (declare (optimize (speed 3) (safety 1) (debug 0)))
   (loop for l on list by #'cddr
         do
@@ -23851,9 +23852,9 @@ and using delete functions instead of remove
     (global-situation)
     (instance-of-is-nonfluent)		; set it back
     (make-comment "Resetting KM...")
-    (mapc #'(lambda (frame)
+    (mapc #'(lambda (frame) 
 	      (delete-frame-structure frame))	; includes clearing explanations and cached-explanations
-	  (get-all-objects))
+	  (get-all-objects))  	
     (clrhash *kb-objects*)
     (clear-obj-stack)
 ;   (clear-km-errors)
@@ -23863,12 +23864,12 @@ and using delete functions instead of remove
     (setq *are-some-subslots* nil)	; optimization flag
     (setq *are-some-prototypes* nil)	; optimization flag
     (setq *are-some-definitions* nil)	; optimization flag
-    (setq *are-some-prototype-definitions* nil)	; optimization flag
+    (setq *are-some-prototype-definitions* nil)	; optimization flag    
     (setq *are-some-constraints* nil)	; optimization flag
     (setq *are-some-tags* nil)		; optimization flag
     (setq *are-some-defaults* nil)		; optimization flag
     (setq *am-in-situations-mode* nil)
-; NO! Allow any change to persist.
+; NO! Allow any change to persist.    
 ;   (setq *built-in-remove-subsumers-slots* '#$(instance-of classes superclasses member-type)) ; in case user changes this
     (setq *visible-theories* nil)
     (setq *default-fluent-status* *default-default-fluent-status*)
@@ -23914,14 +23915,14 @@ and using delete functions instead of remove
   (let ((*logging* nil)
 	(*logging-creations* nil))
     (reset-history)
-    (reset-creations)
+    (reset-creations)    
     (global-situation)
     (let ( (facets (my-mapcan #'(lambda (situation)
 				  (mapcar #'(lambda (facet)
 					      (curr-situation-facet facet situation))
 					  (cons 'explanation *all-facets*)))
 			      (remove *global-situation* (all-situations)))) )
-      (mapc #'(lambda (frame)
+      (mapc #'(lambda (frame) 
 		(cond ((isa frame '#$Situation)
 		       (delete-frame frame))
 		      ((intersection (symbol-plist frame) facets) ; i.e., has situation-specific info...
@@ -23942,19 +23943,19 @@ and using delete functions instead of remove
 
 ;;; [1] We disable installing inverses so that, when restoring the KB state, we guarantee that
 ;;; the ordering of slot-vals on inverse slots is preserved (otherwise the install inverses
-;;; procedure may change the ordering,
+;;; procedure may change the ordering, 
 ;;; e.g. SAVED: fsv', f'sv', v'invs(f'f) would restore as fsv', f'sv', v'invs(ff') without this.
 ;;; [2] Without this got the error: Error: During case-sensitive-read:
 ;;;			The symbol "*RECURSIVE-CLASSIFICATION*" is not external in the KM package. [file position = 93565677]
 ;;;     As the file contained KM:*RECURSIVE-CLASSIFICATION*", just ":" as *recursive-classification* was external during the save, but not during the load.
-(defun write-kb (&key (stream *standard-output*) (objects (get-all-objects))
+(defun write-kb (&key (stream *standard-output*) (objects (get-all-objects)) 
 		      situations0 (reset-kb t) (include-explanationsp t))
-  (cond
+  (cond 
    ((and (not (streamp stream))
 	 (not (eq stream t)))
-    (report-error 'nodebugger-error
+    (report-error 'nodebugger-error 
 		  "write-kb given a non-stream as an argument!~%(Use (save-kb \"myfile\") to save KB to the file called \"myfile\")~%"))
-   (t (let ((situations (or situations0 (all-situations)))
+   (t (let ((situations (or situations0 (all-situations))) 
 	    (*package* *km-package*))	; NOTE: Must be in KM package to remove the KM:: and KM: prefixes in the saved KB. [2]
 	(multiple-value-bind
 	 (concepts comment-tags)
@@ -23978,24 +23979,24 @@ and using delete functions instead of remove
 ; Note: need to write out taxonomy first because some ordering things, e.g., most-specific-first in frame-io.lisp
 ; when indexing definitions, need it.
 ; It gets redundantly written out a 2nd time in CONTENTS, but that's ok.
-	 (km-format stream "~%;;; ---------- TAXONOMY ----------~%~%")
+	 (km-format stream "~%;;; ---------- TAXONOMY ----------~%~%")	 
 	 (mapc #'(lambda (concept)
 		   (cond ((not (bound concept))
-			  (save-frame concept :situations situations
+			  (save-frame concept :situations situations 
 				      :nulls-okayp nil  ; Don't write out "(_Car has...)" if no values
 				      :stream stream
 				      :slots-to-show '#$(superclasses))
-;			  (princ ";;; ----------" stream)
-;			  (terpri stream)
+;			  (princ ";;; ----------" stream) 
+;			  (terpri stream) 
 ;			  (terpri stream)
 			  )))
 	       concepts)
-	 (km-format stream "~%;;; ---------- CONTENTS ----------~%~%")
+	 (km-format stream "~%;;; ---------- CONTENTS ----------~%~%")	 
 	 (mapc #'(lambda (concept)
 		   (cond ((not (bound concept))
 			  (save-frame concept :situations situations :nulls-okayp t :stream stream)
-			  (princ ";;; ----------" stream)
-			  (terpri stream)
+			  (princ ";;; ----------" stream) 
+			  (terpri stream) 
 			  (terpri stream))))
 	       concepts)
 	 (cond (include-explanationsp
@@ -24012,17 +24013,17 @@ and using delete functions instead of remove
 ;		      concepts)
 		))
 	 (cond (comment-tags
-		(km-format stream "~%;;; ---------- COMMENTS ----------~%~%")
+		(km-format stream "~%;;; ---------- COMMENTS ----------~%~%")	 
 		(mapc #'(lambda (comment-tag)
 			  (km-format stream "~a~%~%" `(#$comment ,comment-tag ,@(get comment-tag 'comment)))
-			  (princ ";;; ----------" stream)
-			  (terpri stream)
+			  (princ ";;; ----------" stream) 
+			  (terpri stream) 
 			  (terpri stream))
 		      comment-tags)))
 ; NO: Restore it with the SETQ statements at the end. It may that classification should stay off, if it was before.
-;	 (cond (*are-some-definitions*
+;	 (cond (*are-some-definitions*  
 ;	        (km-format stream "~%(enable-classification)     ;;; (Re-enable it after restoring KB state)~%")))
-	 (km-format stream "~%;;; ----------------------------------------~%")
+	 (km-format stream "~%;;; ----------------------------------------~%")	 
 	 (km-format stream "~%(enable-installing-inverses)  ; (Re-enable it after restoring KB state)~%")
 	 (write-behavior-variables stream)
 	 (write-state-variables stream)
@@ -24032,24 +24033,24 @@ and using delete functions instead of remove
 ;;; [1] WARNING! (format stream <string>) doesn't work if string contains a "~". So must do (format stream "~a" <string>)
 ;;; vals-to-show: any anonymous instance NOT in vals-to-show will NOT be written out
 ;;; save-prototypep: t if called by save-prototype in prototypes.lisp
-(defun save-frame (concept &key (stream t) (situations (all-situations)) save-prototypep
+(defun save-frame (concept &key (stream t) (situations (all-situations)) save-prototypep 
 		essentials partially-cloned-from slots-to-show (theories (all-theories)) nulls-okayp include-explanationsp)
   (cond ((not (is-km-term concept))
-	 (report-error 'nodebugger-error "Doing (save-frame ~a) - the frame name `~a' should be a KB term!~%"
+	 (report-error 'nodebugger-error "Doing (save-frame ~a) - the frame name `~a' should be a KB term!~%" 
 		       concept concept))
-	(t (format stream "~a" (write-frame concept :situations situations :essentials essentials
-					    :slots-to-show slots-to-show :partially-cloned-from partially-cloned-from
+	(t (format stream "~a" (write-frame concept :situations situations :essentials essentials 
+					    :slots-to-show slots-to-show :partially-cloned-from partially-cloned-from 
 				    :save-prototypep save-prototypep :theories theories :nulls-okayp nulls-okayp)) ; [1]
-	   (cond (include-explanationsp
+	   (cond (include-explanationsp 
 		  (save-explanations concept :stream stream)
 ;		  (save-explanations2 concept :stream stream)
 		  ))
 	   t)))
 
-;;; Specify explanation-types to restrict which ones to save (types are #$a, #$cloned-from, #$added-at, or
+;;; Specify explanation-types to restrict which ones to save (types are #$a, #$cloned-from, #$added-at, or 
 ;;; #$projected-from). NIL = save all types.
 (defun save-explanations (concept &key (stream t) essentials explanation-types)
-  (mapc #'(lambda (isv-explanation)
+  (mapc #'(lambda (isv-explanation) 
 	    (cond ((or (null explanation-types)
 		       (member (explanation-type (fourth isv-explanation)) explanation-types))
 		   (save-explanation isv-explanation :stream stream :essentials essentials))))
@@ -24058,14 +24059,14 @@ and using delete functions instead of remove
 ; isv-explanation = (<participant> <slot> <val> <expln>)
 (defun save-explanation (isv-explanation &key (stream t) essentials)
   (cond
-   ((and
+   ((and 
      (or (null essentials)
 	 (null (nonessentials-in isv-explanation :essentials essentials)))
-     ;; added by MW-2011-06-24: don't save explanations for slots we don't care about
+     ;; added by MW-2011-06-24: don't save explanations for slots we don't care about 
      (not (member (second isv-explanation) *exclude-explanations-for-prototype-slots*)))	; customizable parameter [temp hack]
-    (km-format stream "(explanation (:triple ~a ~a ~a)~%  (~a))~%"
+    (km-format stream "(explanation (:triple ~a ~a ~a)~%  (~a))~%" 
 	       (first isv-explanation) (second isv-explanation) (third isv-explanation) (fourth isv-explanation)))
-;   (t (km-format t "DEBUG: Dropping explanation containing a non-essential ~a:~%  ~a~%"
+;   (t (km-format t "DEBUG: Dropping explanation containing a non-essential ~a:~%  ~a~%" 
 ;		 (delistify (remove-duplicates (nonessentials-in isv-explanation :essentials essentials)))
 ;		 isv-explanation))
    ))
@@ -24077,7 +24078,7 @@ Note: For efficiency we don't collect all the nonessentials, just the first we f
 [1] A cloned-from explanation is a special case where we *do* allow a non-participant in the explanation:
 	(cloned-from _ProtoDrive1 _Drive1 _ProtoCar1)   ; cloned from _ProtoCar1 in _ProtoDrive1 to _Drive1
     Here, the 2nd and 4th elements are the source protoinstance and protoroot respectively from which _Drive1 was built.
-    So we only need to check _Drive1 is indeed a essential.
+    So we only need to check _Drive1 is indeed a essential.	
     For old explanation DBs, the third (and fourth) elements may be missing, hence the existence check (third explanation)
 |#
 (defun nonessentials-in (isv-explanation &key essentials)
@@ -24107,7 +24108,7 @@ Note: For efficiency we don't collect all the nonessentials, just the first we f
 ;	    (km-format stream "(explained-by ~a ~a)~%" concept cached-explanation))
 ;	(cached-explanations-for concept)))
 
-;;; Various variables about the current state, to write back so we can pick up
+;;; Various variables about the current state, to write back so we can pick up 
 ;;; where we left off if we reload...
 (defun write-behavior-variables (&optional (stream t))
   (km-format stream "
@@ -24148,24 +24149,24 @@ Note: For efficiency we don't collect all the nonessentials, just the first we f
 	  (situation-instances (remove-if-not #'(lambda (situation)		; [2]
 						  (isa situation '#$Situation))
 					      objects))
-	  (theory-classes (cond ((member '#$Theory objects)
+	  (theory-classes (cond ((member '#$Theory objects) 
 				 (intersection (cons '#$Theory (all-subclasses '#$Theory)) objects))))
 	  (theory-instances (remove-if-not #'(lambda (theory)		; [2]
 						  (isa theory '#$Theory))
 					      objects))
-	  (rest-objects (ordered-set-difference objects0 (append slot-classes prototypes situation-classes situation-instances theory-classes
+	  (rest-objects (ordered-set-difference objects0 (append slot-classes prototypes situation-classes situation-instances theory-classes 
 							theory-instances comment-tags))) )
-    (values (append (sort (copy-seq slot-classes) #'string-lessp)
-		    (sort (copy-seq theory-classes) #'string-lessp)
-		    (sort (copy-seq theory-instances) #'string-lessp)
-		    (sort (copy-seq situation-classes) #'string-lessp)
-		    (sort (copy-seq situation-instances) #'string-lessp)
+    (values (append (sort (copy-seq slot-classes) #'string-lessp)			
+		    (sort (copy-seq theory-classes) #'string-lessp)			
+		    (sort (copy-seq theory-instances) #'string-lessp)			
+		    (sort (copy-seq situation-classes) #'string-lessp)			
+		    (sort (copy-seq situation-instances) #'string-lessp)			
 		    (sort (copy-seq prototypes) #'string-lessp)
 		    (sort (copy-seq rest-objects) #'string-lessp))
 	    (sort (copy-seq comment-tags) #'string-lessp))))
 
 ;;; ======================================================================
-;;;		SAVING THE KB TO MEMORY (RATHER THAN DISK)
+;;;		SAVING THE KB TO MEMORY (RATHER THAN DISK)	
 ;;; ======================================================================
 
 (defvar *stored-kb* nil)
@@ -24204,7 +24205,7 @@ Note: For efficiency we don't collect all the nonessentials, just the first we f
 ;;; [1] Note, copy-tree IS necessary. Jason Chaw found a case where doing (put-kb *x*), then a (reset-kb) via
 ;;; a second (put-kb *x*) would change *x* itself. Apparently *x* contained (setf (symbol-plist '|Move|) <struct>)
 ;;; resulting in the symbol plist being |Move| <struct>, or literally |Move| <pointer to <struct> in *x*>.
-;;; Then (reset-kb) changed it to |Move| (done nil) which had the side-effect of ALSO replacing <struct> in *x* with
+;;; Then (reset-kb) changed it to |Move| (done nil) which had the side-effect of ALSO replacing <struct> in *x* with 
 ;;; (done nil).
 ;;; NOTE: Current KB is deleted by a call to (reset-kb), included at the first element of the exprs in kb
 (defun put-kb (kb &key unintern-symbols)
@@ -24215,7 +24216,7 @@ Note: For efficiency we don't collect all the nonessentials, just the first we f
     t))
 
 ;;; Returns NIL if uninterned, or the concept name otherwise.
-(defun km-unintern (concept)
+(defun km-unintern (concept) 
   (cond ((and (anonymous-instancep concept) ; steer clear of other possibly shared symbols
 	      (null (symbol-plist concept))) ; not used by other s/w
 ;			      (km-format t "DEBUG: Uninterning ~a~%" concept)
@@ -24253,7 +24254,7 @@ Note: For efficiency we don't collect all the nonessentials, just the first we f
             (append *km-behavior-parameters* *km-state-parameters*))
       (close stream)
       (format t "~a saved!~%NOTE: Load this file using (fastload-kb ~s), not (load-kb ~s)~%"
-              file file file)
+              file file file)      
       (when compile
         (compile-file file))
       t)))
@@ -24274,7 +24275,7 @@ Note: For efficiency we don't collect all the nonessentials, just the first we f
     (format t "~a loaded!~%" file)))
 
 ;;;; Older version
-;(defun fastload-kb (file)
+;(defun fastload-kb (file) 
 ;  (format t "Fast-loading ~a...~%" file)
 ;  (load file)
 ;  (format t "~a loaded!~%" file))
@@ -24287,7 +24288,7 @@ Note: For efficiency we don't collect all the nonessentials, just the first we f
                                       :type (cdr *filename-extensions*))))
     (if (and (probe-file compiled-file)
              (>=  (file-write-date compiled-file)(file-write-date file)))
-        (progn
+        (progn 
 	  (format t "Lisp-compiled version of this file is more recent, so loading that instead...~%")
 	  (load compiled-file) compiled-file)
       (progn (load file) file))))
@@ -24322,14 +24323,14 @@ Note: For efficiency we don't collect all the nonessentials, just the first we f
 		   (format t "~a loaded!~%" fasl-file))
                   ((>= fkm-file-date km-file-date)
                    (load fkm-file)
-		   (format t "~a loaded!~%" fkm-file))
+		   (format t "~a loaded!~%" fkm-file))		   
                   (t (load-kb km-file
                               :verbose verbose
                               :with-morphism with-morphism
                               :eval-instances eval-instances
                               :load-patterns load-patterns)))))
       (declare (ignore loaded-file))
-;      (format t "~a loaded!~%" loaded-file)  - earlier load statements already do a print
+;      (format t "~a loaded!~%" loaded-file)  - earlier load statements already do a print 
       '#$(t)
       )))
 
@@ -24357,8 +24358,8 @@ simpleload-kb will install inverses.
 
 (defun simpleload-expr (item &key (install-inversesp t))
   (cond ((null item) nil)
-	((not (eq (second item) '#$has))
-	 (report-error 'user-warning "simpleload-kb doesn't know how to process expression ~a! Ignoring it...~%" item)
+	((not (eq (second item) '#$has)) 
+	 (report-error 'user-warning "simpleload-kb doesn't know how to process expression ~a! Ignoring it...~%" item) 
 	 t)    ; t to continue to next item
 	(t (simple-add-slotsvals (first item) (rest (rest item)) :install-inversesp install-inversesp))))
 
@@ -24374,8 +24375,8 @@ simpleload-kb will install inverses.
   instance)
 
 (defun simple-compute-new-slotsvals (instance old-slotsvals add-slotsvals &key (install-inversesp t))
-  (cond
-   ((null old-slotsvals)
+  (cond 
+   ((null old-slotsvals) 
     (cond (install-inversesp (mapc #'(lambda (slotvals)
 				       (cond ((not (non-inverse-recording-slot (slot-in slotvals)))
 					      (simple-add-inverses instance (slot-in slotvals) (vals-in slotvals)))))
@@ -24391,14 +24392,14 @@ simpleload-kb will install inverses.
 	       (simple-add-inverses instance slot extra-vals)))
 	(cons (make-slotvals slot new-vals)
 	      (simple-compute-new-slotsvals instance (rest old-slotsvals)
-					  (remove-if #'(lambda (sv)
-							 (eq (car sv) slot))
+					  (remove-if #'(lambda (sv) 
+							 (eq (car sv) slot)) 
 						     add-slotsvals)
 					  :install-inversesp install-inversesp))))))
 
 ;;; [1] New - install inverses too
 (defun simple-add-inverses (instance slot extra-vals)
-  (let ( (inv-slot (invert-slot slot)) )
+  (let ( (inv-slot (invert-slot slot)) )	
     (mapc #'(lambda (extra-val)
 	      (cond ((and (kb-objectp extra-val)
 			  (not (non-inverse-recording-concept extra-val)))
@@ -24406,12 +24407,12 @@ simpleload-kb will install inverses.
 		       (cond ((not (member instance old-invvals))
 			      (let ( (old-invslotsvals (get extra-val 'own-properties)) )
 ;				(km-format t "Doing (setf ~a ~a ~a)~%" extra-val 'own-properties
-;					   (update-assoc-list old-invslotsvals
+;					   (update-assoc-list old-invslotsvals 
 ;							      (make-slotvals inv-slot (cons instance old-invvals))))
 				(cond ((not (gethash extra-val *kb-objects*))
 				       (setf (gethash extra-val *kb-objects*) t)))
 				(setf (get extra-val 'own-properties)
-				      (update-assoc-list old-invslotsvals
+				      (update-assoc-list old-invslotsvals 
 							 (make-slotvals inv-slot (cons instance old-invvals)))))))))))
 	  extra-vals)))
 
@@ -24429,20 +24430,20 @@ simpleload-kb will install inverses.
 
 ;;; (km-version-greater-than "1.4.1.2" "1.4.1") -> t
 (defun km-version-greater-than (v1 v2)
-  (cond
+  (cond 
    ((not (stringp v1))
-    (report-error 'user-error
+    (report-error 'user-error 
       "Bad KM version number ~a encountered (should be a dotted list of integers, e.g. \"1.4.3.1\")~%" v1))
    ((not (stringp v2))
-    (report-error 'user-error
+    (report-error 'user-error 
       "Bad KM version number ~a encountered (should be a dotted list of integers, e.g. \"1.4.3.1\")~%" v2))
    (t (let ( (v1-bits (mapcar #'read-from-string (break-up v1 '(#\.))))
 	     (v2-bits (mapcar #'read-from-string (break-up v2 '(#\.)))) )
 	(cond ((notevery #'integerp v1-bits)
-	       (report-error 'user-error
+	       (report-error 'user-error 
 		"Bad KM version number ~a encountered (should be a dotted list of integers, e.g. \"1.4.3.1\")~%" v1))
 	      ((notevery #'integerp v2-bits)
-	       (km-format t
+	       (km-format t 
 		  "(requires-km-version: Can't check because KM version declaration is not a list of integers)~%")
 	       (km-format t "(requires-km-version: Skipping requires-km-version check)~%"))
 	      (t (km-version-bits-greater-than v1-bits v2-bits)))))))
@@ -24473,7 +24474,7 @@ simpleload-kb will install inverses.
 
 (defun load-triples0 (triples)
   (let ((non-triple (find-if #'(lambda (triple) (not (triplep triple))) triples)))
-    (cond
+    (cond 
      (non-triple (report-error 'nodebugger-error "load-triples: Non-triple ~a encountered in file!~%" non-triple))
      (t (let ((instances (remove-duplicates (mapcar #'first triples))))
 	  (mapc #'(lambda (instance)
@@ -24484,7 +24485,7 @@ simpleload-kb will install inverses.
 				       (values (remove-duplicates (mapcar #'third istriples))))
 				  (cond ((kb-objectp instance) (km-unique `#$(,INSTANCE has (,SLOT ,VALUES)))) ; [1]
 					(t (mapcar #'(lambda (value)
-						       (cond
+						       (cond 
 							((and (kb-objectp value)
 							      (neq slot '#$instance-of))
 							 (km-unique `#$(,VALUE has (,(INVERT-SLOT SLOT) (,INSTANCE)))))
@@ -24513,7 +24514,7 @@ simpleload-kb will install inverses.
 
 In minimatch, there is no explicit binding list returned, just the matched values, in order.
 
-***IMPORTANT*** The variable names in minimatch are IGNORED, they just denote "some value".
+***IMPORTANT*** The variable names in minimatch are IGNORED, they just denote "some value". 
   Thus repeated variables in the pattern may match different elements.
 
 Minimatch is faster than full-match (see later).
@@ -24538,7 +24539,7 @@ Variables: Begin with a "?"
 
 VARIANTS:
 =========
-minimatch1: Only valid when there's one variable in the pattern.
+minimatch1: Only valid when there's one variable in the pattern. 
       Returns the item matching the variable, rather than a list of items.
         (minimatch  '(a b c) '(?x b c)) -> (a)
       	(minimatch1 '(a b c) '(?x b c)) -> a
@@ -24548,12 +24549,12 @@ mv-minimatch: Returns answers as multiple values, rather than a list:
 		(x y)
 	        (mv-minimatch '(a b c) '(a ?x ?y))
 	     (format t "x=~a, y=~a~%" x y))
-      x=B, y=C
+      x=B, y=C	     
    NOTE: The fact the Lisp variables are called x,y, and the pattern ?x,?y, is purely coincidental.
 
 (minimatch-pattern <expr-list> <pattern-list>) -> (<matching-value>*) | t
 (minimatch-pattern '((a 1) (b 2) (c 3)) '((b ?x) (a ?y))) -> (2 1)
-   Match each pattern in <pattern-list> in turn against elements of <expr-list>, and
+   Match each pattern in <pattern-list> in turn against elements of <expr-list>, and 
    return the concatenation of the bindings (if the whole <pattern-list> matches). Note
    an expr in <expr-list> can only match one pattern in <pattern-list>.
 
@@ -24564,7 +24565,7 @@ mv-minimatch: Returns answers as multiple values, rather than a list:
    (full-match <s-expr> <pattern>) -> (<binding>*)
 		where <binding> is (<var> . <value>)
 
-This returns a binding list. Unlike minimatch, if a variable is used multiple times in
+This returns a binding list. Unlike minimatch, if a variable is used multiple times in 
 the pattern, it must bind to the same values. If there are no variables, or all
 variables are ?any, the "null binding list" ((t . t)) is returned for a successful match.
 
@@ -24575,7 +24576,7 @@ variables are ?any, the "null binding list" ((t . t)) is returned for a successf
    (full-match 1 '?any) -> ((t . t))
 
 Accessor for the returned binding list:
-   (val-of '?b '((?b . b))) -> b
+   (val-of '?b '((?b . b))) -> b  
 
 ======================================================================
 		(3) STRING-MATCH
@@ -24593,7 +24594,7 @@ of alternating values of variable / string elements:
 string-match1: When there's just 1 variable, return is match rather than a list of matches.
 mv-string-match: Return the matches as multiple values (for use with multiple-value-bind),
 	rather than a list.
-|#
+|#							   
 
 
 (defun mv-minimatch-pattern (list patterns) (values-list (minimatch-pattern list patterns)))
@@ -24644,7 +24645,7 @@ Note: &rest can be used at the END of the patterns to bind with "everything else
 ;;; CL-USER(28): (minimatch '(1 2 3 4 5 6 7 8) '(?* 3 ?x ?* 6 ?y ?z ?*))
 ;;; (4 7 8)
 (defun minimatch (item pattern)
-   (cond
+   (cond 
       ((anonymous-minimatch-varp pattern) 't)
       ((var-p pattern) (list item))
       ((and (singletonp pattern) (restvar-p (first pattern))) (list item))
@@ -24675,7 +24676,7 @@ Note: &rest can be used at the END of the patterns to bind with "everything else
   (and (symbolp var)
        (symbol-starts-with var #\?)))
 
-(defun restvar-p (x)
+(defun restvar-p (x) 
 ; (and (symbolp x) (starts-with (string-downcase x) "&rest")) - less efficient
   (member x '(&rest &rest1 &rest2 &rest3 &rest4 &rest5 |&rest| |&rest1| |&rest2| |&rest3| |&rest4| |&rest5|)))
 
@@ -24691,13 +24692,13 @@ Note: &rest can be used at the END of the patterns to bind with "everything else
 #|
 find-handler -- finds a (pattern function) pair where pattern matches the input
 expr, and returns a LIST of THREE things:
-  - function
+  - function 
   - a list of values in expr which matched the variables in pattern
   - the entire pattern which the input expr matched
 
-e.g.,
+e.g., 
 (find-handler '(the house of john) *km-handler-alist*) =>
-    (#'(lambda (slot path) (getval slot path))
+    (#'(lambda (slot path) (getval slot path)) 
      (house john)
      (the ?slot of ?expr))
 |#
@@ -24717,19 +24718,19 @@ e.g.,
 ;;; Default method of applying
 ;;; Or could apply with extra args, eg.
 ;;; 	(apply (first handler) (cons depth (second handler)))
-(defun apply-handler (handler)
+(defun apply-handler (handler) 
   (apply (first handler) (second handler)))
 
 (defun find-and-apply-handler (expr handler-alist &key (fail-mode 'fail))
   (let ( (handler (find-handler expr handler-alist :fail-mode fail-mode)) )
     (cond (handler (apply-handler handler)))))
-
+  
 ;;; ======================================================================
 ;;;		SAME, EXCEPT FOR STRINGS
 ;;; ======================================================================
 
 ;;; If :case-sensitivep = nil, then string matches are case-insensitive
-(defun string-match1 (item pattern &key case-sensitivep)
+(defun string-match1 (item pattern &key case-sensitivep) 
   (first (string-match item pattern :case-sensitivep case-sensitivep)))
 
 (defun mv-string-match (string pattern &key case-sensitivep)
@@ -24743,7 +24744,7 @@ e.g.,
 ;;; **NOTE** A variable CANNOT be followed by a "", e.g., This will fail:   (string-match "cat" '(?x (or "?" ""))).   There must be a non-null anchor string directly *after* a variable
 (defun string-match (string pattern &key case-sensitivep)
   (let ( (pattern-el (first pattern)) )
-    (cond ((null pattern)
+    (cond ((null pattern) 
 	   (cond ((string= string "") t)))
 ;	  ((member pattern '((&rest) (|&rest|)) :test #'equal) (list string))
 	  ((and (singletonp pattern) (restvar-p (first pattern))) (list string))
@@ -24753,10 +24754,10 @@ e.g.,
 		     (string-match string (cons first-pattern (rest pattern)) :case-sensitivep case-sensitivep))
 		 (rest (first pattern)))) ; strip "or"
 	  ((stringp pattern-el)
-	   (cond
+	   (cond 
 	    ((and (>= (length string) (length pattern-el))
 		  (or (string= string pattern-el :end1 (length pattern-el))
-		      (and (not case-sensitivep)
+		      (and (not case-sensitivep) 
 			   (string= (string-downcase string) (string-downcase pattern-el) :end1 (length pattern-el)))))
 	     (string-match (subseq string (length pattern-el))
 			   (cdr pattern)
@@ -24801,7 +24802,7 @@ e.g.,
 ;;; (full-match 1 1) -> ((t . t))
 ;;; (val-of '?b '((?b . b))) -> b
 (defun full-match (item pattern &key (bindings *null-bindings*))
-   (cond
+   (cond 
       ((anonymous-minimatch-varp pattern) bindings)
       ((var-p pattern) (add-binding pattern item bindings))
 ;     ((member pattern '((&rest) (|&rest|)) :test #'equal) bindings)
@@ -24842,7 +24843,7 @@ Template for a file reader. Or just use (read-file <file> 'sexpr)
   (let ( (stream (see file)) )
     (loop until (not (progn
       (let* ( (data (read stream nil 'eof-marker)) )
-	(cond
+	(cond 
 	 ((eql data 'eof-marker) nil)
 	 (t (<process-fn> data)
 	    t))))))
@@ -24855,10 +24856,10 @@ REVISED: Simply do: (apply-to-file-exprs #'process-line "myfile.km")
 ;;; Read file as lines of strings
 (defun apply-to-file-lines (function file)
   (let ( (stream (see file)) )
-    (loop until
+    (loop until 
 	  (not (progn
 		 (let* ( (data (read-line stream nil nil)) )
-		   (cond
+		   (cond 
 		    ((null data) nil)
 		    (t (apply function (list data))
 		       t))))))
@@ -24868,10 +24869,10 @@ REVISED: Simply do: (apply-to-file-exprs #'process-line "myfile.km")
 ;;; Read file as sxeprs
 (defun apply-to-file-exprs (function file)
   (let ( (stream (see file)) )
-    (loop until
+    (loop until 
 	  (not (progn
 		 (let* ( (data (read stream nil 'eof-marker)) )
-		   (cond
+		   (cond 
 		    ((eql data 'eof-marker) nil)
 		    (t (apply function (list data))
 		       t))))))
@@ -24882,9 +24883,9 @@ REVISED: Simply do: (apply-to-file-exprs #'process-line "myfile.km")
 (defparameter *end-of-sentence-chars* '(#\. #\? #\!))
 (defparameter *newline-string* (make-string 1 :initial-element '#\Newline))
 
-;;; (a b) -> "(a b)"
+;;; (a b) -> "(a b)"		       
 (defun truncate-string (string &optional (maxlen 60))
-  (cond ((not (stringp string))
+  (cond ((not (stringp string)) 
 	 (format t "ERROR! Non-string given to truncate-string in utils.lisp!~%")
 	 string)
 	((< (length string) maxlen) string)
@@ -24929,7 +24930,7 @@ REVISED: Simply do: (apply-to-file-exprs #'process-line "myfile.km")
 ;;; (right-of "the big cat" "big") -> " cat"
 ;;; (right-of "foo.xml" "foo") -> ".xml"
 (defun right-of (string substring &key from-end)
-  (multiple-value-bind
+  (multiple-value-bind 
    (left right)
    (split-at string substring :from-end from-end)
    (declare (ignore left))
@@ -24941,7 +24942,7 @@ REVISED: Simply do: (apply-to-file-exprs #'process-line "myfile.km")
   (split-at string substring :from-end from-end))		; just ignore second return value
 
 ;;; ASSUMES string has no trailing whitespace
-;(defun rightmost-word (string)
+;(defun rightmost-word (string) 
 ;  (last-el (string-to-list string)))
 
 ;;; Revised
@@ -24969,7 +24970,7 @@ REVISED: Simply do: (apply-to-file-exprs #'process-line "myfile.km")
          (incf start-at (length string))))))
 
 ;(defun my-concat (list len)
-;  (cond ((<= len *max-concat-length*)
+;  (cond ((<= len *max-concat-length*) 
 ;	 (apply #'concatenate (cons 'string list)))
 ;	(t (concatenate 'string
 ;			(apply #'concatenate (cons 'string (subseq list 0 *max-concat-length*)))
@@ -24986,7 +24987,7 @@ REVISED: Simply do: (apply-to-file-exprs #'process-line "myfile.km")
   (cond ((= n nmax))
 	((member (char string n) whitespace-chars :test #'char=)
 	 (white-space2-p string (+ n 1) nmax whitespace-chars))))
-
+  
 ;;; ======================================================================
 ;;; Simpler version of scan-to (below)
 ;;; ======================================================================
@@ -24994,20 +24995,20 @@ REVISED: Simply do: (apply-to-file-exprs #'process-line "myfile.km")
 ;;; (break-up-at "c:dd>eee:f>" :delimeter-chars '(#\: #\>)) -> ("c" ":" "dd" ">" "eee" ":" "f" ">")
 (defun break-up-at (string &key delimeter-chars)
   (break-up-at0 delimeter-chars string 0 0 (length string) 'positive))
-
+    
 (defun break-up-at0 (delimeter-chars string m n nmax polarity)
   (cond ((= n nmax) (list (subseq string m n)))		; reached the end.
 	(t (let ( (curr-char (char string n)) )
 	     (cond ((or (and (eql polarity 'positive) (member curr-char delimeter-chars :test #'char=))
 			(and (eql polarity 'negative) (not (member curr-char delimeter-chars :test #'char=))))
 		    (cons (subseq string m n)
-			  (break-up-at0 delimeter-chars string n n nmax
+			  (break-up-at0 delimeter-chars string n n nmax 
 					(cond ((eql polarity 'positive) 'negative) (t 'positive)))))
 		   (t (break-up-at0 delimeter-chars string m (1+ n) nmax polarity)))))))
 
 #|
 ======================================================================
-		STRING-TO-LIST
+		STRING-TO-LIST   
  This nifty little utility breaks a string up into its word
  and delimeter components. Always starts with delimeter:
 
@@ -25022,8 +25023,8 @@ REVISED: Simply do: (apply-to-file-exprs #'process-line "myfile.km")
 Original behavior: Break string up into alternating non-alphanum and alphanum blocks:
    "The cat d34" -> ("" "The" " " "cat" " " "d34")
 Revised behavior: Numbers are separated from strings
-   "d4mph" -> ("" "d" "" "4" "" "mph")
-   "a1b 34m/h" -> ("" "a" "" "1" "" "b" " " "34" "" "m" "/" "h")
+   "d4mph" -> ("" "d" "" "4" "" "mph")   
+   "a1b 34m/h" -> ("" "a" "" "1" "" "b" " " "34" "" "m" "/" "h") 
 |#
 
 ;;; (string-to-words "the cat on the mat") -> ("the" "cat" "on" "the" "mat")
@@ -25088,14 +25089,14 @@ Revised behavior: Numbers are separated from strings
 ;;; (new-scan-to "c:dd>eee:f>" :delimeter-chars '(#\: #\>)) -> ("c" ":" "dd" ">" "eee" ":" "f" ">")
 (defun new-scan-to (string &key delimeter-chars)
   (new-scan-to0 delimeter-chars string 0 0 (length string) 'positive))
-
+    
 (defun new-scan-to0 (delimeter-chars string m n nmax polarity)
   (cond ((= n nmax) (list (subseq string m n)))		; reached the end.
 	(t (let ( (curr-char (char string n)) )
 	     (cond ((or (and (eql polarity 'positive) (member curr-char delimeter-chars :test #'char=))
 			(and (eql polarity 'negative) (not (member curr-char delimeter-chars :test #'char=))))
 		    (cons (subseq string m n)
-			  (new-scan-to0 delimeter-chars string n n nmax
+			  (new-scan-to0 delimeter-chars string n n nmax 
 					(cond ((eql polarity 'positive) 'negative) (t 'positive)))))
 		   (t (new-scan-to0 delimeter-chars string m (1+ n) nmax polarity)))))))
 
@@ -25109,7 +25110,7 @@ USER: (list-to-lines '("" "the" " " "cat" " " "sat" "
 -> ("the cat sat" "  on th emat" "I think.")
 |#
 (defun list-to-lines (strings &optional reverse-line-bits-so-far)
-  (cond ((endp strings)
+  (cond ((endp strings) 
 	 (cond (reverse-line-bits-so-far (list (concat-list (reverse reverse-line-bits-so-far))))))	; otherwise nil
 	(t (multiple-value-bind
 	    (left right)
@@ -25122,10 +25123,10 @@ USER: (list-to-lines '("" "the" " " "cat" " " "sat" "
 
 ;; " a " -> "a "
 ;; "  " -> ""
-(defun remove-leading-whitespace (string)
+(defun remove-leading-whitespace (string) 
   (string-left-trim *whitespace-chars* string))
 
-(defun remove-trailing-whitespace (string)
+(defun remove-trailing-whitespace (string) 
   (string-right-trim *whitespace-chars* string))
 
 ;;; " a " -> "a"
@@ -25137,7 +25138,7 @@ USER: (list-to-lines '("" "the" " " "cat" " " "sat" "
   (some #'(lambda (char) (find char string)) *whitespace-chars*))
 
 (defun whitespace-char (char) (member char *whitespace-chars* :test #'char=))
-
+  
 ;;; (remove-from-end "A cat..." '(#\. #\? #\! #\; #\ )) -> "A cat"
 (defun remove-from-end (string chars)
   (cond ((string= string "") "")
@@ -25163,7 +25164,7 @@ USER: (list-to-lines '("" "the" " " "cat" " " "sat" "
 #+allegro		; nameclash with CLisp if not using packaged version of KM
 (defun crypt (string &key (shift 50)) (implode (mapcar #'(lambda (c) (shift-char c :shift shift)) (explode string))))
 
-(defun shift-char (c &key (shift 50))
+(defun shift-char (c &key (shift 50)) 
   (let ((new-code (+ (char-code c) shift)))
     (cond ((> new-code 126) (code-char (- new-code 95))) ; 127 -> 32
 	  (t (code-char new-code)))))
@@ -25193,7 +25194,7 @@ USER: (list-to-lines '("" "the" " " "cat" " " "sat" "
 	((singletonp list) list)
 	(t (cons (car list) (cons delimeter (commaed-list (cdr list) delimeter))))))
 
-;;; Previously called spaced-list
+;;; Previously called spaced-list  
 ;;; (spaced-string '("a" "b" "c")) -> ("a b c")
 (defun spaced-string (list) (concat-list (spaced-list list)))
 
@@ -25201,7 +25202,7 @@ USER: (list-to-lines '("" "the" " " "cat" " " "sat" "
   (cond ((endp list) nil)
 	((singletonp list) list)
 	(t (cons (first list) (cons " " (spaced-list (rest list)))))))
-
+  
 ;;; ----------
 
 (defun  last-char (string) (cond ((string/= string "") (char string (- (length string) 1)))))
@@ -25283,15 +25284,15 @@ USER: (list-to-lines '("" "the" " " "cat" " " "sat" "
 ;;; ======================================================================
 
 #| (break-up (string '|    aadsf a  " " "" "the cat" 1/2 a"b"c  de"f|))
-("aadsf"
- "a"
- " "
- "the cat"
- "1/2"
- "a"
- "b"
- "c"
- "de"
+("aadsf" 
+ "a" 
+ " " 
+ "the cat" 
+ "1/2" 
+ "a" 
+ "b" 
+ "c" 
+ "de" 
  "f")
 |#
 ;;; NOTE: delim-chars MUSTN'T be a '"'
@@ -25314,7 +25315,7 @@ USER: (list-to-lines '("" "the" " " "cat" " " "sat" "
 			   (break-up2 string (1+ n) (1+ n) nmax quotep delim-chars))    ; ... so ignore it
 			  (t (cons (subseq string m n)
 				   (break-up2 string (1+ n) (1+ n) nmax quotep delim-chars)))))
-		   ((char= curr-char #\") 			  			; found a '"', so toggle quotep
+		   ((char= curr-char #\") 			  			; found a '"', so toggle quotep 
 		    (break-up2 string m (1+ n) nmax (not quotep) delim-chars))
 		   (t (break-up2 string m (1+ n) nmax quotep delim-chars)))))))
 
@@ -25357,15 +25358,15 @@ USER: (list-to-lines '("" "the" " " "cat" " " "sat" "
 				(explode string))))))
 
 ;;; (now) -> "22/4/1999 11:49.24"
-(defun now ()
-  (multiple-value-bind
+(defun now ()  
+  (multiple-value-bind 
       (s m h d mo y)
       (get-decoded-time)
     (format nil "~s/~s/~s ~s:~s.~s" mo d y h m s)))
 
 ;;; (date) -> "22/4/1999"
-(defun date ()
-  (multiple-value-bind
+(defun date ()  
+  (multiple-value-bind 
       (s m h d mo y)
       (get-decoded-time)
     (declare (ignore s m h))
@@ -25374,10 +25375,10 @@ USER: (list-to-lines '("" "the" " " "cat" " " "sat" "
 ;;; (common-startstring '("emergency" "emergencies")) -> "emergenc"
 (defun common-startstring (strings)
   (cond ((singletonp strings) (first strings))
-	(t (subseq (first strings) 0 (loop
+	(t (subseq (first strings) 0 (loop 
 				       for i from 0 to (1- (apply #'min (mapcar #'length strings)))
-				       until (some #'(lambda (string)
-						       (char/= (char string i)
+				       until (some #'(lambda (string) 
+						       (char/= (char string i) 
 							       (char (first strings) i)))
 						   (rest strings))
 				       finally (return i))))))
@@ -25385,7 +25386,7 @@ USER: (list-to-lines '("" "the" " " "cat" " " "sat" "
 (defun first-word (string)
   (subseq string 0 (or (search " " string) (length string))))
 
-;;; "a b c" -> "c", "a" -> "a"
+;;; "a b c" -> "c", "a" -> "a" 
 (defun last-word (string)
   (subseq string (1+ (or (search " " string :from-end t) -1))))
 
@@ -25399,7 +25400,7 @@ USER: (list-to-lines '("" "the" " " "cat" " " "sat" "
 ;;; ----------
 
 ;;; ("cat" "dog") -> ("cat" " " "dog")
-(defun insert-spaces (words)
+(defun insert-spaces (words) 
   (insert-delimeter words " "))				; in utils.lisp
 
 ;;; ----------
@@ -25432,7 +25433,7 @@ USER: (list-to-lines '("" "the" " " "cat" " " "sat" "
 	   (error (error)			; [1]
 	     (declare (ignore error))))))
 	((eql fail-mode 'error)
-	 (format t "; ERROR! (string-to-number ~s) should be given an ascii string representation of a number!~%"
+	 (format t "; ERROR! (string-to-number ~s) should be given an ascii string representation of a number!~%" 
 		 string))))
 
 (defun clear-screen () (format t ""))
@@ -25478,11 +25479,11 @@ SAPIR(136): (read-to "the cat the mat;" '(#\;))
 |#
 (defun read-to (string chars)
   (let ( (break-point (loop for i from 0 to (1- (length string))
-			    until (member (elt string i) chars :test #'char=)
+			    until (member (elt string i) chars :test #'char=) 
 			    finally (return i))) )
     (cond ((= break-point (length string)) (values string "" nil))
-	  (t (values (subseq string 0 break-point)
-		     (subseq string (1+ break-point) (length string))
+	  (t (values (subseq string 0 break-point) 
+		     (subseq string (1+ break-point) (length string)) 
 		     (elt string break-point))))))
 
 ;;; ----------
@@ -25492,7 +25493,7 @@ SAPIR(136): (read-to "the cat the mat;" '(#\;))
 ;;; (read-to2 "cat" '(#\x)) -> THREE values: "cat" "" NIL
 (defun read-to2 (string chars)
   (let ( (break-point (loop for i from 0 to (1- (length string))
-			    until (member (elt string i) chars :test #'char=)
+			    until (member (elt string i) chars :test #'char=) 
 			    finally (return i))) )
     (cond ((= break-point (length string)) (values string "" nil))
 	  (t (values (subseq string 0 break-point)
@@ -25517,17 +25518,17 @@ returns TWO values
     (values rebroken-strings max-document-size-reached)))
 
 (defun list-to-lines-with-size-limit0 (strings &key (max-document-size 1000) (length-so-far 0) reverse-line-bits-so-far)
-  (cond ((or (endp strings)
+  (cond ((or (endp strings) 
 	     (>= length-so-far max-document-size))
 	 (cond (reverse-line-bits-so-far (list (concat-list (reverse reverse-line-bits-so-far))))))	; otherwise nil
 	(t (multiple-value-bind
 	    (left right)
 	    (split-at (first strings) *newline-string*)
 	    (cond (left (cons (concat-list (reverse (cons left reverse-line-bits-so-far)))
-			      (list-to-lines-with-size-limit0 (cons right (rest strings))
+			      (list-to-lines-with-size-limit0 (cons right (rest strings)) 
 							      :max-document-size max-document-size
 							      :length-so-far (+ length-so-far (length left)))))
-		  (t (list-to-lines-with-size-limit0 (rest strings)
+		  (t (list-to-lines-with-size-limit0 (rest strings) 
 						     :max-document-size max-document-size
 						    :length-so-far (+ length-so-far (length (first strings)))
 						    :reverse-line-bits-so-far (cons (first strings) reverse-line-bits-so-far))))))))
@@ -25536,26 +25537,26 @@ returns TWO values
 ;;; "_Car23" -> TWO values: "_Car" 23
 ;;; "_Car" -> TWO values: "_Car" NIL
 (defun trim-numbers (string &key number-chars (with-warnings t))
-  (cond
-   ((string= string "")
+  (cond 
+   ((string= string "") 
     (cond (with-warnings (format t "; WARNING! Null string passed to trim-numbers!~%")))
     "")
    ((digit-char-p (last-char string))
-    (trim-numbers (butlast-char string)
+    (trim-numbers (butlast-char string) 
 		  :number-chars (cons (last-char string) number-chars) :with-warnings with-warnings))
    (t (values string (cond (number-chars (string-to-number (implode number-chars))))))))
 
 ;;; --------------------
 
-;;; directory can be a directory or include a pattern, e.g.,
+;;; directory can be a directory or include a pattern, e.g., 
 ;;; (files-in-directory (concat *test-suite-directory* "*.lisp"))
 ;;; file-directory-p is Allegro-specific, I believe
 #+allegro
-(defun files-in-directory (directory)
+(defun files-in-directory (directory) 
   (mapcar #'file-namestring (remove-if #'excl::file-directory-p (directory directory))))
 
 #+allegro
-(defun subdirectories-in-directory (directory)
+(defun subdirectories-in-directory (directory) 
   (mapcar #'file-namestring (remove-if-not #'excl::file-directory-p (directory directory))))
 
 ;;; ----------------------------------------------------------------------
@@ -25570,7 +25571,7 @@ returns TWO values
 
 ;;; ======================================================================
 
-;;; Multiple applications.
+;;; Multiple applications. 
 ;;; (substitute-strings "aaaaaaa" '(("aa" . "a")) :recursivep t) -> "a"
 ;;; (substitute-strings "aaaaaaa" '(("aa" . "a")) :recursivep nil) -> "aaaa"
 (defun substitute-strings (string alist &key recursivep)
@@ -25587,15 +25588,15 @@ returns TWO values
 
 (defun substitute-string0 (old new string &key recursivep)
   (let ((pos (search old string)))
-    (cond (pos
-	   (cond (recursivep `(,(subseq string 0 pos)
+    (cond (pos 
+	   (cond (recursivep `(,(subseq string 0 pos) 
 			       ,@(substitute-string0 old new (concat new (subseq string (+ pos (length old)) (length string))) :recursivep recursivep)))
-		 (t `(,(subseq string 0 pos)
-		      ,new
+		 (t `(,(subseq string 0 pos) 
+		      ,new 
 		      ,@(substitute-string0 old new (subseq string (+ pos (length old)) (length string)))))))
 	  (t (list string)))))
 
-;;; ======================================================================
+;;; ======================================================================  
 
 #|
 (fold <string> <n>): Break a long string up after approximately <n> characters,
@@ -25610,27 +25611,27 @@ in the
 rainrainra
 inrainrain
 rainrain"
-|#
+|#  
 (defun fold (string0 n &key tab (tab-firstlinep t))
   (let* ((string (trim-whitespace string0))
 	 (spaces (cond (tab (spaces tab)) (t "")))
 	 (firstline-spaces (cond (tab-firstlinep spaces) (t ""))))
-    (cond
+    (cond 
      ((<= (length string) n) (concat firstline-spaces string))
      (t (concat-list (cons firstline-spaces (insert-delimeter (fold0 string n) (concat *newline-str* spaces))))))))
-
+  
 (defun fold0 (string n)
-  (cond
+  (cond 
    ((<= (length string) n) (list string))
    (t (let ((space-posn (or (position #\  string :end n :from-end t) n)))
-	(cons (subseq string 0 space-posn)
+	(cons (subseq string 0 space-posn) 
 	      (fold0 (remove-leading-whitespace (subseq string space-posn (length string))) n))))))
 
 ;;; FILE: compiler.lisp
 
 ;;; File: compiler.lisp
 ;;; Author: Adam Farquhar (afarquhar@slb.com)
-;;; Purpose: Partially flatten the code for the KM dispatch mechanism, which
+;;; Purpose: Partially flatten the code for the KM dispatch mechanism, which 
 ;;;	in limited tests gives a 10%-30% speed-up in execution speed.
 
 ;;; Many thanks to Adam Farquhar for this neat bit of coding!!
@@ -25654,7 +25655,7 @@ rainrain"
 		  (pushnew 'rest vars)))))
       (vars-in x)
       (nreverse vars))))
-
+	       
 
 (defun args-to-symbol (&rest args)
   (intern (string-upcase (format nil "~{~a~}" args)) *km-package*))
@@ -25880,10 +25881,10 @@ return the code without invoking the compiler on it."
 ;;; make the full compilation without this setting a problem.
 (defun write-compiled-handlers ()
   (let* ( (anonymous-function (compile-handlers *km-handler-alist* :code-only t))
-          (named-function `(defun compiled-km-handler-function (f-mode target x)
+          (named-function `(defun compiled-km-handler-function (f-mode target x) 
 ;;; Need to add this manually to compiled-handlers (it gets stripped off here)
 ;;;                 #+harlequin-pc-lisp (declare (optimize (debug 0)))     ; patch for Lispworks from Francis Leboutte [1]
-                             .
+                             . 
 			     ,(rest (rest anonymous-function))))		   ; strip off "(lambda (f-mode x) ..."
 	  (stream (tell *compiled-handlers-file*)) )
     (format stream "
@@ -25891,7 +25892,7 @@ return the code without invoking the compiler on it."
 ;;; Author: MACHINE GENERATED FILE, generated by compiler.lisp (author Adam Farquahar)
 ;;; This file was generated by (write-compiled-handlers) in compiler.lisp.
 ;;; This partially flattens the code assigned to *km-handler-list*, which results in
-;;; 10%-30% faster execution (10%-30%) at run-time. Loading of this file is optional,
+;;; 10%-30% faster execution (10%-30%) at run-time. Loading of this file is optional, 
 ;;; KM will be slower if it's not loaded. For the legible, unflattened source of this
 ;;; flattened code, see the file interpreter.lisp.
 ;;;
@@ -25914,7 +25915,7 @@ return the code without invoking the compiler on it."
 
 ;;; This file was generated by (write-compiled-handlers) in compiler.lisp.
 ;;; This partially flattens the code assigned to *km-handler-list*, which results in
-;;; 10%-30% faster execution (10%-30%) at run-time. Loading of this file is optional,
+;;; 10%-30% faster execution (10%-30%) at run-time. Loading of this file is optional, 
 ;;; KM will be slower if it's not loaded. For the legible, unflattened source of this
 ;;; flattened code, see the file interpreter.lisp.
 
@@ -25931,7 +25932,7 @@ return the code without invoking the compiler on it."
 ;;; Author: MACHINE GENERATED FILE, generated by compiler.lisp (author Adam Farquahar)
 ;;; This file was generated by (write-compiled-handlers) in compiler.lisp.
 ;;; This partially flattens the code assigned to *km-handler-list*, which results in
-;;; 10%-30% faster execution (10%-30%) at run-time. Loading of this file is optional,
+;;; 10%-30% faster execution (10%-30%) at run-time. Loading of this file is optional, 
 ;;; KM will be slower if it's not loaded. For the legible, unflattened source of this
 ;;; flattened code, see the file interpreter.lisp.
 ;;;
@@ -25948,7 +25949,7 @@ return the code without invoking the compiler on it."
 
 (defun compiled-km-handler-function (f-mode target x)
   (block km-handler
-    #+harlequin-pc-lisp (declare (optimize (debug 0)))     ; patch for Lispworks from Francis Leboutte [1]
+    #+harlequin-pc-lisp (declare (optimize (debug 0)))     ; patch for Lispworks from Francis Leboutte [1]    
     (or (when (consp x)
           (let ((xl (first x)) (xr (rest x)))
             (or (when (eql xl '|the|)
@@ -28672,7 +28673,7 @@ return the code without invoking the compiler on it."
                                                        (t
                                                         (report-error 'user-error "In call to external Lisp procedure
   ~a
-Lisp procedure should return a list of fully evaluated KM objects (e.g.,
+Lisp procedure should return a list of fully evaluated KM objects (e.g., 
 instances, or :seq/:bag/:pair of instances), but instead returned:
    ~a~%" lispcode answer0)))))
                                            f-mode target xrl)
@@ -29468,7 +29469,7 @@ The specified implementation was: ~a~%" (second path) infix-implementation-fn))
                                                        (t
                                                         (report-error 'user-error "In call to external Lisp procedure
 (~a ~a ~a)
-Lisp procedure should return one/a list of fully evaluated KM objects (e.g.,
+Lisp procedure should return one/a list of fully evaluated KM objects (e.g., 
 instances, or :seq/:bag/:pair of instances), but instead returned:
    ~a~%" infix-implementation-fn x y answer0))))))))
                                      ((not *linear-paths*)
@@ -29498,7 +29499,7 @@ instances, or :seq/:bag/:pair of instances), but instead returned:
 
 ;;; This file was generated by (write-compiled-handlers) in compiler.lisp.
 ;;; This partially flattens the code assigned to *km-handler-list*, which results in
-;;; 10%-30% faster execution (10%-30%) at run-time. Loading of this file is optional,
+;;; 10%-30% faster execution (10%-30%) at run-time. Loading of this file is optional, 
 ;;; KM will be slower if it's not loaded. For the legible, unflattened source of this
 ;;; flattened code, see the file interpreter.lisp.
 
@@ -29515,7 +29516,7 @@ instances, or :seq/:bag/:pair of instances), but instead returned:
 
 (defun license ()
   (format t "
-This software is released under the Simplified BSD Licence (below). If you would like a
+This software is released under the Simplified BSD Licence (below). If you would like a 
 copy of this software issued under a different license please contact the authors.
 
 ======================================================================
@@ -29552,7 +29553,7 @@ Bruce Porter (porter@cs.utexas.edu)
 "))
 ;;; FILE: LICENCE
 #|
-This software is released under the Simplified BSD Licence (below). If you would like a
+This software is released under the Simplified BSD Licence (below). If you would like a 
 copy of this software issued under a different license please contact the authors.
 
 ======================================================================
@@ -29595,7 +29596,7 @@ Bruce Porter (porter@cs.utexas.edu)
 
 (reset-kb)
 
-(defun version ()
+(defun version () 
   (format t "      ====================================================~%")
   (format t "      KM - THE KNOWLEDGE MACHINE - INFERENCE ENGINE v~a~%" *km-version-str*)
   (format t "      ====================================================~%")
@@ -29611,3 +29612,4 @@ Bruce Porter (porter@cs.utexas.edu)
       (t (format t "Type (km) for the KM interpreter prompt!~%")))
 
 ; (hash-dollar)
+
