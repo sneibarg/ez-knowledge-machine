@@ -1,0 +1,5 @@
+(every Task has
+  (description (a String))           ;; e.g., "Answering biology questions"
+  (domain (a Domain))                ;; e.g., "biology"
+  (example_inputs (a List of Strings))  ;; e.g., ("What is photosynthesis?", "Explain DNA replication")
+)

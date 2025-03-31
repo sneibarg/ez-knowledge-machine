@@ -1,0 +1,6 @@
+(every Domain has
+  (name (a String))                  ;; e.g., "physics"
+  (subdomains (a Aggregate with (element-type (Domain))))  ;; e.g., "quantum mechanics"
+  (related_domains (a Aggregate with (element-type (Domain))))  ;; e.g., "mathematics"
+  (layer_importance (a List of Numbers))  ;; Average importance per layer, e.g., (0.1 0.3 0.9)
+)

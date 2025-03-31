@@ -1,0 +1,4 @@
+(every LateLayerDomain has-definition
+  (instance-of (Domain))
+  (layer_importance (a List where (the max of It) is in (the last 3 of It)))
+)

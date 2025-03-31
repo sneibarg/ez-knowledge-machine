@@ -1,0 +1,5 @@
+(every ArchitecturalComponent has
+  (name (a String))                  ;; e.g., "Layer_5"
+  (parameters (a Aggregate with (element-type (Parameter))))  ;; Parameters in this component
+  (part_of_subnetworks (a Aggregate with (element-type (Subnetwork))))  ;; Subnetworks using this component
+)

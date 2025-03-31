@@ -1,0 +1,6 @@
+(every Subnetwork has
+  (domain (a Domain))                ;; e.g., "biology"
+  (parameters (a Aggregate with (element-type (Parameter))))  ;; Parameters in this subnetwork
+  (architectural_components (a Aggregate with (element-type (ArchitecturalComponent))))  ;; Layers or heads involved
+  (importance_score (a Number))      ;; e.g., 0.85, quantifying relevance to the domain
+)

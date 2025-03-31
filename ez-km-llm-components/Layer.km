@@ -1,0 +1,4 @@
+(every Layer has
+  (instance-of (ArchitecturalComponent))
+  (layer_number (an Integer))      ;; e.g., 5
+)

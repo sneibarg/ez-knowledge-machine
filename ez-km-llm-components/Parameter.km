@@ -1,0 +1,8 @@
+(every Parameter has
+  (name (a String))                  ;; e.g., "model.embed_tokens.weight"
+  (shape (a List))                   ;; e.g., (128256 4096) for dimensionality
+  (dtype (a String))                 ;; e.g., "torch.float32"
+  (location (an ArchitecturalComponent))  ;; Links to layer or attention head
+  (value (a Procedure))              ;; Procedural attachment for dynamic value retrieval
+  (part_of_subnetworks (a Aggregate with (element-type (Subnetwork))))  ;; Subnetworks including this parameter
+)

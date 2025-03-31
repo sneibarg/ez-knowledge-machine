@@ -1,0 +1,5 @@
+(every AttentionHead has
+  (instance-of (ArchitecturalComponent))
+  (head_number (an Integer))       ;; e.g., 2
+  (layer (a Layer))                ;; The layer it belongs to
+)

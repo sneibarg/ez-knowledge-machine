@@ -1,0 +1,18 @@
+;;; Parameters in Multiple Subnetworks (Shared Knowledge):
+(allof (the parameters of (a Subnetwork))
+where ((the size of (the part_of_subnetworks of It)) > 1))
+
+;;; Domains with Shared Parameters:
+(allof (the Domains)
+where (exists (a Subnetwork called Subnet1)
+       where ((the domain of Subnet1) = It)
+       exists (a Subnetwork called Subnet2)
+       where ((the domain of Subnet2) /= It)
+              (the intersection of (the parameters of Subnet1)
+                                   (the parameters of Subnet2)) is not empty))
+
+;;; Specialized Architectural Components:
+(allof (the architectural_components of (a Subnetwork))
+where ((the size of (the part_of_subnetworks of It)) = 1))
+
+;;; 

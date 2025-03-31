@@ -1,0 +1,5 @@
+(every InterpretabilityFinding has
+  (task (a Task))                    ;; e.g., "biology_question_answering"
+  (important_parameters (a Aggregate with (element-type (Parameter))))  ;; Crucial parameters
+  (importance_scores (a List of Numbers))  ;; Scores for each parameter, e.g., (0.7 0.5 0.9)
+)
