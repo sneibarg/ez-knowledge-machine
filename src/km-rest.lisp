@@ -1,92 +1,102 @@
 (defpackage :km-rest
-  (:use :cl :hunchentoot :jsown :km :km-threads :km-logging)
+  (:use :cl :hunchentoot :quux-hunchentoot :jsown :km :km-logging)
   (:export :start-server :stop-server))
 
 (in-package :km-rest)
 
-(defvar *server* nil "Global variable to hold the server instance.")
-(defvar *stop-requested* nil "Flag to indicate shutdown request.")
-(defvar *shutdown-thread* nil "Thread handling shutdown.")
-(defvar *thread-pool* nil "Global variable to hold the thread pool instance.")
-(defvar *default-port* 8080 "Default port number if none is specified.")
-(km-logging:setup-file-logging "km-service.log" :info)
-(defparameter *allowed-functions*
-  '("every" "instance-of" "subclass-of" "has-property" "all-instances" "all-subclasses"
-    "equal" "not-equal" "greater-than" "less-than" "and" "or" "not"
-    "has-value" "is-a" "has-slot" "slot-value" "superclasses" "(SUPERCLASSES (THING))")
-  "List of allowed KM functions for expression enforcement.")
+(defvar *server* nil "Holds the server instance.")
+(defvar *stop-requested* nil "Flag for shutdown request.")
+(defvar *shutdown-thread* nil "Thread for shutdown handling.")
+(defvar *thread-pool* nil "Holds the thread pool instance.")
+(defvar *default-port* 8080 "Default port if unspecified.")
 
-(defparameter *allowed-symbols*
-  '("Person" "Thing" "Animal" "Vehicle" "Dog" "Cat" "Car" "Truck" "John" "Jane" "Fido" "Whiskers"
-    "has-age" "has-name" "has-owner" "has-color" "has-weight" "has-speed" "has" 
-    "true" "false" "nil" "superclasses")
-  "List of allowed KM symbols for expression enforcement.")
+(km-logging:setup-file-logging "km-service.log" :info)
+
+(defparameter *banned-functions* '() "Banned KM functions.")
+(defparameter *banned-symbols* '() "Banned KM symbols.")
+
+(defun get-number-of-cores ()
+  "Return the number of available CPU cores."
+  (cond
+    ((uiop:os-windows-p)
+     (let ((num-str (uiop:getenv "NUMBER_OF_PROCESSORS")))
+       (if num-str
+           (parse-integer num-str :junk-allowed t)
+           1)))
+    ((uiop:os-unix-p)
+     (handler-case
+         (parse-integer (string-trim '(#\Newline) (uiop:run-program "nproc" :output :string)))
+       (error () 1)))
+    (t 1)))
 
 (defun validate-expression (expr-str)
-  "Validate a KM expression string to ensure it only uses allowed functions and symbols."
+  "Convert a KM expression string to a list, preserving case and interning symbols in the KM package."
   (handler-case
-      (let ((expr (read-from-string expr-str)))
-        (unless (listp expr)
-          (error "Expression must be a list"))
-        (let ((function-name (first expr)))
-          (unless (and (symbolp function-name)
-                       (member (symbol-name function-name) *allowed-functions* :test #'string-equal))
-            (error "Disallowed function: ~a" function-name))
+      (let ((*readtable* (copy-readtable nil))
+            (*package* (find-package :km)))
+        (setf (readtable-case *readtable*) :preserve)
+        (let ((expr (read-from-string expr-str)))
+          (unless (listp expr) (error "Expression must be a list"))
+          (format t "VALIDATE-EXPRESSION-1: ~A~%" expr)
+          (when (and (symbolp (first expr))
+                     (member (symbol-name (first expr)) *banned-functions* :test #'string-equal))
+            (error "Disallowed function: ~a" (first expr)))
           (dolist (arg (rest expr))
-            (unless (or (stringp arg)
-                        (numberp arg)
-                        (and (symbolp arg)
-                             (member (symbol-name arg) *allowed-symbols* :test #'string-equal)))
-              (error "Disallowed symbol or argument: ~a" arg)))))
-    (error (e)
-      (error "Invalid expression: ~a" e))))
+            (when (and (symbolp arg)
+                       (member (symbol-name arg) *banned-symbols* :test #'string-equal))
+              (error "Disallowed symbol: ~a" arg)))
+          expr))
+    (error (e) (error "Invalid expression: ~a" e))))
 
 (defun define-handlers ()
-  "Define the REST endpoint handlers for /km, /km-unique, and /stop."
+  "Define REST endpoints for /km, /km-unique, and /stop."
   (define-easy-handler (km-handler :uri "/km" :default-request-type :post) ()
-    "Handle POST requests to /km, evaluating the KM expression using the thread pool."
+    "Handle POST requests to /km, evaluating KM expressions directly."
     (setf (content-type*) "application/json")
+    (format t "Entered define-handlers.~%")
     (handler-case
-        (let* ((json (raw-post-data :force-text t))
-               (data (parse json)))
-          (unless (and (jsown:keyp data "expr") (stringp (jsown:val data "expr")))
-            (error "Missing or invalid 'expr' field; must be a string"))
-          (let ((expr-str (jsown:val data "expr"))
-                (fail-mode-str (if (jsown:keyp data "fail_mode")
-                                 (jsown:val data "fail_mode")
-                                 "fail")))
-            (unless (member fail-mode-str '("fail" "error") :test #'string-equal)
-              (error "Invalid 'fail_mode'; must be 'fail' or 'error'"))
-            ;;;(validate-expression expr-str)
-            (log:info "KM-EXPRESSION: ~A" expr-str)
-            (let ((fail-mode (if (string-equal fail-mode-str "error") 'error 'fail))
-                  (expr (read-from-string expr-str)))
-              (let ((result (task-result (submit-task *thread-pool* (lambda () (km:km expr-str :fail-mode fail-mode))))))
-                (jsown:to-json (mapcar #'prin1-to-string result))))))
+      (let* ((data (jsown:parse (raw-post-data :force-text t)))
+            (expr-str (if (and (jsown:keyp data "expr") (stringp (jsown:val data "expr")))
+                          (jsown:val data "expr")
+                          (error "Missing or invalid 'expr' field")))
+            (fail-mode (if (string-equal (or (and (jsown:keyp data "fail_mode") 
+                                                  (jsown:val data "fail_mode")) 
+                                              "fail") 
+                                          "error") 
+                            'error 'fail))
+            (expr (validate-expression expr-str)))
+          (unless (member fail-mode '(fail error)) (error "Invalid 'fail_mode'"))
+          (format t "KM-EXPRESSION: ~A~%" expr-str)
+          (handler-case
+              (let ((result (km:km expr :fail-mode fail-mode)))
+                (format t "KM-RESULT: ~A" result)
+                (jsown:to-json (mapcar #'prin1-to-string result)))
+            (error (e)
+              (log:error "KM error: ~a" e)
+              (jsown:to-json (jsown:new-js ("error" (format nil "~a" e)))))))
       (error (e)
         (setf (return-code*) +http-bad-request+)
         (jsown:to-json (jsown:new-js ("error" (format nil "~a" e)))))))
 
   (define-easy-handler (km-unique-handler :uri "/km-unique" :default-request-type :post) ()
-    "Handle POST requests to /km-unique, evaluating the KM expression using the thread pool."
+    "Handle POST requests to /km-unique, evaluating KM expressions directly."
     (setf (content-type*) "application/json")
     (handler-case
-        (let* ((json (raw-post-data :force-text t))
-               (data (parse json)))
-          (unless (and (jsown:keyp data "expr") (stringp (jsown:val data "expr")))
-            (error "Missing or invalid 'expr' field; must be a string"))
-          (let ((expr-str (jsown:val data "expr"))
-                (fail-mode-str (if (jsown:keyp data "fail_mode")
-                                 (jsown:val data "fail_mode")
-                                 "fail")))
-            (unless (member fail-mode-str '("fail" "error") :test #'string-equal)
-              (error "Invalid 'fail_mode'; must be 'fail' or 'error'"))
-            ;;;(validate-expression expr-str)
-            (log:info "KM-EXPRESSION: ~A" expr-str)
-            (let ((fail-mode (if (string-equal fail-mode-str "error") 'error 'fail))
-                  (expr (read-from-string expr-str)))
-              (let ((result (task-result (submit-task *thread-pool* (lambda () (km:km expr-str :fail-mode fail-mode))))))
-                (jsown:to-json (mapcar #'prin1-to-string result))))))
+        (let* ((data (jsown:parse (raw-post-data :force-text t)))
+               (expr-str (if (and (jsown:keyp data "expr") (stringp (jsown:val data "expr")))
+                             (jsown:val data "expr")
+                             (error "Missing or invalid 'expr' field")))
+               (fail-mode (if (string-equal (jsown:val-safe data "fail_mode" "fail") "error") 'error 'fail))
+               (expr (validate-expression expr-str)))
+          (unless (member fail-mode '(fail error)) (error "Invalid 'fail_mode'"))
+          (format t "KM-EXPRESSION: ~A" expr-str)
+          (handler-case
+              (let ((result (km:km-unique expr :fail-mode fail-mode)))
+                (format t "KM-RESULT: ~A" result)
+                (jsown:to-json (jsown:new-js ("value" (prin1-to-string result)))))
+            (error (e)
+              (log:error "KM error: ~a" e)
+              (jsown:to-json (jsown:new-js ("error" (format nil "~a" e)))))))
       (error (e)
         (setf (return-code*) +http-bad-request+)
         (jsown:to-json (jsown:new-js ("error" (format nil "~a" e)))))))
@@ -98,31 +108,23 @@
     (setf *stop-requested* t)
     (jsown:to-json (jsown:new-js ("status" "stopped")))))
 
-(defun start-server (&optional (port *default-port*) (taskmaster nil))
+(defun start-server (&optional (port *default-port*))
+  "Start the KM REST server on the specified port, limiting connections to the number of CPU cores."
   (when *server*
-    (format t "Stopping existing server~%")
-    (stop-server))
-  (format t "Initializing thread pool~%")
-  (setf *thread-pool* (make-thread-pool))
-  (format t "Thread pool initialized~%")
-  (let ((tm (or taskmaster (make-instance 'hunchentoot:one-thread-per-connection-taskmaster))))
-    (setf *server* (make-instance 'hunchentoot:easy-acceptor :port port :taskmaster tm)))
-  (format t "Acceptor created~%")
-  (define-handlers)
-  (format t "Handlers defined~%")
-  (hunchentoot:start *server*)
-  (format t "KM REST server started on port ~a~%" port))
+    (hunchentoot:stop *server*)
+    (format t "Stopped existing server~%"))
+  (let* ((num-cores (get-number-of-cores))
+         (taskmaster (make-instance 'quux-hunchentoot:thread-pooling-taskmaster
+                                    :max-thread-count num-cores))
+         (*server* (make-instance 'hunchentoot:easy-acceptor
+                                  :port port
+                                  :taskmaster taskmaster)))
+    (define-handlers)
+    (hunchentoot:start *server*)
+    (format t "Server started on port ~a with ~a worker threads~%" port num-cores)))
 
 (defun stop-server ()
-  (format t "Entering stop-server~%")
+  "Stop the KM REST server."
   (when *server*
-    (format t "Stopping server: ~a~%" *server*)
     (hunchentoot:stop *server*)
-    (setf *server* nil)
-    (format t "Server stopped~%"))
-  (when *thread-pool*
-    (format t "Shutting down thread pool~%")
-    (shutdown-thread-pool *thread-pool*)
-    (setf *thread-pool* nil)
-    (format t "Thread pool shut down~%"))
-  (format t "Exiting stop-server~%"))
+    (setf *server* nil)))

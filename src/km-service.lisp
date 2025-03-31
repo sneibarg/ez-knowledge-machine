@@ -9,6 +9,7 @@
 
 (defparameter *km-parameter-info*
   '((*load-default-components* . (:default "t" :type boolean))
+    (*abort-on-error-report* . (:default "t" :type boolean))
     (*recursive-classification* . (:default "t" :type boolean))
     (*indirect-classification* . (:default "t" :type boolean))
     (*recursive-prototypes* . (:default "nil" :type boolean))

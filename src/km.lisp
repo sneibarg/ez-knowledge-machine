@@ -476,7 +476,7 @@ The variable *km-package* is set to the KM package name that KM is in.
     *are-some-defaults*
     *am-in-situations-mode*
 ;    *abort-on-error-report*
-;    *error-report-silent*
+    *error-report-silent*
 ;   *user-defined-infix-operators*	- these don't write out properly so ignore these
     ))
 
@@ -10089,7 +10089,7 @@ example:
 ;;; [3] Thanks to Francis Leboutte for *silently-abort-on-error-report*
 ;;;     Set or bind this variable to t in order to suppress the error message
 ;;;     printed in the console when *abort-on-error-report* is t
-;(defvar *error-report-silent* nil)		 ; **** another NEW LINE
+(defvar *error-report-silent* nil)		 ; **** another NEW LINE
 ;(defvar *abort-on-error-report* nil)
 ;(defvar *silently-abort-on-error-report* t)	 ; [3] - new default is t
 
@@ -10110,7 +10110,7 @@ example:
 		      (t (first args0))))
 	(args (cond ((stringp string0) args0)
 		    (t (rest args0)))))
-;  (unless *error-report-silent*
+  (unless *error-report-silent*
 ;  (unless (member (on-error) '(continue-silently ignore))
      (let* ((error-str-prefix (case error-type
                                (user-error "ERROR! ")
@@ -10179,7 +10179,7 @@ Aborting (as I don't know what error reporting mode to use for reporting an erro
 	      (abort))
             ;; FLE 03Aug2005, add this:
             (t (warn "Unknown KM error type: ~s" error-type)
-               nil)))))
+               nil))))))
 
 ;;; ======================================================================
 ;;;		CATCHING THE TRACING INFORMATION

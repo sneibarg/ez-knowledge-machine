@@ -3,7 +3,7 @@
   (unless (find-package :km)
     (defpackage :km
       (:use :common-lisp)
-      (:export :km :km-unique0))))  ; Export the "KM" symbol
+      (:export :km :km-unique))))  ; Export the "KM" symbol
 
 (in-package :km)
 (defvar *using-km-package* nil)
