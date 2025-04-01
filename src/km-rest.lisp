@@ -7,7 +7,6 @@
 (defvar *server* nil "Holds the server instance.")
 (defvar *stop-requested* nil "Flag for shutdown request.")
 (defvar *shutdown-thread* nil "Thread for shutdown handling.")
-(defvar *thread-pool* nil "Holds the thread pool instance.")
 (defvar *default-port* 8080 "Default port if unspecified.")
 
 (km-logging:setup-file-logging "km-service.log" :info)
