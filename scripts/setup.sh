@@ -1,16 +1,53 @@
 #!/bin/bash
 
-echo "Setting up KM project with embedded Quicklisp..."
+echo "Setting up KM project with embedded Quicklisp using selected Lisp runtime..."
 echo
 
-# Define variables
-PROJECT_ROOT="/mnt/e/VSCode/ez-knowledge-machine"
+# Default Lisp runtime
+DEFAULT_LISP="sbcl"
+LISP_RUNTIME="$DEFAULT_LISP"
+PROJECT_ROOT="/home/som/ez-knowledge-machine"
 SRC_ROOT="$PROJECT_ROOT/src"
-QUICKLISP_DIR="/mnt/e/Quicklisp"
+QUICKLISP_DIR="$HOME/.quicklisp"
 QUICKLISP_SETUP="$QUICKLISP_DIR/setup.lisp"
-SBCL_PATH="/mnt/c/Program Files/Steel Bank Common Lisp/sbcl"
+SBCL_PATH="/usr/local/bin/sbcl"
+GCL_PATH="/usr/local/bin/gcl"
 LOCAL_PROJECTS="$QUICKLISP_DIR/local-projects"
 PACKAGES_ROOT="$PROJECT_ROOT/packages"
+
+# Parse command-line options
+while [[ $# -gt 0 ]]; do
+    case "$1" in
+        --lisp)
+            LISP_RUNTIME="$2"
+            shift 2
+            ;;
+        *)
+            echo "Unknown option: $1"
+            exit 1
+            ;;
+    esac
+done
+
+# Determine Lisp executable
+case "$LISP_RUNTIME" in
+    sbcl)
+        LISP_EXEC="$SBCL_PATH"
+        ;;
+    gcl)
+        LISP_EXEC="$GCL_PATH"
+        ;;
+    *)
+        echo "Unsupported Lisp runtime: $LISP_RUNTIME. Supported: sbcl, gcl"
+        exit 1
+        ;;
+esac
+
+# Verify Lisp executable exists
+if ! command -v "$LISP_EXEC" >/dev/null 2>&1; then
+    echo "Error: $LISP_RUNTIME not found at $LISP_EXEC. Please install it."
+    exit 1
+fi
 
 # Step 1: Check and create necessary directories
 echo "[1/5] Checking and creating directories..."
@@ -46,15 +83,14 @@ else
         echo "Failed to download quicklisp.lisp"
         read -p "Press Enter to continue..."
         exit 1
-    fi
-    "$SBCL_PATH" --load quicklisp.lisp --eval "(quicklisp-quickstart:install :path \"/mnt/e/Quicklisp/\")" --quit
-    if [ $? -ne 0 ]; then
+    }
+    "$LISP_EXEC" --load quicklisp.lisp --eval "(quicklisp-quickstart:install :path \"$QUICKLISP_DIR\")" --eval "(quit)" || {
         echo "Quicklisp installation failed"
         read -p "Press Enter to continue..."
         exit 1
-    fi
+    }
     if [ -f "$PROJECT_ROOT/scripts/install-quicklisp.lisp" ]; then
-        "$SBCL_PATH" --noinform --script "$PROJECT_ROOT/scripts/install-quicklisp.lisp"
+        "$LISP_EXEC" --noinform --script "$PROJECT_ROOT/scripts/install-quicklisp.lisp"
         if [ $? -ne 0 ]; then
             echo "Running install-quicklisp.lisp failed"
             read -p "Press Enter to continue..."
@@ -103,11 +139,10 @@ for p in km km-threads km-rest km-logging; do
 done
 echo "Finished Step 3."
 
-# Step 4: Copy Lisp files, .asd files, and package.lisp to respective local-projects folders
+# Step 4: Copy Lisp files, .asd files, and package.lisp to local-projects
 echo
 echo "[4/5] Copying Lisp files, .asd files, and package.lisp to local-projects..."
 for p in km km-threads km-rest km-logging; do
-    # Create or clear target directory
     if [ -d "$LOCAL_PROJECTS/$p" ]; then
         rm -rf "$LOCAL_PROJECTS/$p"
         if [ $? -ne 0 ]; then
@@ -122,7 +157,6 @@ for p in km km-threads km-rest km-logging; do
         read -p "Press Enter to continue..."
         exit 1
     fi
-    # Copy the .asd file if it exists
     if [ -f "$SRC_ROOT/$p.asd" ]; then
         cp "$SRC_ROOT/$p.asd" "$LOCAL_PROJECTS/$p/"
         if [ $? -ne 0 ]; then
@@ -134,7 +168,6 @@ for p in km km-threads km-rest km-logging; do
     else
         echo "No $p.asd found in $SRC_ROOT, skipping copy."
     fi
-    # Copy the .lisp file if it exists
     if [ -f "$SRC_ROOT/$p.lisp" ]; then
         cp "$SRC_ROOT/$p.lisp" "$LOCAL_PROJECTS/$p/"
         if [ $? -ne 0 ]; then
@@ -146,7 +179,6 @@ for p in km km-threads km-rest km-logging; do
     else
         echo "No $p.lisp found in $SRC_ROOT, skipping copy."
     fi
-    # Copy package.lisp if it exists in PACKAGES_ROOT/$p/
     PACKAGE_FILE="$PACKAGES_ROOT/$p/package.lisp"
     if [ -f "$PACKAGE_FILE" ]; then
         cp "$PACKAGE_FILE" "$LOCAL_PROJECTS/$p/"
@@ -163,23 +195,7 @@ done
 
 # Step 5: Register and verify packages with Quicklisp
 echo
-echo "[5/5] Registering packages with Quicklisp..."
-"$SBCL_PATH" --load "$QUICKLISP_SETUP" --eval "(ql:register-local-projects)" --quit
+echo "[5/5] Registering packages with Quicklisp using $LISP_RUNTIME..."
+"$LISP_EXEC" --load "$QUICKLISP_SETUP" --eval "(ql:register-local-projects)" --quit
 if [ $? -ne 0 ]; then
-    echo "Failed to register local projects with Quicklisp"
-    read -p "Press Enter to continue..."
-    exit 1
-fi
-for p in km km-threads km-rest; do
-    "$SBCL_PATH" --load "$QUICKLISP_SETUP" --eval "(handler-case (ql:quickload :$p) (error (c) (format t \"Error loading $p: ~a~%\" c) (sb-ext:exit :code 1)))" --quit
-    if [ $? -ne 0 ]; then
-        echo "Failed to load package $p. Check error messages above."
-        read -p "Press Enter to continue..."
-        exit 1
-    fi
-    echo "Successfully loaded $p"
-done
-
-echo
-echo "Setup and build completed successfully!"
-read -p "Press Enter to continue..."
+    echo "Failed to register local
